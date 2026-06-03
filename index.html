@@ -334,6 +334,36 @@ section { position: relative; z-index: 1; }
 }
 .skill-card.visible .skill-fill-bar { width: var(--sw); }
 
+/* ── FORMACIÓN ── */
+#formacion { background: var(--bg); }
+.form-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+}
+.form-block-title {
+  font-size: .62rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent1); margin-bottom: 20px; display: block;
+}
+.form-items { display: flex; flex-direction: column; gap: 0; }
+.form-item {
+  padding: 20px 0; border-bottom: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.form-item:last-child { border-bottom: none; }
+.form-item-title {
+  font-family: 'Syne', sans-serif; font-size: .9rem; font-weight: 700;
+  color: var(--text);
+}
+.form-item-sub { font-size: .75rem; color: var(--muted); }
+.form-item-tag {
+  display: inline-block; margin-top: 6px; align-self: flex-start;
+  font-size: .62rem; padding: 3px 10px; border-radius: 20px;
+  font-weight: 600; letter-spacing: .5px;
+}
+.tag-proceso {
+  background: rgba(251,191,36,.07); border: 1px solid rgba(251,191,36,.2);
+  color: var(--yellow);
+}
+
 /* ── CONTACT ── */
 #contact { background: var(--bg); }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
@@ -393,6 +423,7 @@ footer {
   <ul class="nav-links">
     <li><a href="#trayectoria">Trayectoria</a></li>
     <li><a href="#habilidades">Habilidades</a></li>
+    <li><a href="#formacion">Formación</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
 </nav>
@@ -664,6 +695,50 @@ footer {
         <div class="skill-yrs">IA Generativa · Automatización · Frontera tecnológica</div>
         <div class="skill-bar"><div class="skill-fill-bar" style="background:linear-gradient(90deg,var(--accent4),var(--accent3))"></div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMACIÓN -->
+<section id="formacion">
+  <div class="section-inner">
+    <span class="section-tag">// educación &amp; desarrollo profesional</span>
+    <h2 class="section-title">Formación y<br><em>certificaciones</em></h2>
+
+    <div class="form-grid">
+
+      <div>
+        <span class="form-block-title">Educación</span>
+        <div class="form-items">
+          <div class="form-item">
+            <div class="form-item-title">Maestría en Seguridad de Tecnologías de la Información</div>
+            <div class="form-item-sub">Universidad Tecnológica de México &nbsp;·&nbsp; 2014 – 2015</div>
+          </div>
+          <div class="form-item">
+            <div class="form-item-title">Licenciatura en Informática Administrativa</div>
+            <div class="form-item-sub">Universidad Tecnológica de México &nbsp;·&nbsp; 2003 – 2005</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <span class="form-block-title">Certificaciones y metodologías</span>
+        <div class="form-items">
+          <div class="form-item">
+            <div class="form-item-title">ISO 27001:2022 — Lead Implementer</div>
+          </div>
+          <div class="form-item">
+            <div class="form-item-title">Agile / Scrum</div>
+            <div class="form-item-sub">Gestión de proyectos tecnológicos</div>
+          </div>
+          <div class="form-item">
+            <div class="form-item-title">PMP — Project Management Professional (PMI)</div>
+            <div class="form-item-sub">En proceso &nbsp;·&nbsp; Estimado noviembre 2026</div>
+            <span class="form-item-tag tag-proceso">En proceso</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
