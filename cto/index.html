@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VC2D4V1FP5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VC2D4V1FP5');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fernando Gomez — CTO</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#03080F;--bg2:#060E18;--bg3:#0A1520;
+  --text:#E8EAF0;--muted:#3D5060;--soft:#7A8FA0;
+  --em:#059669;--em2:#34D399;       /* esmeralda — energía */
+  --or:#EA580C;--or2:#FB923C;       /* naranja — electricidad */
+  --blue:#0284C7;--blue2:#38BDF8;   /* azul — tecnología */
+  --gold:#D97706;--gold2:#FBBF24;
+  --border:rgba(255,255,255,0.06);
+  --card:rgba(255,255,255,0.025);
+  --glow1:rgba(5,150,105,.13);
+  --glow2:rgba(234,88,12,.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+body::before{content:'';position:fixed;width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,var(--glow1),transparent 65%);
+  top:-200px;left:-200px;pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,var(--glow2),transparent 65%);
+  bottom:-150px;right:-150px;pointer-events:none;z-index:0}
+
+/* NAV */
+nav{padding:0 60px;height:62px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:50;background:rgba(3,8,15,.88);backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border)}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+.nav-mark{width:34px;height:34px;border-radius:8px;
+  background:linear-gradient(135deg,var(--em),var(--or));
+  display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;color:#fff;flex-shrink:0}
+.nav-title{font-size:.85rem;font-weight:700}
+.nav-sub{font-size:.62rem;color:var(--muted)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:.75rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--em2)}
+.nav-pill{background:rgba(5,150,105,.12);border:1px solid rgba(5,150,105,.3);
+  color:var(--em2);padding:8px 20px;border-radius:40px;font-size:.75rem;font-weight:600;
+  text-decoration:none;transition:background .2s;white-space:nowrap}
+.nav-pill:hover{background:rgba(5,150,105,.22)}
+
+/* LANG TOGGLE */
+.lang-toggle{display:flex;align-items:center;background:rgba(255,255,255,.04);
+  border:1px solid var(--border);border-radius:40px;overflow:hidden;flex-shrink:0}
+.lang-btn{padding:6px 14px;font-size:.72rem;font-weight:700;letter-spacing:1px;
+  cursor:pointer;border:none;background:transparent;color:var(--muted);transition:background .2s,color .2s}
+.lang-btn.active{background:linear-gradient(135deg,var(--em),var(--or));color:#fff}
+.lang-btn:hover:not(.active){color:var(--text)}
+
+/* HERO */
+#hero{position:relative;z-index:1;display:grid;grid-template-columns:1fr 420px;
+  min-height:92vh;align-items:center;padding:80px 60px;gap:60px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;
+  background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.2);
+  color:var(--em2);padding:7px 16px;border-radius:40px;
+  font-size:.68rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:28px}
+.ey-dot{width:6px;height:6px;border-radius:50%;background:var(--or2);animation:blink 2.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+h1{font-size:clamp(2.8rem,5vw,4.8rem);font-weight:800;line-height:.97;letter-spacing:-2.5px;margin-bottom:24px}
+.h1-g{background:linear-gradient(90deg,var(--em2),var(--blue2),var(--or2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-desc{font-size:1rem;color:var(--soft);line-height:1.8;max-width:540px;font-weight:300;margin-bottom:36px}
+.hero-desc strong{color:var(--text);font-weight:600}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-g{background:linear-gradient(135deg,var(--em),var(--or));color:#fff;padding:13px 28px;
+  border-radius:10px;font-size:.85rem;font-weight:700;text-decoration:none;transition:opacity .2s,transform .15s}
+.btn-g:hover{opacity:.85;transform:translateY(-2px)}
+.btn-o{background:transparent;color:var(--text);border:1px solid var(--border);padding:13px 28px;
+  border-radius:10px;font-size:.85rem;font-weight:600;text-decoration:none;transition:border-color .2s}
+.btn-o:hover{border-color:var(--em2)}
+
+/* HERO CARD */
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:20px;
+  padding:32px;position:relative;overflow:hidden}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--em),var(--blue2),var(--or2))}
+.hc-label{font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+.hc-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.hcs{padding:16px;background:rgba(255,255,255,.025);border-radius:10px}
+.hcs-n{font-size:2rem;font-weight:800;line-height:1;
+  background:linear-gradient(135deg,var(--em2),var(--blue2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hcs-l{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+.hc-divider{border:none;border-top:1px solid var(--border);margin:20px 0}
+.hc-focus{background:rgba(5,150,105,.07);border:1px solid rgba(5,150,105,.2);
+  border-radius:8px;padding:12px 16px;font-size:.72rem;color:var(--em2);line-height:1.6;margin-bottom:14px}
+.hc-tags{display:flex;flex-wrap:wrap;gap:6px}
+.hc-tag{font-size:.62rem;padding:4px 10px;border-radius:6px;border:1px solid var(--border);color:var(--muted)}
+.hc-tag.hi{background:rgba(5,150,105,.07);border-color:rgba(5,150,105,.25);color:var(--em2)}
+.hc-tag.or{background:rgba(234,88,12,.07);border-color:rgba(234,88,12,.25);color:var(--or2)}
+
+/* SECTORS */
+.sectors{position:relative;z-index:1;display:flex;align-items:center;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2);overflow:hidden}
+.sec-label-strip{padding:18px 60px;font-size:.58rem;color:var(--muted);
+  letter-spacing:3px;text-transform:uppercase;border-right:1px solid var(--border);white-space:nowrap;flex-shrink:0}
+.sec-items{display:flex;overflow-x:auto}
+.sec-item{padding:18px 28px;font-size:.72rem;color:var(--soft);
+  border-right:1px solid var(--border);white-space:nowrap;
+  display:flex;align-items:center;gap:8px;transition:color .2s}
+.sec-item:hover{color:var(--em2)}
+.sec-item:last-child{border-right:none}
+.si-dot{width:5px;height:5px;border-radius:50%;background:var(--em);flex-shrink:0}
+
+/* SECTIONS */
+section{position:relative;z-index:1;padding:80px 60px}
+.sec-top{margin-bottom:52px}
+.sec-tag{font-size:.63rem;letter-spacing:3px;text-transform:uppercase;color:var(--em2);display:block;margin-bottom:10px}
+h2{font-size:clamp(1.8rem,2.8vw,2.5rem);font-weight:800;letter-spacing:-1px;line-height:1.1}
+h2 .g{background:linear-gradient(90deg,var(--em2),var(--or2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* METRICS */
+.metrics-row{display:grid;grid-template-columns:repeat(4,1fr);
+  background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:48px}
+.mr-cell{padding:28px 32px;border-right:1px solid var(--border)}
+.mr-cell:last-child{border-right:none}
+.mr-num{font-size:2.2rem;font-weight:800;line-height:1;margin-bottom:6px;
+  background:linear-gradient(135deg,var(--em2),var(--blue2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.mr-lbl{font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px}
+
+/* TIMELINE */
+#experiencia{background:var(--bg)}
+.tl-stack{display:flex;flex-direction:column;gap:12px}
+.tlc{background:var(--card);border:1px solid var(--border);border-radius:16px;
+  display:grid;grid-template-columns:200px 1fr 170px;gap:28px;
+  padding:28px 32px;align-items:start;transition:border-color .25s,transform .2s}
+.tlc:hover{border-color:rgba(255,255,255,.1);transform:translateX(4px)}
+.tlc-period{font-size:.63rem;font-weight:700;letter-spacing:1px;margin-bottom:4px}
+.tlc-loc{font-size:.63rem;color:var(--muted)}
+.tlc-note{font-size:.6rem;color:var(--gold);margin-top:6px;line-height:1.4;font-style:italic}
+.tlc-role{font-size:1.05rem;font-weight:700;margin-bottom:3px}
+.tlc-co{font-size:.75rem;color:var(--muted);margin-bottom:6px}
+.tlc-sub{font-size:.72rem;color:var(--soft);font-style:italic;margin-bottom:12px;line-height:1.4}
+.tlc-items{list-style:none;display:flex;flex-direction:column;gap:5px}
+.tlc-items li{font-size:.77rem;color:var(--soft);padding-left:14px;position:relative;line-height:1.55}
+.tlc-items li::before{content:'›';position:absolute;left:0;font-weight:700;color:var(--em2)}
+.tlc-right{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding-top:2px}
+.tlc-badge{display:inline-block;padding:5px 12px;border-radius:6px;
+  font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;border:1px solid;white-space:nowrap}
+.b-em{background:rgba(5,150,105,.07);border-color:rgba(5,150,105,.25);color:var(--em2)}
+.b-or{background:rgba(234,88,12,.07);border-color:rgba(234,88,12,.25);color:var(--or2)}
+.b-blue{background:rgba(2,132,199,.07);border-color:rgba(2,132,199,.25);color:var(--blue2)}
+.b-gold{background:rgba(217,119,6,.07);border-color:rgba(217,119,6,.25);color:var(--gold2)}
+.tlc-metric{font-size:.62rem;color:var(--muted)}
+.s0{border-left:2px solid var(--or2)}  .s0 .tlc-period{color:var(--or2)}
+.s1{border-left:2px solid var(--em2)}  .s1 .tlc-period{color:var(--em2)}
+.s2{border-left:2px solid var(--blue2)} .s2 .tlc-period{color:var(--blue2)}
+.s3{border-left:2px solid var(--gold2)} .s3 .tlc-period{color:var(--gold2)}
+
+/* COMPETENCIAS */
+#competencias{background:var(--bg2)}
+.comp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.comp-card{background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:22px 26px;transition:border-color .25s,background .25s;display:flex;gap:16px;align-items:flex-start}
+.comp-card:hover{border-color:rgba(52,211,153,.15);background:rgba(52,211,153,.02)}
+.comp-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px}
+.comp-body{}
+.comp-name{font-size:.88rem;font-weight:700;margin-bottom:6px;color:var(--text)}
+.comp-tags{display:flex;flex-wrap:wrap;gap:5px}
+.comp-tag{font-size:.62rem;padding:3px 9px;border-radius:5px;
+  border:1px solid var(--border);color:var(--muted)}
+.comp-tag.hi{background:rgba(5,150,105,.06);border-color:rgba(5,150,105,.2);color:var(--em2)}
+.comp-tag.or{background:rgba(234,88,12,.06);border-color:rgba(234,88,12,.2);color:var(--or2)}
+.comp-tag.bl{background:rgba(2,132,199,.06);border-color:rgba(2,132,199,.2);color:var(--blue2)}
+
+/* FORMACIÓN */
+#formacion{background:var(--bg)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.fg-title{font-size:.62rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--em2);margin-bottom:20px}
+.fg-items{display:flex;flex-direction:column}
+.fg-item{padding:18px 0;border-bottom:1px solid var(--border)}
+.fg-item:last-child{border-bottom:none}
+.fg-name{font-size:.88rem;font-weight:600;margin-bottom:3px;color:var(--text)}
+.fg-sub{font-size:.72rem;color:var(--muted)}
+.fg-tag{display:inline-block;margin-top:6px;font-size:.6rem;padding:3px 10px;
+  border-radius:20px;background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);
+  color:var(--gold2);font-weight:600}
+
+/* CONTACTO */
+#contacto{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.cg-left h2{margin-bottom:16px}
+.cg-left p{font-size:.9rem;color:var(--soft);line-height:1.8}
+.cg-right{display:flex;flex-direction:column;gap:8px}
+.ci{display:flex;align-items:center;gap:16px;padding:18px 20px;
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  text-decoration:none;color:var(--text);transition:border-color .2s,background .2s}
+.ci:hover{border-color:var(--em2);background:rgba(5,150,105,.04)}
+.ci-icon{font-size:1.2rem;flex-shrink:0}
+.ci-lbl{font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px}
+.ci-val{font-size:.84rem;font-weight:500;margin-top:2px}
+
+footer{position:relative;z-index:1;border-top:1px solid var(--border);
+  padding:22px 60px;text-align:center;font-size:.7rem;color:var(--muted)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  #hero{grid-template-columns:1fr;min-height:auto;padding:60px 40px}
+  .hero-card{display:none}
+  .comp-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  .nav-sub{display:none}
+  section{padding:60px 20px}
+  #hero{padding:60px 20px}
+  h1{letter-spacing:-1.5px}
+  .sectors .sec-label-strip{padding:14px 20px;font-size:.5rem}
+  .sec-item{padding:14px 16px;font-size:.68rem}
+  .metrics-row{grid-template-columns:repeat(2,1fr)}
+  .mr-cell{padding:18px}
+  .tlc{grid-template-columns:1fr;gap:14px;padding:20px}
+  .tlc-right{align-items:flex-start;flex-direction:row;flex-wrap:wrap}
+  .tlc:hover{transform:none}
+  .comp-grid{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr;gap:40px}
+  .contact-grid{grid-template-columns:1fr;gap:40px}
+  footer{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-mark">FG</div>
+    <div>
+      <div class="nav-title">Fernando Gómez Guerrero</div>
+      <div class="nav-sub" data-i18n="nav.sub">CTO · Energía & Movilidad Eléctrica</div>
+    </div>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#experiencia" data-i18n="nav.exp">Experiencia</a></li>
+      <li><a href="#competencias" data-i18n="nav.comp">Competencias</a></li>
+      <li><a href="#formacion" data-i18n="nav.edu">Formación</a></li>
+      <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="#contacto" class="nav-pill" data-i18n="nav.cta">Contactar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div>
+    <div class="hero-eyebrow"><span class="ey-dot"></span><span data-i18n="hero.eyebrow">CTO · Energía & Movilidad Eléctrica · CDMX</span></div>
+    <h1>Fernando<br><span class="h1-g">Gómez Guerrero</span></h1>
+    <p class="hero-desc" data-i18n-html="hero.desc">CTO con <strong>más de 20 años</strong> diseñando y operando plataformas escalables para infraestructura crítica en energía, agua y movilidad en <strong>4 países LATAM</strong>. Experto en arquitectura IoT/OT industrial, SRE, DevOps y ciberseguridad OT para proyectos conectados a <strong>CENACE</strong>.</p>
+    <div class="hero-btns">
+      <a href="#experiencia" class="btn-g" data-i18n="hero.btn1">Ver experiencia</a>
+      <a href="mailto:fernando.gomez2201@gmail.com" class="btn-o" data-i18n="hero.btn2">Contactar</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hc-label" data-i18n="hero.card.label">Perfil ejecutivo</div>
+    <div class="hc-stats">
+      <div class="hcs"><div class="hcs-n">20+</div><div class="hcs-l" data-i18n="hero.s1">Años exp.</div></div>
+      <div class="hcs"><div class="hcs-n">9</div><div class="hcs-l" data-i18n="hero.s2">Plantas IoT/OT</div></div>
+      <div class="hcs"><div class="hcs-n">4</div><div class="hcs-l" data-i18n="hero.s3">Países LATAM</div></div>
+      <div class="hcs"><div class="hcs-n">100%</div><div class="hcs-l" data-i18n="hero.s4">Continuidad crítica</div></div>
+    </div>
+    <hr class="hc-divider">
+    <div class="hc-focus" data-i18n="hero.focus">⚡ Framework Ciberseguridad OT · Parque eólico CENACE · SRE/Observabilidad para infraestructura distribuida</div>
+    <div class="hc-tags">
+      <span class="hc-tag hi">IoT / OT Industrial</span>
+      <span class="hc-tag hi">SRE · SCADA</span>
+      <span class="hc-tag or">CENACE</span>
+      <span class="hc-tag or">DevOps · CI/CD</span>
+      <span class="hc-tag">Cloud Híbrido</span>
+      <span class="hc-tag">ISO 27001:2022</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<div class="sectors">
+  <span class="sec-label-strip" data-i18n="sectors.label">Sectores</span>
+  <div class="sec-items">
+    <span class="sec-item"><span class="si-dot"></span><span data-i18n="sector.1">Movilidad Eléctrica</span></span>
+    <span class="sec-item"><span class="si-dot"></span><span data-i18n="sector.2">Energía & Eólico</span></span>
+    <span class="sec-item"><span class="si-dot"></span><span data-i18n="sector.3">Agua & Infraestructura Crítica</span></span>
+    <span class="sec-item"><span class="si-dot"></span><span data-i18n="sector.4">Salud & Hospitales</span></span>
+    <span class="sec-item"><span class="si-dot"></span><span data-i18n="sector.5">Educación</span></span>
+    <span class="sec-item"><span class="si-dot"></span><span data-i18n="sector.6">M&A / Fusiones</span></span>
+  </div>
+</div>
+
+<!-- EXPERIENCIA -->
+<section id="experiencia">
+  <div class="sec-top">
+    <span class="sec-tag" data-i18n="exp.tag">// experiencia profesional</span>
+    <h2 data-i18n-html="exp.title">Plataformas críticas operadas en <span class="g">4 países LATAM</span></h2>
+  </div>
+
+  <div class="metrics-row">
+    <div class="mr-cell"><div class="mr-num">100%</div><div class="mr-lbl" data-i18n="m1">Continuidad IoT/OT</div></div>
+    <div class="mr-cell"><div class="mr-num">99.7%</div><div class="mr-lbl" data-i18n="m2">Uptime ERP</div></div>
+    <div class="mr-cell"><div class="mr-num">–70%</div><div class="mr-lbl" data-i18n="m3">Tiempos de reporte</div></div>
+    <div class="mr-cell"><div class="mr-num">72→94%</div><div class="mr-lbl" data-i18n="m4">CSAT usuarios</div></div>
+  </div>
+
+  <div class="tl-stack">
+
+    <!-- JOB 0 — CONSULTOR -->
+    <div class="tlc s0">
+      <div class="tlc-left">
+        <div class="tlc-period" data-i18n="j0.period">May 2026 – Presente</div>
+        <div class="tlc-loc">Ciudad de México</div>
+      </div>
+      <div class="tlc-main">
+        <div class="tlc-role" data-i18n="j0.role">Consultor Independiente de TI</div>
+        <div class="tlc-co" data-i18n="j0.co">Servicios de Consultoría Tecnológica</div>
+        <div class="tlc-sub" data-i18n="j0.sub">Asesoría especializada en ciberseguridad, cumplimiento normativo y gestión de plataformas digitales</div>
+        <ul class="tlc-items">
+          <li data-i18n="j0.li1">Conducción de análisis de brechas ISO 27001 para despacho jurídico — diagnóstico, roadmap de remediación e implementación de controles</li>
+          <li data-i18n="j0.li2">Optimización de disponibilidad e integridad de plataformas LMS y CRM en organización gremial de alcance nacional</li>
+          <li data-i18n="j0.li3">Definición de protocolos de monitoreo, políticas de confidencialidad y gestión de incidencias</li>
+        </ul>
+      </div>
+      <div class="tlc-right">
+        <span class="tlc-badge b-or" data-i18n="j0.badge">Consultoría</span>
+        <span class="tlc-metric" data-i18n="j0.m1">ISO 27001</span>
+        <span class="tlc-metric" data-i18n="j0.m2">LMS · CRM</span>
+      </div>
+    </div>
+
+    <!-- JOB 1 — HUMAN CORPORIS -->
+    <div class="tlc s1">
+      <div class="tlc-left">
+        <div class="tlc-period" data-i18n="j1.period">Ago 2025 – Abr 2026</div>
+        <div class="tlc-loc">MX · PE · CO · CL</div>
+      </div>
+      <div class="tlc-main">
+        <div class="tlc-role" data-i18n="j1.role">LATAM IT Manager / CTO Plataformas Digitales</div>
+        <div class="tlc-co" data-i18n="j1.co">Human Corporis · Holding Hospitalario</div>
+        <div class="tlc-sub" data-i18n="j1.sub">Arquitectura y entrega de plataformas digitales escalables (IA, ERP, fiscal, ciberseguridad) como activos estratégicos en 4 países LATAM</div>
+        <ul class="tlc-items">
+          <li data-i18n="j1.li1">Conector MCP Oracle NetSuite–Claude AI (microservicios + OAuth 2.0) · –70% tiempos reporte · –70% costos TCO · Oracle Global Benchmark</li>
+          <li data-i18n="j1.li2">Automatización: timbrado SAT vía API, reportes MCP, alertas Power Automate — eliminación de ciclos manuales</li>
+          <li data-i18n="j1.li3">Equipo de ingeniería completamente operativo en menos de 4 semanas · diseño de puestos, bandas salariales, KPIs</li>
+          <li data-i18n="j1.li4">ISO 27001:2022 · –70% incidentes seguridad · SAT (MX) · SUNAT (PE) · DIAN (CO) · MFA · EDR con IA · DRP/BCP</li>
+        </ul>
+      </div>
+      <div class="tlc-right">
+        <span class="tlc-badge b-gold" data-i18n="j1.badge">Oracle Award</span>
+        <span class="tlc-metric" data-i18n="j1.m1">–70% reportes</span>
+        <span class="tlc-metric" data-i18n="j1.m2">ISO 27001:2022</span>
+        <span class="tlc-metric" data-i18n="j1.m3">4 semanas onboard</span>
+      </div>
+    </div>
+
+    <!-- JOB 2 — VEOLIA -->
+    <div class="tlc s2">
+      <div class="tlc-left">
+        <div class="tlc-period" data-i18n="j2.period">Nov 2020 – Jul 2025</div>
+        <div class="tlc-loc">MX · FR · ES · CO</div>
+        <div class="tlc-note" data-i18n="j2.note">SUEZ adquirida por VEOLIA ene 2022</div>
+      </div>
+      <div class="tlc-main">
+        <div class="tlc-role" data-i18n="j2.role">Gerente de TI LATAM</div>
+        <div class="tlc-co" data-i18n="j2.co">VEOLIA / SUEZ-AGBAR · Agua & Residuos Industriales</div>
+        <div class="tlc-sub" data-i18n="j2.sub">Infraestructura IoT/OT crítica, SRE/observabilidad, automatización de operaciones y consolidación M&A en 9 plantas industriales</div>
+        <ul class="tlc-items">
+          <li data-i18n="j2.li1">SRE en tiempo real para 9 plantas: pipelines GCP + Looker Studio + SCADA + PLCs + Power Automate → alertas sin intervención manual</li>
+          <li data-i18n="j2.li2">100% continuidad IoT/OT durante fusión SUEZ-VEOLIA: PLCs, sensores, servidores on-premises, fibra óptica y satelital en toda la República</li>
+          <li data-i18n="j2.li3">Framework ciberseguridad OT documentado para parque eólico conectado a CENACE en Monterrey</li>
+          <li data-i18n="j2.li4">Migración Hubgrade (Aguascalientes→CDMX) en 3 meses, zero downtime · Dashboards comerciales para captación de clientes</li>
+          <li data-i18n="j2.li5">ERP 80%→99.7% uptime · Arquitectura cloud $16M MXN (AWS, Azure AD, GCP) · Movilform app: 45 usuarios en 8 meses · –6% presupuesto $19M MXN</li>
+        </ul>
+      </div>
+      <div class="tlc-right">
+        <span class="tlc-badge b-em" data-i18n="j2.badge">IoT/OT</span>
+        <span class="tlc-metric" data-i18n="j2.m1">9 plantas críticas</span>
+        <span class="tlc-metric" data-i18n="j2.m2">CENACE OT</span>
+        <span class="tlc-metric" data-i18n="j2.m3">$19M MXN · –6%</span>
+      </div>
+    </div>
+
+    <!-- JOB 3 — ISP -->
+    <div class="tlc s3">
+      <div class="tlc-left">
+        <div class="tlc-period" data-i18n="j3.period">Ago 2010 – Jul 2020</div>
+        <div class="tlc-loc">México · Reino Unido</div>
+      </div>
+      <div class="tlc-main">
+        <div class="tlc-role" data-i18n="j3.role">Subdirector de TI</div>
+        <div class="tlc-co" data-i18n="j3.co">International Schools Partnership (ISP) · Educación Multi-Campus</div>
+        <div class="tlc-sub" data-i18n="j3.sub">Plataforma TI replicable escalada de 3 a 12 campus sin rediseño estructural</div>
+        <ul class="tlc-items">
+          <li data-i18n="j3.li1">Escalé la plataforma TI de 3 a 12 campus: modelo replicable con ITSM, seguridad y conectividad estandarizados en cada nodo</li>
+          <li data-i18n="j3.li2">CSAT 72%→94% en +900 usuarios · ERP + CRM + LMS · equipo 6 ingenieros · presupuesto $2M MXN</li>
+        </ul>
+      </div>
+      <div class="tlc-right">
+        <span class="tlc-badge b-blue" data-i18n="j3.badge">Plataforma</span>
+        <span class="tlc-metric" data-i18n="j3.m1">3 → 12 campus</span>
+        <span class="tlc-metric" data-i18n="j3.m2">CSAT 72→94%</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMPETENCIAS -->
+<section id="competencias">
+  <div class="sec-top">
+    <span class="sec-tag" data-i18n="comp.tag">// competencias clave & stack tecnológico</span>
+    <h2 data-i18n-html="comp.title">Capacidades construidas para <span class="g">infraestructura crítica</span></h2>
+  </div>
+  <div class="comp-grid">
+
+    <div class="comp-card">
+      <div class="comp-icon">🏗️</div>
+      <div class="comp-body">
+        <div class="comp-name" data-i18n="c1.name">Arquitectura de Plataforma</div>
+        <div class="comp-tags">
+          <span class="comp-tag hi">Microservicios</span><span class="comp-tag hi">API Gateway</span>
+          <span class="comp-tag hi">Event-Driven</span><span class="comp-tag">Nube Híbrida</span>
+          <span class="comp-tag">AWS · Azure · GCP</span><span class="comp-tag">On-Premises</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-icon">⚡</div>
+      <div class="comp-body">
+        <div class="comp-name" data-i18n="c2.name">IoT / OT & Energía</div>
+        <div class="comp-tags">
+          <span class="comp-tag or">CENACE</span><span class="comp-tag or">PLCs · SCADA</span>
+          <span class="comp-tag or">Parque Eólico OT</span><span class="comp-tag">IoT Industrial</span>
+          <span class="comp-tag">Telemetría</span><span class="comp-tag">Fibra & Satelital</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-icon">📡</div>
+      <div class="comp-body">
+        <div class="comp-name" data-i18n="c3.name">SRE / Observabilidad</div>
+        <div class="comp-tags">
+          <span class="comp-tag bl">GCP Pipelines</span><span class="comp-tag bl">Looker Studio</span>
+          <span class="comp-tag bl">Hubgrade</span><span class="comp-tag">Power BI · SQL</span>
+          <span class="comp-tag">Alertas Automatizadas</span><span class="comp-tag">DBA</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-icon">🔄</div>
+      <div class="comp-body">
+        <div class="comp-name" data-i18n="c4.name">DevOps & Producto</div>
+        <div class="comp-tags">
+          <span class="comp-tag hi">DevOps · CI/CD</span><span class="comp-tag hi">Azure DevOps</span>
+          <span class="comp-tag">Roadmap de Producto</span><span class="comp-tag">APIs REST · MCP</span>
+          <span class="comp-tag">OAuth 2.0</span><span class="comp-tag">KPI Reviews</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-icon">🤖</div>
+      <div class="comp-body">
+        <div class="comp-name" data-i18n="c5.name">Automatización de Operaciones</div>
+        <div class="comp-tags">
+          <span class="comp-tag or">Power Automate</span><span class="comp-tag or">IA + APIs</span>
+          <span class="comp-tag">MCP Reportes</span><span class="comp-tag">Timbrado SAT</span>
+          <span class="comp-tag">DRP/BCP Auto</span><span class="comp-tag">Terraform</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-icon">🏛️</div>
+      <div class="comp-body">
+        <div class="comp-name" data-i18n="c6.name">Diseño de Org. de Ingeniería</div>
+        <div class="comp-tags">
+          <span class="comp-tag bl">Diseño de Puestos</span><span class="comp-tag bl">Squads Funcionales</span>
+          <span class="comp-tag">Bandas Salariales</span><span class="comp-tag">Contratación OT/TI</span>
+          <span class="comp-tag">Organigrama</span><span class="comp-tag">KPIs de equipo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-icon">🔒</div>
+      <div class="comp-body">
+        <div class="comp-name" data-i18n="c7.name">Ciberseguridad OT & Continuidad</div>
+        <div class="comp-tags">
+          <span class="comp-tag hi">ISO 27001:2022</span><span class="comp-tag hi">Frameworks OT</span>
+          <span class="comp-tag">MFA · EDR con IA</span><span class="comp-tag">BCP · DRP</span>
+          <span class="comp-tag">Gestión de Accesos</span><span class="comp-tag">M&A Integration</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-icon">⚙️</div>
+      <div class="comp-body">
+        <div class="comp-name" data-i18n="c8.name">ERP & Integraciones</div>
+        <div class="comp-tags">
+          <span class="comp-tag or">NetSuite MCP-IA</span><span class="comp-tag">MS Dynamics</span>
+          <span class="comp-tag">SAP · Oracle JDE</span><span class="comp-tag">SAT/SUNAT/DIAN</span>
+          <span class="comp-tag">M365 · Google Workspace</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FORMACIÓN -->
+<section id="formacion">
+  <div class="sec-top">
+    <span class="sec-tag" data-i18n="edu.tag">// formación & certificaciones</span>
+    <h2 data-i18n-html="edu.title">Educación y <span class="g">desarrollo profesional</span></h2>
+  </div>
+  <div class="form-grid">
+    <div>
+      <div class="fg-title" data-i18n="edu.edu.lbl">Educación</div>
+      <div class="fg-items">
+        <div class="fg-item">
+          <div class="fg-name" data-i18n="edu.1.name">Maestría en Seguridad de Tecnologías de la Información</div>
+          <div class="fg-sub" data-i18n="edu.1.sub">Universidad Tecnológica de México (UNITEC) · 2014–2015</div>
+        </div>
+        <div class="fg-item">
+          <div class="fg-name" data-i18n="edu.2.name">Licenciatura en Informática Administrativa</div>
+          <div class="fg-sub" data-i18n="edu.2.sub">Universidad Tecnológica de México (UNITEC) · 2003–2005</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="fg-title" data-i18n="edu.cert.lbl">Certificaciones y metodologías</div>
+      <div class="fg-items">
+        <div class="fg-item">
+          <div class="fg-name">ISO 27001:2022 — Lead Implementer</div>
+        </div>
+        <div class="fg-item">
+          <div class="fg-name" data-i18n="edu.c2.name">Agile / Scrum</div>
+          <div class="fg-sub" data-i18n="edu.c2.sub">Gestión de proyectos tecnológicos</div>
+        </div>
+        <div class="fg-item">
+          <div class="fg-name" data-i18n="edu.c3.name">PMP — Project Management Professional (PMI)</div>
+          <div class="fg-sub" data-i18n="edu.c3.sub">En proceso · Estimado noviembre 2026</div>
+          <span class="fg-tag" data-i18n="edu.c3.tag">En proceso</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contact-grid">
+    <div class="cg-left">
+      <span class="sec-tag" data-i18n="contact.tag">// contacto</span>
+      <h2 data-i18n-html="contact.title">¿Necesitas un <span class="g">CTO</span> para escalar tu plataforma?</h2>
+      <p style="margin-top:16px" data-i18n="contact.desc">CTO con 20+ años en infraestructura crítica IoT/OT para energía, agua y movilidad. Experto en SCADA, SRE y ciberseguridad OT (CENACE). Inglés conversacional de negocios. Resido en CDMX.</p>
+    </div>
+    <div class="cg-right">
+      <a href="mailto:fernando.gomez2201@gmail.com" class="ci">
+        <span class="ci-icon">✉️</span>
+        <div><div class="ci-lbl" data-i18n="c.email">Email</div><div class="ci-val">fernando.gomez2201@gmail.com</div></div>
+      </a>
+      <a href="tel:5255791983191" class="ci">
+        <span class="ci-icon">📱</span>
+        <div><div class="ci-lbl" data-i18n="c.phone">Teléfono</div><div class="ci-val">+52 55-7919-8319</div></div>
+      </a>
+      <a href="https://www.linkedin.com/in/fer-gomez/" target="_blank" class="ci">
+        <span class="ci-icon">💼</span>
+        <div><div class="ci-lbl">LinkedIn</div><div class="ci-val">linkedin.com/in/fer-gomez</div></div>
+      </a>
+      <div class="ci" style="cursor:default">
+        <span class="ci-icon">📍</span>
+        <div><div class="ci-lbl" data-i18n="c.loc">Ubicación</div><div class="ci-val" data-i18n="c.locval">CDMX, México</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p data-i18n="footer">Fernando Gómez Guerrero &nbsp;·&nbsp; CTO | Energía & Movilidad Eléctrica &nbsp;·&nbsp; CDMX, México</p>
+</footer>
+
+<script>
+const T = {
+  es: {
+    'nav.sub':'CTO · Energía & Movilidad Eléctrica',
+    'nav.exp':'Experiencia','nav.comp':'Competencias','nav.edu':'Formación',
+    'nav.contact':'Contacto','nav.cta':'Contactar',
+    'hero.eyebrow':'CTO · Energía & Movilidad Eléctrica · CDMX',
+    'hero.desc':'CTO con <strong>más de 20 años</strong> diseñando y operando plataformas escalables para infraestructura crítica en energía, agua y movilidad en <strong>4 países LATAM</strong>. Experto en arquitectura IoT/OT industrial, SRE, DevOps y ciberseguridad OT para proyectos conectados a <strong>CENACE</strong>.',
+    'hero.btn1':'Ver experiencia','hero.btn2':'Contactar',
+    'hero.card.label':'Perfil ejecutivo',
+    'hero.s1':'Años exp.','hero.s2':'Plantas IoT/OT','hero.s3':'Países LATAM','hero.s4':'Continuidad crítica',
+    'hero.focus':'⚡ Framework Ciberseguridad OT · Parque eólico CENACE · SRE/Observabilidad para infraestructura distribuida',
+    'sectors.label':'Sectores',
+    'sector.1':'Movilidad Eléctrica','sector.2':'Energía & Eólico',
+    'sector.3':'Agua & Infraestructura Crítica','sector.4':'Salud & Hospitales',
+    'sector.5':'Educación','sector.6':'M&A / Fusiones',
+    'exp.tag':'// experiencia profesional',
+    'exp.title':'Plataformas críticas operadas en <span class="g">4 países LATAM</span>',
+    'm1':'Continuidad IoT/OT','m2':'Uptime ERP','m3':'Tiempos de reporte','m4':'CSAT usuarios',
+    'j0.period':'May 2026 – Presente','j0.role':'Consultor Independiente de TI',
+    'j0.co':'Servicios de Consultoría Tecnológica',
+    'j0.sub':'Asesoría especializada en ciberseguridad, cumplimiento normativo y gestión de plataformas digitales',
+    'j0.li1':'Análisis de brechas ISO 27001 para despacho jurídico — diagnóstico, roadmap de remediación e implementación de controles',
+    'j0.li2':'Optimización de disponibilidad e integridad de plataformas LMS y CRM en organización gremial de alcance nacional',
+    'j0.li3':'Definición de protocolos de monitoreo, políticas de confidencialidad y gestión de incidencias',
+    'j0.badge':'Consultoría','j0.m1':'ISO 27001','j0.m2':'LMS · CRM',
+    'j1.period':'Ago 2025 – Abr 2026','j1.role':'LATAM IT Manager / CTO Plataformas Digitales',
+    'j1.co':'Human Corporis · Holding Hospitalario',
+    'j1.sub':'Arquitectura y entrega de plataformas digitales escalables (IA, ERP, fiscal, ciberseguridad) como activos estratégicos en 4 países LATAM',
+    'j1.li1':'Conector MCP Oracle NetSuite–Claude AI · –70% tiempos reporte · –70% TCO · Oracle Global Benchmark',
+    'j1.li2':'Automatización: timbrado SAT vía API, reportes MCP, alertas Power Automate — eliminación de ciclos manuales',
+    'j1.li3':'Equipo de ingeniería operativo en menos de 4 semanas · diseño de puestos, bandas salariales, KPIs',
+    'j1.li4':'ISO 27001:2022 · –70% incidentes · SAT/SUNAT/DIAN · MFA · EDR con IA · DRP/BCP',
+    'j1.badge':'Oracle Award','j1.m1':'–70% reportes','j1.m2':'ISO 27001:2022','j1.m3':'4 sem. onboard',
+    'j2.period':'Nov 2020 – Jul 2025','j2.note':'SUEZ adquirida por VEOLIA ene 2022',
+    'j2.role':'Gerente de TI LATAM','j2.co':'VEOLIA / SUEZ-AGBAR · Agua & Residuos Industriales',
+    'j2.sub':'Infraestructura IoT/OT crítica, SRE/observabilidad, automatización y consolidación M&A en 9 plantas industriales',
+    'j2.li1':'SRE tiempo real: pipelines GCP + Looker Studio + SCADA + PLCs + Power Automate → alertas sin intervención manual',
+    'j2.li2':'100% continuidad IoT/OT durante fusión SUEZ-VEOLIA: PLCs, sensores, on-premises, fibra y satelital en toda la República',
+    'j2.li3':'Framework ciberseguridad OT para parque eólico conectado a CENACE en Monterrey',
+    'j2.li4':'Migración Hubgrade (Aguascalientes→CDMX) en 3 meses, zero downtime · Dashboards comerciales para nuevos clientes',
+    'j2.li5':'ERP 80%→99.7% · Arquitectura cloud $16M MXN · Movilform 45 usuarios en 8 meses · –6% sobre $19M MXN',
+    'j2.badge':'IoT/OT','j2.m1':'9 plantas críticas','j2.m2':'CENACE OT','j2.m3':'$19M · –6%',
+    'j3.period':'Ago 2010 – Jul 2020','j3.role':'Subdirector de TI',
+    'j3.co':'International Schools Partnership (ISP) · Educación Multi-Campus',
+    'j3.sub':'Plataforma TI replicable escalada de 3 a 12 campus sin rediseño estructural',
+    'j3.li1':'Escalé plataforma TI de 3 a 12 campus: modelo replicable con ITSM, seguridad y conectividad estandarizados en cada nodo',
+    'j3.li2':'CSAT 72%→94% en +900 usuarios · ERP + CRM + LMS · 6 ingenieros · $2M MXN',
+    'j3.badge':'Plataforma','j3.m1':'3 → 12 campus','j3.m2':'CSAT 72→94%',
+    'comp.tag':'// competencias clave & stack tecnológico',
+    'comp.title':'Capacidades construidas para <span class="g">infraestructura crítica</span>',
+    'c1.name':'Arquitectura de Plataforma','c2.name':'IoT / OT & Energía',
+    'c3.name':'SRE / Observabilidad','c4.name':'DevOps & Producto',
+    'c5.name':'Automatización de Operaciones','c6.name':'Diseño de Org. de Ingeniería',
+    'c7.name':'Ciberseguridad OT & Continuidad','c8.name':'ERP & Integraciones',
+    'edu.tag':'// formación & certificaciones',
+    'edu.title':'Educación y <span class="g">desarrollo profesional</span>',
+    'edu.edu.lbl':'Educación',
+    'edu.1.name':'Maestría en Seguridad de Tecnologías de la Información',
+    'edu.1.sub':'Universidad Tecnológica de México (UNITEC) · 2014–2015',
+    'edu.2.name':'Licenciatura en Informática Administrativa',
+    'edu.2.sub':'Universidad Tecnológica de México (UNITEC) · 2003–2005',
+    'edu.cert.lbl':'Certificaciones y metodologías',
+    'edu.c2.name':'Agile / Scrum','edu.c2.sub':'Gestión de proyectos tecnológicos',
+    'edu.c3.name':'PMP — Project Management Professional (PMI)',
+    'edu.c3.sub':'En proceso · Estimado noviembre 2026','edu.c3.tag':'En proceso',
+    'contact.tag':'// contacto',
+    'contact.title':'¿Necesitas un <span class="g">CTO</span> para escalar tu plataforma?',
+    'contact.desc':'CTO con 20+ años en infraestructura crítica IoT/OT para energía, agua y movilidad. Experto en SCADA, SRE y ciberseguridad OT (CENACE). Inglés conversacional de negocios. Resido en CDMX.',
+    'c.email':'Correo','c.phone':'Teléfono','c.loc':'Ubicación','c.locval':'CDMX, México',
+    'footer':'Fernando Gómez Guerrero · CTO | Energía & Movilidad Eléctrica · CDMX, México',
+  },
+  en: {
+    'nav.sub':'CTO · Energy & Electric Mobility',
+    'nav.exp':'Experience','nav.comp':'Competencies','nav.edu':'Education',
+    'nav.contact':'Contact','nav.cta':'Contact me',
+    'hero.eyebrow':'CTO · Energy & Electric Mobility · Mexico City',
+    'hero.desc':'CTO with <strong>over 20 years</strong> designing and operating scalable platforms for critical infrastructure in energy, water and mobility across <strong>4 LATAM countries</strong>. Expert in industrial IoT/OT architecture, SRE, DevOps and OT cybersecurity for <strong>CENACE</strong>-connected projects.',
+    'hero.btn1':'View experience','hero.btn2':'Contact me',
+    'hero.card.label':'Executive profile',
+    'hero.s1':'Years exp.','hero.s2':'IoT/OT plants','hero.s3':'LATAM countries','hero.s4':'Critical uptime',
+    'hero.focus':'⚡ OT Cybersecurity Framework · Wind farm CENACE · SRE/Observability for distributed infrastructure',
+    'sectors.label':'Sectors',
+    'sector.1':'Electric Mobility','sector.2':'Energy & Wind',
+    'sector.3':'Water & Critical Infrastructure','sector.4':'Health & Hospitals',
+    'sector.5':'Education','sector.6':'M&A / Mergers',
+    'exp.tag':'// professional experience',
+    'exp.title':'Critical platforms operated across <span class="g">4 LATAM countries</span>',
+    'm1':'IoT/OT Uptime','m2':'ERP Uptime','m3':'Report delivery time','m4':'User CSAT',
+    'j0.period':'May 2026 – Present','j0.role':'Independent IT Consultant',
+    'j0.co':'Technology Consulting Services',
+    'j0.sub':'Specialized advisory in cybersecurity, regulatory compliance and digital platform management',
+    'j0.li1':'ISO 27001 gap analysis for a law firm — diagnosis, remediation roadmap and control implementation',
+    'j0.li2':'Availability and integrity optimization of LMS and CRM platforms for a national-level trade organization',
+    'j0.li3':'Definition of monitoring protocols, confidentiality policies and incident management',
+    'j0.badge':'Consulting','j0.m1':'ISO 27001','j0.m2':'LMS · CRM',
+    'j1.period':'Aug 2025 – Apr 2026','j1.role':'LATAM IT Manager / CTO Digital Platforms',
+    'j1.co':'Human Corporis · Hospital Holding Group',
+    'j1.sub':'Architecture and delivery of scalable digital platforms (AI, ERP, tax, cybersecurity) as strategic assets across 4 LATAM countries',
+    'j1.li1':'MCP connector Oracle NetSuite–Claude AI · –70% report time · –70% TCO · Oracle Global Benchmark',
+    'j1.li2':'Automation: SAT invoicing via API, MCP reports, Power Automate alerts — full elimination of manual cycles',
+    'j1.li3':'Fully operational engineering team in under 4 weeks · job design, salary bands, KPIs',
+    'j1.li4':'ISO 27001:2022 · –70% security incidents · SAT/SUNAT/DIAN · MFA · AI-powered EDR · DRP/BCP',
+    'j1.badge':'Oracle Award','j1.m1':'–70% reports','j1.m2':'ISO 27001:2022','j1.m3':'4-week onboard',
+    'j2.period':'Nov 2020 – Jul 2025','j2.note':'SUEZ acquired by VEOLIA Jan 2022',
+    'j2.role':'LATAM IT Manager','j2.co':'VEOLIA / SUEZ-AGBAR · Water & Industrial Waste',
+    'j2.sub':'Critical IoT/OT infrastructure, SRE/observability, operations automation and M&A consolidation across 9 industrial plants',
+    'j2.li1':'Real-time SRE: GCP pipelines + Looker Studio + SCADA + PLCs + Power Automate → automated alerts with no manual intervention',
+    'j2.li2':'100% IoT/OT continuity during SUEZ-VEOLIA merger: PLCs, sensors, on-premises servers, fiber and satellite across Mexico',
+    'j2.li3':'OT cybersecurity framework for CENACE-connected wind farm in Monterrey, Mexico',
+    'j2.li4':'Hubgrade migration (Aguascalientes→CDMX) in 3 months, zero downtime · Commercial dashboards for new client acquisition',
+    'j2.li5':'ERP 80%→99.7% uptime · Cloud architecture $16M MXN · Movilform app: 45 users in 8 months · –6% on $19M MXN budget',
+    'j2.badge':'IoT/OT','j2.m1':'9 critical plants','j2.m2':'CENACE OT','j2.m3':'$19M · –6%',
+    'j3.period':'Aug 2010 – Jul 2020','j3.role':'IT Sub-Director',
+    'j3.co':'International Schools Partnership (ISP) · Multi-Campus Education',
+    'j3.sub':'Replicable IT platform scaled from 3 to 12 campuses without structural redesign',
+    'j3.li1':'Scaled IT platform from 3 to 12 campuses: replicable model with standardized ITSM, security and connectivity at each node',
+    'j3.li2':'CSAT 72%→94% across 900+ users · ERP + CRM + LMS · 6 engineers · $2M MXN budget',
+    'j3.badge':'Platform','j3.m1':'3 → 12 campuses','j3.m2':'CSAT 72→94%',
+    'comp.tag':'// key competencies & tech stack',
+    'comp.title':'Capabilities built for <span class="g">critical infrastructure</span>',
+    'c1.name':'Platform Architecture','c2.name':'IoT / OT & Energy',
+    'c3.name':'SRE / Observability','c4.name':'DevOps & Product',
+    'c5.name':'Operations Automation','c6.name':'Engineering Org Design',
+    'c7.name':'OT Cybersecurity & Continuity','c8.name':'ERP & Integrations',
+    'edu.tag':'// education & certifications',
+    'edu.title':'Education and <span class="g">professional development</span>',
+    'edu.edu.lbl':'Education',
+    'edu.1.name':'Master\'s in Information Security Technologies',
+    'edu.1.sub':'Universidad Tecnológica de México (UNITEC) · 2014–2015',
+    'edu.2.name':'Bachelor\'s in Administrative Informatics',
+    'edu.2.sub':'Universidad Tecnológica de México (UNITEC) · 2003–2005',
+    'edu.cert.lbl':'Certifications & Methodologies',
+    'edu.c2.name':'Agile / Scrum','edu.c2.sub':'Technology project management',
+    'edu.c3.name':'PMP — Project Management Professional (PMI)',
+    'edu.c3.sub':'In progress · Estimated November 2026','edu.c3.tag':'In progress',
+    'contact.tag':'// contact',
+    'contact.title':'Need a <span class="g">CTO</span> to scale your platform?',
+    'contact.desc':'CTO with 20+ years in critical IoT/OT infrastructure for energy, water and mobility. Expert in SCADA, SRE and OT cybersecurity (CENACE). Business conversational English. Based in Mexico City.',
+    'c.email':'Email','c.phone':'Phone','c.loc':'Location','c.locval':'Mexico City, México',
+    'footer':'Fernando Gómez Guerrero · CTO | Energy & Electric Mobility · Mexico City, México',
+  }
+};
+
+let lang = localStorage.getItem('fgg-cto-lang') || 'es';
+
+function setLang(l){
+  lang = l;
+  localStorage.setItem('fgg-cto-lang', l);
+  document.documentElement.lang = l;
+  document.getElementById('btn-es').classList.toggle('active', l==='es');
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  const d = T[l];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(d[k]!==undefined) el.textContent = d[k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const k = el.getAttribute('data-i18n-html');
+    if(d[k]!==undefined) el.innerHTML = d[k];
+  });
+  gtag('event','language_switch',{language:l,page:'cto'});
+}
+
+document.addEventListener('DOMContentLoaded', ()=> setLang(lang));
+</script>
+</body>
+</html>
