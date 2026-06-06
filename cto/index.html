@@ -85,6 +85,27 @@ h1{font-size:clamp(2.8rem,5vw,4.8rem);font-weight:800;line-height:.97;letter-spa
 .btn-o{background:transparent;color:var(--text);border:1px solid var(--border);padding:13px 28px;
   border-radius:10px;font-size:.85rem;font-weight:600;text-decoration:none;transition:border-color .2s}
 .btn-o:hover{border-color:var(--em2)}
+.btn-dl{background:transparent;color:var(--em2);border:1.5px solid rgba(52,211,153,.35);
+  padding:13px 28px;border-radius:10px;font-size:.85rem;font-weight:700;
+  text-decoration:none;transition:background .2s,border-color .2s,transform .15s;
+  display:inline-flex;align-items:center;gap:8px}
+.btn-dl:hover{background:rgba(52,211,153,.08);border-color:var(--em2);transform:translateY(-2px)}
+.btn-dl svg{width:16px;height:16px;flex-shrink:0}
+
+/* HIDDEN STATS PANEL */
+#stats-panel{display:none;position:fixed;bottom:24px;right:24px;z-index:9999;
+  background:#060E18;border:1px solid rgba(52,211,153,.3);border-radius:16px;
+  padding:24px 28px;min-width:260px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#stats-panel h4{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;
+  color:var(--em2);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+#stats-panel .sc{display:flex;justify-content:space-between;align-items:center;
+  padding:10px 0;border-bottom:1px solid var(--border)}
+#stats-panel .sc:last-of-type{border-bottom:none}
+#stats-panel .sc-label{font-size:.72rem;color:var(--soft)}
+#stats-panel .sc-val{font-size:1.3rem;font-weight:800;color:var(--em2)}
+#stats-panel .sc-note{font-size:.62rem;color:var(--muted);margin-top:12px;line-height:1.5}
+#stats-panel .close-btn{position:absolute;top:12px;right:14px;background:none;border:none;
+  color:var(--muted);cursor:pointer;font-size:1rem;line-height:1}
 
 /* HERO CARD */
 .hero-card{background:var(--card);border:1px solid var(--border);border-radius:20px;
@@ -274,6 +295,16 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);
     <div class="hero-btns">
       <a href="#experiencia" class="btn-g" data-i18n="hero.btn1">Ver experiencia</a>
       <a href="mailto:fernando.gomez2201@gmail.com" class="btn-o" data-i18n="hero.btn2">Contactar</a>
+      <a href="CV_Fernando_Gomez_CTO.pdf" download="CV_Fernando_Gomez_CTO.pdf"
+         class="btn-dl" id="dl-btn" onclick="trackDownload()" data-i18n-dl="hero.btn.dl">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span data-i18n="hero.btn.dl">Descargar CV</span>
+      </a>
     </div>
   </div>
   <div class="hero-card">
@@ -606,6 +637,30 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);
   <p data-i18n="footer">Fernando Gómez Guerrero &nbsp;·&nbsp; CTO | Energía & Movilidad Eléctrica &nbsp;·&nbsp; CDMX, México</p>
 </footer>
 
+<!-- PANEL DE ESTADÍSTICAS — solo visible con ?stats en la URL -->
+<div id="stats-panel">
+  <button class="close-btn" onclick="document.getElementById('stats-panel').style.display='none'">✕</button>
+  <h4>📊 Estadísticas de descarga</h4>
+  <div class="sc">
+    <span class="sc-label">Descargas (este dispositivo)</span>
+    <span class="sc-val" id="dl-count">0</span>
+  </div>
+  <div class="sc">
+    <span class="sc-label">Primera descarga</span>
+    <span class="sc-val" id="dl-first" style="font-size:.8rem">—</span>
+  </div>
+  <div class="sc">
+    <span class="sc-label">Última descarga</span>
+    <span class="sc-val" id="dl-last" style="font-size:.8rem">—</span>
+  </div>
+  <p class="sc-note">
+    📈 Para ver <strong>todas las descargas globales</strong> (todos los visitantes):<br>
+    <a href="https://analytics.google.com" target="_blank"
+       style="color:var(--em2);font-weight:600">analytics.google.com</a>
+    → Eventos → <code style="color:var(--or2)">cv_download_cto</code>
+  </p>
+</div>
+
 <script>
 const T = {
   es: {
@@ -614,7 +669,7 @@ const T = {
     'nav.contact':'Contacto','nav.cta':'Contactar',
     'hero.eyebrow':'CTO · Energía & Movilidad Eléctrica · CDMX',
     'hero.desc':'CTO con <strong>más de 20 años</strong> diseñando y operando plataformas escalables para infraestructura crítica en energía, agua y movilidad en <strong>4 países LATAM</strong>. Experto en arquitectura IoT/OT industrial, SRE, DevOps y ciberseguridad OT para proyectos conectados a <strong>CENACE</strong>.',
-    'hero.btn1':'Ver experiencia','hero.btn2':'Contactar',
+    'hero.btn1':'Ver experiencia','hero.btn2':'Contactar','hero.btn.dl':'Descargar CV',
     'hero.card.label':'Perfil ejecutivo',
     'hero.s1':'Años exp.','hero.s2':'Plantas IoT/OT','hero.s3':'Países LATAM','hero.s4':'Continuidad crítica',
     'hero.focus':'⚡ Framework Ciberseguridad OT · Parque eólico CENACE · SRE/Observabilidad para infraestructura distribuida',
@@ -684,7 +739,7 @@ const T = {
     'nav.contact':'Contact','nav.cta':'Contact me',
     'hero.eyebrow':'CTO · Energy & Electric Mobility · Mexico City',
     'hero.desc':'CTO with <strong>over 20 years</strong> designing and operating scalable platforms for critical infrastructure in energy, water and mobility across <strong>4 LATAM countries</strong>. Expert in industrial IoT/OT architecture, SRE, DevOps and OT cybersecurity for <strong>CENACE</strong>-connected projects.',
-    'hero.btn1':'View experience','hero.btn2':'Contact me',
+    'hero.btn1':'View experience','hero.btn2':'Contact me','hero.btn.dl':'Download CV',
     'hero.card.label':'Executive profile',
     'hero.s1':'Years exp.','hero.s2':'IoT/OT plants','hero.s3':'LATAM countries','hero.s4':'Critical uptime',
     'hero.focus':'⚡ OT Cybersecurity Framework · Wind farm CENACE · SRE/Observability for distributed infrastructure',
@@ -770,7 +825,39 @@ function setLang(l){
   gtag('event','language_switch',{language:l,page:'cto'});
 }
 
-document.addEventListener('DOMContentLoaded', ()=> setLang(lang));
+document.addEventListener('DOMContentLoaded', ()=>{
+  setLang(lang);
+  // Mostrar panel de stats si URL tiene ?stats
+  if(window.location.search.includes('stats')){
+    loadStats();
+    document.getElementById('stats-panel').style.display='block';
+  }
+});
+
+/* ── DESCARGA & CONTADOR ── */
+function trackDownload(){
+  // 1. Registrar en Google Analytics 4
+  gtag('event','cv_download_cto',{
+    event_category:'CV',
+    event_label:'CV_Fernando_Gomez_CTO.pdf',
+    page:'cto'
+  });
+
+  // 2. Guardar contador local (para el panel privado)
+  const now = new Date().toLocaleString('es-MX',{dateStyle:'short',timeStyle:'short'});
+  let stats = JSON.parse(localStorage.getItem('fgg_cto_dl')||'{"count":0,"first":null,"last":null}');
+  stats.count += 1;
+  if(!stats.first) stats.first = now;
+  stats.last = now;
+  localStorage.setItem('fgg_cto_dl', JSON.stringify(stats));
+}
+
+function loadStats(){
+  const stats = JSON.parse(localStorage.getItem('fgg_cto_dl')||'{"count":0,"first":null,"last":null}');
+  document.getElementById('dl-count').textContent = stats.count;
+  document.getElementById('dl-first').textContent = stats.first || '—';
+  document.getElementById('dl-last').textContent  = stats.last  || '—';
+}
 </script>
 </body>
 </html>
