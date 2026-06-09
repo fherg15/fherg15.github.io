@@ -21,6 +21,7 @@
   --violet:#7C3AED;--violet2:#A78BFA;
   --gold:#D97706;--gold2:#FBBF24;
   --green:#10B981;
+  --or:#EA580C;--or2:#FB923C;
   --border:rgba(255,255,255,0.06);
   --card:rgba(255,255,255,0.025);
   --glow1:rgba(14,165,233,.12);
@@ -164,6 +165,8 @@ h2 .g{background:linear-gradient(90deg,var(--violet2),#F472B6);
 .s2{border-left:2px solid var(--teal2)} .s2 .tlc-period{color:var(--teal2)}
 .s3{border-left:2px solid var(--violet2)} .s3 .tlc-period{color:var(--violet2)}
 .s4{border-left:2px solid var(--gold2)} .s4 .tlc-period{color:var(--gold2)}
+.s5{border-left:2px solid var(--or2)} .s5 .tlc-period{color:var(--or2)}
+.b-orange{background:rgba(234,88,12,.07);border-color:rgba(234,88,12,.25);color:var(--or2)}
 
 /* EXPERTISE */
 #expertise{background:var(--bg2)}
@@ -415,6 +418,26 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);
       </div>
     </div>
 
+    <div class="tlc s5">
+      <div class="tlc-left">
+        <div class="tlc-period" data-i18n="job5.period">May 2026 – Presente</div>
+        <div class="tlc-loc">Ciudad de México</div>
+      </div>
+      <div class="tlc-main">
+        <div class="tlc-role" data-i18n="job5.role">Consultor Independiente de TI</div>
+        <div class="tlc-co" data-i18n="job5.co">Servicios de Consultoría Tecnológica</div>
+        <ul class="tlc-items">
+          <li data-i18n="job5.li1">Análisis de brechas ISO 27001 para despacho jurídico — diagnóstico, roadmap de cumplimiento e implementación de controles de seguridad en plazos acordados</li>
+          <li data-i18n="job5.li2">Optimización de plataformas LMS y CRM para organización gremial nacional — protocolos de monitoreo, gestión de incidencias y políticas de integridad y confidencialidad</li>
+        </ul>
+      </div>
+      <div class="tlc-right">
+        <span class="tlc-badge b-orange" data-i18n="job5.badge">Consultoría</span>
+        <span class="tlc-metric" data-i18n="job5.m1">ISO 27001</span>
+        <span class="tlc-metric" data-i18n="job5.m2">LMS · CRM</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -594,6 +617,15 @@ const T = {
     'job4.m2':          'ISO 27001:2022',
     'job4.m3':          'SAT·SUNAT·DIAN',
 
+    'job5.period':      'May 2026 – Presente',
+    'job5.role':        'Consultor Independiente de TI',
+    'job5.co':          'Servicios de Consultoría Tecnológica',
+    'job5.li1':         'Análisis de brechas ISO 27001 para despacho jurídico — diagnóstico, roadmap de cumplimiento e implementación de controles de seguridad en plazos acordados',
+    'job5.li2':         'Optimización de plataformas LMS y CRM para organización gremial nacional — protocolos de monitoreo, gestión de incidencias y políticas de integridad y confidencialidad',
+    'job5.badge':       'Consultoría',
+    'job5.m1':          'ISO 27001',
+    'job5.m2':          'LMS · CRM',
+
     'skills.tag':       '// áreas de expertise',
     'skills.title':     'Stack directivo construido en <span class="g">20 años de práctica</span>',
     'skill1.name':      'Estrategia & Gobierno TI',
@@ -719,6 +751,15 @@ const T = {
     'job4.m1':          '–70% reports',
     'job4.m2':          'ISO 27001:2022',
     'job4.m3':          'SAT·SUNAT·DIAN',
+
+    'job5.period':      'May 2026 – Present',
+    'job5.role':        'Independent IT Consultant',
+    'job5.co':          'Technology Consulting Services',
+    'job5.li1':         'ISO 27001 gap analysis for law firm — diagnosis, compliance roadmap and information security controls implementation within agreed timelines',
+    'job5.li2':         'LMS & CRM platform optimization for national trade association — monitoring protocols, incident management and information integrity and confidentiality policies',
+    'job5.badge':       'Consulting',
+    'job5.m1':          'ISO 27001',
+    'job5.m2':          'LMS · CRM',
 
     'skills.tag':       '// areas of expertise',
     'skills.title':     'Leadership stack built over <span class="g">20 years of practice</span>',
