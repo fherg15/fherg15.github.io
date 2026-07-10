@@ -137,6 +137,57 @@ footer .fl{max-width:980px;margin:0 auto;border-top:1px solid var(--line);paddin
   .fwrap{grid-template-columns:1fr;gap:28px}
   .stat{padding:14px 22px;border-right:none}
 }
+
+/* ── TIMELINE VISUAL ── */
+.tlwrap{max-width:1100px;margin:56px auto 0}
+.tl-rail{position:relative;display:flex;justify-content:space-between;padding:0 24px;margin-bottom:46px}
+.tl-rail::before{content:'';position:absolute;left:50px;right:50px;top:26px;height:3px;border-radius:3px;background:var(--line)}
+.tl-rail::after{content:'';position:absolute;left:50px;top:26px;height:3px;border-radius:3px;background:linear-gradient(90deg,#7C3AED,#0071E3,#0E9F6E,#DB2777);width:var(--prog,0);transition:width .6s cubic-bezier(.16,1,.3,1)}
+.tl-node{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;cursor:pointer;text-align:center}
+.tl-dot{width:54px;height:54px;border-radius:50%;background:var(--w);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 6px 18px rgba(0,0,0,.07);transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .3s,background .3s}
+.tl-node:hover .tl-dot{transform:translateY(-5px)}
+.tl-node.active .tl-dot{border-color:transparent;transform:scale(1.16);box-shadow:0 12px 28px -6px var(--nacc,rgba(0,113,227,.5))}
+.tl-year{font-size:1.15rem;font-weight:800;color:var(--ink2);letter-spacing:-.03em;margin-top:14px;transition:color .3s}
+.tl-node.active .tl-year{color:var(--nacc,var(--blue))}
+.tl-role-mini{font-size:.72rem;color:var(--ink2);max-width:150px;font-weight:500;line-height:1.25;margin-top:5px;transition:color .3s}
+.tl-node.active .tl-role-mini{color:var(--ink)}
+
+.tl-detail{position:relative;display:grid;grid-template-columns:290px 1fr;gap:46px;background:var(--gray);
+  border-radius:32px;padding:48px 50px;text-align:left;overflow:hidden;min-height:300px}
+.tl-detail::before{content:'';position:absolute;width:360px;height:360px;border-radius:50%;top:-140px;right:-120px;
+  background:radial-gradient(circle,var(--accglow,rgba(0,113,227,.14)),transparent 70%);pointer-events:none}
+@keyframes tlfade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.tld-visual{position:relative;z-index:1}
+.tld-badge{width:64px;height:64px;border-radius:20px;display:flex;align-items:center;justify-content:center;
+  font-size:1.9rem;margin-bottom:22px;color:#fff}
+.tld-hero{font-size:clamp(3rem,6vw,4.6rem);font-weight:800;letter-spacing:-.04em;line-height:.95;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.tld-hlabel{font-size:.9rem;color:var(--ink2);font-weight:600;margin-top:6px}
+.tld-dur{margin-top:26px}
+.tld-dur-top{display:flex;justify-content:space-between;font-size:.72rem;color:var(--ink2);font-weight:600;margin-bottom:7px}
+.tld-bar{height:7px;border-radius:7px;background:rgba(0,0,0,.07);overflow:hidden}
+.tld-fill{height:100%;border-radius:7px;width:0;transition:width .8s cubic-bezier(.16,1,.3,1)}
+.tld-main{position:relative;z-index:1}
+.tld-when{font-size:.85rem;font-weight:600;color:var(--nacc,var(--blue));margin-bottom:6px}
+.tld-role{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.tld-co{font-size:1rem;color:var(--ink2);margin-top:6px;font-weight:500}
+.tld-list{list-style:none;margin:22px 0 0;display:flex;flex-direction:column;gap:11px}
+.tld-list li{font-size:.95rem;color:var(--ink2);padding-left:24px;position:relative;line-height:1.5}
+.tld-list li::before{content:'';position:absolute;left:0;top:8px;width:9px;height:9px;border-radius:50%;background:var(--nacc,var(--blue))}
+.tld-kpis{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.tld-kpis .kp{background:var(--w);border:1px solid var(--line)}
+@media(max-width:860px){
+  .tl-detail{grid-template-columns:1fr;gap:28px;padding:34px 26px}
+}
+@media(max-width:760px){
+  .tl-rail{flex-direction:column;align-items:flex-start;padding:0 0 0 4px;gap:22px}
+  .tl-rail::before{left:26px;right:auto;top:8px;bottom:8px;width:3px;height:auto}
+  .tl-rail::after{left:26px;top:8px;width:3px!important;height:var(--progv,0);background:linear-gradient(180deg,#7C3AED,#0071E3,#0E9F6E,#DB2777);transition:height .6s}
+  .tl-node{flex-direction:row;align-items:center;gap:16px;text-align:left;width:100%}
+  .tl-year{margin-top:0;order:2}
+  .tl-dot{order:1;width:48px;height:48px;font-size:1.3rem}
+  .tl-role-mini{order:3;margin-top:0;max-width:none;flex:1}
+}
 </style>
 </head>
 <body>
@@ -190,56 +241,9 @@ footer .fl{max-width:980px;margin:0 auto;border-top:1px solid var(--line);paddin
   <div class="kicker rv" data-i18n="exp.kicker">Trayectoria</div>
   <h2 class="head rv" data-i18n="exp.head">Dos décadas operando plataformas críticas.</h2>
 </div>
-  <div class="bigcards">
-    <div class="bc rv">
-      <div class="bc-when" data-i18n="j4.when">Mayo 2026 – Presente</div>
-      <div class="bc-role" data-i18n="j4.role">Consultor Senior de TI</div>
-      <div class="bc-co" data-i18n="j4.co">Servicios de Consultoría Tecnológica (Independiente) · México</div>
-      <ul class="bc-list">
-        <li data-i18n="j4.li1">Elevé la disponibilidad, estabilidad e integridad de plataformas críticas (LMS y CRM) de una organización gremial nacional — reducción de incidencias recurrentes, protocolos de monitoreo documentados y gestión formal de incidentes</li>
-        <li data-i18n="j4.li2">Encaminé a un despacho jurídico hacia la certificación ISO 27001 — diagnóstico de brechas, plan de remediación y controles implementados con análisis integral de riesgos operativos y de continuidad del servicio</li>
-      </ul>
-      <div class="bc-kpis"><span class="kp">Disponibilidad</span><span class="kp">ITSM</span><span class="kp">ISO 27001</span></div>
-    </div>
-
-    <div class="bc dark rv">
-      <div class="bc-when" data-i18n="j3.when">Agosto 2025 – Abril 2026</div>
-      <div class="bc-role" data-i18n="j3.role">LATAM IT Manager</div>
-      <div class="bc-co">Human Corporis · México · Perú · Colombia · Chile</div>
-      <ul class="bc-list">
-        <li data-i18n="j3.li1">Goberné la operación tecnológica diaria de 3 unidades de negocio en 4 países (~350 usuarios) bajo modelo ITSM — KPIs alineados a OKRs, gestión de incidentes, cambios y problemas con SLAs por proveedor, reportados al Consejo</li>
-        <li data-i18n="j3.li2">–70% en tiempo de reportes financieros y –70% en costos de personalización del ERP — conector Oracle NetSuite–Claude AI vía MCP con OAuth 2.0 · reconocido por Oracle como referente global</li>
-        <li data-i18n="j3.li3">Automaticé el cumplimiento fiscal en 3 países (SAT · SUNAT · DIAN) vía APIs, eliminando procesos manuales y reduciendo el riesgo regulatorio</li>
-        <li data-i18n="j3.li4">Habilité la certificación ISO 27001:2022 en LATAM — MFA, gestión de accesos privilegiados, controles de respaldo y EDR con IA en 4 países</li>
-      </ul>
-      <div class="bc-kpis"><span class="kp">~350 usuarios ITSM</span><span class="kp">–70% reportes</span><span class="kp">ISO 27001</span></div>
-    </div>
-
-    <div class="bc rv">
-      <div class="bc-when" data-i18n="j2.when">Noviembre 2020 – Julio 2025</div>
-      <div class="bc-role" data-i18n="j2.role">Gerente de TI – LATAM</div>
-      <div class="bc-co" data-i18n="j2.co">SUEZ / VEOLIA · Agua & Residuos Industriales · MX · CO · FR · ES</div>
-      <ul class="bc-list">
-        <li data-i18n="j2.li1">Elevé la disponibilidad del ERP en producción de 80% a 99.7% para 300 usuarios — –60% tiempos de proceso, –50% incidentes por datos inconsistentes — MS Dynamics ENWIS en tiempo y presupuesto ($16M MXN, 18 meses)</li>
-        <li data-i18n="j2.li2">Sostuve el 100% de continuidad de los servicios críticos durante la fusión SUEZ-VEOLIA — cero disrupciones ni incidentes mayores en 9 unidades de negocio</li>
-        <li data-i18n="j2.li3">–6% del presupuesto de TI regional sin degradar SLAs ($19M MXN) — renegociación de contratos y optimización del licenciamiento</li>
-        <li data-i18n="j2.li4">Resiliencia operativa: DRP con RTO/RPO · integración de datos vía APIs (MS Dynamics ↔ Oracle JDE) · app móvil Movilform ($3M MXN)</li>
-      </ul>
-      <div class="bc-kpis"><span class="kp">99.7% disponibilidad</span><span class="kp">100% continuidad</span><span class="kp">–6% costos</span></div>
-    </div>
-
-    <div class="bc rv">
-      <div class="bc-when" data-i18n="j1.when">Agosto 2010 – Julio 2020</div>
-      <div class="bc-role" data-i18n="j1.role">Subdirector de TI</div>
-      <div class="bc-co" data-i18n="j1.co">International Schools Partnership (ISP) · Educación · México · Reino Unido</div>
-      <ul class="bc-list">
-        <li data-i18n="j1.li1">Escalé la infraestructura tecnológica de 3 a 12 campus operativos bajo un plan estratégico de TI a 10 años</li>
-        <li data-i18n="j1.li2">Satisfacción de usuarios de 72% a 94% (encuestas ITIL) — KPIs de servicio (disponibilidad, tiempo medio de atención), modelo de soporte y equipo de 6 personas</li>
-        <li data-i18n="j1.li3">Adopción de ERP corporativo, CRM y plataforma LMS para más de 900 usuarios (alumnos, docentes y personal)</li>
-        <li data-i18n="j1.li4">Optimización recurrente de costos con presupuesto anual hasta $2M MXN · socio estratégico del C-Suite y enlace con la dirección corporativa en Reino Unido</li>
-      </ul>
-      <div class="bc-kpis"><span class="kp">3 → 12 campus</span><span class="kp">CSAT 72→94%</span><span class="kp">900+ usuarios</span></div>
-    </div>
+  <div class="tlwrap rv">
+    <div class="tl-rail" id="tl-rail"></div>
+    <div class="tl-detail" id="tl-detail"></div>
   </div>
 </section>
 
@@ -316,6 +320,83 @@ const XP={
   ['☁️','Cloud & Applied AI',['AWS · Azure · GCP','Distributed Systems','MCP · Claude AI','Integrations']]
  ]
 };
+
+
+const JOBS={
+ es:[
+  {year:'2010',icon:'🎓',acc:'#7C3AED',when:'Agosto 2010 – Julio 2020',dur:'10 años',durpct:100,heroV:'94%',heroL:'Satisfacción de usuarios',
+   role:'Subdirector de TI',co:'International Schools Partnership (ISP) · Educación · México · Reino Unido',
+   bullets:['Escalé la infraestructura tecnológica de 3 a 12 campus operativos bajo un plan estratégico de TI a 10 años','Satisfacción de usuarios de 72% a 94% (encuestas ITIL), con KPIs de servicio y un equipo de 6 personas','Adopción de ERP corporativo, CRM y plataforma LMS para más de 900 usuarios','Socio estratégico del C-Suite y enlace con la dirección corporativa en Reino Unido'],
+   kpis:['3 → 12 campus','CSAT 72→94%','900+ usuarios']},
+  {year:'2020',icon:'🏭',acc:'#0071E3',when:'Noviembre 2020 – Julio 2025',dur:'≈5 años',durpct:48,heroV:'99.7%',heroL:'Disponibilidad del ERP',
+   role:'Gerente de TI – LATAM',co:'SUEZ / VEOLIA · Agua & Residuos Industriales · MX · CO · FR · ES',
+   bullets:['Elevé la disponibilidad del ERP de 80% a 99.7% para 300 usuarios (–60% tiempos, –50% incidentes) con MS Dynamics ENWIS','Sostuve el 100% de continuidad de servicios críticos durante la fusión SUEZ-VEOLIA en 9 unidades de negocio','–6% del presupuesto de TI regional ($19M MXN) sin degradar SLAs','Resiliencia operativa: DRP con RTO/RPO e integración de datos vía APIs (MS Dynamics ↔ Oracle JDE)'],
+   kpis:['99.7% disponibilidad','100% continuidad','–6% costos']},
+  {year:'2025',icon:'🤖',acc:'#0E9F6E',when:'Agosto 2025 – Abril 2026',dur:'9 meses',durpct:14,heroV:'–70%',heroL:'Tiempo de reportes',
+   role:'LATAM IT Manager',co:'Human Corporis · México · Perú · Colombia · Chile',
+   bullets:['Goberné la operación diaria de 3 unidades de negocio en 4 países (~350 usuarios) bajo modelo ITSM','–70% en tiempo de reportes y –70% en costos del ERP con el conector Oracle NetSuite–Claude AI vía MCP · reconocido por Oracle','Automaticé el cumplimiento fiscal en 3 países (SAT · SUNAT · DIAN) vía APIs','Alineación ISO 27001:2022 en LATAM con MFA, accesos privilegiados y EDR con IA'],
+   kpis:['~350 usuarios ITSM','–70% reportes','ISO 27001']},
+  {year:'2026',icon:'🧭',acc:'#DB2777',when:'Mayo 2026 – Presente',dur:'En curso',durpct:18,heroV:'ISO 27001',heroL:'Ruta a certificación',
+   role:'Consultor Senior de TI',co:'Servicios de Consultoría Tecnológica (Independiente) · México',
+   bullets:['Elevé la disponibilidad, estabilidad e integridad de plataformas críticas (LMS y CRM) de una organización gremial nacional','Encaminé a un despacho jurídico hacia la certificación ISO 27001: diagnóstico de brechas, plan de remediación y controles'],
+   kpis:['Disponibilidad','ITSM','ISO 27001']}
+ ],
+ en:[
+  {year:'2010',icon:'🎓',acc:'#7C3AED',when:'August 2010 – July 2020',dur:'10 years',durpct:100,heroV:'94%',heroL:'User satisfaction',
+   role:'Deputy IT Director',co:'International Schools Partnership (ISP) · Education · Mexico · United Kingdom',
+   bullets:['Scaled the technology infrastructure from 3 to 12 operational campuses under a 10-year strategic IT plan','User satisfaction from 72% to 94% (ITIL surveys), with service KPIs and a 6-person team','Adoption of corporate ERP, CRM and LMS platform for 900+ users','Strategic partner to the C-suite and liaison with UK corporate leadership'],
+   kpis:['3 → 12 campuses','CSAT 72→94%','900+ users']},
+  {year:'2020',icon:'🏭',acc:'#0071E3',when:'November 2020 – July 2025',dur:'≈5 years',durpct:48,heroV:'99.7%',heroL:'ERP availability',
+   role:'IT Manager – LATAM',co:'SUEZ / VEOLIA · Water & Industrial Waste · MX · CO · FR · ES',
+   bullets:['Raised ERP availability from 80% to 99.7% for 300 users (–60% times, –50% incidents) with MS Dynamics ENWIS','Sustained 100% continuity of critical services during the SUEZ-VEOLIA merger across 9 business units','–6% regional IT budget ($19M MXN) with no SLA degradation','Operational resilience: DRP with RTO/RPO and API data integration (MS Dynamics ↔ Oracle JDE)'],
+   kpis:['99.7% availability','100% continuity','–6% costs']},
+  {year:'2025',icon:'🤖',acc:'#0E9F6E',when:'August 2025 – April 2026',dur:'9 months',durpct:14,heroV:'–70%',heroL:'Reporting time',
+   role:'LATAM IT Manager',co:'Human Corporis · Mexico · Peru · Colombia · Chile',
+   bullets:['Governed daily operations of 3 business units across 4 countries (~350 users) under ITSM','–70% reporting time and –70% ERP costs with the Oracle NetSuite–Claude AI connector via MCP · recognized by Oracle','Automated tax compliance in 3 countries (SAT · SUNAT · DIAN) via APIs','ISO 27001:2022 alignment across LATAM with MFA, privileged access and AI-driven EDR'],
+   kpis:['~350 ITSM users','–70% reports','ISO 27001']},
+  {year:'2026',icon:'🧭',acc:'#DB2777',when:'May 2026 – Present',dur:'Ongoing',durpct:18,heroV:'ISO 27001',heroL:'Path to certification',
+   role:'Senior IT Consultant',co:'Technology Consulting Services (Independent) · Mexico',
+   bullets:['Raised availability, stability and integrity of business-critical platforms (LMS and CRM) for a national industry association','Advanced a law firm toward ISO 27001 certification: gap diagnostic, remediation plan and controls'],
+   kpis:['Availability','ITSM','ISO 27001']}
+ ]
+};
+function hexA(hex,a){const n=parseInt(hex.slice(1),16);return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')';}
+let tlActive=3;
+function buildTimeline(){
+  const jobs=JOBS[lang];const rail=document.getElementById('tl-rail');if(!rail)return;
+  rail.innerHTML='';
+  jobs.forEach((j,i)=>{
+    const n=document.createElement('div');n.className='tl-node'+(i===tlActive?' active':'');
+    n.style.setProperty('--nacc',j.acc);
+    n.innerHTML='<div class="tl-dot">'+j.icon+'</div><div class="tl-year">'+j.year+'</div><div class="tl-role-mini">'+j.role+'</div>';
+    if(i===tlActive){const dot=n.querySelector('.tl-dot');dot.style.background=j.acc;}
+    n.onclick=()=>{tlActive=i;buildTimeline();gtag('event','timeline_select',{job:j.year});};
+    rail.appendChild(n);
+  });
+  const pct=((tlActive+0.5)/jobs.length*100)+'%';
+  rail.style.setProperty('--prog',pct);rail.style.setProperty('--progv',pct);
+  const j=jobs[tlActive];const d=document.getElementById('tl-detail');
+  d.style.setProperty('--nacc',j.acc);
+  d.style.setProperty('--accglow',hexA(j.acc,0.16));
+  const grad='linear-gradient(120deg,'+j.acc+',#9F44D3)';
+  d.innerHTML=
+    '<div class="tld-visual">'+
+      '<div class="tld-badge" style="background:'+grad+'">'+j.icon+'</div>'+
+      '<div class="tld-hero" style="background:'+grad+';-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">'+j.heroV+'</div>'+
+      '<div class="tld-hlabel">'+j.heroL+'</div>'+
+      '<div class="tld-dur"><div class="tld-dur-top"><span>'+(lang==="es"?"Duración":"Duration")+'</span><span>'+j.dur+'</span></div>'+
+        '<div class="tld-bar"><div class="tld-fill" style="background:'+grad+'"></div></div></div>'+
+    '</div>'+
+    '<div class="tld-main">'+
+      '<div class="tld-when">'+j.when+'</div>'+
+      '<div class="tld-role">'+j.role+'</div>'+
+      '<div class="tld-co">'+j.co+'</div>'+
+      '<ul class="tld-list">'+j.bullets.map(b=>'<li>'+b+'</li>').join('')+'</ul>'+
+      '<div class="tld-kpis">'+j.kpis.map(k=>'<span class="kp">'+k+'</span>').join('')+'</div>'+
+    '</div>';
+  d.style.animation='none';void d.offsetWidth;d.style.animation='tlfade .55s cubic-bezier(.16,1,.3,1)';
+  requestAnimationFrame(()=>{const fill=d.querySelector('.tld-fill');if(fill)fill.style.width=j.durpct+'%';});
+}
 
 const T={
  es:{
@@ -420,6 +501,7 @@ function setLang(l){
   document.querySelectorAll('[data-i18n]').forEach(e=>{const k=e.getAttribute('data-i18n');if(d[k]!==undefined)e.textContent=d[k];});
   document.querySelectorAll('[data-i18n-html]').forEach(e=>{const k=e.getAttribute('data-i18n-html');if(d[k]!==undefined)e.innerHTML=d[k];});
   buildBento();
+  buildTimeline();
   gtag('event','language_switch',{language:l,page:'dirinfra'});
 }
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.15});
