@@ -119,6 +119,11 @@ nav .nlang button.active{background:var(--ink);color:#fff}
 .cta-ghost{background:transparent;color:var(--blue);border:1px solid var(--blue)}
 .cta-ghost:hover{background:rgba(0,113,227,.06)}
 .s-dark .cta-ghost{color:var(--blue2);border-color:var(--blue2)}
+.contact-info{display:flex;justify-content:center;flex-wrap:wrap;gap:14px 30px;margin-top:28px}
+.cinfo{display:inline-flex;align-items:center;gap:8px;font-size:.95rem;color:#A1A1A6;font-weight:500}
+.cinfo-ico{font-size:1.05rem}
+.cinfo a{color:#A1A1A6;text-decoration:none;transition:color .2s}
+.cinfo a:hover{color:var(--blue2)}
 
 footer{background:var(--gray);color:var(--ink2);font-size:.76rem;padding:34px 22px;text-align:center;line-height:1.6}
 footer .fl{max-width:980px;margin:0 auto;border-top:1px solid var(--line);padding-top:18px}
@@ -277,7 +282,12 @@ footer .fl{max-width:980px;margin:0 auto;border-top:1px solid var(--line);paddin
   <p class="sub zoom" data-i18n="ct.sub">Disponible para roles de dirección de Operación Digital e Infraestructura TI en LATAM. Resido en CDMX. Inglés de negocios.</p>
   <div class="cta-links zoom">
     <a class="cta-btn cta-fill" href="mailto:fernando.gomez2201@gmail.com" data-i18n="ct.b1">Enviar correo</a>
+    <a class="cta-btn cta-ghost" href="tel:+525579198319" data-i18n="ct.b3">Llamar · +52 55 7919 8319</a>
     <a class="cta-btn cta-ghost" href="https://www.linkedin.com/in/fer-gomez/" target="_blank" data-i18n="ct.b2">Conectar en LinkedIn</a>
+  </div>
+  <div class="contact-info zoom">
+    <span class="cinfo"><span class="cinfo-ico">📞</span><a href="tel:+525579198319">+52 55 7919 8319</a></span>
+    <span class="cinfo"><span class="cinfo-ico">📍</span><span data-i18n="ct.loc">Resido en la Ciudad de México, México</span></span>
   </div>
 </div></section>
 
@@ -346,7 +356,7 @@ const T={
   'edu.c5s':'Monitoreo, dashboards y alertamiento · Grafana Labs','edu.c5t':'En curso',
   'edu.l1n':'Español','edu.l1s':'Nativo','edu.l2n':'Inglés','edu.l2s':'Nivel de negocios · lectura de documentación técnica, escritura avanzada',
   'ct.head':'Operemos lo crítico, sin sobresaltos.','ct.sub':'Disponible para roles de dirección de Operación Digital e Infraestructura TI en LATAM. Resido en CDMX. Inglés de negocios.',
-  'ct.b1':'Enviar correo','ct.b2':'Conectar en LinkedIn',
+  'ct.b1':'Enviar correo','ct.b2':'Conectar en LinkedIn','ct.b3':'Llamar · +52 55 7919 8319','ct.loc':'Resido en la Ciudad de México, México',
   'footer':'Fernando Gómez Guerrero · Director de Operación Digital e Infraestructura TI · LATAM · CDMX · +52 55-7919-8319 · fernando.gomez2201@gmail.com'
  },
  en:{
@@ -387,7 +397,7 @@ const T={
   'edu.c5s':'Monitoring, dashboards and alerting · Grafana Labs','edu.c5t':'In progress',
   'edu.l1n':'Spanish','edu.l1s':'Native','edu.l2n':'English','edu.l2s':'Business level · technical documentation reading, advanced writing',
   'ct.head':'Let’s run the critical stuff, smoothly.','ct.sub':'Available for Digital Operations & IT Infrastructure leadership roles across LATAM. Based in Mexico City. Business English.',
-  'ct.b1':'Send email','ct.b2':'Connect on LinkedIn',
+  'ct.b1':'Send email','ct.b2':'Connect on LinkedIn','ct.b3':'Call · +52 55 7919 8319','ct.loc':'Based in Mexico City, Mexico',
   'footer':'Fernando Gómez Guerrero · Digital Operations & IT Infrastructure Director · LATAM · Mexico City · +52 55-7919-8319 · fernando.gomez2201@gmail.com'
  }
 };
