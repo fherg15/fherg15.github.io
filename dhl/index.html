@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VC2D4V1FP5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VC2D4V1FP5');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fernando Gómez Guerrero — IT & Business Process Optimization Leader</title>
+<meta name="description" content="IT and digital transformation leader with 20+ years of experience and 16 in director-level roles across LATAM. Business process optimization, operational excellence, application governance and applied AI. Recognized by Oracle for AI innovation.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --w:#FFFFFF;--gray:#F5F5F7;--ink:#1D1D1F;--ink2:#6E6E73;--line:#D2D2D7;
+  --blue:#0071E3;--blue2:#2997FF;--black:#000000;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--w);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;
+  letter-spacing:-.01em}
+
+/* ── NAV estilo Apple ── */
+nav{position:sticky;top:0;z-index:100;height:48px;display:flex;align-items:center;justify-content:center;
+  gap:34px;background:rgba(255,255,255,.72);backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid rgba(0,0,0,.07);padding:0 22px}
+nav .brand{font-size:.92rem;font-weight:600;color:var(--ink);text-decoration:none;letter-spacing:-.02em}
+nav .nlinks{display:flex;gap:30px}
+nav a.nl{font-size:.76rem;color:var(--ink);text-decoration:none;opacity:.85;transition:opacity .2s;font-weight:400}
+nav a.nl:hover{opacity:1;color:var(--blue)}
+nav .nlang{display:flex;gap:2px;background:rgba(0,0,0,.05);border-radius:30px;padding:2px}
+nav .nlang button{border:none;background:transparent;font-size:.68rem;font-weight:600;letter-spacing:.5px;
+  padding:4px 10px;border-radius:30px;cursor:pointer;color:var(--ink2);transition:.2s}
+nav .nlang button.active{background:var(--ink);color:#fff}
+
+/* ── secciones full-bleed ── */
+.s{padding:110px 22px;text-align:center;overflow:hidden}
+.s-dark{background:var(--black);color:#F5F5F7}
+.s-gray{background:var(--gray)}
+.inner{max-width:980px;margin:0 auto}
+.kicker{font-size:1.05rem;font-weight:600;color:var(--blue);margin-bottom:8px}
+.s-dark .kicker{color:var(--blue2)}
+.head{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700;line-height:1.05;letter-spacing:-.03em}
+.sub{font-size:clamp(1.1rem,2.2vw,1.6rem);font-weight:500;color:var(--ink2);max-width:700px;margin:18px auto 0;line-height:1.35}
+.s-dark .sub{color:#A1A1A6}
+.links{display:flex;gap:26px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+.lk{font-size:1.05rem;color:var(--blue);text-decoration:none;font-weight:400;display:inline-flex;align-items:center;gap:3px}
+.s-dark .lk{color:var(--blue2)}
+.lk:hover{text-decoration:underline}
+.lk::after{content:'›';font-size:1.2em;line-height:1}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.zoom{opacity:0;transform:scale(.92);transition:opacity 1.1s cubic-bezier(.16,1,.3,1),transform 1.1s cubic-bezier(.16,1,.3,1)}
+.zoom.in{opacity:1;transform:none}
+
+/* ── HERO ── */
+#hero{padding:80px 22px 90px}
+.hero-name{font-size:clamp(3rem,9vw,7rem);font-weight:700;letter-spacing:-.04em;line-height:.98}
+.hero-tag{font-size:clamp(1.3rem,2.6vw,2rem);font-weight:600;color:var(--ink2);margin-top:8px}
+.hero-lead{font-size:clamp(1.05rem,1.8vw,1.3rem);color:var(--ink2);max-width:720px;margin:22px auto 0;font-weight:400;line-height:1.5}
+.hero-lead b{color:var(--ink);font-weight:600}
+
+/* franja de stats */
+.stripe{display:flex;justify-content:center;gap:0;flex-wrap:wrap;margin-top:54px}
+.stat{padding:0 34px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:none}
+.stat-n{font-size:clamp(2.4rem,5vw,3.6rem);font-weight:700;letter-spacing:-.03em;line-height:1;
+  background:linear-gradient(120deg,#0071E3,#9F44D3);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-l{font-size:.8rem;color:var(--ink2);margin-top:8px;font-weight:500;max-width:140px}
+
+/* ── TRAYECTORIA ── */
+.bigcards{display:flex;flex-direction:column;gap:20px;max-width:1100px;margin:54px auto 0;text-align:left}
+.bc{background:var(--gray);border-radius:28px;padding:48px 52px;position:relative;overflow:hidden}
+.bc.dark{background:#161617;color:#F5F5F7}
+.bc-when{font-size:.85rem;font-weight:600;color:var(--blue);letter-spacing:.02em;margin-bottom:8px}
+.bc.dark .bc-when{color:var(--blue2)}
+.bc-role{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.bc-co{font-size:1rem;color:var(--ink2);margin-top:6px;font-weight:500}
+.bc.dark .bc-co{color:#A1A1A6}
+.bc-list{list-style:none;margin:22px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:12px 36px}
+.bc-list li{font-size:.95rem;color:var(--ink2);padding-left:22px;position:relative;line-height:1.45}
+.bc.dark .bc-list li{color:#C7C7CC}
+.bc-list li::before{content:'+';position:absolute;left:0;color:var(--blue);font-weight:700}
+.bc.dark .bc-list li::before{color:var(--blue2)}
+.bc-kpis{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.kp{font-size:.78rem;font-weight:600;padding:8px 16px;border-radius:30px;background:rgba(0,0,0,.05);color:var(--ink)}
+.bc.dark .kp{background:rgba(255,255,255,.1);color:#F5F5F7}
+
+/* ── EXPERTISE bento ── */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1100px;margin:54px auto 0;text-align:left}
+.tile{background:var(--w);border-radius:24px;padding:32px;box-shadow:0 4px 30px rgba(0,0,0,.06);
+  transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.tile:hover{transform:translateY(-6px)}
+.tile-ico{font-size:1.8rem;margin-bottom:16px}
+.tile-name{font-size:1.15rem;font-weight:700;letter-spacing:-.02em;margin-bottom:14px}
+.tile-tags{display:flex;flex-wrap:wrap;gap:7px}
+.tile-tag{font-size:.74rem;padding:5px 12px;border-radius:30px;background:var(--gray);color:var(--ink2);font-weight:500}
+
+/* ── FORMACIÓN ── */
+.fwrap{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:1000px;margin:54px auto 0;text-align:left}
+.fcol h3{font-size:1.15rem;font-weight:700;margin-bottom:18px;letter-spacing:-.02em}
+.fi{padding:14px 0;border-top:1px solid var(--line)}
+.fi-n{font-size:.95rem;font-weight:600}
+.fi-s{font-size:.82rem;color:var(--ink2);margin-top:3px}
+.fi-tag{display:inline-block;margin-top:8px;font-size:.7rem;font-weight:600;color:var(--blue)}
+
+/* ── CONTACTO ── */
+.cta-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.cta-btn{padding:14px 30px;border-radius:30px;font-size:.98rem;font-weight:500;text-decoration:none;transition:.2s}
+.cta-fill{background:var(--blue);color:#fff}
+.cta-fill:hover{background:#0077ED}
+.cta-ghost{background:transparent;color:var(--blue);border:1px solid var(--blue)}
+.cta-ghost:hover{background:rgba(0,113,227,.06)}
+.s-dark .cta-ghost{color:var(--blue2);border-color:var(--blue2)}
+
+footer{background:var(--gray);color:var(--ink2);font-size:.76rem;padding:34px 22px;text-align:center;line-height:1.6}
+footer .fl{max-width:980px;margin:0 auto;border-top:1px solid var(--line);padding-top:18px}
+
+@media(max-width:760px){
+  nav{gap:16px}nav .nlinks{display:none}
+  .s{padding:80px 20px}
+  .bc{padding:34px 26px}
+  .bc-list{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr}
+  .fwrap{grid-template-columns:1fr;gap:28px}
+  .stat{padding:14px 22px;border-right:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="brand" href="#hero">Fernando Gómez</a>
+  <div class="nlinks">
+    <a class="nl" href="#trayectoria" data-i18n="n.exp">Experience</a>
+    <a class="nl" href="#expertise" data-i18n="n.skills">Expertise</a>
+    <a class="nl" href="#formacion" data-i18n="n.edu">Education</a>
+    <a class="nl" href="#contacto" data-i18n="n.contact">Contact</a>
+  </div>
+  <div class="nlang">
+    <button id="btn-es" onclick="setLang('es')">ES</button>
+    <button class="active" id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="s" id="hero"><div class="inner">
+  <h1 class="hero-name rv">Fernando Gómez</h1>
+  <div class="hero-tag rv" data-i18n="hero.tag">IT & Business Process Optimization Leader. LATAM.</div>
+  <p class="hero-lead rv" data-i18n-html="hero.lead">IT and digital transformation leader with <b>20+ years</b> of experience aligning technology strategy, application governance and <b>business process optimization</b> with country, regional and global objectives across Mexico, Peru, Colombia and Chile.</p>
+  <div class="links rv">
+    <a class="lk" href="#trayectoria" data-i18n="hero.l1">View experience</a>
+    <a class="lk" href="#contacto" data-i18n="hero.l2">Get in touch</a>
+  </div>
+  <div class="stripe rv">
+    <div class="stat"><div class="stat-n" data-count="20" data-suffix="+">0</div><div class="stat-l" data-i18n="s.years">Years of experience</div></div>
+    <div class="stat"><div class="stat-n" data-count="16">0</div><div class="stat-l" data-i18n="s.lead">Years in director-level roles</div></div>
+    <div class="stat"><div class="stat-n" data-count="4">0</div><div class="stat-l" data-i18n="s.countries">LATAM countries</div></div>
+    <div class="stat"><div class="stat-n">$19M</div><div class="stat-l" data-i18n="s.budget">MXN managed</div></div>
+  </div>
+</div></section>
+
+<!-- DESTACADO ORACLE (dark) -->
+<section class="s s-dark"><div class="inner">
+  <div class="kicker zoom" data-i18n="or.kicker">Oracle recognition</div>
+  <h2 class="head zoom" data-i18n="or.head">The first AI-over-ERP connector in LATAM.</h2>
+  <p class="sub zoom" data-i18n="or.sub">Oracle NetSuite–Claude AI connector via Model Context Protocol (MCP). Real-time natural-language access to financial, customer and inventory data. Recognized by Oracle as a global reference for applied AI in ERP.</p>
+  <div class="stripe zoom" style="margin-top:46px">
+    <div class="stat"><div class="stat-n">–70%</div><div class="stat-l" style="color:#A1A1A6" data-i18n="or.k1">Reporting cycle time</div></div>
+    <div class="stat"><div class="stat-n">–70%</div><div class="stat-l" style="color:#A1A1A6" data-i18n="or.k2">ERP customization costs</div></div>
+    <div class="stat"><div class="stat-n">100%</div><div class="stat-l" style="color:#A1A1A6" data-i18n="or.k3">Natural language</div></div>
+  </div>
+</div></section>
+
+<!-- TRAYECTORIA -->
+<section class="s" id="trayectoria"><div class="inner">
+  <div class="kicker rv" data-i18n="exp.kicker">Experience</div>
+  <h2 class="head rv" data-i18n="exp.head">Two decades of operational excellence across LATAM.</h2>
+</div>
+  <div class="bigcards">
+    <div class="bc rv">
+      <div class="bc-when" data-i18n="j4.when">May 2026 – Present</div>
+      <div class="bc-role" data-i18n="j4.role">Senior IT Consultant</div>
+      <div class="bc-co" data-i18n="j4.co">Independent Technology Advisory · Mexico</div>
+      <ul class="bc-list">
+        <li data-i18n="j4.li1">Advanced a law firm toward ISO 27001 certification — end-to-end risk analysis, gap-assessment diagnostic, remediation plan and implemented security controls with a compliance & governance roadmap</li>
+        <li data-i18n="j4.li2">Deployed a document management platform (R2 Docuo) from the ground up — centralized, version-controlled, fully auditable repository with role-based access and ISO 27001-aligned evidence control</li>
+        <li data-i18n="j4.li3">Improved availability, confidentiality and integrity of business-critical platforms (LMS and CRM) for a national industry association — reduced incidents and documented monitoring protocols</li>
+      </ul>
+      <div class="bc-kpis"><span class="kp">ISO 27001</span><span class="kp">R2 Docuo</span><span class="kp">LMS · CRM</span></div>
+    </div>
+
+    <div class="bc dark rv">
+      <div class="bc-when" data-i18n="j3.when">Aug 2025 – Apr 2026</div>
+      <div class="bc-role" data-i18n="j3.role">LATAM IT Manager</div>
+      <div class="bc-co">Human Corporis · Mexico · Peru · Colombia · Chile</div>
+      <ul class="bc-list">
+        <li data-i18n="j3.li1">Shipped the Oracle NetSuite–Claude AI connector via MCP with OAuth 2.0 — –70% financial-reporting cycle time and –70% ERP customization costs · recognized by Oracle as a global reference for applied AI in ERP</li>
+        <li data-i18n="j3.li2">Owned and executed the regional technology roadmap across 4 countries — unified stack adoption under IT-governance standards, with vendor-management and SLA frameworks</li>
+        <li data-i18n="j3.li3">Enabled ISO 27001:2022 readiness across LATAM — MFA, privileged-access management, backup controls and AI-driven EDR in all 4 countries</li>
+        <li data-i18n="j3.li4">Integrated the corporate ERP with tax authorities (SAT · SUNAT · DIAN) · strategic partner to the CEO and board member governing 3 BUs and ~350 users under ITSM</li>
+      </ul>
+      <div class="bc-kpis"><span class="kp">–70% reporting</span><span class="kp">–70% costs</span><span class="kp">~350 users</span></div>
+    </div>
+
+    <div class="bc rv">
+      <div class="bc-when" data-i18n="j2.when">Nov 2020 – Jul 2025</div>
+      <div class="bc-role" data-i18n="j2.role">IT Manager – LATAM</div>
+      <div class="bc-co" data-i18n="j2.co">SUEZ / AGBAR → VEOLIA (merged Jan 2022) · MX · CO · FR · ES</div>
+      <ul class="bc-list">
+        <li data-i18n="j2.li1">Raised ERP availability to 99.7% (from 80%) for 300 users — –60% process cycle times, –50% incidents — MS Dynamics ENWIS delivered on time within a $16M MXN budget in 18 months</li>
+        <li data-i18n="j2.li2">Reduced the regional IT budget by 6% with no impact to availability or SLAs — renegotiated vendor contracts and optimized the licensing architecture</li>
+        <li data-i18n="j2.li3">Consolidated architecture, platforms, data and IT/OT infrastructure during the SUEZ-VEOLIA merger — 100% continuity across 9 business units with zero disruption</li>
+        <li data-i18n="j2.li4">Pre-merger SAP ERP migration strategy and DRP (RTO/RPO) · inter-ERP integrations (MS Dynamics ↔ Oracle JDE) and the Movilform mobile app ($3M MXN)</li>
+      </ul>
+      <div class="bc-kpis"><span class="kp">99.7% uptime</span><span class="kp">–6% budget</span><span class="kp">9 BUs</span></div>
+    </div>
+
+    <div class="bc rv">
+      <div class="bc-when" data-i18n="j1.when">Aug 2010 – Jul 2020</div>
+      <div class="bc-role" data-i18n="j1.role">Deputy IT Director</div>
+      <div class="bc-co" data-i18n="j1.co">International Schools Partnership (ISP) · Education · Mexico · UK</div>
+      <ul class="bc-list">
+        <li data-i18n="j1.li1">Scaled the technology infrastructure from 3 to 12 operational campuses under a 10-year strategic IT plan</li>
+        <li data-i18n="j1.li2">Increased user satisfaction from 72% to 94% (ITIL-based surveys) — service KPIs, restructured support model and a 6-person team</li>
+        <li data-i18n="j1.li3">Implemented the corporate ERP, migrated the CRM and deployed an LMS for 900+ users (students, faculty and staff)</li>
+        <li data-i18n="j1.li4">Managed an annual IT budget up to $2M MXN · strategic partner to the C-suite and IT liaison with UK corporate leadership</li>
+      </ul>
+      <div class="bc-kpis"><span class="kp">3 → 12 campuses</span><span class="kp">CSAT 72→94%</span><span class="kp">900+ users</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="s s-gray" id="expertise"><div class="inner">
+  <div class="kicker rv" data-i18n="xp.kicker">Expertise</div>
+  <h2 class="head rv" data-i18n="xp.head">Where technology meets process excellence.</h2>
+</div>
+  <div class="bento" id="bento"></div>
+</section>
+
+<!-- FORMACIÓN -->
+<section class="s" id="formacion"><div class="inner">
+  <div class="kicker rv" data-i18n="edu.kicker">Education</div>
+  <h2 class="head rv" data-i18n="edu.head">Solid foundation. Continuous improvement.</h2>
+</div>
+  <div class="fwrap rv">
+    <div class="fcol">
+      <h3 data-i18n="edu.h1">Education</h3>
+      <div class="fi"><div class="fi-n" data-i18n="edu.1n">M.Sc. in Information Technology Security</div><div class="fi-s" data-i18n="edu.1s">Universidad Tecnológica de México (UNITEC) · 2014–2015</div></div>
+      <div class="fi"><div class="fi-n" data-i18n="edu.2n">B.Sc. in Business Informatics</div><div class="fi-s" data-i18n="edu.2s">Universidad Tecnológica de México (UNITEC) · 2003–2007</div></div>
+    </div>
+    <div class="fcol">
+      <h3 data-i18n="edu.h2">Professional development</h3>
+      <div class="fi"><div class="fi-n">ISO 27001:2022 — Lead Implementer</div></div>
+      <div class="fi"><div class="fi-n">PMP — Project Management (PMI)</div><span class="fi-tag" data-i18n="edu.c2t">In progress · Nov 2026</span></div>
+      <div class="fi"><div class="fi-n">Agile / Scrum</div><div class="fi-s" data-i18n="edu.c3s">Technology project management</div></div>
+    </div>
+    <div class="fcol">
+      <h3 data-i18n="edu.h3">Languages</h3>
+      <div class="fi"><div class="fi-n" data-i18n="edu.l1n">Spanish</div><div class="fi-s" data-i18n="edu.l1s">Native</div></div>
+      <div class="fi"><div class="fi-n" data-i18n="edu.l2n">English</div><div class="fi-s" data-i18n="edu.l2s">Professional working proficiency · advanced reading and writing</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="s s-dark" id="contacto"><div class="inner">
+  <h2 class="head zoom" data-i18n="ct.head">Let’s optimize what matters.</h2>
+  <p class="sub zoom" data-i18n="ct.sub">Available for IT & BPO leadership roles across LATAM. Based in Mexico City. Professional working English.</p>
+  <div class="cta-links zoom">
+    <a class="cta-btn cta-fill" href="mailto:fernando.gomez2201@gmail.com" data-i18n="ct.b1">Send email</a>
+    <a class="cta-btn cta-ghost" href="https://www.linkedin.com/in/fer-gomez/" target="_blank" data-i18n="ct.b2">Connect on LinkedIn</a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="fl">
+    <p data-i18n="footer">Fernando Gómez Guerrero · IT & Business Process Optimization Leader · LATAM · Mexico City · +52 55-7919-8319 · fernando.gomez2201@gmail.com</p>
+  </div>
+</footer>
+
+<script>
+const XP={
+ es:[
+  ['🔄','Optimización de Procesos (BPO)',['Process Mapping','Root Cause Analysis','Mejora Continua','Estandarización','Excelencia Operativa']],
+  ['🚀','Transformación Digital',['Estrategia','Modelo Operativo','Gestión del Cambio','KPIs']],
+  ['🧭','Gobierno de Aplicaciones & TI',['NetSuite','SAP','MS Dynamics','Oracle JDE','ITSM']],
+  ['🌎','Gestión Regional de Producto',['LATAM · 4 países','~350 usuarios','Vendor & SLA','Stakeholders']],
+  ['🔒','Seguridad de la Información & Cumplimiento',['ISO 27001:2022','Gestión de Accesos','Protección de Datos','Riesgo','Audit Readiness']],
+  ['🤖','IA Aplicada & Datos',['MCP · Claude AI','Power BI','Looker','Dashboards','Cloud AWS · Azure · GCP']]
+ ],
+ en:[
+  ['🔄','Business Process Optimization (BPO)',['Process Mapping','Root Cause Analysis','Continuous Improvement','Standardization','Operational Excellence']],
+  ['🚀','Digital Transformation',['Strategy','Operating Model','Change Management','KPIs']],
+  ['🧭','Application & IT Governance',['NetSuite','SAP','MS Dynamics','Oracle JDE','ITSM']],
+  ['🌎','Regional Product & Platform Mgmt',['LATAM · 4 countries','~350 users','Vendor & SLA','Stakeholders']],
+  ['🔒','Information Security & Compliance',['ISO 27001:2022','Access Management','Data Protection','Risk','Audit Readiness']],
+  ['🤖','Applied AI & Data',['MCP · Claude AI','Power BI','Looker','Dashboards','Cloud AWS · Azure · GCP']]
+ ]
+};
+
+const T={
+ es:{
+  'n.exp':'Experiencia','n.skills':'Expertise','n.edu':'Formación','n.contact':'Contacto',
+  'hero.tag':'Líder de TI y Optimización de Procesos. LATAM.',
+  'hero.lead':'Líder de TI y transformación digital con <b>más de 20 años</b> de experiencia alineando la estrategia tecnológica, el gobierno de aplicaciones y la <b>optimización de procesos de negocio</b> a los objetivos de país, región y global en México, Perú, Colombia y Chile.',
+  'hero.l1':'Ver experiencia','hero.l2':'Contactar',
+  's.years':'Años de experiencia','s.lead':'Años en posiciones directivas','s.countries':'Países LATAM','s.budget':'MXN gestionados',
+  'or.kicker':'Reconocimiento Oracle','or.head':'El primer conector de IA sobre ERP en LATAM.',
+  'or.sub':'Conector Oracle NetSuite–Claude AI vía Model Context Protocol (MCP). Acceso en lenguaje natural en tiempo real a datos financieros, de clientes e inventario. Reconocido por Oracle como referente global de IA aplicada a ERP.',
+  'or.k1':'Tiempo de ciclo de reportes','or.k2':'Costos de personalización ERP','or.k3':'Lenguaje natural',
+  'exp.kicker':'Experiencia','exp.head':'Dos décadas de excelencia operativa en LATAM.',
+  'j4.when':'Mayo 2026 – Presente','j4.role':'Consultor Senior de TI','j4.co':'Asesoría Tecnológica Independiente · México',
+  'j4.li1':'Impulsé a un despacho jurídico hacia la certificación ISO 27001 — análisis integral de riesgos, diagnóstico de brechas, plan de remediación y controles de seguridad implementados con roadmap de cumplimiento y gobierno',
+  'j4.li2':'Implementé una plataforma de gestión documental (R2 Docuo) desde cero — repositorio centralizado, versionado y totalmente auditable con acceso por roles y control de evidencias alineado a ISO 27001',
+  'j4.li3':'Mejoré la disponibilidad, confidencialidad e integridad de plataformas críticas (LMS y CRM) para una asociación gremial nacional — reducción de incidencias y protocolos de monitoreo documentados',
+  'j3.when':'Agosto 2025 – Abril 2026','j3.role':'Gerente de TI LATAM',
+  'j3.li1':'Entregué el conector Oracle NetSuite–Claude AI vía MCP con OAuth 2.0 — –70% en tiempo de ciclo de reportes y –70% en costos de personalización ERP · reconocido por Oracle como referente global de IA aplicada a ERP',
+  'j3.li2':'Definí y ejecuté el roadmap tecnológico regional en 4 países — adopción unificada del stack bajo estándares de gobierno de TI, con marcos de gestión de proveedores y SLAs',
+  'j3.li3':'Habilité la certificación ISO 27001:2022 en LATAM — MFA, gestión de accesos privilegiados, controles de respaldo y EDR con IA en los 4 países',
+  'j3.li4':'Integré el ERP corporativo con autoridades fiscales (SAT · SUNAT · DIAN) · socio estratégico del CEO y miembro del consejo gobernando 3 UNs y ~350 usuarios bajo ITSM',
+  'j2.when':'Noviembre 2020 – Julio 2025','j2.role':'Gerente de TI – LATAM','j2.co':'SUEZ / AGBAR → VEOLIA (fusión ene 2022) · MX · CO · FR · ES',
+  'j2.li1':'Elevé la disponibilidad del ERP a 99.7% (desde 80%) para 300 usuarios — –60% en tiempos de proceso, –50% incidentes — MS Dynamics ENWIS entregado en tiempo dentro de $16M MXN en 18 meses',
+  'j2.li2':'Reduje el presupuesto de TI regional en 6% sin afectar disponibilidad ni SLAs — renegociación de contratos y optimización de licenciamiento',
+  'j2.li3':'Consolidé arquitectura, plataformas, datos e infraestructura IT/OT durante la fusión SUEZ-VEOLIA — 100% de continuidad en 9 unidades de negocio, cero disrupciones',
+  'j2.li4':'Estrategia de migración ERP SAP pre-fusión y DRP (RTO/RPO) · integraciones inter-ERP (MS Dynamics ↔ Oracle JDE) y app móvil Movilform ($3M MXN)',
+  'j1.when':'Agosto 2010 – Julio 2020','j1.role':'Subdirector de TI','j1.co':'International Schools Partnership (ISP) · Educación · México · UK',
+  'j1.li1':'Escalé la infraestructura tecnológica de 3 a 12 campus operativos bajo un plan estratégico de TI a 10 años',
+  'j1.li2':'Incrementé la satisfacción de usuarios de 72% a 94% (encuestas ITIL) — KPIs de servicio, modelo de soporte y equipo de 6 personas',
+  'j1.li3':'Implementé el ERP corporativo, migré el CRM y desplegué un LMS para más de 900 usuarios (alumnos, docentes y personal)',
+  'j1.li4':'Gestioné un presupuesto anual de TI de hasta $2M MXN · socio estratégico del C-suite y enlace de TI con la dirección corporativa en Reino Unido',
+  'xp.kicker':'Expertise','xp.head':'Donde la tecnología se encuentra con la excelencia de procesos.',
+  'edu.kicker':'Formación','edu.head':'Sólida base. Mejora continua.',
+  'edu.h1':'Educación','edu.h2':'Desarrollo profesional','edu.h3':'Idiomas',
+  'edu.1n':'Maestría en Seguridad en Tecnologías de la Información','edu.1s':'Universidad Tecnológica de México (UNITEC) · 2014–2015',
+  'edu.2n':'Licenciatura en Informática Administrativa','edu.2s':'Universidad Tecnológica de México (UNITEC) · 2003–2007',
+  'edu.c2t':'En curso · nov 2026','edu.c3s':'Gestión de proyectos tecnológicos',
+  'edu.l1n':'Español','edu.l1s':'Nativo','edu.l2n':'Inglés','edu.l2s':'Nivel profesional de negocios · lectura y escritura avanzadas',
+  'ct.head':'Optimicemos lo que importa.','ct.sub':'Disponible para roles de Liderazgo de TI y BPO en LATAM. Resido en CDMX. Inglés profesional de negocios.',
+  'ct.b1':'Enviar correo','ct.b2':'Conectar en LinkedIn',
+  'footer':'Fernando Gómez Guerrero · Líder de TI y Optimización de Procesos · LATAM · CDMX · +52 55-7919-8319 · fernando.gomez2201@gmail.com'
+ },
+ en:{
+  'n.exp':'Experience','n.skills':'Expertise','n.edu':'Education','n.contact':'Contact',
+  'hero.tag':'IT & Business Process Optimization Leader. LATAM.',
+  'hero.lead':'IT and digital transformation leader with <b>20+ years</b> of experience aligning technology strategy, application governance and <b>business process optimization</b> with country, regional and global objectives across Mexico, Peru, Colombia and Chile.',
+  'hero.l1':'View experience','hero.l2':'Get in touch',
+  's.years':'Years of experience','s.lead':'Years in director-level roles','s.countries':'LATAM countries','s.budget':'MXN managed',
+  'or.kicker':'Oracle recognition','or.head':'The first AI-over-ERP connector in LATAM.',
+  'or.sub':'Oracle NetSuite–Claude AI connector via Model Context Protocol (MCP). Real-time natural-language access to financial, customer and inventory data. Recognized by Oracle as a global reference for applied AI in ERP.',
+  'or.k1':'Reporting cycle time','or.k2':'ERP customization costs','or.k3':'Natural language',
+  'exp.kicker':'Experience','exp.head':'Two decades of operational excellence across LATAM.',
+  'j4.when':'May 2026 – Present','j4.role':'Senior IT Consultant','j4.co':'Independent Technology Advisory · Mexico',
+  'j4.li1':'Advanced a law firm toward ISO 27001 certification — end-to-end risk analysis, gap-assessment diagnostic, remediation plan and implemented security controls with a compliance & governance roadmap',
+  'j4.li2':'Deployed a document management platform (R2 Docuo) from the ground up — centralized, version-controlled, fully auditable repository with role-based access and ISO 27001-aligned evidence control',
+  'j4.li3':'Improved availability, confidentiality and integrity of business-critical platforms (LMS and CRM) for a national industry association — reduced incidents and documented monitoring protocols',
+  'j3.when':'Aug 2025 – Apr 2026','j3.role':'LATAM IT Manager',
+  'j3.li1':'Shipped the Oracle NetSuite–Claude AI connector via MCP with OAuth 2.0 — –70% financial-reporting cycle time and –70% ERP customization costs · recognized by Oracle as a global reference for applied AI in ERP',
+  'j3.li2':'Owned and executed the regional technology roadmap across 4 countries — unified stack adoption under IT-governance standards, with vendor-management and SLA frameworks',
+  'j3.li3':'Enabled ISO 27001:2022 readiness across LATAM — MFA, privileged-access management, backup controls and AI-driven EDR in all 4 countries',
+  'j3.li4':'Integrated the corporate ERP with tax authorities (SAT · SUNAT · DIAN) · strategic partner to the CEO and board member governing 3 BUs and ~350 users under ITSM',
+  'j2.when':'Nov 2020 – Jul 2025','j2.role':'IT Manager – LATAM','j2.co':'SUEZ / AGBAR → VEOLIA (merged Jan 2022) · MX · CO · FR · ES',
+  'j2.li1':'Raised ERP availability to 99.7% (from 80%) for 300 users — –60% process cycle times, –50% incidents — MS Dynamics ENWIS delivered on time within a $16M MXN budget in 18 months',
+  'j2.li2':'Reduced the regional IT budget by 6% with no impact to availability or SLAs — renegotiated vendor contracts and optimized the licensing architecture',
+  'j2.li3':'Consolidated architecture, platforms, data and IT/OT infrastructure during the SUEZ-VEOLIA merger — 100% continuity across 9 business units with zero disruption',
+  'j2.li4':'Pre-merger SAP ERP migration strategy and DRP (RTO/RPO) · inter-ERP integrations (MS Dynamics ↔ Oracle JDE) and the Movilform mobile app ($3M MXN)',
+  'j1.when':'Aug 2010 – Jul 2020','j1.role':'Deputy IT Director','j1.co':'International Schools Partnership (ISP) · Education · Mexico · UK',
+  'j1.li1':'Scaled the technology infrastructure from 3 to 12 operational campuses under a 10-year strategic IT plan',
+  'j1.li2':'Increased user satisfaction from 72% to 94% (ITIL-based surveys) — service KPIs, restructured support model and a 6-person team',
+  'j1.li3':'Implemented the corporate ERP, migrated the CRM and deployed an LMS for 900+ users (students, faculty and staff)',
+  'j1.li4':'Managed an annual IT budget up to $2M MXN · strategic partner to the C-suite and IT liaison with UK corporate leadership',
+  'xp.kicker':'Expertise','xp.head':'Where technology meets process excellence.',
+  'edu.kicker':'Education','edu.head':'Solid foundation. Continuous improvement.',
+  'edu.h1':'Education','edu.h2':'Professional development','edu.h3':'Languages',
+  'edu.1n':'M.Sc. in Information Technology Security','edu.1s':'Universidad Tecnológica de México (UNITEC) · 2014–2015',
+  'edu.2n':'B.Sc. in Business Informatics','edu.2s':'Universidad Tecnológica de México (UNITEC) · 2003–2007',
+  'edu.c2t':'In progress · Nov 2026','edu.c3s':'Technology project management',
+  'edu.l1n':'Spanish','edu.l1s':'Native','edu.l2n':'English','edu.l2s':'Professional working proficiency · advanced reading and writing',
+  'ct.head':'Let’s optimize what matters.','ct.sub':'Available for IT & BPO leadership roles across LATAM. Based in Mexico City. Professional working English.',
+  'ct.b1':'Send email','ct.b2':'Connect on LinkedIn',
+  'footer':'Fernando Gómez Guerrero · IT & Business Process Optimization Leader · LATAM · Mexico City · +52 55-7919-8319 · fernando.gomez2201@gmail.com'
+ }
+};
+
+let lang=localStorage.getItem('fgg-dhl-lang')||'en';
+function buildBento(){
+  const g=document.getElementById('bento');g.innerHTML='';
+  XP[lang].forEach(x=>{
+    const d=document.createElement('div');d.className='tile rv';
+    d.innerHTML='<div class="tile-ico">'+x[0]+'</div><div class="tile-name">'+x[1]+'</div>'+
+      '<div class="tile-tags">'+x[2].map(t=>'<span class="tile-tag">'+t+'</span>').join('')+'</div>';
+    g.appendChild(d);io.observe(d);
+  });
+}
+function setLang(l){
+  lang=l;localStorage.setItem('fgg-dhl-lang',l);document.documentElement.lang=l;
+  document.getElementById('btn-es').classList.toggle('active',l==='es');
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  const d=T[l];
+  document.querySelectorAll('[data-i18n]').forEach(e=>{const k=e.getAttribute('data-i18n');if(d[k]!==undefined)e.textContent=d[k];});
+  document.querySelectorAll('[data-i18n-html]').forEach(e=>{const k=e.getAttribute('data-i18n-html');if(d[k]!==undefined)e.innerHTML=d[k];});
+  buildBento();
+  gtag('event','language_switch',{language:l,page:'dhl'});
+}
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.15});
+function counters(){
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const to=+el.dataset.count,suf=el.dataset.suffix||'',t0=performance.now();
+    (function step(t){const p=Math.min((t-t0)/1400,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)))+suf;if(p<1)requestAnimationFrame(step);})(performance.now());
+  });
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  setLang(lang);
+  document.querySelectorAll('.rv,.zoom').forEach(el=>io.observe(el));
+  setTimeout(counters,300);
+});
+</script>
+</body>
+</html>
