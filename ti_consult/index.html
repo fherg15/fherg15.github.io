@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VC2D4V1FP5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VC2D4V1FP5');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>Fernando Gómez Guerrero — Líder de Soluciones Tecnológicas | Consultoría e Integración de APIs</title>
+<meta name="description" content="Líder de soluciones tecnológicas con 16 años como puente entre negocio, cliente y ejecución técnica en multinacionales de México, Perú, Colombia y Chile. Consultoría directa con clientes a nivel directivo, integración de APIs entre ERP, CRM, LMS, apps móviles y plataformas fiscales, IA aplicada y equipos técnicos de hasta 15 personas. Reconocido por Oracle por el conector NetSuite–Claude AI (MCP).">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#000;--card:#161617;--card2:#1d1d1f;--tx:#f5f5f7;--mut:#86868b;--mut2:#a1a1a6;
+  --line:rgba(255,255,255,.12);--blue:#2997ff;
+  --grad:linear-gradient(92deg,#34d3c9 0%,#4da3ff 38%,#9b7bff 72%,#e86fd0 100%);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--tx);
+  line-height:1.5;-webkit-font-smoothing:antialiased;letter-spacing:-.011em;overflow-x:hidden}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+a{color:inherit}
+
+/* ── NAV local (estilo Apple Careers) ── */
+.subnav{position:sticky;top:0;z-index:100;height:56px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 max(22px,calc((100vw - 1200px)/2));background:rgba(10,10,12,.72);
+  backdrop-filter:saturate(180%) blur(22px);-webkit-backdrop-filter:saturate(180%) blur(22px);border-bottom:1px solid var(--line)}
+.subnav .brand{font-size:1.3rem;font-weight:600;letter-spacing:-.025em;text-decoration:none;color:var(--tx);white-space:nowrap}
+.subnav .right{display:flex;align-items:center;gap:26px}
+.subnav .links{display:flex;gap:26px}
+.subnav .links a{font-size:.78rem;color:var(--mut2);text-decoration:none;transition:color .2s}
+.subnav .links a:hover{color:var(--tx)}
+.lang{display:flex;background:rgba(255,255,255,.1);border-radius:980px;padding:2px}
+.lang button{border:0;background:transparent;color:var(--mut2);font:600 .68rem 'Inter',sans-serif;letter-spacing:.5px;
+  padding:5px 11px;border-radius:980px;cursor:pointer;transition:.2s}
+.lang button.active{background:var(--tx);color:#1d1d1f}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--tx);color:#1d1d1f;text-decoration:none;
+  font-size:.82rem;font-weight:500;padding:8px 18px;border-radius:980px;transition:opacity .2s,transform .2s;border:0;cursor:pointer}
+.pill:hover{opacity:.86}
+.pill.lg{font-size:1rem;padding:14px 30px}
+.pill.ghost{background:transparent;color:var(--blue);border:1px solid var(--blue)}
+.pill.wa{background:#25D366;color:#fff}
+
+/* ── HERO con aurora ── */
+#hero{position:relative;min-height:calc(100svh - 56px);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:90px 22px 70px;overflow:hidden;isolation:isolate}
+.aurora{position:absolute;inset:0;z-index:-1;overflow:hidden;background:#05050a}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.62;will-change:transform}
+.b1{width:60vmax;height:60vmax;left:-15vmax;top:-10vmax;background:radial-gradient(circle,#6d28d9,transparent 65%);animation:d1 22s ease-in-out infinite alternate}
+.b2{width:55vmax;height:55vmax;right:-18vmax;top:5vmax;background:radial-gradient(circle,#2563eb,transparent 65%);animation:d2 26s ease-in-out infinite alternate}
+.b3{width:50vmax;height:50vmax;left:15vmax;bottom:-25vmax;background:radial-gradient(circle,#0d9488,transparent 65%);animation:d3 24s ease-in-out infinite alternate}
+.b4{width:38vmax;height:38vmax;right:8vmax;bottom:-12vmax;background:radial-gradient(circle,#be185d,transparent 65%);opacity:.45;animation:d1 30s ease-in-out infinite alternate-reverse}
+@keyframes d1{to{transform:translate(8vmax,6vmax) scale(1.15)}}
+@keyframes d2{to{transform:translate(-9vmax,5vmax) scale(.9)}}
+@keyframes d3{to{transform:translate(7vmax,-6vmax) scale(1.2)}}
+.aurora::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.35) 0%,rgba(0,0,0,.15) 40%,#000 100%)}
+.hero-kicker{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:600;color:var(--mut2);margin-bottom:18px;letter-spacing:-.01em}
+.hero-h1{font-size:clamp(2.6rem,8vw,6.6rem);font-weight:700;letter-spacing:-.045em;line-height:1.02;max-width:1100px}
+.hero-lead{font-size:clamp(1.05rem,1.7vw,1.35rem);color:var(--mut2);max-width:720px;margin:28px auto 0;line-height:1.45}
+.hero-cta{display:flex;gap:22px;align-items:center;justify-content:center;margin-top:34px;flex-wrap:wrap}
+.lk{color:var(--blue);text-decoration:none;font-size:1.05rem;display:inline-flex;gap:4px;align-items:center}
+.lk::after{content:'›';font-size:1.25em;line-height:1}
+.lk:hover{text-decoration:underline}
+.chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:54px}
+.chip{font-size:.82rem;font-weight:500;color:var(--tx);padding:9px 18px;border-radius:980px;
+  background:rgba(255,255,255,.08);border:1px solid var(--line);backdrop-filter:blur(10px)}
+
+/* ── secciones ── */
+.sec{padding:130px 22px}
+.wrap{max-width:1000px;margin:0 auto}
+.wrap.wide{max-width:1180px}
+.kick{font-size:clamp(1rem,1.5vw,1.2rem);font-weight:600;color:var(--tx);margin-bottom:14px}
+h2.h{font-size:clamp(2.2rem,5.8vw,4.4rem);font-weight:700;letter-spacing:-.04em;line-height:1.05;max-width:900px}
+.p{font-size:clamp(1.05rem,1.5vw,1.2rem);color:var(--mut);max-width:780px;margin-top:28px;line-height:1.55}
+.p b{color:var(--tx);font-weight:600}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:64px}
+.stat{background:var(--card);border-radius:26px;padding:34px 30px}
+.stat .n{font-size:clamp(2.6rem,5vw,3.9rem);font-weight:700;letter-spacing:-.04em;line-height:1}
+.stat .l{font-size:.95rem;color:var(--mut2);margin-top:12px;max-width:230px}
+
+/* oracle */
+.orc{margin-top:60px;display:grid;grid-template-columns:1.25fr 1fr;gap:16px}
+.orc .big{background:radial-gradient(120% 140% at 0% 0%,rgba(77,163,255,.22),transparent 60%),radial-gradient(100% 120% at 100% 100%,rgba(155,123,255,.2),transparent 60%),var(--card);
+  border-radius:30px;padding:46px;border:1px solid var(--line)}
+.orc .big .tag{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.04em;color:var(--mut2);margin-bottom:18px;text-transform:uppercase}
+.orc .big .t{font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:600;letter-spacing:-.03em;line-height:1.18}
+.orc .side{display:flex;flex-direction:column;gap:16px}
+.orc .side .stat{flex:1;display:flex;flex-direction:column;justify-content:center}
+
+/* quotes */
+.q{padding:70px 0;border-top:1px solid var(--line)}
+.q:first-of-type{border-top:0;padding-top:20px}
+.q blockquote{font-size:clamp(1.9rem,4.6vw,3.5rem);font-weight:600;letter-spacing:-.035em;line-height:1.1;max-width:880px}
+.q cite{display:block;font-style:normal;color:var(--mut);font-size:1rem;margin-top:24px;max-width:700px}
+
+/* timeline */
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:56px}
+.tab{background:var(--card);border:1px solid transparent;border-radius:20px;padding:20px 22px;text-align:left;cursor:pointer;
+  color:var(--tx);font-family:inherit;transition:background .25s,border-color .25s,transform .25s}
+.tab:hover{background:var(--card2);transform:translateY(-3px)}
+.tab .y{font-size:1.5rem;font-weight:700;letter-spacing:-.03em;color:var(--mut2);transition:color .25s}
+.tab .r{font-size:.8rem;color:var(--mut);margin-top:4px;line-height:1.3}
+.tab[aria-selected="true"]{background:var(--card2);border-color:var(--acc)}
+.tab[aria-selected="true"] .y{color:var(--acc)}
+.tab[aria-selected="true"] .r{color:var(--tx)}
+.detail{margin-top:14px;background:var(--card);border-radius:34px;padding:52px;display:grid;grid-template-columns:290px 1fr;gap:54px;
+  position:relative;overflow:hidden;min-height:340px}
+.detail::before{content:'';position:absolute;width:420px;height:420px;border-radius:50%;top:-170px;right:-140px;
+  background:radial-gradient(circle,var(--glow,rgba(77,163,255,.2)),transparent 70%);pointer-events:none}
+.detail>*{position:relative}
+.dv .hv{font-size:clamp(3.2rem,6vw,4.8rem);font-weight:800;letter-spacing:-.05em;line-height:.95;
+  background:linear-gradient(120deg,var(--acc),#c4a8ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.dv .hl{font-size:.95rem;color:var(--mut2);margin-top:10px;font-weight:500}
+.dv .dur{margin-top:30px}
+.dv .dur .top{display:flex;justify-content:space-between;font-size:.74rem;color:var(--mut);font-weight:600;margin-bottom:8px}
+.dv .bar{height:6px;border-radius:6px;background:rgba(255,255,255,.1);overflow:hidden}
+.dv .fill{height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--acc),#c4a8ff);transition:width .9s cubic-bezier(.16,1,.3,1)}
+.dm .when{font-size:.88rem;font-weight:600;color:var(--acc);margin-bottom:8px}
+.dm .role{font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.dm .co{color:var(--mut2);margin-top:8px;font-weight:500}
+.dm .sum{color:var(--mut);font-size:.95rem;margin-top:14px;line-height:1.5;max-width:640px}
+.dm ul{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:13px}
+.dm li{position:relative;padding-left:24px;color:var(--mut2);font-size:.97rem;line-height:1.55}
+.dm li::before{content:'';position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.kpis{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.kp{font-size:.8rem;font-weight:600;padding:8px 16px;border-radius:980px;background:rgba(255,255,255,.08);border:1px solid var(--line)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* expertise cards */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:60px}
+.card{background:var(--card);border-radius:26px;padding:28px 26px;min-height:230px;display:flex;flex-direction:column;
+  transition:background .25s,transform .3s cubic-bezier(.16,1,.3,1)}
+.card:hover{background:var(--card2);transform:translateY(-6px)}
+.card .ic{width:46px;height:46px;border-radius:14px;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:auto}
+.card:hover .ic{background:#2a2a2d}
+.card .nm{font-size:1.15rem;font-weight:600;letter-spacing:-.02em;margin-top:34px;line-height:1.2}
+.card .tg{color:var(--mut);font-size:.85rem;margin-top:10px;line-height:1.5}
+
+/* team */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:56px}
+.team .tc{background:var(--card);border-radius:26px;padding:34px 30px}
+.team .v{font-size:clamp(2.4rem,4.4vw,3.4rem);font-weight:700;letter-spacing:-.04em;line-height:1}
+.team .nm{font-size:1.1rem;font-weight:600;margin-top:18px}
+.team .s{color:var(--mut);font-size:.9rem;margin-top:6px;line-height:1.45}
+
+/* formación */
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:56px}
+.edu .col{background:var(--card);border-radius:26px;padding:34px 30px}
+.edu h3{font-size:1.2rem;font-weight:600;letter-spacing:-.02em;margin-bottom:12px}
+.edu .it{padding:16px 0;border-top:1px solid var(--line)}
+.edu .it:first-of-type{border-top:0}
+.edu .in{font-weight:600;font-size:.98rem;line-height:1.35}
+.edu .is{color:var(--mut);font-size:.85rem;margin-top:4px;line-height:1.4}
+.edu .tag{display:inline-block;margin-top:8px;font-size:.72rem;font-weight:600;color:var(--blue)}
+
+/* contacto */
+#contacto{text-align:center;padding:150px 22px 130px;position:relative;overflow:hidden;isolation:isolate}
+#contacto .aurora{opacity:.8}
+#contacto h2.h{margin:0 auto}
+#contacto .p{margin:26px auto 0}
+.ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+footer{padding:34px 22px 44px;text-align:center;color:var(--mut);font-size:.78rem;border-top:1px solid var(--line);line-height:1.6}
+
+@media(max-width:1000px){
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .orc{grid-template-columns:1fr}
+  .tabs{grid-template-columns:repeat(2,1fr)}
+  .detail{grid-template-columns:1fr;gap:34px;padding:38px 28px}
+}
+@media(max-width:760px){
+  .subnav .links{display:none}
+  .subnav{padding:0 16px}
+  .subnav .brand{font-size:1.05rem}
+  .subnav .right{gap:10px}
+  .subnav .pill{padding:7px 14px;font-size:.78rem}
+  .hero-cta{gap:16px}
+  .sec{padding:90px 20px}
+  .stats,.team,.edu{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  .card{min-height:0}
+  .card .nm{margin-top:22px}
+  .orc .big{padding:32px 26px}
+  .q{padding:50px 0}
+}
+@media(prefers-reduced-motion:reduce){
+  .blob{animation:none}
+  .rv{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="subnav">
+  <a class="brand" href="#hero">Fernando Gómez</a>
+  <div class="right">
+    <nav class="links">
+      <a href="#resumen" data-i18n="n.sum">Resumen</a>
+      <a href="#trayectoria" data-i18n="n.exp">Trayectoria</a>
+      <a href="#expertise" data-i18n="n.skills">Expertise</a>
+      <a href="#formacion" data-i18n="n.edu">Formación</a>
+    </nav>
+    <div class="lang">
+      <button class="active" id="btn-es" onclick="setLang('es')">ES</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <a class="pill" href="#contacto" data-i18n="n.cta">Contactar</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="aurora"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i><i class="blob b4"></i></div>
+  <div class="hero-kicker rv" data-i18n="hero.kicker">Líder de Soluciones Tecnológicas</div>
+  <h1 class="hero-h1 rv" data-i18n-html="hero.h1">Dieciséis años como puente entre <span class="grad">negocio, cliente y tecnología.</span></h1>
+  <p class="hero-lead rv" data-i18n="hero.lead">Consultoría tecnológica · Integración de APIs · Soluciones digitales · IA aplicada. Consultoría directa con clientes a nivel directivo en multinacionales de México, Perú, Colombia y Chile, con reporte a corporativos en Francia, España y Reino Unido.</p>
+  <div class="hero-cta rv">
+    <a class="pill lg" href="#contacto" data-i18n="hero.l2">Contactar</a>
+    <a class="lk" href="#trayectoria" data-i18n="hero.l1">Ver trayectoria</a>
+  </div>
+  <div class="chips rv">
+    <span class="chip" data-i18n="hero.c1">$22M MXN CAPEX en proyectos</span>
+    <span class="chip" data-i18n="hero.c2">Equipos técnicos de hasta 15 personas</span>
+    <span class="chip" data-i18n="hero.c3">–70% tiempo de reportes · reconocido por Oracle</span>
+  </div>
+</section>
+
+<!-- RESUMEN -->
+<section class="sec" id="resumen"><div class="wrap">
+  <div class="kick rv" data-i18n="sum.kicker">Cómo trabajo</div>
+  <h2 class="h rv" data-i18n-html="sum.h">Del requerimiento de negocio a la solución en producción. <span class="grad">Con resultados que se miden.</span></h2>
+  <p class="p rv" data-i18n-html="sum.p1">Líder de soluciones tecnológicas con <b>16 años</b> como puente entre negocio, cliente y ejecución técnica en multinacionales de México, Perú, Colombia y Chile, con reporte a corporativos en Francia, España y Reino Unido. Experiencia en consultoría directa con clientes a nivel directivo, levantamiento de requerimientos y diseño de soluciones digitales a la medida: integraciones vía APIs entre ERP, CRM, LMS, aplicaciones móviles y plataformas fiscales. He liderado equipos técnicos de hasta 15 personas y gestionado <b>$22MM MXN</b> de CAPEX en proyectos.</p>
+  <p class="p rv" data-i18n="sum.p2">Convierto la tecnología en palanca comercial: diferenciación en licitaciones, retención de contratos y venta adicional de servicios de datos.</p>
+  <div class="stats">
+    <div class="stat rv"><div class="n grad" data-count="16">0</div><div class="l" data-i18n="st.1">años como puente entre negocio, cliente y ejecución técnica</div></div>
+    <div class="stat rv"><div class="n grad" data-count="15">0</div><div class="l" data-i18n="st.2">personas en equipos técnicos (hasta)</div></div>
+    <div class="stat rv"><div class="n grad" data-count="4">0</div><div class="l" data-i18n="st.3">países en LATAM</div></div>
+    <div class="stat rv"><div class="n grad">$22M</div><div class="l" data-i18n="st.4">MXN de CAPEX en proyectos</div></div>
+    <div class="stat rv"><div class="n grad">99.7%</div><div class="l" data-i18n="st.5">disponibilidad del ERP (300 usuarios)</div></div>
+    <div class="stat rv"><div class="n grad" data-count="3">0</div><div class="l" data-i18n="st.6">plataformas fiscales integradas (SAT, SUNAT, DIAN)</div></div>
+  </div>
+</div></section>
+
+<!-- ORACLE -->
+<section class="sec" id="oracle" style="padding-top:20px"><div class="wrap wide">
+  <div class="kick rv" data-i18n="or.kicker">Reconocimiento global</div>
+  <h2 class="h rv" data-i18n-html="or.h">Reconocido por Oracle como <span class="grad">referente de transformación digital.</span></h2>
+  <div class="orc">
+    <div class="big rv">
+      <span class="tag" data-i18n="or.tag">Oracle NetSuite × Claude AI</span>
+      <div class="t" data-i18n="or.p">Conector diseñado e integrado vía Model Context Protocol (MCP) con autenticación OAuth2 y auditoría: acceso en lenguaje natural a datos financieros, clientes e inventario.</div>
+      <div class="kpis" style="margin-top:30px"><span class="kp" data-i18n="or.k3">MCP · OAuth2 · Auditoría</span></div>
+    </div>
+    <div class="side">
+      <div class="stat rv"><div class="n grad">–70%</div><div class="l" data-i18n="or.k1">tiempo de generación de reportes financieros</div></div>
+      <div class="stat rv"><div class="n grad">–70%</div><div class="l" data-i18n="or.k2">costos de personalización del ERP</div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- IMPACTO -->
+<section class="sec" id="impacto" style="padding-top:20px"><div class="wrap">
+  <div class="kick rv" data-i18n="im.kicker">Impacto</div>
+  <div class="q rv"><blockquote data-i18n="q1">“De 48 horas a 3 minutos: ERP integrado con la facturación electrónica de 3 países.”</blockquote><cite data-i18n="a1">SAT, SUNAT y DIAN · Human Corporis</cite></div>
+  <div class="q rv"><blockquote data-i18n="q2">“La trazabilidad digital se volvió diferenciador en licitaciones y venta adicional de datos.”</blockquote><cite data-i18n="a2">Integración ERP + app móvil Movilform · SUEZ → VEOLIA</cite></div>
+  <div class="q rv"><blockquote data-i18n="q3">“99% de los procesos del cliente, sin observaciones.”</blockquote><cite data-i18n="a3">Plataforma documental con 90% de 75 controles ISO 27001 · Consultoría 2026</cite></div>
+</div></section>
+
+<!-- TRAYECTORIA -->
+<section class="sec" id="trayectoria" style="padding-top:20px"><div class="wrap wide">
+  <div class="kick rv" data-i18n="exp.kicker">Trayectoria</div>
+  <h2 class="h rv" data-i18n-html="exp.h">Cuatro etapas. <span class="grad">Una misma forma de trabajar.</span></h2>
+  <div class="tabs rv" id="tabs" role="tablist"></div>
+  <div class="detail rv" id="detail"></div>
+</div></section>
+
+<!-- EXPERTISE -->
+<section class="sec" id="expertise" style="padding-top:20px"><div class="wrap wide">
+  <div class="kick rv" data-i18n="xp.kicker">Expertise</div>
+  <h2 class="h rv" data-i18n-html="xp.h">Un perfil, <span class="grad">ocho capacidades.</span></h2>
+  <div class="cards" id="cards"></div>
+</div></section>
+
+<!-- LIDERAZGO / EQUIPOS -->
+<section class="sec" id="equipos" style="padding-top:20px"><div class="wrap wide">
+  <div class="kick rv" data-i18n="tm.kicker">Liderazgo</div>
+  <h2 class="h rv" data-i18n-html="tm.h">Equipos técnicos enfocados, <span class="grad">alcance regional.</span></h2>
+  <p class="p rv" data-i18n="tm.p">Equipos técnicos de hasta 15 personas, entre colaboradores directos e indirectos en proyectos.</p>
+  <div class="team">
+    <div class="tc rv"><div class="v grad" data-i18n="tm.1v">4 + 11</div><div class="nm">Human Corporis</div><div class="s" data-i18n="tm.1s">4 colaboradores directos y hasta 11 indirectos en proyectos</div></div>
+    <div class="tc rv"><div class="v grad" data-i18n="tm.2v">6 + 15</div><div class="nm">SUEZ → VEOLIA</div><div class="s" data-i18n="tm.2s">6 colaboradores directos y hasta 15 indirectos en proyectos</div></div>
+    <div class="tc rv"><div class="v grad" data-i18n="tm.3v">3</div><div class="nm">ISP</div><div class="s" data-i18n="tm.3s">3 colaboradores directos</div></div>
+  </div>
+</div></section>
+
+<!-- FORMACIÓN -->
+<section class="sec" id="formacion" style="padding-top:20px"><div class="wrap wide">
+  <div class="kick rv" data-i18n="edu.kicker">Formación</div>
+  <h2 class="h rv" data-i18n-html="edu.h">Sólida base. <span class="grad">Mejora continua.</span></h2>
+  <div class="edu">
+    <div class="col rv">
+      <h3 data-i18n="edu.h1">Educación</h3>
+      <div class="it"><div class="in" data-i18n="edu.1n">Maestría en Seguridad en Tecnologías de la Información</div><div class="is" data-i18n="edu.1s">Universidad Tecnológica de México (UNITEC) · 2015</div></div>
+      <div class="it"><div class="in" data-i18n="edu.2n">Licenciatura en Informática Administrativa</div><div class="is" data-i18n="edu.2s">Universidad Tecnológica de México (UNITEC) · 2007</div></div>
+    </div>
+    <div class="col rv">
+      <h3 data-i18n="edu.h2">Formación</h3>
+      <div class="it"><div class="in">Agile · Scrum · ITIL · TOGAF · ISO 27001</div><div class="is" data-i18n="edu.c2s">Metodologías aplicadas</div></div>
+      <div class="it"><div class="in" data-i18n="edu.c4n">MEX-IA — Formación en Inteligencia Artificial</div><div class="is" data-i18n="edu.c4s">CPFIA · Gobierno de México (ATDT / INFOTEC)</div><span class="tag" data-i18n="edu.c4t">En curso · 2026</span></div>
+    </div>
+    <div class="col rv">
+      <h3 data-i18n="edu.h3">Idiomas</h3>
+      <div class="it"><div class="in" data-i18n="edu.l1n">Español</div><div class="is" data-i18n="edu.l1s">Nativo</div></div>
+      <div class="it"><div class="in" data-i18n="edu.l2n">Inglés</div><div class="is" data-i18n="edu.l2s">Intermedio-avanzado de negocios (B2) · lectura y escritura avanzadas</div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="aurora"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i></div>
+  <div class="wrap">
+    <h2 class="h rv" data-i18n-html="ct.h">Hablemos de tu próximo <span class="grad">proyecto digital.</span></h2>
+    <p class="p rv" data-i18n="ct.p">Disponible para roles de consultoría y soluciones tecnológicas en LATAM. Resido en CDMX. Inglés intermedio-avanzado de negocios (B2).</p>
+    <div class="ctas rv">
+      <a class="pill lg wa" href="https://wa.me/525579198319" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24.044 12.045.044 5.463.044.104 5.404.101 11.986c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a11.882 11.882 0 005.7 1.452h.006c6.585 0 11.946-5.36 11.949-11.945a11.821 11.821 0 00-3.463-8.404"/></svg>WhatsApp</a>
+      <a class="pill lg" href="mailto:fernando.gomez2201@gmail.com" data-i18n="ct.b1">Enviar correo</a>
+      <a class="pill lg ghost" href="https://www.linkedin.com/in/fer-gomez/" target="_blank" rel="noopener" data-i18n="ct.b2">Conectar en LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer data-i18n="footer">Fernando Gómez Guerrero · Líder de Soluciones Tecnológicas · CDMX, México · +52 55-7919-8319 · fernando.gomez2201@gmail.com</footer>
+
+<script>
+const XP={
+ es:[
+  ['🤝','Consultoría y Relación con Clientes',['Clientes a nivel directivo','Diagnóstico y requerimientos','Upselling y cross-selling']],
+  ['🧩','Diseño de Soluciones Digitales',['Del requerimiento a la especificación técnica','Soluciones a la medida','Gestión del cambio']],
+  ['🔌','Integración de APIs',['OAuth2 · MCP','ERP–CRM–LMS','Apps móviles y plataformas fiscales']],
+  ['📊','Datos y BI',['Tableros de métricas','Datos de ERP y apps móviles','Servicios de datos de valor agregado']],
+  ['🤖','IA Aplicada',['Claude AI · MCP','Conector Oracle NetSuite','EDR con IA']],
+  ['🚀','Proyectos Ágiles y Equipos',['Agile · Scrum','Equipos técnicos de hasta 15','Roadmaps tecnológicos']],
+  ['☁️','Plataformas y Cloud',['Oracle NetSuite · Dynamics · SAP','JD Edwards · CRM · LMS · DMS','AWS · Azure · GCP']],
+  ['🔒','Seguridad y Continuidad',['ISO 27001:2022','DRP · RTO / RPO','Integración tecnológica M&A']]
+ ],
+ en:[
+  ['🤝','Client Consulting',['Executive-level clients','Diagnosis & requirements','Upselling & cross-selling']],
+  ['🧩','Digital Solution Design',['Requirements to technical specs','Tailored solutions','Change management']],
+  ['🔌','API Integration',['OAuth2 · MCP','ERP–CRM–LMS','Mobile apps & tax platforms']],
+  ['📊','Data & BI',['Metrics dashboards','ERP and mobile-app data','Value-added data services']],
+  ['🤖','Applied AI',['Claude AI · MCP','Oracle NetSuite connector','AI-driven EDR']],
+  ['🚀','Agile Projects & Teams',['Agile · Scrum','Technical teams of up to 15','Technology roadmaps']],
+  ['☁️','Platforms & Cloud',['Oracle NetSuite · Dynamics · SAP','JD Edwards · CRM · LMS · DMS','AWS · Azure · GCP']],
+  ['🔒','Security & Continuity',['ISO 27001:2022','DRP · RTO / RPO','M&A technology integration']]
+ ]
+};
+
+const JOBS={
+ es:[
+  {year:'2010',acc:'#a78bfa',glow:'rgba(167,139,250,.22)',when:'Agosto 2010 – Julio 2020',dur:'10 años',durpct:100,heroV:'94%',heroL:'Satisfacción de usuarios',
+   role:'Subdirector de TI',co:'International Schools Partnership (ISP) · México (reporte a Reino Unido)',
+   sum:'Dirección de la función de TI para la red educativa en México; enlace directo con la dirección corporativa en Reino Unido; equipo de 3 colaboradores directos.',
+   bullets:['Escalé la plataforma tecnológica de 3 a 12 campus operativos en 5 años, al diseñar y ejecutar la expansión de conectividad, plataformas y modelo operativo de TI alineado al plan de crecimiento del grupo','Elevé la satisfacción de usuarios de 60% a 94%, al implementar KPIs de servicio basados en ITIL y liderar al equipo con una cultura de servicio al cliente interno','Puse en marcha el ERP corporativo, la migración del CRM y la plataforma LMS para más de 900 usuarios, al coordinar la integración tecnológica y la gestión del cambio organizacional','Optimicé 12% el presupuesto anual de TI (hasta $2M MXN), mediante controles CAPEX/OPEX, renegociación de contratos y un programa de obsolescencia con migración escalonada a cloud'],
+   kpis:['3 → 12 campus','CSAT 60→94%','–12% presupuesto']},
+  {year:'2020',acc:'#4da3ff',glow:'rgba(77,163,255,.22)',when:'Noviembre 2020 – Julio 2025',dur:'≈5 años',durpct:48,heroV:'99.7%',heroL:'Disponibilidad del ERP',
+   role:'Gerente de TI LATAM',co:'SUEZ → VEOLIA · México y Colombia (reporte a Francia y España)',
+   sum:'Empresa global de servicios de agua y gestión ambiental; tras la fusión con VEOLIA, 9 unidades de negocio en México. Presupuesto: $22M MXN de CAPEX en proyectos (2020–2025) y $5M MXN de OPEX anual. Equipo de 6 colaboradores directos y hasta 15 indirectos en proyectos.',
+   bullets:['Reduje 60% los tiempos de proceso y 50% los incidentes, con 99.7% de disponibilidad a la entrega para 300 usuarios, al liderar desde cero la implementación del ERP ENWIS (Microsoft Dynamics) con una inversión CAPEX de $19M MXN en 18 meses','Habilité la autogestión digital de clientes internos y externos (pedidos, trazabilidad en línea, descarga de facturas, manifiestos SEMARNAT y cartas porte), al integrar al 100% el ERP con la aplicación móvil Movilform (CAPEX $3M MXN)','Transformé la trazabilidad digital en palanca comercial: diferenciador en licitaciones, apalancamiento para retener contratos vigentes y venta adicional de tableros de métricas, al explotar los datos del ERP y la app móvil como servicio de valor agregado para clientes','Garanticé 100% de continuidad operativa durante la integración tecnológica SUEZ–VEOLIA, al consolidar los entornos IT/OT de 9 unidades de negocio en México','Disminuí 6% el OPEX anual de TI ($5M MXN) manteniendo 100% de cumplimiento de SLAs, al renegociar contratos con proveedores y optimizar servicios','Diseñé la arquitectura objetivo de migración a SAP (blueprint cloud, APIs, BI e integraciones Dynamics–JD Edwards) y aprobé el DRP con parámetros RTO/RPO definidos'],
+   kpis:['99.7% disponibilidad','$22M CAPEX · $5M OPEX','Movilform · 100% integrado','100% continuidad']},
+  {year:'2025',acc:'#34d399',glow:'rgba(52,211,153,.2)',when:'Agosto 2025 – Abril 2026',dur:'9 meses',durpct:14,heroV:'–70%',heroL:'Tiempo de reportes',
+   role:'LATAM IT Manager',co:'Human Corporis · México, Perú y Colombia',
+   sum:'Dirección tecnológica regional de 3 unidades de negocio (~350 usuarios); reporte directo al CEO y miembro del Consejo. Equipo de 4 colaboradores directos y hasta 11 indirectos en proyectos.',
+   bullets:['Reduje 70% el tiempo de generación de reportes financieros y 70% los costos de personalización, al diseñar e integrar un conector Oracle NetSuite–Claude AI vía Model Context Protocol (MCP) con autenticación OAuth2 y auditoría; solución reconocida por Oracle como referente regional de transformación digital','Incrementé la adopción del ERP Oracle NetSuite de 25% a 90% en los módulos comercial, operativo y financiero de 3 países, al definir el roadmap tecnológico regional y traducir las necesidades de cada unidad de negocio en un modelo de gobierno unificado','Recorté el tiempo de emisión de facturas de 48 horas a 3 minutos, al integrar el ERP con la facturación electrónica de SAT (México), SUNAT (Perú) y DIAN (Colombia), eliminando procesos manuales y riesgo regulatorio','Protegí a 200 de 350 usuarios en 3 países en 4 meses, al implementar el SGSI bajo ISO 27001:2022 con 60 controles y 15 políticas (MFA, PAM, backups y EDR con IA)'],
+   kpis:['–70% reportes','ERP 25→90% adopción','48 h → 3 min','ISO 27001:2022']},
+  {year:'2026',acc:'#f472b6',glow:'rgba(244,114,182,.2)',when:'Mayo 2026 – Presente',dur:'En curso',durpct:18,heroV:'99%',heroL:'Procesos del cliente sin observaciones',
+   role:'Consultor Senior de TI y Soluciones Digitales',co:'Consultoría Tecnológica Independiente · Remoto',
+   sum:'Consultoría directa con clientes (firmas legales y organizaciones gremiales): diagnóstico de sistemas, levantamiento de requerimientos y diseño de soluciones digitales a la medida en gobernanza, seguridad de la información y gestión documental.',
+   bullets:['Entregué end-to-end en 2 meses un gestor documental (DMS) para 35 usuarios de una firma de abogados de presencia nacional, al traducir los requerimientos del cliente en taxonomía documental, metadatos, permisos por rol y flujos de trabajo automatizados','Aseguré que 99% de los procesos presentados por el cliente en litigios y licitaciones pasaran sin observaciones, al desplegar sobre la plataforma documental 90% de 75 controles y políticas ISO 27001 (acceso granular, cifrado, auditoría) sin interrupciones operativas, validado por pre-auditoría interna','Elevé de 20% a 90% las funcionalidades operativas y en uso de las plataformas críticas (LMS y CRM) de una organización gremial de ~70 usuarios/asociados, al diagnosticar sus sistemas y ejecutar un plan de recuperación con cero interrupciones de servicio'],
+   kpis:['DMS · 35 usuarios','ISO 27001: 90% de 75 controles','LMS/CRM 20→90%']}
+ ],
+ en:[
+  {year:'2010',acc:'#a78bfa',glow:'rgba(167,139,250,.22)',when:'August 2010 – July 2020',dur:'10 years',durpct:100,heroV:'94%',heroL:'User satisfaction',
+   role:'IT Sub-Director',co:'International Schools Partnership (ISP) · Mexico (reporting to the UK)',
+   sum:'Led the IT function for the school network in Mexico, with a direct line to corporate leadership in the United Kingdom; 3 direct reports.',
+   bullets:['Scaled the technology platform from 3 to 12 operating campuses in 5 years, designing and executing the expansion of connectivity, platforms and the IT operating model in line with the group growth plan','Raised user satisfaction from 60% to 94% by implementing ITIL-based service KPIs and leading the team with an internal-customer service culture','Launched the corporate ERP, the CRM migration and the LMS platform for 900+ users, coordinating technology integration and organizational change management','Optimized the annual IT budget (up to $2M MXN) by 12% through CAPEX/OPEX controls, contract renegotiation and an obsolescence program with staged cloud migration'],
+   kpis:['3 → 12 campuses','CSAT 60→94%','–12% budget']},
+  {year:'2020',acc:'#4da3ff',glow:'rgba(77,163,255,.22)',when:'November 2020 – July 2025',dur:'≈5 years',durpct:48,heroV:'99.7%',heroL:'ERP availability',
+   role:'IT Manager LATAM',co:'SUEZ → VEOLIA · Mexico and Colombia (reporting to France and Spain)',
+   sum:'Global water and environmental services company; after the merger with VEOLIA, 9 business units in Mexico. Budget: $22M MXN in project CAPEX (2020–2025) and $5M MXN in annual OPEX. Team of 6 direct reports and up to 15 indirect on projects.',
+   bullets:['Cut process times by 60% and incidents by 50%, with 99.7% availability at delivery for 300 users, by leading the ENWIS ERP (Microsoft Dynamics) implementation from scratch with a $19M MXN CAPEX investment over 18 months','Enabled digital self-service for internal and external customers (orders, online tracking, invoice downloads, SEMARNAT manifests and waybills) by fully integrating the ERP with the Movilform mobile app ($3M MXN CAPEX)','Turned digital traceability into a commercial lever: a differentiator in bids, leverage to retain existing contracts and additional sales of metrics dashboards, by exploiting ERP and mobile-app data as a value-added service for clients','Guaranteed 100% operational continuity during the SUEZ–VEOLIA technology integration by consolidating the IT/OT environments of 9 business units in Mexico','Cut annual IT OPEX by 6% ($5M MXN) while keeping 100% SLA compliance, by renegotiating vendor contracts and optimizing services','Designed the target architecture for the SAP migration (cloud blueprint, APIs, BI and Dynamics–JD Edwards integrations) and approved the DRP with defined RTO/RPO parameters'],
+   kpis:['99.7% availability','$22M CAPEX · $5M OPEX','Movilform · 100% integrated','100% continuity']},
+  {year:'2025',acc:'#34d399',glow:'rgba(52,211,153,.2)',when:'August 2025 – April 2026',dur:'9 months',durpct:14,heroV:'–70%',heroL:'Reporting time',
+   role:'LATAM IT Manager',co:'Human Corporis · Mexico, Peru and Colombia',
+   sum:'Regional technology leadership across 3 business units (~350 users); reporting directly to the CEO and a member of the Board. Team of 4 direct reports and up to 11 indirect on projects.',
+   bullets:['Cut financial report-generation time by 70% and customization costs by 70% by designing and integrating an Oracle NetSuite–Claude AI connector via Model Context Protocol (MCP) with OAuth2 authentication and auditing; recognized by Oracle as a regional digital-transformation benchmark','Raised Oracle NetSuite ERP adoption from 25% to 90% across sales, operations and finance modules in 3 countries, by defining the regional technology roadmap and translating each business unit’s needs into a unified governance model','Cut invoice issuance time from 48 hours to 3 minutes by integrating the ERP with the e-invoicing platforms of SAT (Mexico), SUNAT (Peru) and DIAN (Colombia), eliminating manual processes and regulatory risk','Protected 200 of 350 users across 3 countries in 4 months by implementing the ISMS under ISO 27001:2022 with 60 controls and 15 policies (MFA, PAM, backups and AI-driven EDR)'],
+   kpis:['–70% reports','ERP 25→90% adoption','48 h → 3 min','ISO 27001:2022']},
+  {year:'2026',acc:'#f472b6',glow:'rgba(244,114,182,.2)',when:'May 2026 – Present',dur:'Ongoing',durpct:18,heroV:'99%',heroL:'Client processes without observations',
+   role:'Senior IT & Digital Solutions Consultant',co:'Independent Technology Consulting · Remote',
+   sum:'Direct client consulting (law firms and trade associations): systems diagnosis, requirements gathering and tailored digital solution design in governance, information security and document management.',
+   bullets:['Delivered end-to-end in 2 months a document management system (DMS) for 35 users at a nationwide law firm, translating the client’s requirements into document taxonomy, metadata, role-based permissions and automated workflows','Ensured 99% of the client’s litigation and bid filings passed without observations by deploying 90% of 75 ISO 27001 controls and policies (granular access, encryption, auditing) on the document platform with zero operational disruption, validated by internal pre-audit','Raised from 20% to 90% the operational, in-use functionality of the critical platforms (LMS and CRM) of a trade association of ~70 users/members, by diagnosing their systems and executing a recovery plan with zero service interruptions'],
+   kpis:['DMS · 35 users','ISO 27001: 90% of 75 controls','LMS/CRM 20→90%']}
+ ]
+};
+
+const T={
+ es:{
+  'n.sum':'Resumen','n.exp':'Trayectoria','n.skills':'Expertise','n.edu':'Formación','n.cta':'Contactar',
+  'hero.kicker':'Líder de Soluciones Tecnológicas',
+  'hero.h1':'Dieciséis años como puente entre <span class="grad">negocio, cliente y tecnología.</span>',
+  'hero.lead':'Consultoría tecnológica · Integración de APIs · Soluciones digitales · IA aplicada. Consultoría directa con clientes a nivel directivo en multinacionales de México, Perú, Colombia y Chile, con reporte a corporativos en Francia, España y Reino Unido.',
+  'hero.l1':'Ver trayectoria','hero.l2':'Contactar',
+  'hero.c1':'$22M MXN CAPEX en proyectos','hero.c2':'Equipos técnicos de hasta 15 personas','hero.c3':'–70% tiempo de reportes · reconocido por Oracle',
+  'sum.kicker':'Cómo trabajo',
+  'sum.h':'Del requerimiento de negocio a la solución en producción. <span class="grad">Con resultados que se miden.</span>',
+  'sum.p1':'Líder de soluciones tecnológicas con <b>16 años</b> como puente entre negocio, cliente y ejecución técnica en multinacionales de México, Perú, Colombia y Chile, con reporte a corporativos en Francia, España y Reino Unido. Experiencia en consultoría directa con clientes a nivel directivo, levantamiento de requerimientos y diseño de soluciones digitales a la medida: integraciones vía APIs entre ERP, CRM, LMS, aplicaciones móviles y plataformas fiscales. He liderado equipos técnicos de hasta 15 personas y gestionado <b>$22MM MXN</b> de CAPEX en proyectos.',
+  'sum.p2':'Convierto la tecnología en palanca comercial: diferenciación en licitaciones, retención de contratos y venta adicional de servicios de datos.',
+  'st.1':'años como puente entre negocio, cliente y ejecución técnica','st.2':'personas en equipos técnicos (hasta)','st.3':'países en LATAM','st.4':'MXN de CAPEX en proyectos','st.5':'disponibilidad del ERP (300 usuarios)','st.6':'plataformas fiscales integradas (SAT, SUNAT, DIAN)',
+  'or.kicker':'Reconocimiento global',
+  'or.h':'Reconocido por Oracle como <span class="grad">referente de transformación digital.</span>',
+  'or.tag':'Oracle NetSuite × Claude AI',
+  'or.p':'Conector diseñado e integrado vía Model Context Protocol (MCP) con autenticación OAuth2 y auditoría: acceso en lenguaje natural a datos financieros, clientes e inventario.',
+  'or.k1':'tiempo de generación de reportes financieros','or.k2':'costos de personalización del ERP','or.k3':'MCP · OAuth2 · Auditoría',
+  'im.kicker':'Impacto',
+  'q1':'“De 48 horas a 3 minutos: ERP integrado con la facturación electrónica de 3 países.”','a1':'SAT, SUNAT y DIAN · Human Corporis',
+  'q2':'“La trazabilidad digital se volvió diferenciador en licitaciones y venta adicional de datos.”','a2':'Integración ERP + app móvil Movilform · SUEZ → VEOLIA',
+  'q3':'“99% de los procesos del cliente, sin observaciones.”','a3':'Plataforma documental con 90% de 75 controles ISO 27001 · Consultoría 2026',
+  'exp.kicker':'Trayectoria',
+  'exp.h':'Cuatro etapas. <span class="grad">Una misma forma de trabajar.</span>',
+  'xp.kicker':'Expertise',
+  'xp.h':'Un perfil, <span class="grad">ocho capacidades.</span>',
+  'tm.kicker':'Liderazgo',
+  'tm.h':'Equipos técnicos enfocados, <span class="grad">alcance regional.</span>',
+  'tm.p':'Equipos técnicos de hasta 15 personas, entre colaboradores directos e indirectos en proyectos.',
+  'tm.1v':'4 + 11','tm.1s':'4 colaboradores directos y hasta 11 indirectos en proyectos',
+  'tm.2v':'6 + 15','tm.2s':'6 colaboradores directos y hasta 15 indirectos en proyectos',
+  'tm.3v':'3','tm.3s':'3 colaboradores directos',
+  'edu.kicker':'Formación',
+  'edu.h':'Sólida base. <span class="grad">Mejora continua.</span>',
+  'edu.h1':'Educación','edu.h2':'Formación','edu.h3':'Idiomas',
+  'edu.1n':'Maestría en Seguridad en Tecnologías de la Información','edu.1s':'Universidad Tecnológica de México (UNITEC) · 2015',
+  'edu.2n':'Licenciatura en Informática Administrativa','edu.2s':'Universidad Tecnológica de México (UNITEC) · 2007',
+  'edu.c2s':'Metodologías aplicadas',
+  'edu.c4n':'MEX-IA — Formación en Inteligencia Artificial','edu.c4s':'CPFIA · Gobierno de México (ATDT / INFOTEC)','edu.c4t':'En curso · 2026',
+  'edu.l1n':'Español','edu.l1s':'Nativo','edu.l2n':'Inglés','edu.l2s':'Intermedio-avanzado de negocios (B2) · lectura y escritura avanzadas',
+  'ct.h':'Hablemos de tu próximo <span class="grad">proyecto digital.</span>',
+  'ct.p':'Disponible para roles de consultoría y soluciones tecnológicas en LATAM. Resido en CDMX. Inglés intermedio-avanzado de negocios (B2).',
+  'ct.b1':'Enviar correo','ct.b2':'Conectar en LinkedIn',
+  'footer':'Fernando Gómez Guerrero · Líder de Soluciones Tecnológicas · CDMX, México · +52 55-7919-8319 · fernando.gomez2201@gmail.com'
+ },
+ en:{
+  'n.sum':'Overview','n.exp':'Experience','n.skills':'Expertise','n.edu':'Education','n.cta':'Contact',
+  'hero.kicker':'Technology Solutions Leader',
+  'hero.h1':'Sixteen years as the bridge between <span class="grad">business, client and technology.</span>',
+  'hero.lead':'Technology consulting · API integration · Digital solutions · Applied AI. Executive-level client consulting at multinationals in Mexico, Peru, Colombia and Chile, reporting to headquarters in France, Spain and the United Kingdom.',
+  'hero.l1':'View experience','hero.l2':'Contact me',
+  'hero.c1':'$22M MXN project CAPEX','hero.c2':'Technical teams of up to 15 people','hero.c3':'–70% reporting time · recognized by Oracle',
+  'sum.kicker':'How I work',
+  'sum.h':'From business requirement to solution in production. <span class="grad">With results you can measure.</span>',
+  'sum.p1':'Technology solutions leader with <b>16 years</b> as the bridge between business, client and technical execution at multinationals in Mexico, Peru, Colombia and Chile, reporting to headquarters in France, Spain and the United Kingdom. Experience in direct executive-level client consulting, requirements gathering and tailored digital solution design: API integrations across ERP, CRM, LMS, mobile apps and tax platforms. I have led technical teams of up to 15 people and managed <b>$22M MXN</b> in project CAPEX.',
+  'sum.p2':'I turn technology into a commercial lever: differentiation in bids, contract retention and additional sales of data services.',
+  'st.1':'years as the bridge between business, client and technical execution','st.2':'people on technical teams (up to)','st.3':'LATAM countries','st.4':'MXN in project CAPEX','st.5':'ERP availability (300 users)','st.6':'tax platforms integrated (SAT, SUNAT, DIAN)',
+  'or.kicker':'Global recognition',
+  'or.h':'Recognized by Oracle as a <span class="grad">digital-transformation benchmark.</span>',
+  'or.tag':'Oracle NetSuite × Claude AI',
+  'or.p':'Connector designed and integrated via Model Context Protocol (MCP) with OAuth2 authentication and auditing: natural-language access to financial, customer and inventory data.',
+  'or.k1':'financial report generation time','or.k2':'ERP customization costs','or.k3':'MCP · OAuth2 · Auditing',
+  'im.kicker':'Impact',
+  'q1':'“From 48 hours to 3 minutes: ERP integrated with e-invoicing in 3 countries.”','a1':'SAT, SUNAT and DIAN · Human Corporis',
+  'q2':'“Digital traceability became a differentiator in bids and a source of additional data sales.”','a2':'ERP + Movilform mobile app integration · SUEZ → VEOLIA',
+  'q3':'“99% of the client’s processes, without observations.”','a3':'Document platform with 90% of 75 ISO 27001 controls · 2026 consulting',
+  'exp.kicker':'Experience',
+  'exp.h':'Four chapters. <span class="grad">One way of working.</span>',
+  'xp.kicker':'Expertise',
+  'xp.h':'One profile, <span class="grad">eight capabilities.</span>',
+  'tm.kicker':'Leadership',
+  'tm.h':'Focused technical teams, <span class="grad">regional reach.</span>',
+  'tm.p':'Technical teams of up to 15 people, across direct reports and indirect project contributors.',
+  'tm.1v':'4 + 11','tm.1s':'4 direct reports and up to 11 indirect on projects',
+  'tm.2v':'6 + 15','tm.2s':'6 direct reports and up to 15 indirect on projects',
+  'tm.3v':'3','tm.3s':'3 direct reports',
+  'edu.kicker':'Education',
+  'edu.h':'Solid foundation. <span class="grad">Continuous improvement.</span>',
+  'edu.h1':'Education','edu.h2':'Training','edu.h3':'Languages',
+  'edu.1n':'Master’s in Information Security','edu.1s':'Universidad Tecnológica de México (UNITEC) · 2015',
+  'edu.2n':'Bachelor’s in Administrative Informatics','edu.2s':'Universidad Tecnológica de México (UNITEC) · 2007',
+  'edu.c2s':'Applied methodologies',
+  'edu.c4n':'MEX-IA — Artificial Intelligence Training','edu.c4s':'CPFIA · Government of Mexico (ATDT / INFOTEC)','edu.c4t':'In progress · 2026',
+  'edu.l1n':'Spanish','edu.l1s':'Native','edu.l2n':'English','edu.l2s':'Intermediate-advanced business level (B2) · advanced reading and writing',
+  'ct.h':'Let’s talk about your next <span class="grad">digital project.</span>',
+  'ct.p':'Available for technology consulting and solutions roles across LATAM. Based in Mexico City. Intermediate-advanced business English (B2).',
+  'ct.b1':'Send email','ct.b2':'Connect on LinkedIn',
+  'footer':'Fernando Gómez Guerrero · Technology Solutions Leader · Mexico City, Mexico · +52 55-7919-8319 · fernando.gomez2201@gmail.com'
+ }
+};
+
+let lang=localStorage.getItem('fgg-ti_consult-lang')||'es';
+let tlActive=3;
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+
+function buildCards(){
+  const g=document.getElementById('cards');g.innerHTML='';
+  XP[lang].forEach(x=>{
+    const d=document.createElement('div');d.className='card rv';
+    d.innerHTML='<div class="ic">'+x[0]+'</div><div class="nm">'+x[1]+'</div><div class="tg">'+x[2].join('<br>')+'</div>';
+    g.appendChild(d);io.observe(d);
+  });
+}
+function buildTimeline(){
+  const jobs=JOBS[lang];const tabs=document.getElementById('tabs');
+  tabs.innerHTML='';
+  jobs.forEach((j,i)=>{
+    const b=document.createElement('button');b.className='tab';b.setAttribute('role','tab');
+    b.setAttribute('aria-selected',i===tlActive?'true':'false');b.style.setProperty('--acc',j.acc);
+    b.innerHTML='<div class="y">'+j.year+'</div><div class="r">'+j.role+'</div>';
+    b.onclick=()=>{tlActive=i;buildTimeline();gtag('event','timeline_select',{job:j.year,page:'ti_consult'});};
+    tabs.appendChild(b);
+  });
+  const j=jobs[tlActive];const d=document.getElementById('detail');
+  d.style.setProperty('--acc',j.acc);d.style.setProperty('--glow',j.glow);
+  d.innerHTML=
+    '<div class="dv"><div class="hv">'+j.heroV+'</div><div class="hl">'+j.heroL+'</div>'+
+      '<div class="dur"><div class="top"><span>'+(lang==='es'?'Duración':'Duration')+'</span><span>'+j.dur+'</span></div>'+
+      '<div class="bar"><div class="fill"></div></div></div></div>'+
+    '<div class="dm"><div class="when">'+j.when+'</div><div class="role">'+j.role+'</div><div class="co">'+j.co+'</div>'+
+      '<div class="sum">'+j.sum+'</div>'+
+      '<ul>'+j.bullets.map(b=>'<li>'+b+'</li>').join('')+'</ul>'+
+      '<div class="kpis">'+j.kpis.map(k=>'<span class="kp">'+k+'</span>').join('')+'</div></div>';
+  d.style.animation='none';void d.offsetWidth;d.style.animation='fadeUp .55s cubic-bezier(.16,1,.3,1)';
+  setTimeout(()=>{const f=d.querySelector('.fill');if(f)f.style.width=j.durpct+'%';},30);
+}
+function setLang(l){
+  lang=l;try{localStorage.setItem('fgg-ti_consult-lang',l);}catch(e){}
+  document.documentElement.lang=l;
+  document.getElementById('btn-es').classList.toggle('active',l==='es');
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  const d=T[l];
+  document.querySelectorAll('[data-i18n]').forEach(e=>{const k=e.getAttribute('data-i18n');if(d[k]!==undefined)e.textContent=d[k];});
+  document.querySelectorAll('[data-i18n-html]').forEach(e=>{const k=e.getAttribute('data-i18n-html');if(d[k]!==undefined)e.innerHTML=d[k];});
+  buildCards();buildTimeline();
+  gtag('event','language_switch',{language:l,page:'ti_consult'});
+}
+function counters(){
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const to=+el.dataset.count,suf=el.dataset.suffix||'',t0=Date.now();
+    const iv=setInterval(()=>{
+      const p=Math.min((Date.now()-t0)/1400,1);
+      el.textContent=Math.round(to*(1-Math.pow(1-p,3)))+suf;
+      if(p>=1)clearInterval(iv);
+    },30);
+  });
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  setLang(lang);
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+  setTimeout(counters,300);
+});
+</script>
+</body>
+</html>
