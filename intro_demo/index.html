@@ -217,10 +217,12 @@ footer{padding:34px 22px 44px;text-align:center;color:var(--mut);font-size:.78re
 #intro .l1{font-size:clamp(2.6rem,9vw,6.6rem)}
 #intro .l2{font-size:clamp(1.6rem,4.6vw,3.4rem);position:absolute}
 #intro .l3{font-size:clamp(1.2rem,3vw,2rem);font-weight:600;color:#a1a1a6;position:absolute}
-#intro .skip{position:absolute;right:22px;bottom:26px;z-index:2;background:rgba(255,255,255,.12);color:#f5f5f7;border:1px solid rgba(255,255,255,.2);
+#intro .skip{position:absolute;right:22px;bottom:26px;z-index:2;background:rgba(10,10,12,.68);color:#f5f5f7;border:1px solid rgba(255,255,255,.28);
   border-radius:980px;padding:9px 18px;font:500 .82rem 'Inter',sans-serif;cursor:pointer;backdrop-filter:blur(10px);transition:background .2s}
-#intro .skip:hover{background:rgba(255,255,255,.22)}
+#intro .skip:hover{background:rgba(10,10,12,.88)}
 #intro .prog{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--grad);z-index:2}
+#intro.vid{background:#f1f1ef}
+@media(max-aspect-ratio:1/1){#intro video{object-fit:contain}}
 body.intro-lock{overflow:hidden}
 </style>
 </head>
@@ -640,10 +642,10 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
   var started=false;
   function useVideo(){
-    started=true;vid.classList.add('on');document.getElementById('introFb').style.display='none';
+    started=true;vid.classList.add('on');intro.classList.add('vid');document.getElementById('introFb').style.display='none';
     vid.addEventListener('timeupdate',function(){if(vid.duration)prog.style.width=(vid.currentTime/vid.duration*100)+'%';});
     vid.addEventListener('ended',finish);
-    var p=vid.play();if(p&&p.catch)p.catch(function(){started=false;vid.classList.remove('on');document.getElementById('introFb').style.display='';runFallback(7500);});
+    var p=vid.play();if(p&&p.catch)p.catch(function(){started=false;vid.classList.remove('on');intro.classList.remove('vid');document.getElementById('introFb').style.display='';runFallback(7500);});
   }
   var srcs=vid.querySelectorAll('source'),failed=0;
   function srcFail(){failed++;if(failed>=srcs.length&&!started){started=true;runFallback(7500);}}
