@@ -630,7 +630,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.addEventListener('keydown',function(e){if(e.key==='Escape')finish();});
   function runFallback(total){
     var a=document.getElementById('il1'),b=document.getElementById('il2'),c=document.getElementById('il3');
-    prog.style.transition='width '+total+'ms linear';requestAnimationFrame(function(){prog.style.width='100%';});
+    prog.style.transition='width '+total+'ms linear';setTimeout(function(){prog.style.width='100%';},40);
     timers.push(setTimeout(function(){a.classList.add('show');},300));
     timers.push(setTimeout(function(){a.classList.remove('show');a.classList.add('hide');},2300));
     timers.push(setTimeout(function(){b.classList.add('show');},2600));
