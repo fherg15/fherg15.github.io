@@ -649,7 +649,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   function srcFail(){failed++;if(failed>=srcs.length&&!started){started=true;runFallback(7500);}}
   srcs.forEach(function(s){s.addEventListener('error',srcFail);});
   vid.addEventListener('loadeddata',function(){if(!started)useVideo();});
-  timers.push(setTimeout(function(){if(!started){started=true;runFallback(7500);}},2500));
+  timers.push(setTimeout(function(){if(!started){started=true;runFallback(7500);}},6000));
 })();
 </script>
 </body>
