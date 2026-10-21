@@ -220,6 +220,10 @@ footer{padding:34px 22px 44px;text-align:center;color:var(--mut);font-size:.78re
 #intro .skip{position:absolute;right:22px;bottom:26px;z-index:2;background:rgba(10,10,12,.68);color:#f5f5f7;border:1px solid rgba(255,255,255,.28);
   border-radius:980px;padding:9px 18px;font:500 .82rem 'Inter',sans-serif;cursor:pointer;backdrop-filter:blur(10px);transition:background .2s}
 #intro .skip:hover{background:rgba(10,10,12,.88)}
+#intro .snd{position:absolute;left:22px;bottom:26px;z-index:2;display:none;background:rgba(10,10,12,.68);color:#f5f5f7;border:1px solid rgba(255,255,255,.28);
+  border-radius:980px;padding:9px 18px;font:500 .82rem 'Inter',sans-serif;cursor:pointer;backdrop-filter:blur(10px);transition:background .2s}
+#intro .snd.show{display:inline-flex;gap:8px;align-items:center}
+#intro .snd:hover{background:rgba(10,10,12,.88)}
 #intro .prog{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--grad);z-index:2}
 #intro.vid{background:#f1f1ef}
 @media(max-aspect-ratio:1/1){#intro video{object-fit:contain}}
@@ -240,6 +244,7 @@ body.intro-lock{overflow:hidden}
     <div class="ln l3" id="il3">16 años · ERP · Ciberseguridad ISO 27001 · IA Aplicada</div>
   </div>
   <div class="prog" id="iprog"></div>
+  <button class="snd" id="isnd" type="button">🔇 Activar sonido</button>
   <button class="skip" id="iskip" type="button">Saltar intro ›</button>
 </div>
 
@@ -640,11 +645,24 @@ document.addEventListener('DOMContentLoaded',()=>{
     timers.push(setTimeout(function(){c.classList.add('show');},4900));
     timers.push(setTimeout(finish,total));
   }
+  function showSound(){
+    var b=document.getElementById('isnd');if(!b)return;b.classList.add('show');
+    b.onclick=function(){
+      vid.muted=!vid.muted;if(!vid.muted){vid.volume=1;var q=vid.play();if(q&&q.catch)q.catch(function(){});}
+      b.textContent=vid.muted?'🔇 Activar sonido':'🔊 Sonido activado';
+      try{gtag('event','intro_sound_toggle',{page:'intro_demo',muted:vid.muted});}catch(e){}
+    };
+  }
   var started=false;
   function useVideo(){
     started=true;vid.classList.add('on');intro.classList.add('vid');document.getElementById('introFb').style.display='none';
     vid.addEventListener('timeupdate',function(){if(vid.duration)prog.style.width=(vid.currentTime/vid.duration*100)+'%';});
     vid.addEventListener('ended',finish);
+    setTimeout(function(){
+      var has=false;
+      try{has=(vid.webkitAudioDecodedByteCount>0)||vid.mozHasAudio===true||(vid.audioTracks&&vid.audioTracks.length>0);}catch(e){}
+      if(has)showSound();
+    },900);
     var p=vid.play();if(p&&p.catch)p.catch(function(){started=false;vid.classList.remove('on');intro.classList.remove('vid');document.getElementById('introFb').style.display='';runFallback(7500);});
   }
   var srcs=vid.querySelectorAll('source'),failed=0;
