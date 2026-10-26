@@ -90,6 +90,7 @@ main{display:flex;flex-direction:column;gap:12px;padding-bottom:12px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:52px;text-align:left}
 .stat{background:#fff;border-radius:18px;padding:30px 28px}
 .stat .n{font-size:clamp(2.4rem,4.4vw,3.4rem);font-weight:600;letter-spacing:-.035em;line-height:1}
+.tile.white .stat{background:var(--tile)}
 .stat .l{font-size:15px;color:var(--mut);margin-top:12px;line-height:1.35;max-width:240px}
 
 /* ORACLE (tile negro) */
@@ -105,7 +106,7 @@ main{display:flex;flex-direction:column;gap:12px;padding-bottom:12px}
 
 /* IMPACTO (3 tiles) */
 .q3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.q{padding:64px 30px;display:flex;flex-direction:column;justify-content:center;min-height:420px}
+.q{padding:64px 30px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:420px}
 .q.l{background:var(--tile);color:var(--ink)}
 .q.d{background:var(--blk);color:#f5f5f7}
 .q blockquote{font-size:clamp(1.6rem,2.4vw,2.1rem);font-weight:600;letter-spacing:-.028em;line-height:1.12}
@@ -140,10 +141,10 @@ main{display:flex;flex-direction:column;gap:12px;padding-bottom:12px}
 
 /* EXPERTISE */
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:52px;text-align:left}
-.card{background:#fff;border-radius:18px;padding:28px 24px;min-height:230px;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.28,.11,.32,1)}
+.card{background:#fff;border-radius:18px;padding:28px 24px;min-height:210px;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.28,.11,.32,1)}
 .card:hover{transform:scale(1.02)}
-.card .ic{font-size:1.9rem;margin-bottom:auto}
-.card .nm{font-size:19px;font-weight:600;letter-spacing:-.02em;line-height:1.2;margin-top:32px}
+.card .ic{font-size:1.9rem;line-height:1;margin-bottom:22px}
+.card .nm{font-size:19px;font-weight:600;letter-spacing:-.02em;line-height:1.2}
 .card .tg{color:var(--mut);font-size:14px;margin-top:10px;line-height:1.55}
 
 /* EQUIPOS */
@@ -365,44 +366,44 @@ const XP={
 
 const JOBS={
  es:[
-  {year:'2010',acc:'#a78bfa',glow:'rgba(167,139,250,.22)',when:'Agosto 2010 – Julio 2020',dur:'10 años',durpct:100,heroV:'3 → 12',heroL:'Campus operativos en 5 años',
+  {year:'2010',acc:'#7c4dff',glow:'rgba(167,139,250,.22)',when:'Agosto 2010 – Julio 2020',dur:'10 años',durpct:100,heroV:'3 → 12',heroL:'Campus operativos en 5 años',
    role:'Subdirector de TI',co:'International Schools Partnership (ISP) · México (reporte a Reino Unido)',
    sum:'Dirección de la función de TI de la red educativa en México; enlace directo con la dirección corporativa en Reino Unido. Equipo de 3 colaboradores directos.',
    bullets:['Escalé la operación tecnológica de 3 a 12 campus en 5 años, al diseñar y ejecutar la infraestructura, conectividad y modelo operativo de TI para el arranque e incorporación de nuevos sitios','Elevé la satisfacción de usuarios de 60% a 94%, al implementar KPIs de servicio basados en ITIL y una cultura de servicio en el equipo de TI','Entregué el ERP corporativo, la migración del CRM y la plataforma LMS para más de 900 usuarios, liderando la integración tecnológica y la gestión del cambio organizacional','Optimicé 12% el presupuesto anual de TI (hasta $2M MXN) mediante controles CAPEX/OPEX, renegociación de contratos y un programa de obsolescencia tecnológica con migración escalonada a la nube'],
    kpis:['3 → 12 campus','CSAT 60→94%','900+ usuarios','–12% presupuesto']},
-  {year:'2020',acc:'#4da3ff',glow:'rgba(77,163,255,.22)',when:'Noviembre 2020 – Julio 2025',dur:'≈5 años',durpct:48,heroV:'99.7%',heroL:'Disponibilidad del ERP',
+  {year:'2020',acc:'#0071e3',glow:'rgba(77,163,255,.22)',when:'Noviembre 2020 – Julio 2025',dur:'≈5 años',durpct:48,heroV:'99.7%',heroL:'Disponibilidad del ERP',
    role:'Gerente de TI LATAM',co:'SUEZ (hoy VEOLIA) · México y Colombia (reporte a Francia y España)',
    sum:'Servicios de agua y gestión ambiental; tras la fusión con VEOLIA, 9 unidades de negocio en México. Presupuesto de TI: $22M MXN de CAPEX (2020–2025) y $5M MXN de OPEX anual. Equipo de 6 colaboradores directos y hasta 15 indirectos.',
    bullets:['Integré 9 unidades de negocio a la operación de VEOLIA en México con 100% de continuidad operativa, al consolidar la infraestructura, telecomunicaciones y sistemas IT/OT durante la fusión SUEZ–VEOLIA','Alcancé 99.7% de disponibilidad del ERP para 300 usuarios, con 60% menos tiempo de proceso y 50% menos incidentes, al implementar desde cero el ERP ENWIS (Microsoft Dynamics) en 18 meses con una inversión CAPEX de $19M MXN','Habilité el autoservicio de clientes internos y externos (pedidos, trazabilidad logística en línea, facturas, manifiestos SEMARNAT y cartas porte) al integrar al 100% el ERP con la app Movilform, con una inversión CAPEX de $3M MXN','Convertí la trazabilidad digital en ventaja comercial —diferenciador en licitaciones, ampliación de contratos vigentes y venta de tableros de métricas— al ofrecer los datos operativos del ERP como servicio de valor para clientes','Reduje 6% el OPEX anual de TI ($5M MXN) manteniendo 100% de cumplimiento de SLAs, mediante la renegociación de contratos con proveedores y la optimización de servicios','Garanticé la continuidad del negocio al aprobar el DRP con parámetros RTO/RPO y diseñar la hoja de ruta de migración a SAP (blueprint cloud, APIs, BI e integraciones Dynamics–JD Edwards)'],
    kpis:['9 unidades · 100% continuidad','99.7% disponibilidad','–6% OPEX','$22M CAPEX · $5M OPEX']},
-  {year:'2025',acc:'#34d399',glow:'rgba(52,211,153,.2)',when:'Agosto 2025 – Abril 2026',dur:'9 meses',durpct:14,heroV:'–70%',heroL:'Tiempo de reportes financieros',
+  {year:'2025',acc:'#12a05f',glow:'rgba(52,211,153,.2)',when:'Agosto 2025 – Abril 2026',dur:'9 meses',durpct:14,heroV:'–70%',heroL:'Tiempo de reportes financieros',
    role:'LATAM IT Manager',co:'Human Corporis · México, Perú y Colombia',
    sum:'Dirección tecnológica regional de 3 unidades de negocio (~350 usuarios), con reporte directo al CEO y participación en el Consejo. Equipo de 4 colaboradores directos y hasta 11 indirectos.',
    bullets:['Obtuve el reconocimiento de Oracle como referente regional de transformación digital, con 70% menos tiempo en reportes financieros y 70% menos costos de personalización, al desarrollar el conector Oracle NetSuite–Claude AI (MCP, OAuth2) con auditoría integrada','Elevé la adopción del ERP Oracle NetSuite de 25% a 90% en los módulos comercial (ventas), operativo y financiero en 3 países, al definir el roadmap tecnológico regional y un modelo de gobierno unificado del ERP','Reduje el tiempo de emisión de facturas de 48 horas a 3 minutos y eliminé el riesgo regulatorio de la captura manual, al integrar Oracle NetSuite con SAT (México), SUNAT (Perú) y DIAN (Colombia)','Aseguré a 200 usuarios en 3 países con MFA, PAM, respaldos y EDR con IA, al implementar en 4 meses el SGSI ISO 27001:2022 para LATAM con 60 controles y 15 políticas de seguridad'],
    kpis:['–70% reportes','ERP 25→90%','48 h → 3 min','ISO 27001:2022']},
-  {year:'2026',acc:'#f472b6',glow:'rgba(244,114,182,.2)',when:'Mayo 2026 – Actual',dur:'En curso',durpct:18,heroV:'90%',heroL:'Controles ISO 27001 implementados',
+  {year:'2026',acc:'#d6336c',glow:'rgba(244,114,182,.2)',when:'Mayo 2026 – Actual',dur:'En curso',durpct:18,heroV:'90%',heroL:'Controles ISO 27001 implementados',
    role:'Consultor Senior de TI',co:'Consultoría Tecnológica Independiente · Ciudad de México (remoto)',
    sum:'Asesoría en dirección tecnológica para firmas legales y organizaciones gremiales: gobierno de TI, cumplimiento, seguridad de la información y gestión documental.',
    bullets:['Habilité una plataforma de gestión documental (DMS) para 35 usuarios de una firma legal con presencia nacional, entregada en 2 meses, al diseñar la taxonomía, metadatos, permisos por rol y flujos automatizados que sirven como base de cumplimiento ISO 27001','Alcancé 90% de implementación de 75 controles y políticas de seguridad ISO 27001 sin interrupciones operativas, validado por pre-auditoría interna, mediante control de acceso granular, cifrado y auditoría; el resultado fue 99% de expedientes presentados sin observaciones en litigios y licitaciones','Restablecí las plataformas críticas (LMS y CRM) de una organización gremial de ~70 usuarios, elevando las funcionalidades operativas de 20% a 90% con cero interrupciones de servicio, al conducir un despliegue controlado'],
    kpis:['DMS · 35 usuarios','ISO 27001: 90% de 75 controles','99% sin observaciones','LMS/CRM 20→90%']}
  ],
  en:[
-  {year:'2010',acc:'#a78bfa',glow:'rgba(167,139,250,.22)',when:'August 2010 – July 2020',dur:'10 years',durpct:100,heroV:'3 → 12',heroL:'Operating campuses in 5 years',
+  {year:'2010',acc:'#7c4dff',glow:'rgba(167,139,250,.22)',when:'August 2010 – July 2020',dur:'10 years',durpct:100,heroV:'3 → 12',heroL:'Operating campuses in 5 years',
    role:'IT Sub-Director',co:'International Schools Partnership (ISP) · Mexico (reporting to the UK)',
    sum:'Led the IT function of the school network in Mexico, with a direct line to corporate leadership in the United Kingdom. Team of 3 direct reports.',
    bullets:['Scaled the technology operation from 3 to 12 campuses in 5 years by designing and executing the infrastructure, connectivity and IT operating model for the start-up and onboarding of new sites','Raised user satisfaction from 60% to 94% by implementing ITIL-based service KPIs and a service culture in the IT team','Delivered the corporate ERP, the CRM migration and the LMS platform for 900+ users, leading technology integration and organizational change management','Optimized the annual IT budget (up to $2M MXN) by 12% through CAPEX/OPEX controls, contract renegotiation and a technology-obsolescence program with staged cloud migration'],
    kpis:['3 → 12 campuses','CSAT 60→94%','900+ users','–12% budget']},
-  {year:'2020',acc:'#4da3ff',glow:'rgba(77,163,255,.22)',when:'November 2020 – July 2025',dur:'≈5 years',durpct:48,heroV:'99.7%',heroL:'ERP availability',
+  {year:'2020',acc:'#0071e3',glow:'rgba(77,163,255,.22)',when:'November 2020 – July 2025',dur:'≈5 years',durpct:48,heroV:'99.7%',heroL:'ERP availability',
    role:'IT Manager LATAM',co:'SUEZ (now VEOLIA) · Mexico and Colombia (reporting to France and Spain)',
    sum:'Water and environmental services; after the merger with VEOLIA, 9 business units in Mexico. IT budget: $22M MXN CAPEX (2020–2025) and $5M MXN annual OPEX. Team of 6 direct reports and up to 15 indirect.',
    bullets:['Integrated 9 business units into VEOLIA’s operations in Mexico with 100% operational continuity by consolidating infrastructure, telecommunications and IT/OT systems during the SUEZ–VEOLIA merger','Reached 99.7% ERP availability for 300 users, with 60% less process time and 50% fewer incidents, by implementing the ENWIS ERP (Microsoft Dynamics) from scratch in 18 months with a $19M MXN CAPEX investment','Enabled self-service for internal and external customers (orders, online logistics tracking, invoices, SEMARNAT manifests and waybills) by fully integrating the ERP with the Movilform app, with a $3M MXN CAPEX investment','Turned digital traceability into a commercial advantage — a differentiator in bids, expansion of existing contracts and sales of metrics dashboards — by offering the ERP operating data as a value service to clients','Cut annual IT OPEX by 6% ($5M MXN) while maintaining 100% SLA compliance, through vendor contract renegotiation and services optimization','Guaranteed business continuity by approving the DRP with RTO/RPO parameters and designing the SAP migration roadmap (cloud blueprint, APIs, BI and Dynamics–JD Edwards integrations)'],
    kpis:['9 units · 100% continuity','99.7% availability','–6% OPEX','$22M CAPEX · $5M OPEX']},
-  {year:'2025',acc:'#34d399',glow:'rgba(52,211,153,.2)',when:'August 2025 – April 2026',dur:'9 months',durpct:14,heroV:'–70%',heroL:'Financial reporting time',
+  {year:'2025',acc:'#12a05f',glow:'rgba(52,211,153,.2)',when:'August 2025 – April 2026',dur:'9 months',durpct:14,heroV:'–70%',heroL:'Financial reporting time',
    role:'LATAM IT Manager',co:'Human Corporis · Mexico, Peru and Colombia',
    sum:'Regional technology leadership across 3 business units (~350 users), reporting directly to the CEO and sitting in Board discussions. Team of 4 direct reports and up to 11 indirect.',
    bullets:['Earned Oracle recognition as a regional digital-transformation benchmark, with 70% less time on financial reports and 70% lower customization costs, by developing the Oracle NetSuite–Claude AI connector (MCP, OAuth2) with integrated auditing','Raised Oracle NetSuite ERP adoption from 25% to 90% across sales, operations and finance modules in 3 countries, by defining the regional technology roadmap and a unified ERP governance model','Cut invoice issuance time from 48 hours to 3 minutes and eliminated the regulatory risk of manual entry, by integrating Oracle NetSuite with SAT (Mexico), SUNAT (Peru) and DIAN (Colombia)','Secured 200 users across 3 countries with MFA, PAM, backups and AI-driven EDR, by implementing the ISO 27001:2022 ISMS for LATAM in 4 months with 60 controls and 15 security policies'],
    kpis:['–70% reports','ERP 25→90%','48 h → 3 min','ISO 27001:2022']},
-  {year:'2026',acc:'#f472b6',glow:'rgba(244,114,182,.2)',when:'May 2026 – Present',dur:'Ongoing',durpct:18,heroV:'90%',heroL:'ISO 27001 controls implemented',
+  {year:'2026',acc:'#d6336c',glow:'rgba(244,114,182,.2)',when:'May 2026 – Present',dur:'Ongoing',durpct:18,heroV:'90%',heroL:'ISO 27001 controls implemented',
    role:'Senior IT Consultant',co:'Independent Technology Consulting · Mexico City (remote)',
    sum:'Technology leadership advisory for law firms and trade associations: IT governance, compliance, information security and document management.',
    bullets:['Enabled a document management system (DMS) for 35 users at a nationwide law firm, delivered in 2 months, by designing the taxonomy, metadata, role-based permissions and automated workflows that serve as the ISO 27001 compliance foundation','Reached 90% implementation of 75 ISO 27001 security controls and policies with no operational disruption, validated by internal pre-audit, through granular access control, encryption and auditing; the result was 99% of case files filed without observations in litigation and bids','Restored the critical platforms (LMS and CRM) of a trade association of ~70 users, raising operational functionality from 20% to 90% with zero service interruptions, by leading a controlled rollout'],
