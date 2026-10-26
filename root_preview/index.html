@@ -561,6 +561,9 @@ function counters(){
 document.addEventListener('DOMContentLoaded',()=>{
   setLang(lang);
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+  /* el hero aparece de inmediato; respaldo para lo que ya está a la vista si el observador se retrasa */
+  setTimeout(()=>document.querySelectorAll('#hero .rv').forEach(e=>e.classList.add('in')),60);
+  setTimeout(()=>document.querySelectorAll('.rv:not(.in)').forEach(e=>{const r=e.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)e.classList.add('in');}),1500);
   setTimeout(counters,300);
 });
 </script>
