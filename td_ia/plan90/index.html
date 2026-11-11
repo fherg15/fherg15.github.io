@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VC2D4V1FP5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VC2D4V1FP5');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de 90 días — Odoo · Fernando Gómez Guerrero</title>
+<meta name="description" content="Plan de 90 días para implementar Odoo como ERP del grupo, con automatización e IA desde el diseño. Diagnóstico, diseño y piloto, gobierno, riesgos y metas. Fernando Gómez Guerrero.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff;--tile:#f5f5f7;--ink:#1d1d1f;--mut:#6e6e73;--blk:#000;--blk2:#161617;--blk3:#1d1d1f;--ln:#d2d2d7;
+  --blue:#0071e3;--blueh:#0077ed;--link:#0066cc;--linkd:#2997ff;
+  --p1:#0071e3;--p2:#7b61ff;--p3:#d946a8;--ok:#12a05f;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.28,.11,.32,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.47059;letter-spacing:-.022em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+button{font-family:inherit}
+
+/* NAV */
+.gnav{position:sticky;top:0;z-index:100;height:44px;background:rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
+.gnav .in{max-width:1024px;height:100%;margin:0 auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.gnav .brand{font-size:.95rem;font-weight:600;text-decoration:none;white-space:nowrap}
+.gnav .links{display:flex;gap:28px}
+.gnav .links a{font-size:12px;opacity:.8;text-decoration:none;transition:opacity .2s}
+.gnav .links a:hover{opacity:1}
+.gnav .links a.on{opacity:1;font-weight:600}
+.gnav .rt{display:flex;gap:10px;align-items:center}
+.prog{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:linear-gradient(90deg,var(--p1),var(--p2),var(--p3));transition:width .15s linear}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:400 17px/1.17648 var(--font);letter-spacing:-.022em;padding:11px 21px;border-radius:980px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.btn.fill{background:var(--blue);color:#fff}
+.btn.fill:hover{background:var(--blueh)}
+.btn.line{background:transparent;color:var(--link);border-color:var(--link)}
+.btn.line:hover{background:var(--link);color:#fff}
+.dark .btn.line{color:var(--linkd);border-color:var(--linkd)}
+.dark .btn.line:hover{background:var(--linkd);color:#000}
+.btn.sm{font-size:12px;padding:4px 12px}
+.btn.wa{background:#25d366;color:#fff}
+.btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+
+/* TILES */
+main{display:flex;flex-direction:column;gap:12px;padding-bottom:12px}
+.tile{background:var(--tile);text-align:center;padding:96px 22px;overflow:hidden;position:relative}
+.tile.dark{background:var(--blk);color:#f5f5f7}
+.tile.white{background:var(--bg)}
+.inner{max-width:1024px;margin:0 auto;position:relative}
+.eyebrow{font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.dark .eyebrow{color:#a1a1a6}
+.h1{font-size:clamp(3rem,9vw,7rem);font-weight:700;line-height:1;letter-spacing:-.045em;margin-top:10px}
+.h2{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:600;line-height:1.07;letter-spacing:-.028em;max-width:860px;margin:10px auto 0}
+.sub{font-size:clamp(1.15rem,2.1vw,1.6rem);line-height:1.25;max-width:780px;margin:18px auto 0}
+.p{font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.5;color:var(--mut);max-width:720px;margin:18px auto 0}
+.dark .p{color:#a1a1a6}
+.grad{background:linear-gradient(92deg,#0071e3 0%,#7b61ff 55%,#d946a8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.dark .grad{background:linear-gradient(92deg,#2997ff 0%,#9b7bff 55%,#f472b6 100%);-webkit-background-clip:text;background-clip:text}
+.mut{color:var(--mut)}
+.dark .mut{color:#a1a1a6}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.st > *{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.st.in > *{opacity:1;transform:none}
+
+/* HERO */
+#hero{padding:80px 22px 90px;min-height:calc(100vh - 44px);display:flex;align-items:center}
+#hero .inner{width:100%}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;text-align:left}
+#hero .sub{margin-left:0;color:#d2d2d7}
+#hero .btns{justify-content:flex-start}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;padding:7px 14px;border-radius:980px;background:rgba(255,255,255,.08);color:#f5f5f7}
+.chip .dot{width:7px;height:7px;border-radius:50%;background:#30d158;box-shadow:0 0 0 0 rgba(48,209,88,.6);animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(48,209,88,.55)}70%{box-shadow:0 0 0 9px rgba(48,209,88,0)}100%{box-shadow:0 0 0 0 rgba(48,209,88,0)}}
+.ring{position:relative;width:100%;max-width:400px;aspect-ratio:1;margin:0 auto}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .ctr{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.ring .big{font-size:clamp(4.4rem,10vw,7.4rem);font-weight:700;letter-spacing:-.06em;line-height:.9}
+.ring .lbl{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#a1a1a6;margin-top:10px}
+.ring .ph{font-size:15px;font-weight:600;margin-top:14px;min-height:22px;transition:color .3s}
+.glow{position:absolute;width:620px;height:620px;border-radius:50%;filter:blur(110px);opacity:.33;pointer-events:none}
+.g1{background:#0071e3;top:-220px;right:-160px;animation:drift 14s ease-in-out infinite alternate}
+.g2{background:#d946a8;bottom:-280px;left:-200px;animation:drift 18s ease-in-out infinite alternate-reverse}
+@keyframes drift{to{transform:translate(-80px,60px) scale(1.15)}}
+.scrollhint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-size:12px;color:#86868b;display:flex;flex-direction:column;align-items:center;gap:6px}
+.scrollhint i{width:1px;height:28px;background:linear-gradient(#86868b,transparent);animation:sh 1.8s infinite}
+@keyframes sh{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ENFOQUE */
+.prin{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:52px;text-align:left}
+.pc{background:#fff;border-radius:22px;padding:30px 24px;position:relative;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s}
+.pc:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,.08)}
+.pc .n{font-size:13px;font-weight:700;color:var(--p2);letter-spacing:.06em}
+.pc .t{font-size:21px;font-weight:600;letter-spacing:-.02em;margin-top:30px;line-height:1.15}
+.pc .d{font-size:14.5px;color:var(--mut);margin-top:10px;line-height:1.5}
+.pc::after{content:'';position:absolute;left:0;bottom:0;height:3px;width:0;background:linear-gradient(90deg,var(--p1),var(--p3));transition:width .5s var(--ease)}
+.pc:hover::after{width:100%}
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px;text-align:left}
+.pf{background:var(--ink);color:#f5f5f7;border-radius:22px;padding:28px 24px}
+.pf .v{font-size:clamp(2rem,3.6vw,2.8rem);font-weight:700;letter-spacing:-.04em;line-height:1;white-space:nowrap}
+.pf .l{font-size:13.5px;color:#a1a1a6;margin-top:10px;line-height:1.35}
+.pf .bar{height:6px;border-radius:6px;background:rgba(255,255,255,.12);margin-top:16px;overflow:hidden;position:relative}
+.pf .bar i{position:absolute;inset:0 auto 0 0;width:0;border-radius:6px;background:linear-gradient(90deg,var(--linkd),#9b7bff);transition:width 1.6s var(--ease)}
+.lbl-proof{margin-top:40px;font-size:13px;color:var(--mut);text-align:left}
+
+/* SIMULADOR */
+#sim .inner{max-width:1080px}
+.simbox{margin-top:48px;background:var(--blk2);border-radius:30px;padding:40px;text-align:left}
+.simtop{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.simday .k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#a1a1a6}
+.simday .v{font-size:clamp(3.4rem,8vw,5.6rem);font-weight:700;letter-spacing:-.05em;line-height:.95}
+.simday .v small{font-size:.35em;color:#86868b;letter-spacing:-.01em;font-weight:500}
+.simph{text-align:right}
+.simph .t{font-size:clamp(1.4rem,2.6vw,2rem);font-weight:600;letter-spacing:-.025em}
+.simph .s{color:#a1a1a6;font-size:15px;margin-top:4px}
+.play{width:52px;height:52px;border-radius:50%;border:0;background:#f5f5f7;color:#000;display:grid;place-items:center;cursor:pointer;flex:none;transition:transform .2s}
+.play:hover{transform:scale(1.08)}
+.track{position:relative;margin-top:34px;height:56px}
+.segs{position:absolute;inset:18px 0 auto 0;height:20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px}
+.seg{border-radius:6px;background:rgba(255,255,255,.08);position:relative;overflow:hidden}
+.seg i{position:absolute;inset:0 auto 0 0;width:0;border-radius:6px}
+.seg:nth-child(1) i{background:var(--linkd)}
+.seg:nth-child(2) i{background:#9b7bff}
+.seg:nth-child(3) i{background:#f472b6}
+.ticks{position:absolute;left:0;right:0;top:44px;display:flex;justify-content:space-between;font-size:11px;color:#86868b}
+input[type=range]{position:absolute;inset:0;width:100%;height:56px;opacity:0;cursor:grab;margin:0}
+.knob{position:absolute;top:10px;width:4px;height:36px;border-radius:4px;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.18),0 0 24px rgba(255,255,255,.5);transform:translateX(-2px);pointer-events:none}
+.milestones{position:absolute;inset:0;pointer-events:none}
+.ms{position:absolute;top:0;transform:translateX(-50%);font-size:16px;transition:transform .3s}
+.simgrid{display:grid;grid-template-columns:1.2fr 1fr;gap:12px;margin-top:30px}
+.sc{background:#232325;border-radius:20px;padding:26px}
+.sc h4{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#a1a1a6;font-weight:600;margin-bottom:16px}
+.act{list-style:none;display:flex;flex-direction:column;gap:10px}
+.act li{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.4;color:#d2d2d7;transition:color .3s,opacity .3s}
+.act li .b{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid #48484a;margin-top:1px;position:relative;transition:.3s}
+.act li.done{color:#86868b}
+.act li.done .b{border-color:var(--ok);background:var(--ok)}
+.act li.done .b::after{content:'';position:absolute;left:5px;top:2px;width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.act li.now{color:#fff;font-weight:600}
+.act li.now .b{border-color:#fff;animation:pulse 1.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.5)}100%{box-shadow:0 0 0 10px rgba(255,255,255,0)}}
+.dlv{display:flex;flex-direction:column;gap:8px}
+.dl{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:12px;background:rgba(255,255,255,.04);font-size:14px;color:#86868b;transition:background .4s,color .4s}
+.dl .tg{margin-left:auto;font-size:11px;font-weight:600;padding:3px 8px;border-radius:980px;background:rgba(255,255,255,.06);white-space:nowrap}
+.dl.ok{background:rgba(18,160,95,.16);color:#f5f5f7}
+.dl.ok .tg{background:var(--ok);color:#fff}
+.dl .ic{flex:none;width:18px;text-align:center}
+.simnote{font-size:12px;color:#86868b;margin-top:16px}
+
+/* FASES */
+.phase .inner{text-align:left}
+.phead{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:end}
+.pnum{font-size:clamp(6rem,16vw,12rem);font-weight:800;letter-spacing:-.07em;line-height:.8;-webkit-text-stroke:2px currentColor;color:transparent;opacity:.9}
+.phase .eyebrow{color:var(--acc)}
+.phase .h2{margin:8px 0 0;text-align:left}
+.pbody{display:grid;grid-template-columns:1.25fr 1fr;gap:12px;margin-top:48px}
+.alist{list-style:none;display:flex;flex-direction:column;gap:10px}
+.alist li{display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:18px;padding:18px 22px;font-size:16px;line-height:1.45}
+.dark .alist li{background:var(--blk2);color:#d2d2d7}
+.alist li b{color:var(--ink);font-weight:600}
+.dark .alist li b{color:#fff}
+.alist .ix{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;color:#fff;background:var(--acc)}
+.deliv{border-radius:26px;padding:34px;color:#fff;background:linear-gradient(150deg,var(--acc),var(--acc2));position:relative;overflow:hidden}
+.deliv .k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.8;font-weight:600}
+.deliv .d{font-size:clamp(3rem,6vw,4.4rem);font-weight:700;letter-spacing:-.05em;line-height:1;margin-top:6px}
+.deliv ul{list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:14px}
+.deliv li{display:flex;gap:12px;font-size:16.5px;font-weight:500;line-height:1.35}
+.deliv li::before{content:'✓';flex:none;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.22);display:grid;place-items:center;font-size:13px;font-weight:700}
+.deliv::after{content:'';position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.12);right:-90px;bottom:-110px}
+.pbar{margin-top:28px;display:flex;align-items:center;gap:14px;font-size:12px;color:var(--mut)}
+.pbar .tr{flex:1;height:6px;border-radius:6px;background:rgba(0,0,0,.08);position:relative;overflow:hidden}
+.dark .pbar .tr{background:rgba(255,255,255,.1)}
+.pbar .tr i{position:absolute;top:0;bottom:0;border-radius:6px;background:var(--acc);width:0;transition:width 1.4s var(--ease)}
+
+/* GOBIERNO */
+.gov{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:52px;text-align:left}
+.cad{background:var(--blk2);border-radius:26px;padding:34px}
+.cad h4,.risk h4{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#a1a1a6;font-weight:600}
+.lvl{display:flex;align-items:center;gap:18px;padding:20px 0;border-top:1px solid rgba(255,255,255,.08)}
+.lvl:first-of-type{border-top:0;margin-top:10px}
+.beat{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;position:relative}
+.beat::before,.beat::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid var(--c);opacity:0;animation:wave var(--t) infinite}
+.beat::after{animation-delay:calc(var(--t) / 2)}
+.beat i{width:14px;height:14px;border-radius:50%;background:var(--c)}
+@keyframes wave{0%{transform:scale(.4);opacity:.9}100%{transform:scale(1.25);opacity:0}}
+.lvl .nm{font-size:18px;font-weight:600}
+.lvl .s{font-size:14px;color:#a1a1a6;margin-top:2px}
+.lvl .fq{margin-left:auto;font-size:12px;font-weight:600;padding:5px 11px;border-radius:980px;background:rgba(255,255,255,.08);white-space:nowrap}
+.risk{background:var(--blk2);border-radius:26px;padding:34px}
+.rk{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.rr{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.04);font-size:14.5px;line-height:1.35;cursor:default;transition:background .3s}
+.rr .a{color:#ff6b6b;font-weight:600;transition:opacity .4s,text-decoration-color .4s;text-decoration:line-through;text-decoration-color:transparent;text-decoration-thickness:2px}
+.rr .ar{color:#86868b;transition:color .3s,transform .3s}
+.rr .m{color:#86868b;transition:color .4s}
+.rr.on{background:rgba(48,209,88,.1)}
+.rr.on .a{opacity:.55;text-decoration-color:#ff6b6b}
+.rr.on .ar{color:#30d158;transform:translateX(3px)}
+.rr.on .m{color:#f5f5f7}
+.rhint{font-size:12px;color:#86868b;margin-top:14px}
+
+/* METAS / OKR */
+.okr-o{margin:46px auto 0;max-width:860px;background:#fff;border-radius:22px;padding:24px 28px;display:flex;gap:18px;align-items:center;text-align:left}
+.okr-o .tg{flex:none;font-size:12px;font-weight:700;letter-spacing:.06em;color:#fff;background:var(--ink);padding:7px 12px;border-radius:10px}
+.okr-o .t{font-size:clamp(1.05rem,1.8vw,1.3rem);font-weight:600;line-height:1.3}
+.toggle{display:inline-flex;background:rgba(0,0,0,.06);border-radius:980px;padding:3px;margin-top:30px}
+.toggle button{border:0;background:transparent;font-size:14px;font-weight:600;padding:9px 20px;border-radius:980px;cursor:pointer;color:var(--mut);transition:.25s}
+.toggle button.on{background:var(--ink);color:#fff}
+.krs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px;text-align:left}
+.kr{background:#fff;border-radius:22px;padding:26px 24px;display:flex;flex-direction:column;min-height:230px}
+.kr .k{font-size:12px;font-weight:700;color:var(--p2);letter-spacing:.06em}
+.kr .nm{font-size:17px;font-weight:600;margin-top:8px;line-height:1.25}
+.kr .gauge{margin-top:auto;display:flex;align-items:center;gap:16px;padding-top:20px}
+.kr svg{width:78px;height:78px;transform:rotate(-90deg);flex:none}
+.kr svg .bg{stroke:#e8e8ed}
+.kr svg .fg{transition:stroke-dashoffset 1.3s var(--ease),stroke .4s}
+.kr .val{font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:700;letter-spacing:-.03em;line-height:1.05}
+.kr .vs{font-size:12.5px;color:var(--mut);margin-top:4px}
+.fine{font-size:13px;color:var(--mut);margin-top:22px}
+
+/* CIERRE */
+.close3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:52px;text-align:left}
+.cc{background:var(--blk2);border-radius:24px;padding:32px 28px}
+.cc .v{font-size:clamp(2.4rem,4.6vw,3.6rem);font-weight:700;letter-spacing:-.045em;line-height:1}
+.cc .s{color:#a1a1a6;font-size:15px;margin-top:12px;line-height:1.45}
+.qs{margin-top:56px;text-align:left}
+.qs h3{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#a1a1a6;font-weight:600;text-align:center}
+.qlist{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.qq{border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:24px;font-size:18px;font-weight:500;line-height:1.35;position:relative}
+.qq::before{content:'?';position:absolute;top:-14px;left:20px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#2997ff,#f472b6);display:grid;place-items:center;font-size:14px;font-weight:700;color:#fff}
+
+footer{background:var(--tile);color:var(--mut);font-size:12px;line-height:1.6;padding:20px 22px 28px;text-align:center;border-top:1px solid var(--ln)}
+
+/* MODO PRESENTACIÓN */
+.pdock{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:10px}
+.pdock a{width:9px;height:9px;border-radius:50%;background:rgba(128,128,128,.45);display:block;transition:.3s;position:relative}
+.pdock a.on{background:var(--blue);transform:scale(1.4)}
+.pdock a span{position:absolute;right:20px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:12px;font-weight:600;background:var(--ink);color:#fff;padding:4px 10px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s}
+.pdock a:hover span{opacity:1}
+.keys{position:fixed;left:18px;bottom:18px;z-index:90;font-size:12px;color:#fff;background:rgba(29,29,31,.86);backdrop-filter:blur(10px);padding:8px 12px;border-radius:12px;display:flex;gap:10px;align-items:center;opacity:0;transform:translateY(10px);transition:.35s;pointer-events:none}
+.keys.show{opacity:1;transform:none}
+.keys kbd{font:600 11px var(--font);background:rgba(255,255,255,.16);padding:2px 6px;border-radius:5px}
+body.pres{scroll-snap-type:y mandatory}
+body.pres main > section{min-height:100vh;scroll-snap-align:start;display:flex;align-items:center}
+body.pres main > section > .inner{width:100%}
+html:has(body.pres){scroll-snap-type:y mandatory}
+
+@media(max-width:1000px){
+  .hero-grid{grid-template-columns:1fr;text-align:center}
+  #hero .sub{margin-left:auto}
+  #hero .btns,.meta{justify-content:center}
+  .ring{max-width:300px}
+  .prin,.proof{grid-template-columns:repeat(2,1fr)}
+  .simgrid,.pbody,.gov{grid-template-columns:1fr}
+  .krs{grid-template-columns:repeat(2,1fr)}
+  .qlist,.close3{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .gnav .links,.pdock{display:none}
+  .gnav .in{padding:0 16px}
+  .tile{padding:68px 16px}
+  #hero{padding:48px 16px 80px}
+  .prin,.proof,.krs{grid-template-columns:1fr}
+  .simbox{padding:24px 18px}
+  .simph{text-align:left}
+  .phead{grid-template-columns:1fr;gap:10px}
+  .pnum{font-size:6rem}
+  .deliv,.cad,.risk{padding:26px 22px}
+  .rr{grid-template-columns:1fr;gap:4px}
+  .rr .ar{display:none}
+  .okr-o{flex-direction:column;align-items:flex-start}
+  .btn{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){
+  .rv,.st > *{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+  .glow,.beat::before,.beat::after,.chip .dot{animation:none}
+}
+</style>
+</head>
+<body>
+
+<header class="gnav"><div class="in">
+  <a class="brand" href="../">Fernando Gómez</a>
+  <nav class="links" id="navlinks">
+    <a href="#enfoque">Enfoque</a>
+    <a href="#sim">Simulador</a>
+    <a href="#f1">Fases</a>
+    <a href="#gobierno">Gobierno</a>
+    <a href="#metas">Metas</a>
+  </nav>
+  <div class="rt">
+    <a class="btn line sm" href="../">Ver CV</a>
+    <button class="btn fill sm" id="presBtn">▶ Presentar</button>
+  </div>
+  <div class="prog" id="prog"></div>
+</div></header>
+
+<nav class="pdock" id="pdock"></nav>
+<div class="keys" id="keys"><kbd>←</kbd><kbd>→</kbd> navegar <kbd>Esc</kbd> salir</div>
+
+<main>
+
+<!-- 1 · HERO -->
+<section class="tile dark" id="hero" data-name="Inicio">
+  <div class="glow g1"></div><div class="glow g2"></div>
+  <div class="inner">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow rv">Kalapata · Gerencia de Transformación Digital</div>
+        <h1 class="h1 rv">Plan de <span class="grad">90 días</span></h1>
+        <p class="sub rv">Implementación de Odoo como ERP del grupo, con automatización e IA desde el diseño.</p>
+        <div class="btns rv">
+          <a class="btn fill" href="#sim">Ver el plan en acción</a>
+          <button class="btn line" id="presBtn2">▶ Modo presentación</button>
+        </div>
+        <div class="meta rv">
+          <span class="chip"><span class="dot"></span>Fernando Gómez Guerrero</span>
+          <span class="chip">20+ años en TI · 16 en dirección regional LATAM</span>
+          <span class="chip">Entrevista · 12 de noviembre de 2026</span>
+        </div>
+      </div>
+      <div class="ring rv">
+        <svg viewBox="0 0 200 200" aria-hidden="true">
+          <defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2997ff"/><stop offset=".55" stop-color="#9b7bff"/><stop offset="1" stop-color="#f472b6"/></linearGradient></defs>
+          <circle cx="100" cy="100" r="88" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="10"/>
+          <circle id="heroArc" cx="100" cy="100" r="88" fill="none" stroke="url(#rg)" stroke-width="10" stroke-linecap="round" stroke-dasharray="552.9" stroke-dashoffset="552.9"/>
+        </svg>
+        <div class="ctr">
+          <div class="big" id="heroN">0</div>
+          <div class="lbl">días</div>
+          <div class="ph" id="heroPh">Diagnóstico</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scrollhint">desliza<i></i></div>
+</section>
+
+<!-- 2 · ENFOQUE -->
+<section class="tile" id="enfoque" data-name="Enfoque"><div class="inner">
+  <div class="eyebrow rv">Enfoque</div>
+  <h2 class="h2 rv">Cuatro principios para un ERP <span class="grad">que se adopta.</span></h2>
+  <div class="prin st">
+    <div class="pc"><div class="n">01</div><div class="t">Estándar primero</div><div class="d">Adaptar procesos a Odoo antes que personalizar. Menos deuda técnica y actualizaciones sin dolor.</div></div>
+    <div class="pc"><div class="n">02</div><div class="t">Datos limpios</div><div class="d">Maestros depurados, ensayos de carga y conciliación firmada por cada área.</div></div>
+    <div class="pc"><div class="n">03</div><div class="t">Arquitectura abierta</div><div class="d">Integraciones por APIs y diseño documentado: el grupo no depende de un proveedor y queda listo para crecer o migrar.</div></div>
+    <div class="pc"><div class="n">04</div><div class="t">La adopción es el KPI</div><div class="d">Capacitación por rol, red de campeones y métricas de uso desde el primer día.</div></div>
+  </div>
+  <div class="lbl-proof rv">Por qué estos principios: ya funcionaron antes.</div>
+  <div class="proof st" id="proof">
+    <div class="pf"><div class="v"><span data-to="99.7" data-dec="1">0</span>%</div><div class="l">disponibilidad ERP Dynamics, 300 usuarios</div><div class="bar"><i data-w="99.7"></i></div></div>
+    <div class="pf"><div class="v"><span data-to="25" data-from="25">25</span>% → <span data-to="90" data-from="25">25</span>%</div><div class="l">adopción NetSuite en 3 países</div><div class="bar"><i data-w="90"></i></div></div>
+    <div class="pf"><div class="v">−<span data-to="70">0</span>%</div><div class="l">tiempo de reportes con IA (MCP)</div><div class="bar"><i data-w="70"></i></div></div>
+    <div class="pf"><div class="v" id="inv">48 h</div><div class="l">emisión de facturas automatizada</div><div class="bar"><i data-w="100"></i></div></div>
+  </div>
+</div></section>
+
+<!-- 3 · SIMULADOR -->
+<section class="tile dark" id="sim" data-name="Simulador"><div class="inner">
+  <div class="eyebrow rv">Los 90 días, en movimiento</div>
+  <h2 class="h2 rv">Arrastra la línea de tiempo <span class="grad">y mira el plan avanzar.</span></h2>
+  <div class="simbox rv">
+    <div class="simtop">
+      <div style="display:flex;gap:18px;align-items:center">
+        <button class="play" id="play" aria-label="Reproducir">
+          <svg id="playIc" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>
+        </button>
+        <div class="simday"><div class="k">Día</div><div class="v"><span id="dayN">0</span><small> / 90</small></div></div>
+      </div>
+      <div class="simph"><div class="t" id="phT">Diagnóstico</div><div class="s" id="phS">Días 1–30 · Entender antes de configurar</div></div>
+    </div>
+    <div class="track">
+      <div class="segs"><div class="seg"><i id="s1"></i></div><div class="seg"><i id="s2"></i></div><div class="seg"><i id="s3"></i></div></div>
+      <div class="knob" id="knob"></div>
+      <div class="ticks"><span>Día 0</span><span>30</span><span>60</span><span>90</span></div>
+      <input type="range" id="rng" min="0" max="90" value="0" aria-label="Día del plan">
+    </div>
+    <div class="simgrid">
+      <div class="sc"><h4>Actividades de la fase</h4><ul class="act" id="acts"></ul></div>
+      <div class="sc"><h4>Entregables acumulados</h4><div class="dlv" id="dlv"></div></div>
+    </div>
+    <div class="simnote">Las actividades se muestran en secuencia dentro de cada fase; los entregables se cierran en los días 30, 60 y 90.</div>
+  </div>
+</div></section>
+
+<!-- 4 · FASE 1 -->
+<section class="tile white phase" id="f1" data-name="Días 1–30" style="--acc:#0071e3;--acc2:#2997ff"><div class="inner">
+  <div class="phead">
+    <div class="pnum rv" style="color:var(--acc)">01</div>
+    <div><div class="eyebrow rv">Días 1–30 · Diagnóstico</div><h2 class="h2 rv">Entender antes de configurar.</h2></div>
+  </div>
+  <div class="pbody">
+    <ul class="alist st">
+      <li><span class="ix">1</span><span><b>Escuchar:</b> entrevistas con Dirección General y con los dueños de proceso de cada empresa del grupo</span></li>
+      <li><span class="ix">2</span><span><b>Inventariar:</b> sistemas, datos, contratos y proveedores actuales</span></li>
+      <li><span class="ix">3</span><span><b>Mapear:</b> procesos as-is de ventas, compras, inventario y finanzas</span></li>
+      <li><span class="ix">4</span><span><b>Elegir socio:</b> evaluación y selección del partner certificado de Odoo</span></li>
+      <li><span class="ix">5</span><span><b>Proteger:</b> quick wins de ciberseguridad (MFA, respaldos, accesos)</span></li>
+    </ul>
+    <div class="deliv rv"><div class="k">Entregables</div><div class="d">Día 30</div>
+      <ul><li>Diagnóstico del ecosistema tecnológico</li><li>Caso de negocio y alcance priorizado</li><li>Gobierno del proyecto: comité, PMO y RACI</li></ul>
+    </div>
+  </div>
+  <div class="pbar rv"><span>Día 0</span><div class="tr"><i data-l="0" data-w="33.3"></i></div><span>Día 90</span></div>
+</div></section>
+
+<!-- 5 · FASE 2 -->
+<section class="tile phase" id="f2" data-name="Días 31–60" style="--acc:#7b61ff;--acc2:#a78bfa"><div class="inner">
+  <div class="phead">
+    <div class="pnum rv" style="color:var(--acc)">02</div>
+    <div><div class="eyebrow rv">Días 31–60 · Diseño</div><h2 class="h2 rv">Diseñar el grupo en Odoo.</h2></div>
+  </div>
+  <div class="pbody">
+    <ul class="alist st">
+      <li><span class="ix">1</span><span><b>Blueprint</b> to-be y fit-gap con la regla “estándar primero”</span></li>
+      <li><span class="ix">2</span><span><b>Multiempresa:</b> plan de cuentas homologado y consolidación</span></li>
+      <li><span class="ix">3</span><span><b>Fiscal:</b> CFDI 4.0, complementos y conciliación bancaria</span></li>
+      <li><span class="ix">4</span><span><b>Integraciones por APIs:</b> bancos, e-commerce y BI</span></li>
+      <li><span class="ix">5</span><span><b>Datos:</b> estrategia de migración y primer ensayo de carga</span></li>
+      <li><span class="ix">6</span><span><b>Cambio:</b> empresa piloto elegida y plan de comunicación</span></li>
+    </ul>
+    <div class="deliv rv"><div class="k">Entregables</div><div class="d">Día 60</div>
+      <ul><li>Blueprint firmado por cada dueño de proceso</li><li>Plan de implementación por olas</li><li>Arquitectura documentada, sin dependencia de un proveedor</li></ul>
+    </div>
+  </div>
+  <div class="pbar rv"><span>Día 0</span><div class="tr"><i data-l="33.3" data-w="33.3"></i></div><span>Día 90</span></div>
+</div></section>
+
+<!-- 6 · FASE 3 -->
+<section class="tile white phase" id="f3" data-name="Días 61–90" style="--acc:#d946a8;--acc2:#f472b6"><div class="inner">
+  <div class="phead">
+    <div class="pnum rv" style="color:var(--acc)">03</div>
+    <div><div class="eyebrow rv">Días 61–90 · Piloto</div><h2 class="h2 rv">Construir el piloto y probarlo.</h2></div>
+  </div>
+  <div class="pbody">
+    <ul class="alist st">
+      <li><span class="ix">1</span><span><b>Configurar</b> la empresa piloto en sprints de 2 semanas</span></li>
+      <li><span class="ix">2</span><span><b>Migrar:</b> segundo ensayo de carga con conciliación firmada</span></li>
+      <li><span class="ix">3</span><span><b>Probar:</b> pruebas integrales y UAT con criterios de aceptación</span></li>
+      <li><span class="ix">4</span><span><b>Capacitar:</b> key users por rol y red de campeones</span></li>
+      <li><span class="ix">5</span><span><b>Automatizar:</b> 2–3 casos de IA de retorno rápido, como reportes y conciliaciones</span></li>
+    </ul>
+    <div class="deliv rv"><div class="k">Entregables</div><div class="d">Día 90</div>
+      <ul><li>Piloto listo para decisión go/no-go</li><li>Plan de cutover y rollback</li><li>Roadmap a 12 meses para el resto del grupo</li></ul>
+    </div>
+  </div>
+  <div class="pbar rv"><span>Día 0</span><div class="tr"><i data-l="66.6" data-w="33.4"></i></div><span>Día 90</span></div>
+</div></section>
+
+<!-- 7 · GOBIERNO Y RIESGOS -->
+<section class="tile dark" id="gobierno" data-name="Gobierno y riesgos"><div class="inner">
+  <div class="eyebrow rv">Control del proyecto</div>
+  <h2 class="h2 rv">Gobierno y riesgos, <span class="grad">con ritmo definido.</span></h2>
+  <div class="gov">
+    <div class="cad rv">
+      <h4>Cadencia de gobierno</h4>
+      <div class="lvl"><div class="beat" style="--c:#2997ff;--t:3.6s"><i></i></div><div><div class="nm">Comité directivo</div><div class="s">Dirección General y direcciones</div></div><span class="fq">Mensual</span></div>
+      <div class="lvl"><div class="beat" style="--c:#9b7bff;--t:1.8s"><i></i></div><div><div class="nm">PMO de Transformación</div><div class="s">Gerencia de TD</div></div><span class="fq">Semanal</span></div>
+      <div class="lvl"><div class="beat" style="--c:#f472b6;--t:.9s"><i></i></div><div><div class="nm">Partner Odoo y key users</div><div class="s">Equipo de ejecución</div></div><span class="fq">Diario</span></div>
+    </div>
+    <div class="risk rv">
+      <h4>Riesgo → mitigación</h4>
+      <div class="rk" id="rk">
+        <div class="rr"><span class="a">Exceso de personalizaciones</span><span class="ar">→</span><span class="m">“Estándar primero” y comité de cambios</span></div>
+        <div class="rr"><span class="a">Datos sucios o incompletos</span><span class="ar">→</span><span class="m">Limpieza, dos ensayos y conciliación firmada</span></div>
+        <div class="rr"><span class="a">Baja adopción</span><span class="ar">→</span><span class="m">Capacitación por rol y red de campeones</span></div>
+        <div class="rr"><span class="a">Dependencia del partner</span><span class="ar">→</span><span class="m">Arquitectura documentada y transferencia de conocimiento</span></div>
+      </div>
+      <div class="rhint">Cada riesgo tiene su mitigación asignada desde el día 1.</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 8 · METAS -->
+<section class="tile" id="metas" data-name="Metas"><div class="inner">
+  <div class="eyebrow rv">Cómo medimos el éxito</div>
+  <h2 class="h2 rv">Metas propuestas, <span class="grad">del día 90 al mes 12.</span></h2>
+  <div class="okr-o rv"><span class="tg">OBJETIVO</span><span class="t">El grupo operando en Odoo, con datos confiables, adopción real e IA en operación.</span></div>
+  <div class="toggle rv" role="tablist">
+    <button class="on" data-h="d90">Día 90</button>
+    <button data-h="m12">Mes 12</button>
+  </div>
+  <div class="krs st" id="krs"></div>
+  <p class="fine rv">Metas a validar con Dirección General en el diagnóstico de los primeros 30 días.</p>
+</div></section>
+
+<!-- 9 · CIERRE -->
+<section class="tile dark" id="cierre" data-name="Cierre"><div class="glow g1" style="opacity:.2"></div><div class="inner">
+  <h2 class="h2 rv" style="max-width:900px">La marca del ERP cambia; <span class="grad">la disciplina, no.</span></h2>
+  <div class="close3 st">
+    <div class="cc"><div class="v"><span data-to="16">0</span> años</div><div class="s">dirigiendo TI en grupos con varias unidades de negocio en LATAM</div></div>
+    <div class="cc"><div class="v"><span data-to="3">0</span> ERP</div><div class="s">Dynamics, NetSuite y blueprint de SAP, con integraciones y gestión del cambio</div></div>
+    <div class="cc"><div class="v">IA real</div><div class="s">conector NetSuite–Claude reconocido por Oracle Global</div></div>
+  </div>
+  <div class="qs rv">
+    <h3>Preguntas para ustedes</h3>
+    <div class="qlist">
+      <div class="qq">¿Qué sistemas usan hoy las empresas del grupo?</div>
+      <div class="qq">¿Cuántas empresas y usuarios entran en el alcance?</div>
+      <div class="qq">¿Ya hay un partner de Odoo seleccionado?</div>
+    </div>
+  </div>
+  <div class="btns rv" style="margin-top:56px">
+    <a class="btn wa" href="https://wa.me/525579198319" target="_blank" rel="noopener">WhatsApp · +52 55-7919-8319</a>
+    <a class="btn fill" href="mailto:fernando.gomez2201@gmail.com">Enviar correo</a>
+    <a class="btn line" href="../">Ver CV completo</a>
+  </div>
+</div></section>
+
+</main>
+<footer>Fernando Gómez Guerrero · Plan de 90 días · fherg15.github.io/td_ia</footer>
+
+<script>
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ease = t => 1 - Math.pow(1 - t, 3);
+function tween(dur, fn, done){
+  if(RM){fn(1);done&&done();return;}
+  const t0 = performance.now();
+  (function f(n){const p=Math.min(1,(n-t0)/dur);fn(ease(p));p<1?requestAnimationFrame(f):done&&done();})(t0);
+}
+function countUp(el){
+  const to=+el.dataset.to, from=+(el.dataset.from||0), dec=+(el.dataset.dec||0);
+  tween(1600,p=>{el.textContent=(from+(to-from)*p).toFixed(dec);});
+}
+
+/* reveal + triggers */
+const io = new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting) return;
+  const el=e.target; el.classList.add('in');
+  if(el.classList.contains('st')) [...el.children].forEach((c,i)=>c.style.transitionDelay=(i*90)+'ms');
+  el.querySelectorAll('[data-to]').forEach(countUp);
+  el.querySelectorAll('.bar i').forEach(b=>setTimeout(()=>b.style.width=b.dataset.w+'%',200));
+  el.querySelectorAll('.tr i').forEach(b=>{b.style.left=b.dataset.l+'%';setTimeout(()=>b.style.width=b.dataset.w+'%',200);});
+  if(el.id==='proof') invoice();
+  if(el.id==='krs') renderKR(horizon,true);
+  if(el.id==='rk') riskCycle();
+  io.unobserve(el);
+}),{threshold:.18});
+document.querySelectorAll('.rv,.st').forEach(el=>io.observe(el));
+
+/* hero ring 0→90 */
+const PH=d=>d<=30?['Diagnóstico','#2997ff']:d<=60?['Diseño','#9b7bff']:['Piloto','#f472b6'];
+setTimeout(()=>{
+  const arc=document.getElementById('heroArc'),n=document.getElementById('heroN'),ph=document.getElementById('heroPh');
+  tween(3200,p=>{const d=Math.round(90*p);n.textContent=d;arc.style.strokeDashoffset=552.9*(1-p);const [t,c]=PH(Math.max(1,d));ph.textContent=t;ph.style.color=c;},()=>{ph.textContent='Listo para go/no-go';ph.style.color='#30d158';});
+},500);
+
+/* facturas 48 h → 3 min */
+function invoice(){
+  const el=document.getElementById('inv');
+  tween(1800,p=>{const m=48*60*(1-p)+3*p;el.textContent=m>=90?Math.round(m/60)+' h → 3 min':Math.round(m)+' min';},()=>el.textContent='48 h → 3 min');
+}
+
+/* SIMULADOR */
+const PHASES=[
+ {t:'Diagnóstico',s:'Días 1–30 · Entender antes de configurar',a:['Escuchar a Dirección General y dueños de proceso','Inventariar sistemas, datos, contratos y proveedores','Mapear procesos as-is: ventas, compras, inventario y finanzas','Elegir el partner certificado de Odoo','Proteger: quick wins de ciberseguridad (MFA, respaldos, accesos)']},
+ {t:'Diseño',s:'Días 31–60 · Diseñar el grupo en Odoo',a:['Blueprint to-be y fit-gap “estándar primero”','Multiempresa: plan de cuentas homologado y consolidación','Fiscal: CFDI 4.0, complementos y conciliación bancaria','Integraciones por APIs: bancos, e-commerce y BI','Datos: estrategia de migración y primer ensayo de carga','Cambio: empresa piloto y plan de comunicación']},
+ {t:'Piloto',s:'Días 61–90 · Construir el piloto y probarlo',a:['Configurar la empresa piloto en sprints de 2 semanas','Migrar: segundo ensayo con conciliación firmada','Probar: pruebas integrales y UAT','Capacitar key users por rol y red de campeones','Automatizar 2–3 casos de IA de retorno rápido']}
+];
+const DELIV=[
+ [30,'Diagnóstico del ecosistema tecnológico'],[30,'Caso de negocio y alcance priorizado'],[30,'Gobierno: comité, PMO y RACI'],
+ [60,'Blueprint firmado por cada dueño de proceso'],[60,'Plan de implementación por olas'],[60,'Arquitectura documentada, sin lock-in'],
+ [90,'Piloto listo para go/no-go'],[90,'Plan de cutover y rollback'],[90,'Roadmap a 12 meses para el grupo']
+];
+const rng=document.getElementById('rng'),acts=document.getElementById('acts'),dlv=document.getElementById('dlv');
+dlv.innerHTML=DELIV.map(([d,t])=>`<div class="dl" data-d="${d}"><span class="ic">◦</span>${t}<span class="tg">Día ${d}</span></div>`).join('');
+let curPh=-1;
+function setDay(d){
+  d=+d; rng.value=d;
+  document.getElementById('dayN').textContent=d;
+  document.getElementById('knob').style.left=(d/90*100)+'%';
+  [1,2,3].forEach(i=>{const lo=(i-1)*30;document.getElementById('s'+i).style.width=Math.max(0,Math.min(1,(d-lo)/30))*100+'%';});
+  const pi=d<=30?0:d<=60?1:2, P=PHASES[pi];
+  if(pi!==curPh){curPh=pi;document.getElementById('phT').textContent=P.t;document.getElementById('phS').textContent=P.s;
+    acts.innerHTML=P.a.map(a=>`<li><span class="b"></span><span>${a}</span></li>`).join('');}
+  const local=d===0?0:(d-pi*30)/30, n=P.a.length, cur=Math.min(n-1,Math.floor(local*n));
+  [...acts.children].forEach((li,i)=>{li.className=(local>=1||i<cur)?'done':(i===cur&&d>0?'now':'');});
+  dlv.querySelectorAll('.dl').forEach(x=>{const ok=d>=+x.dataset.d;x.classList.toggle('ok',ok);x.querySelector('.ic').textContent=ok?'✓':'◦';});
+}
+rng.addEventListener('input',e=>{stop();setDay(e.target.value);});
+let timer=null;
+const playIc=document.getElementById('playIc');
+function stop(){if(timer){clearInterval(timer);timer=null;playIc.innerHTML='<path d="M7 4.5v15l13-7.5z"/>';}}
+function play(){
+  if(timer) return stop();
+  let d=+rng.value; if(d>=90) d=0;
+  playIc.innerHTML='<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>';
+  gtag('event','plan90_sim_play');
+  timer=setInterval(()=>{d++;setDay(d);if(d>=90)stop();},110);
+}
+document.getElementById('play').onclick=play;
+setDay(0);
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting&&!timer&&+rng.value===0){setTimeout(play,700);o.disconnect();}}),{threshold:.2}).observe(document.querySelector('.simbox'));
+
+/* METAS */
+const KR=[
+ {n:'Blueprint aprobado',d90:{v:'100%',s:'de procesos',p:1},m12:{v:'—',s:'cerrado en el día 90',p:1,done:true}},
+ {n:'Empresas operando en Odoo',d90:{v:'Piloto',s:'en UAT · hito',p:1,done:true},m12:{v:'100%',s:'del grupo',p:1}},
+ {n:'Adopción (usuarios activos)',d90:{v:'Key users',s:'listos · hito',p:1,done:true},m12:{v:'≥ 90%',s:'usuarios activos',p:.9}},
+ {n:'Datos migrados y conciliados',d90:{v:'95%',s:'en ensayo',p:.95},m12:{v:'100%',s:'conciliados',p:1}},
+ {n:'Automatizaciones con IA en operación',d90:{v:'2–3',s:'casos en operación · hito',p:1,done:true},m12:{v:'N',s:'por definir con Dirección',p:.75,tbd:true}},
+ {n:'Disponibilidad del ERP',d90:{v:'—',s:'medición desde el go-live',p:0,na:true},m12:{v:'≥ 99.5%',s:'disponibilidad',p:.995}}
+];
+let horizon='d90';
+const C=2*Math.PI*32;
+function renderKR(h,anim){
+  const box=document.getElementById('krs');
+  if(!box.children.length){
+    box.innerHTML=KR.map((k,i)=>`<div class="kr"><div class="k">KR ${i+1}</div><div class="nm">${k.n}</div><div class="gauge"><svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="32" fill="none" stroke-width="8"/><circle class="fg" cx="40" cy="40" r="32" fill="none" stroke-width="8" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}"/></svg><div><div class="val"></div><div class="vs"></div></div></div></div>`).join('');
+    box.classList.add('in');[...box.children].forEach((c,i)=>c.style.transitionDelay=(i*90)+'ms');
+  }
+  [...box.children].forEach((card,i)=>{
+    const x=KR[i][h], fg=card.querySelector('.fg');
+    card.querySelector('.val').textContent=x.v; card.querySelector('.vs').textContent=x.s;
+    fg.style.stroke=x.done?'#12a05f':x.tbd?'#a1a1a6':h==='d90'?'#0071e3':'#7b61ff';
+    fg.style.strokeDasharray=x.tbd?'4 6':C;
+    const off=C*(1-x.p);
+    if(anim){fg.style.strokeDashoffset=C;requestAnimationFrame(()=>requestAnimationFrame(()=>fg.style.strokeDashoffset=off));}
+    else fg.style.strokeDashoffset=off;
+  });
+}
+document.querySelectorAll('.toggle button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.toggle button').forEach(x=>x.classList.toggle('on',x===b));
+  horizon=b.dataset.h;renderKR(horizon,false);gtag('event','plan90_horizon',{h:horizon});
+});
+
+/* riesgos: se mitigan uno a uno */
+function riskCycle(){
+  const rows=[...document.querySelectorAll('#rk .rr')];
+  rows.forEach((r,i)=>setTimeout(()=>r.classList.add('on'),600+i*700));
+  rows.forEach(r=>{r.onmouseenter=()=>r.classList.add('on');});
+}
+
+/* NAV: progreso, puntos, sección activa */
+const secs=[...document.querySelectorAll('main > section')];
+const dock=document.getElementById('pdock');
+dock.innerHTML=secs.map(s=>`<a href="#${s.id}" aria-label="${s.dataset.name}"><span>${s.dataset.name}</span></a>`).join('');
+const dots=[...dock.children], navA=[...document.querySelectorAll('#navlinks a')];
+let curIdx=0;
+function onScroll(){
+  const h=document.documentElement;
+  document.getElementById('prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  const mid=innerHeight*.45;
+  secs.forEach((s,i)=>{const r=s.getBoundingClientRect();if(r.top<=mid&&r.bottom>mid)curIdx=i;});
+  dots.forEach((d,i)=>d.classList.toggle('on',i===curIdx));
+  const id=secs[curIdx].id, map={f2:'f1',f3:'f1'};
+  navA.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+(map[id]||id)));
+}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* MODO PRESENTACIÓN */
+function go(i){i=Math.max(0,Math.min(secs.length-1,i));secs[i].scrollIntoView({behavior:RM?'auto':'smooth'});}
+const keys=document.getElementById('keys');
+function togglePres(force){
+  const on=force!==undefined?force:!document.body.classList.contains('pres');
+  document.body.classList.toggle('pres',on);
+  document.documentElement.style.scrollSnapType=on?'y mandatory':'';
+  keys.classList.toggle('show',on);
+  document.getElementById('presBtn').textContent=on?'■ Salir':'▶ Presentar';
+  if(on){gtag('event','plan90_present');document.documentElement.requestFullscreen?.().catch(()=>{});go(curIdx);setTimeout(()=>keys.classList.remove('show'),4000);}
+  else if(document.fullscreenElement) document.exitFullscreen();
+}
+document.getElementById('presBtn').onclick=()=>togglePres();
+document.getElementById('presBtn2').onclick=()=>togglePres(true);
+document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&document.body.classList.contains('pres'))togglePres(false);});
+addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT'&&e.target.type==='range'&&/Arrow/.test(e.key)) return;
+  if(e.key==='p'||e.key==='P'){togglePres();return;}
+  if(!document.body.classList.contains('pres')) return;
+  if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();go(curIdx+1);}
+  else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(curIdx-1);}
+  else if(e.key==='Home'){e.preventDefault();go(0);}
+  else if(e.key==='End'){e.preventDefault();go(secs.length-1);}
+  else if(e.key==='p'||e.key==='P') togglePres();
+  else if(e.key==='Escape'&&document.body.classList.contains('pres')) togglePres(false);
+});
+</script>
+</body>
+</html>
