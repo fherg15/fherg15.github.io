@@ -46,7 +46,7 @@ button{font-family:inherit}
 .btn.line:hover{background:var(--link);color:#fff}
 .dark .btn.line{color:var(--linkd);border-color:var(--linkd)}
 .dark .btn.line:hover{background:var(--linkd);color:#000}
-.btn.sm{font-size:12px;padding:4px 12px}
+.btn.sm{font-size:12px;padding:4px 12px;white-space:nowrap}
 .btn.wa{background:#25d366;color:#fff}
 .btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:30px}
 
@@ -267,6 +267,7 @@ html:has(body.pres){scroll-snap-type:y mandatory}
 }
 @media(max-width:760px){
   .gnav .links,.pdock{display:none}
+  .gnav .rt .btn.line{display:none}
   .gnav .in{padding:0 16px}
   .tile{padding:68px 16px}
   #hero{padding:48px 16px 80px}
@@ -300,6 +301,7 @@ html:has(body.pres){scroll-snap-type:y mandatory}
     <a href="#metas">Metas</a>
   </nav>
   <div class="rt">
+    <a class="btn line sm" href="../plan90-2/">Plan #2</a>
     <a class="btn line sm" href="../">Ver CV</a>
     <button class="btn fill sm" id="presBtn">▶ Presentar</button>
   </div>
