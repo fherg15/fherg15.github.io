@@ -9,8 +9,11 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-VC2D4V1FP5');
+  function setL(l){try{localStorage.setItem('fgg-lang',l)}catch(e){}}
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="alternate" hreflang="es" href="https://fherg15.github.io/proyectos/">
+<link rel="alternate" hreflang="en" href="https://fherg15.github.io/proyectos/en/">
 <title>Proyectos — Fernando Gómez Guerrero</title>
 <meta name="description" content="Proyectos y casos de estudio de Fernando Gómez Guerrero: continuidad de negocio, ERP, ciberseguridad e IA aplicada.">
 <style>
@@ -24,6 +27,10 @@ a{color:inherit}
 .gnav .in{max-width:1024px;height:100%;margin:0 auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between}
 .gnav .brand{font-size:.95rem;font-weight:600;text-decoration:none}
 .gnav .back{font-size:12px;color:var(--link);text-decoration:none}
+.gnav .rt{display:flex;align-items:center;gap:12px}
+.lang{display:flex;background:rgba(0,0,0,.06);border-radius:980px;padding:2px}
+.lang a{font-size:11px;font-weight:600;padding:4px 10px;border-radius:980px;text-decoration:none;color:var(--mut)}
+.lang a.on{background:var(--ink);color:#fff}
 .hero{background:var(--tile);text-align:center;padding:84px 22px 72px}
 .eyebrow{font-size:21px;font-weight:600}
 h1{font-size:clamp(2.5rem,6.4vw,4.6rem);font-weight:600;line-height:1.05;letter-spacing:-.03em;margin-top:6px}
@@ -45,13 +52,14 @@ h1{font-size:clamp(2.5rem,6.4vw,4.6rem);font-weight:600;line-height:1.05;letter-
 .soon{border:2px dashed var(--ln);border-radius:28px;min-height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--mut);text-align:center;padding:32px}
 .soon b{font-size:19px;color:var(--ink);font-weight:600}
 footer{background:var(--tile);color:var(--mut);font-size:12px;padding:22px;text-align:center;border-top:1px solid var(--ln)}
-@media(max-width:760px){.grid{grid-template-columns:1fr}.gnav .in{padding:0 16px}.wrap{padding:40px 16px 64px}.hero{padding:64px 16px 52px}.pj{padding:30px 24px}}
+.gnav .brand,.gnav .back{white-space:nowrap}
+@media(max-width:760px){.gnav .back{display:none}.pj .ring{display:none}.grid{grid-template-columns:1fr}.gnav .in{padding:0 16px}.wrap{padding:40px 16px 64px}.hero{padding:64px 16px 52px}.pj{padding:30px 24px}}
 </style>
 </head>
 <body>
 <header class="gnav"><div class="in">
-  <a class="brand" href="../">Fernando Gómez</a>
-  <a class="back" href="../">← Volver al perfil</a>
+  <a class="brand" href="/">Fernando Gómez</a>
+  <div class="rt"><div class="lang"><a class="on" href="/proyectos/" onclick="setL('es')">ES</a><a href="/proyectos/en/" onclick="setL('en')">EN</a></div><a class="back" href="/">← Volver al perfil</a></div>
 </div></header>
 
 <section class="hero">
@@ -62,7 +70,7 @@ footer{background:var(--tile);color:var(--mut);font-size:12px;padding:22px;text-
 
 <main class="wrap">
   <div class="grid">
-    <a class="pj" href="drp-rto-rpo/" onclick="gtag('event','project_open',{project:'drp-rto-rpo'})">
+    <a class="pj" href="/proyectos/drp-rto-rpo/" onclick="gtag('event','project_open',{project:'drp-rto-rpo'})">
       <div class="glow"></div>
       <svg class="ring" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="36" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="8"/><circle cx="42" cy="42" r="36" fill="none" stroke="#2997ff" stroke-width="8" stroke-linecap="round" stroke-dasharray="226.2" stroke-dashoffset="0.7" transform="rotate(-90 42 42)"/><text x="42" y="47" text-anchor="middle" fill="#f5f5f7" font-size="15" font-weight="700" font-family="inherit">99.7</text></svg>
       <div class="tag">Continuidad de negocio · ERP SaaS</div>
