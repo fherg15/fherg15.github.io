@@ -11,6 +11,8 @@
   gtag('config', 'G-VC2D4V1FP5');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="alternate" hreflang="es" href="https://fherg15.github.io/proyectos/drp-rto-rpo/">
+<link rel="alternate" hreflang="en" href="https://fherg15.github.io/proyectos/drp-rto-rpo/en/">
 <title>DRP con RTO/RPO — Proyecto · Fernando Gómez Guerrero</title>
 <meta name="description" content="Proyecto DRP para ERP Oracle NetSuite: 99.7% de disponibilidad de negocio, RTO/RPO por componente, modo degradado de 72 h en 9 unidades de negocio, arquitectura, escenarios, pruebas y roadmap.">
 <style>
@@ -40,6 +42,10 @@ button{font-family:inherit}
 .gnav .links a:hover,.gnav .links a.on{opacity:1}
 .gnav .links a.on{color:var(--blue)}
 .gnav .back{font-size:12px;color:var(--link);text-decoration:none;white-space:nowrap}
+.gnav .rt{display:flex;align-items:center;gap:12px}
+.lang{display:flex;background:rgba(0,0,0,.06);border-radius:980px;padding:2px}
+.lang a{font-size:11px;font-weight:600;padding:4px 10px;border-radius:980px;text-decoration:none;color:var(--mut)}
+.lang a.on{background:var(--ink);color:#fff}
 
 /* tiles */
 main{display:flex;flex-direction:column;gap:12px;padding-bottom:12px}
@@ -475,6 +481,7 @@ footer{background:var(--tile);color:var(--mut);font-size:12px;line-height:1.6;pa
 @media(max-width:760px){
   .gnav .links{display:none}
   .gnav .in{padding:0 16px}
+  .gnav .brand span{display:none}
   .tile{padding:64px 16px}
   #hero{padding:56px 16px 52px}
   .kgrid{grid-template-columns:repeat(2,1fr)}
@@ -511,7 +518,7 @@ footer{background:var(--tile);color:var(--mut);font-size:12px;line-height:1.6;pa
 <div id="prog"></div>
 
 <header class="gnav"><div class="in">
-  <a class="brand" href="../">Proyectos <span>/ DRP con RTO/RPO</span></a>
+  <a class="brand" href="/proyectos/">Proyectos <span>/ DRP con RTO/RPO</span></a>
   <nav class="links" id="navlinks">
     <a href="#objetivos">Objetivos</a>
     <a href="#bia">BIA</a>
@@ -524,7 +531,7 @@ footer{background:var(--tile);color:var(--mut);font-size:12px;line-height:1.6;pa
     <a href="#roadmap">Roadmap</a>
     <a href="#kpis">KPIs</a>
   </nav>
-  <a class="back" href="../../">Perfil ›</a>
+  <div class="rt"><div class="lang"><a class="on" href="/proyectos/drp-rto-rpo/" onclick="setL('es')">ES</a><a href="/proyectos/drp-rto-rpo/en/" onclick="setL('en')">EN</a></div><a class="back" href="/">Perfil ›</a></div>
 </div></header>
 
 <main>
@@ -870,8 +877,8 @@ footer{background:var(--tile);color:var(--mut);font-size:12px;line-height:1.6;pa
   <h2 class="h2 rv" style="margin:0 auto">Continuidad que se diseña, <span class="grad">se prueba y se mide.</span></h2>
   <p class="lead rv" style="margin-left:auto;margin-right:auto">Proyecto de Fernando Gómez Guerrero · Líder Regional de TI LATAM.</p>
   <div class="hero-cta rv">
-    <a class="btn fill" href="../../">Ver perfil completo</a>
-    <a class="btn line" href="../">Más proyectos</a>
+    <a class="btn fill" href="/">Ver perfil completo</a>
+    <a class="btn line" href="/proyectos/">Más proyectos</a>
   </div>
 </div></section>
 
@@ -882,6 +889,7 @@ footer{background:var(--tile);color:var(--mut);font-size:12px;line-height:1.6;pa
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!==undefined)e.innerHTML=h;return e};
 const ga=(n,p)=>{try{gtag('event',n,p||{})}catch(e){}};
+function setL(l){try{localStorage.setItem('fgg-lang',l)}catch(e){}}
 
 /* ── reveal + counters + nav ── */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);
@@ -1104,7 +1112,7 @@ function matrix(host,det,items,yl,colors,render,evt){
  items.forEach((it,i)=>{const b=el('button','',it.id);b.title=it.n;b.onclick=()=>{g.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');$(det).innerHTML=render(it);ga(evt,{id:it.id})};
   g.querySelector(`.cell[data-k="${it.i}-${it.p}"]`).append(b);if(i===0){b.classList.add('on');$(det).innerHTML=render(it)}});
 }
-const PI={Baja:0,Media:1,Alta:2},II={Medio:0,Alto:1,'Muy alto':2};
+const PI={'Baja':0,'Media':1,'Alta':2},II={'Medio':0,'Alto':1,'Muy alto':2};
 const ESC=[
  ['E1','Caída o mantenimiento de NetSuite','Media','Muy alto','Modo degradado en las 9 UN; Oracle recupera; drenado de colas al volver.','≤ 15 min (modo degradado)'],
  ['E2','Ransomware o compromiso de credenciales (incluida una cuenta de NetSuite)','Media','Muy alto','Aislar, revocar tokens de integración, revisar el registro de auditoría de NetSuite y recuperar sistemas propios desde copia inmutable.','4–24 h sistemas propios'],
