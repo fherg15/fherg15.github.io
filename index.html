@@ -177,6 +177,9 @@ main{display:flex;flex-direction:column;gap:12px;padding-bottom:12px}
 .pjc .go{margin-top:18px;color:#2997ff;font-size:17px;position:relative}
 .pjm{display:grid;grid-template-rows:1fr 1fr;gap:12px}
 .pjc2 .glow{background:radial-gradient(circle,rgba(155,123,255,.42),transparent 65%)}
+.pjc3{grid-column:1/-1;min-height:320px}
+.pjc3 .glow{background:radial-gradient(circle,rgba(217,119,87,.45),transparent 65%)}
+.pjc3 .ds{max-width:640px}
 .pjall{text-align:center;margin-top:24px}
 .pjall a{color:var(--link);font-size:17px;text-decoration:none}
 .pjall a:hover{text-decoration:underline}
@@ -347,6 +350,14 @@ footer span{display:block;max-width:1024px;margin:0 auto}
       <div class="kpis"><span class="kp">$22.0 MM MXN</span><span class="kp" data-i18n="pj.2k">300 usuarios</span><span class="kp">99.7%</span><span class="kp">−60%</span><span class="kp">−50%</span></div>
       <div class="go" data-i18n="pj.go">Explorar el proyecto ›</div>
     </a>
+    <a class="pjc pjc3 rv" href="proyectos/netsuite-claude-mcp/" data-href-es="proyectos/netsuite-claude-mcp/" data-href-en="proyectos/netsuite-claude-mcp/en/" onclick="gtag('event','project_open',{project:'netsuite-claude-mcp',from:'home'})">
+      <div class="glow"></div>
+      <div class="tg" data-i18n="pj.3tag">IA aplicada · ERP + Claude (MCP)</div>
+      <div class="tt" data-i18n="pj.3t">Conector Oracle NetSuite – Claude AI (MCP)</div>
+      <div class="ds" data-i18n="pj.3d">Finanzas, Operaciones y Dirección consultan NetSuite en lenguaje natural, con los permisos de su rol y sin exportar a Excel: el tiempo por reporte baja de 3.0 h a 0.9 h en 26 semanas.</div>
+      <div class="kpis"><span class="kp">−70%</span><span class="kp">3.0 → 0.9 h</span><span class="kp" data-i18n="pj.3k">120 usuarios · 4 países</span><span class="kp">$2.4 MM MXN</span><span class="kp">ROI 153%</span></div>
+      <div class="go" data-i18n="pj.go">Explorar el proyecto ›</div>
+    </a>
   </div>
   <div class="pjall rv"><a href="proyectos/" data-href-es="proyectos/" data-href-en="proyectos/en/" data-i18n="pj.all">Ver todos los proyectos ›</a></div>
 </div></section>
@@ -463,7 +474,7 @@ const JOBS={
 const T={
  es:{
   'n.sum':'Resumen','n.exp':'Trayectoria','n.skills':'Expertise','n.edu':'Formación','n.cta':'Contactar',
-  'n.pj':'Proyectos','pj.kicker':'Proyectos','pj.h':'Planes que se pueden <span class="grad">ver funcionar.</span>','pj.p':'Casos de estudio interactivos: arquitectura, métricas y simulaciones explicadas paso a paso.','pj.1tag':'Continuidad de negocio · ERP SaaS','pj.1t':'DRP con RTO/RPO','pj.1d':'Plan de recuperación ante desastres para Oracle NetSuite: 99.7% de disponibilidad de negocio y 9 unidades de negocio que siguen operando aunque el ERP caiga.','pj.1k':'9 UN · 72 h','pj.go':'Explorar el proyecto ›','pj.m1':'para que cada unidad de negocio opere en modo degradado','pj.m2':'transacciones perdidas en las integraciones','pj.all':'Ver todos los proyectos ›','pj.2tag':'Transformación digital · ERP + App móvil','pj.2t':'ERP Dynamics y App','pj.2d':'Microsoft Dynamics 365 para 300 usuarios y la plataforma móvil Movilform integrada al ERP: trazabilidad, transporte, documentación regulatoria y portal de clientes en 24 meses.','pj.2k':'300 usuarios',
+  'n.pj':'Proyectos','pj.kicker':'Proyectos','pj.h':'Planes que se pueden <span class="grad">ver funcionar.</span>','pj.p':'Casos de estudio interactivos: arquitectura, métricas y simulaciones explicadas paso a paso.','pj.1tag':'Continuidad de negocio · ERP SaaS','pj.1t':'DRP con RTO/RPO','pj.1d':'Plan de recuperación ante desastres para Oracle NetSuite: 99.7% de disponibilidad de negocio y 9 unidades de negocio que siguen operando aunque el ERP caiga.','pj.1k':'9 UN · 72 h','pj.go':'Explorar el proyecto ›','pj.m1':'para que cada unidad de negocio opere en modo degradado','pj.m2':'transacciones perdidas en las integraciones','pj.all':'Ver todos los proyectos ›','pj.2tag':'Transformación digital · ERP + App móvil','pj.2t':'ERP Dynamics y App','pj.2d':'Microsoft Dynamics 365 para 300 usuarios y la plataforma móvil Movilform integrada al ERP: trazabilidad, transporte, documentación regulatoria y portal de clientes en 24 meses.','pj.2k':'300 usuarios','pj.3tag':'IA aplicada · ERP + Claude (MCP)','pj.3t':'Conector Oracle NetSuite – Claude AI (MCP)','pj.3d':'Finanzas, Operaciones y Dirección consultan NetSuite en lenguaje natural, con los permisos de su rol y sin exportar a Excel: el tiempo por reporte baja de 3.0 h a 0.9 h en 26 semanas.','pj.3k':'120 usuarios · 4 países',
   'hero.kicker':'Líder Regional de TI LATAM',
   'hero.h1':'Dieciséis años haciendo que la tecnología trabaje <span class="grad">para el negocio.</span>',
   'hero.lead':'CIO · ERP · Ciberseguridad ISO 27001 · IA Aplicada. Ejecutivo de TI en multinacionales de México, Perú, Colombia y Chile, con reporte a corporativos en Francia, España y Reino Unido.',
@@ -508,7 +519,7 @@ const T={
  },
  en:{
   'n.sum':'Overview','n.exp':'Experience','n.skills':'Expertise','n.edu':'Education','n.cta':'Contact',
-  'n.pj':'Projects','pj.kicker':'Projects','pj.h':'Plans you can <span class="grad">see working.</span>','pj.p':'Interactive case studies: architecture, metrics and simulations explained step by step.','pj.1tag':'Business continuity · SaaS ERP','pj.1t':'DRP with RTO/RPO','pj.1d':'Disaster recovery plan for Oracle NetSuite: 99.7% business availability and 9 business units that keep operating even if the ERP goes down.','pj.1k':'9 BUs · 72 h','pj.go':'Explore the project ›','pj.m1':'for every business unit to run in degraded mode','pj.m2':'transactions lost in integrations','pj.all':'See all projects ›','pj.2tag':'Digital transformation · ERP + mobile app','pj.2t':'ERP Dynamics & App','pj.2d':'Microsoft Dynamics 365 for 300 users plus the Movilform mobile platform integrated with the ERP: traceability, transport, regulatory documents and a customer portal in 24 months.','pj.2k':'300 users',
+  'n.pj':'Projects','pj.kicker':'Projects','pj.h':'Plans you can <span class="grad">see working.</span>','pj.p':'Interactive case studies: architecture, metrics and simulations explained step by step.','pj.1tag':'Business continuity · SaaS ERP','pj.1t':'DRP with RTO/RPO','pj.1d':'Disaster recovery plan for Oracle NetSuite: 99.7% business availability and 9 business units that keep operating even if the ERP goes down.','pj.1k':'9 BUs · 72 h','pj.go':'Explore the project ›','pj.m1':'for every business unit to run in degraded mode','pj.m2':'transactions lost in integrations','pj.all':'See all projects ›','pj.2tag':'Digital transformation · ERP + mobile app','pj.2t':'ERP Dynamics & App','pj.2d':'Microsoft Dynamics 365 for 300 users plus the Movilform mobile platform integrated with the ERP: traceability, transport, regulatory documents and a customer portal in 24 months.','pj.2k':'300 users','pj.3tag':'Applied AI · ERP + Claude (MCP)','pj.3t':'Oracle NetSuite – Claude AI (MCP) Connector','pj.3d':'Finance, Operations and Leadership query NetSuite in plain language, with their role’s permissions and no Excel exports: time per report drops from 3.0 h to 0.9 h in 26 weeks.','pj.3k':'120 users · 4 countries',
   'hero.kicker':'LATAM Regional IT Leader',
   'hero.h1':'Sixteen years making technology work <span class="grad">for the business.</span>',
   'hero.lead':'CIO · ERP · ISO 27001 Cybersecurity · Applied AI. IT executive at multinationals in Mexico, Peru, Colombia and Chile, reporting to headquarters in France, Spain and the United Kingdom.',
