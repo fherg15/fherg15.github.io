@@ -164,6 +164,23 @@ main{display:flex;flex-direction:column;gap:12px;padding-bottom:12px}
 .edu .is{color:var(--mut);font-size:14px;margin-top:4px;line-height:1.4}
 .edu .tag{display:inline-block;margin-top:8px;font-size:12px;font-weight:600;color:var(--link)}
 
+/* PROYECTOS */
+.pjx{display:grid;grid-template-columns:1.25fr 1fr;gap:12px;margin-top:52px;text-align:left}
+.pjc{position:relative;overflow:hidden;background:#000;color:#f5f5f7;border-radius:28px;padding:44px 40px;text-decoration:none;display:flex;flex-direction:column;min-height:400px;transition:transform .35s cubic-bezier(.28,.11,.32,1),box-shadow .35s}
+.pjc:hover{transform:translateY(-4px);box-shadow:0 24px 50px rgba(0,0,0,.18)}
+.pjc .glow{position:absolute;right:-110px;top:-110px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(41,151,255,.38),transparent 65%);animation:pjp 5s ease-in-out infinite}
+@keyframes pjp{50%{transform:scale(1.15);opacity:.7}}
+.pjc .tg{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#a1a1a6;position:relative}
+.pjc .tt{font-size:clamp(2rem,3.6vw,2.8rem);font-weight:600;letter-spacing:-.03em;line-height:1.05;margin-top:12px;position:relative}
+.pjc .ds{color:#a1a1a6;font-size:16px;margin-top:14px;line-height:1.5;max-width:460px;position:relative}
+.pjc .kpis{margin-top:auto;padding-top:26px}
+.pjc .go{margin-top:18px;color:#2997ff;font-size:17px;position:relative}
+.pjm{display:grid;grid-template-rows:1fr 1fr;gap:12px}
+.pjm .m{background:var(--tile);border-radius:28px;padding:30px;display:flex;flex-direction:column;justify-content:center}
+.pjm .m .n{font-size:clamp(2.4rem,4.4vw,3.4rem);font-weight:600;letter-spacing:-.035em;line-height:1}
+.pjm .m .l{font-size:15px;color:var(--mut);margin-top:10px;line-height:1.35}
+.pjm .m a{color:var(--link);font-size:15px;text-decoration:none;margin-top:12px}
+
 /* CONTACTO + footer */
 #contacto{padding:110px 22px}
 footer{background:var(--tile);color:var(--mut);font-size:12px;line-height:1.6;padding:20px 22px 28px;text-align:center;border-top:1px solid var(--ln)}
@@ -172,6 +189,7 @@ footer span{display:block;max-width:1024px;margin:0 auto}
 @media(max-width:1000px){
   .cards{grid-template-columns:repeat(2,1fr)}
   .orc{grid-template-columns:1fr}
+  .pjx{grid-template-columns:1fr}
   .tabs{grid-template-columns:repeat(2,1fr)}
   .detail{grid-template-columns:1fr;gap:34px;padding:38px 28px}
   .q3{grid-template-columns:1fr}
@@ -206,6 +224,7 @@ footer span{display:block;max-width:1024px;margin:0 auto}
     <a href="#resumen" data-i18n="n.sum">Resumen</a>
     <a href="#trayectoria" data-i18n="n.exp">Trayectoria</a>
     <a href="#expertise" data-i18n="n.skills">Expertise</a>
+    <a href="#proyectos" data-i18n="n.pj">Proyectos</a>
     <a href="#formacion" data-i18n="n.edu">Formación</a>
   </nav>
   <div class="rt">
@@ -299,6 +318,27 @@ footer span{display:block;max-width:1024px;margin:0 auto}
     <div class="tc rv"><div class="v" data-i18n="tm.1v">4 + 11</div><div class="nm">Human Corporis</div><div class="s" data-i18n="tm.1s">.</div></div>
     <div class="tc rv"><div class="v" data-i18n="tm.2v">6 + 15</div><div class="nm">SUEZ → VEOLIA</div><div class="s" data-i18n="tm.2s">.</div></div>
     <div class="tc rv"><div class="v" data-i18n="tm.3v">3</div><div class="nm">ISP</div><div class="s" data-i18n="tm.3s">.</div></div>
+  </div>
+</div></section>
+
+<!-- PROYECTOS -->
+<section class="tile white" id="proyectos"><div class="inner">
+  <div class="eyebrow rv" data-i18n="pj.kicker">Proyectos</div>
+  <h2 class="h2 rv" data-i18n-html="pj.h">Planes que se pueden <span class="grad">ver funcionar.</span></h2>
+  <p class="p rv" data-i18n="pj.p">Casos de estudio interactivos: arquitectura, métricas y simulaciones explicadas paso a paso.</p>
+  <div class="pjx">
+    <a class="pjc rv" href="proyectos/drp-rto-rpo/" onclick="gtag('event','project_open',{project:'drp-rto-rpo',from:'home'})">
+      <div class="glow"></div>
+      <div class="tg" data-i18n="pj.1tag">Continuidad de negocio · ERP SaaS</div>
+      <div class="tt">DRP con RTO/RPO</div>
+      <div class="ds" data-i18n="pj.1d">Plan de recuperación ante desastres para Oracle NetSuite: 99.7% de disponibilidad de negocio y 9 unidades de negocio que siguen operando aunque el ERP caiga.</div>
+      <div class="kpis"><span class="kp">99.7%</span><span class="kp">RTO ≤ 1 h</span><span class="kp">RPO 0</span><span class="kp" data-i18n="pj.1k">9 UN · 72 h</span><span class="kp">ISO 22301</span></div>
+      <div class="go" data-i18n="pj.go">Explorar el proyecto ›</div>
+    </a>
+    <div class="pjm">
+      <div class="m rv"><div class="n">≤ 15 min</div><div class="l" data-i18n="pj.m1">para que cada unidad de negocio opere en modo degradado</div></div>
+      <div class="m rv"><div class="n">0</div><div class="l" data-i18n="pj.m2">transacciones perdidas en las integraciones</div><a href="proyectos/" data-i18n="pj.all">Ver todos los proyectos ›</a></div>
+    </div>
   </div>
 </div></section>
 
@@ -414,6 +454,7 @@ const JOBS={
 const T={
  es:{
   'n.sum':'Resumen','n.exp':'Trayectoria','n.skills':'Expertise','n.edu':'Formación','n.cta':'Contactar',
+  'n.pj':'Proyectos','pj.kicker':'Proyectos','pj.h':'Planes que se pueden <span class="grad">ver funcionar.</span>','pj.p':'Casos de estudio interactivos: arquitectura, métricas y simulaciones explicadas paso a paso.','pj.1tag':'Continuidad de negocio · ERP SaaS','pj.1d':'Plan de recuperación ante desastres para Oracle NetSuite: 99.7% de disponibilidad de negocio y 9 unidades de negocio que siguen operando aunque el ERP caiga.','pj.1k':'9 UN · 72 h','pj.go':'Explorar el proyecto ›','pj.m1':'para que cada unidad de negocio opere en modo degradado','pj.m2':'transacciones perdidas en las integraciones','pj.all':'Ver todos los proyectos ›',
   'hero.kicker':'Líder Regional de TI LATAM',
   'hero.h1':'Dieciséis años haciendo que la tecnología trabaje <span class="grad">para el negocio.</span>',
   'hero.lead':'CIO · ERP · Ciberseguridad ISO 27001 · IA Aplicada. Ejecutivo de TI en multinacionales de México, Perú, Colombia y Chile, con reporte a corporativos en Francia, España y Reino Unido.',
@@ -458,6 +499,7 @@ const T={
  },
  en:{
   'n.sum':'Overview','n.exp':'Experience','n.skills':'Expertise','n.edu':'Education','n.cta':'Contact',
+  'n.pj':'Projects','pj.kicker':'Projects','pj.h':'Plans you can <span class="grad">see working.</span>','pj.p':'Interactive case studies: architecture, metrics and simulations explained step by step.','pj.1tag':'Business continuity · SaaS ERP','pj.1d':'Disaster recovery plan for Oracle NetSuite: 99.7% business availability and 9 business units that keep operating even if the ERP goes down.','pj.1k':'9 BUs · 72 h','pj.go':'Explore the project ›','pj.m1':'for every business unit to run in degraded mode','pj.m2':'transactions lost in integrations','pj.all':'See all projects ›',
   'hero.kicker':'LATAM Regional IT Leader',
   'hero.h1':'Sixteen years making technology work <span class="grad">for the business.</span>',
   'hero.lead':'CIO · ERP · ISO 27001 Cybersecurity · Applied AI. IT executive at multinationals in Mexico, Peru, Colombia and Chile, reporting to headquarters in France, Spain and the United Kingdom.',
