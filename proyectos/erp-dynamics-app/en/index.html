@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VC2D4V1FP5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VC2D4V1FP5');
+  function setL(l){try{localStorage.setItem('fgg-lang',l)}catch(e){}}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="alternate" hreflang="es" href="https://fherg15.github.io/proyectos/erp-dynamics-app/">
+<link rel="alternate" hreflang="en" href="https://fherg15.github.io/proyectos/erp-dynamics-app/en/">
+<title>ERP Dynamics &amp; App Project — Fernando Gómez Guerrero</title>
+<meta name="description" content="Digital transformation program: Microsoft Dynamics 365 ERP for 300 users + integrated Movilform mobile platform. $22.0 MM MXN CAPEX, 24 months, 99.7% availability, −60% process time and −50% incidents.">
+<style>
+:root{
+  --bg:#fff;--tile:#f5f5f7;--ink:#1d1d1f;--mut:#6e6e73;--blk:#000;--blk2:#161617;--blk3:#232325;--ln:#d2d2d7;
+  --blue:#0071e3;--blueh:#0077ed;--link:#0066cc;--linkd:#2997ff;--vio:#7b61ff;--pink:#d946a8;--teal:#00a6a6;
+  --ok:#12a05f;--okd:#30d158;--warn:#e8890c;--warnd:#ffb340;--bad:#e5484d;--badd:#ff6961;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.47;letter-spacing:-.022em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+button{font-family:inherit}
+
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0071e3,#7b61ff,#d946a8);z-index:200}
+.gnav{position:sticky;top:0;z-index:100;height:44px;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
+.gnav .in{max-width:1100px;height:100%;margin:0 auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.gnav .brand{font-size:.92rem;font-weight:600;text-decoration:none;white-space:nowrap}
+.gnav .brand span{color:var(--mut);font-weight:400}
+.gnav .links{display:flex;gap:20px;overflow:auto;scrollbar-width:none}
+.gnav .links::-webkit-scrollbar{display:none}
+.gnav .links a{font-size:12px;opacity:.75;text-decoration:none;white-space:nowrap;transition:opacity .2s}
+.gnav .links a:hover,.gnav .links a.on{opacity:1}
+.gnav .links a.on{color:var(--blue)}
+.gnav .back{font-size:12px;color:var(--link);text-decoration:none;white-space:nowrap}
+.gnav .rt{display:flex;align-items:center;gap:12px}
+.lang{display:flex;background:rgba(0,0,0,.06);border-radius:980px;padding:2px}
+.lang a{font-size:11px;font-weight:600;padding:4px 10px;border-radius:980px;text-decoration:none;color:var(--mut)}
+.lang a.on{background:var(--ink);color:#fff}
+
+main{display:flex;flex-direction:column;gap:12px;padding-bottom:12px}
+.tile{background:var(--tile);padding:90px 22px;overflow:hidden;position:relative}
+.tile.white{background:var(--bg)}
+.tile.dark{background:var(--blk);color:#f5f5f7}
+.inner{max-width:1100px;margin:0 auto}
+.ctr{text-align:center}
+.eyebrow{font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.dark .eyebrow{color:var(--linkd)}
+.num{font-family:var(--mono);font-size:13px;color:var(--mut);margin-right:8px}
+.h1{font-size:clamp(2.6rem,6.6vw,5.2rem);font-weight:700;line-height:1.02;letter-spacing:-.04em;margin-top:10px}
+.h2{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:600;line-height:1.07;letter-spacing:-.03em;max-width:880px;margin-top:10px}
+.ctr .h2{margin-left:auto;margin-right:auto}
+.lead{font-size:clamp(1.08rem,1.7vw,1.3rem);color:var(--mut);max-width:780px;margin-top:18px;line-height:1.45}
+.ctr .lead{margin-left:auto;margin-right:auto}
+.dark .lead,.dark .mut{color:#a1a1a6}
+.lead b{color:var(--ink);font-weight:600}
+.dark .lead b{color:#f5f5f7}
+.grad{background:linear-gradient(92deg,#0071e3 0%,#7b61ff 55%,#d946a8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.dark .grad{background:linear-gradient(92deg,#2997ff 0%,#9b7bff 55%,#f472b6 100%);-webkit-background-clip:text;background-clip:text}
+.mut{color:var(--mut)}
+.card{background:#fff;border-radius:22px;padding:26px}
+.white .card{background:var(--tile)}
+.dark .card{background:var(--blk2)}
+.note{font-size:13px;color:var(--mut);margin-top:16px;line-height:1.5}
+.dark .note{color:#8e8e93}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:980px;background:rgba(0,0,0,.06);border:0;color:var(--ink);cursor:pointer;transition:.2s}
+.dark .chip{background:rgba(255,255,255,.1);color:#f5f5f7}
+.chip.on{background:var(--ink);color:#fff}
+.dark .chip.on{background:#f5f5f7;color:#000}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:10px 20px;border-radius:980px;border:1px solid transparent;cursor:pointer;text-decoration:none;transition:.2s}
+.btn.fill{background:var(--blue);color:#fff}.btn.fill:hover{background:var(--blueh)}
+.btn.line{background:transparent;color:var(--link);border-color:var(--link)}.btn.line:hover{background:var(--link);color:#fff}
+.dark .btn.line{color:var(--linkd);border-color:var(--linkd)}.dark .btn.line:hover{background:var(--linkd);color:#000}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.28,.11,.32,1),transform .8s cubic-bezier(.28,.11,.32,1)}
+.rv.in{opacity:1;transform:none}
+input[type=range]{width:100%;accent-color:var(--blue)}
+.dark input[type=range]{accent-color:var(--linkd)}
+
+/* HERO */
+#hero{padding:76px 22px 70px;background:radial-gradient(1100px 520px at 70% -10%,#ece8ff 0%,var(--tile) 62%)}
+.badge{display:inline-flex;gap:8px;align-items:center;font-size:13px;font-weight:600;padding:7px 14px;border-radius:980px;background:#fff;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.badge .live{width:8px;height:8px;border-radius:50%;background:var(--vio);animation:live 2s infinite}
+@keyframes live{0%{box-shadow:0 0 0 0 rgba(123,97,255,.6)}70%{box-shadow:0 0 0 8px rgba(123,97,255,0)}100%{box-shadow:0 0 0 0 rgba(123,97,255,0)}}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.rot{display:inline-block;min-width:1ch;color:var(--blue);font-weight:600}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.kgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:48px}
+.k{background:#fff;border-radius:18px;padding:20px 16px}
+.k .n{font-size:clamp(1.5rem,2.6vw,2.15rem);font-weight:700;letter-spacing:-.04em;line-height:1;white-space:nowrap}
+.k .l{font-size:12.5px;color:var(--mut);margin-top:8px;line-height:1.3}
+/* scene */
+.scene{position:relative;height:420px}
+.erpw{position:absolute;left:0;top:20px;width:78%;background:#fff;border-radius:18px;box-shadow:0 30px 60px rgba(0,0,0,.12);overflow:hidden}
+.erpw .bar{height:30px;background:#f0f0f3;display:flex;align-items:center;gap:6px;padding:0 12px}
+.erpw .bar i{width:10px;height:10px;border-radius:50%;background:#d2d2d7;display:block}
+.erpw .bar span{font-size:11px;color:var(--mut);margin-left:10px;font-weight:600}
+.erpw .body{display:grid;grid-template-columns:96px 1fr;min-height:300px}
+.erpw .side{background:#fafafc;border-right:1px solid #eee;padding:14px 10px;display:flex;flex-direction:column;gap:8px}
+.erpw .side b{font-size:10.5px;font-weight:600;color:var(--mut);padding:5px 8px;border-radius:7px;transition:.3s}
+.erpw .side b.on{background:var(--blue);color:#fff}
+.erpw .main{padding:16px}
+.erpw .row1{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mini{background:var(--tile);border-radius:10px;padding:10px}
+.mini .v{font-size:18px;font-weight:700;letter-spacing:-.03em}
+.mini .t{font-size:10px;color:var(--mut)}
+.bars{display:flex;align-items:flex-end;gap:6px;height:110px;margin-top:14px;padding:10px;background:var(--tile);border-radius:10px}
+.bars i{flex:1;background:linear-gradient(180deg,#7b61ff,#0071e3);border-radius:4px 4px 2px 2px;transition:height 1s cubic-bezier(.28,.11,.32,1)}
+.feed{margin-top:12px;font-family:var(--mono);font-size:11px;color:var(--mut);height:34px;overflow:hidden}
+.feed div{animation:fin .5s}
+@keyframes fin{from{opacity:0;transform:translateY(8px)}}
+.phone{position:absolute;right:0;bottom:0;width:190px;height:380px;background:#111;border-radius:34px;padding:10px;box-shadow:0 30px 60px rgba(0,0,0,.3)}
+.phone .scr{background:#fff;border-radius:26px;height:100%;overflow:hidden;position:relative;padding:28px 12px 12px}
+.phone .notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:70px;height:18px;background:#111;border-radius:12px}
+.phone .ah{font-size:11px;font-weight:700;color:var(--vio)}
+.phone .at{font-size:15px;font-weight:700;letter-spacing:-.02em;margin-top:2px}
+.steps-ph{display:flex;flex-direction:column;gap:7px;margin-top:12px}
+.sp{display:flex;gap:8px;align-items:center;padding:8px;border-radius:12px;background:var(--tile);font-size:11px;font-weight:600;transition:.35s;opacity:.45}
+.sp .ic{width:24px;height:24px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:#e5e5ea;font-size:12px;flex:none;transition:.35s}
+.sp.on{opacity:1;background:#efeaff;transform:scale(1.03)}
+.sp.on .ic{background:var(--vio);color:#fff}
+.sp.done{opacity:1}
+.sp.done .ic{background:var(--ok);color:#fff}
+.phone .map{height:70px;border-radius:12px;margin-top:10px;background:linear-gradient(135deg,#e8f1ff,#f3eeff);position:relative;overflow:hidden}
+.phone .map svg{width:100%;height:100%}
+.sync{position:absolute;left:4%;bottom:18px;font-size:11px;font-weight:700;background:#fff;padding:6px 10px;border-radius:980px;box-shadow:0 6px 18px rgba(0,0,0,.12);display:flex;gap:6px;align-items:center;z-index:3}
+.sync i{width:8px;height:8px;border-radius:50%;background:var(--ok);display:block;animation:blink 1.2s infinite}
+@keyframes blink{50%{opacity:.3}}
+
+/* fases */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:44px}
+.ph{background:var(--blk2);border-radius:22px;padding:26px;cursor:pointer;position:relative;overflow:hidden;transition:transform .3s,background .3s;border:1px solid transparent;text-align:left;color:inherit;font:inherit}
+.ph:hover{transform:translateY(-3px)}
+.ph.on{border-color:rgba(41,151,255,.6);background:#0d1626}
+.ph .pn{font-family:var(--mono);font-size:12px;color:var(--linkd)}
+.ph h3{font-size:22px;font-weight:600;letter-spacing:-.02em;margin-top:10px;line-height:1.15}
+.ph .cap{font-size:34px;font-weight:700;letter-spacing:-.04em;margin-top:14px}
+.ph .cap small{font-size:13px;color:#a1a1a6;font-weight:500;letter-spacing:0;margin-left:4px}
+.ph .mo{display:inline-block;font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:980px;background:rgba(255,255,255,.1);margin-top:10px}
+.ph p{font-size:14px;color:#a1a1a6;margin-top:12px;line-height:1.5}
+.ph .meta{font-size:13px;color:#f5f5f7;margin-top:12px;font-weight:600}
+.phbar{height:8px;border-radius:8px;background:rgba(255,255,255,.08);margin-top:28px;position:relative;overflow:hidden}
+.phbar i{position:absolute;top:0;bottom:0;border-radius:8px;transition:.6s}
+.phlbl{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:#8e8e93;margin-top:8px}
+.results{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+.results .card .v{font-size:34px;font-weight:700;letter-spacing:-.04em;line-height:1}
+.results .card p{font-size:13.5px;color:#a1a1a6;margin-top:10px;line-height:1.45}
+
+/* SMART + alcance */
+.smart{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:44px}
+.sm{background:#fff;border-radius:22px;padding:24px;position:relative;overflow:hidden;transition:transform .3s}
+.sm:hover{transform:translateY(-3px)}
+.sm .id{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--blue)}
+.sm .goal{font-size:30px;font-weight:700;letter-spacing:-.035em;margin-top:10px;line-height:1.05}
+.sm h4{font-size:16px;font-weight:600;margin-top:10px;line-height:1.3}
+.sm p{font-size:13.5px;color:var(--mut);margin-top:6px;line-height:1.45}
+.sm .when{position:absolute;top:22px;right:22px;font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:980px;background:var(--tile)}
+.scope{display:grid;grid-template-columns:1.4fr 1fr;gap:12px;margin-top:12px}
+.mods{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:14px}
+.mod{border-radius:14px;padding:14px;background:var(--tile);cursor:pointer;transition:.25s;border:1px solid transparent}
+.mod:hover,.mod.on{border-color:var(--blue);background:#eef5ff}
+.mod b{font-size:14px;display:block}
+.mod span{font-size:12.5px;color:var(--mut);display:block;margin-top:4px;line-height:1.4}
+.out li,.assume li{font-size:14px;line-height:1.5;margin:10px 0 0 18px}
+.out li::marker{color:var(--bad)}
+.assume li::marker{color:var(--blue)}
+.card h3{font-size:19px;font-weight:600;letter-spacing:-.02em}
+.spons{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.spons span{font-size:12.5px;padding:7px 12px;border-radius:12px;background:var(--tile)}
+.spons b{font-weight:600}
+
+/* arquitectura */
+.arch-wrap{display:grid;grid-template-columns:1.75fr 1fr;gap:12px;margin-top:40px}
+.arch-svg{background:#fff;border-radius:22px;padding:14px}
+.arch-svg svg{width:100%;height:auto;display:block}
+.nd rect{fill:#fff;stroke:#d2d2d7;stroke-width:1.5;transition:fill .3s,stroke .3s}
+.nd{cursor:pointer}
+.nd:hover rect{stroke:var(--blue)}
+.nd.core rect{fill:#e8f1ff;stroke:var(--blue);stroke-width:2}
+.nd.mf rect{fill:#f3eeff;stroke:var(--vio)}
+.nd.ais rect{fill:#f0fbf7;stroke:var(--ok)}
+.nd.sec rect{fill:#f0f0f3;stroke:#c7c7cc}
+.nd.hl rect{stroke:var(--pink);stroke-width:3}
+.nd.down rect{fill:#fdecec;stroke:var(--bad);stroke-width:2.5}
+.nd .t{font-size:20px;font-weight:700;fill:#1d1d1f}
+.nd .s{font-size:15px;fill:#6e6e73}
+.nd .st{font-size:13px;font-weight:700;font-family:var(--mono)}
+.lk{stroke:#c7c7cc;stroke-width:2;fill:none}
+.lk.fl{stroke:#9fc6f5;stroke-dasharray:6 7;animation:dash 1.2s linear infinite}
+.lk.dn{stroke:var(--bad);stroke-dasharray:4 6;animation:none}
+@keyframes dash{to{stroke-dashoffset:-26}}
+.side-p{display:flex;flex-direction:column;gap:12px}
+.side-p .card{padding:22px}
+.side-p h4{font-size:18px;font-weight:600;letter-spacing:-.02em}
+.side-p p{font-size:14px;color:var(--mut);margin-top:8px;line-height:1.5}
+.flowsteps{display:flex;flex-direction:column;gap:6px;margin-top:12px}
+.fs{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.4;padding:9px 10px;border-radius:12px;transition:.3s;color:var(--mut)}
+.fs .n{width:22px;height:22px;border-radius:50%;background:var(--tile);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex:none;font-family:var(--mono)}
+.fs.on{background:#f3eeff;color:var(--ink)}
+.fs.on .n{background:var(--vio);color:#fff}
+.fs.done .n{background:var(--ok);color:#fff}
+.simbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.qbox{display:flex;gap:10px;margin-top:14px}
+.qbox div{flex:1;background:var(--tile);border-radius:14px;padding:12px}
+.qbox b{font-size:24px;font-weight:700;letter-spacing:-.03em;display:block;font-family:var(--mono)}
+.qbox span{font-size:11.5px;color:var(--mut)}
+.simmsg{font-size:13.5px;margin-top:12px;line-height:1.45;padding:12px;border-radius:12px;background:#f0fbf7;color:#0b6b40}
+.simmsg.bad{background:#fdecec;color:#a8282c}
+
+/* disponibilidad */
+.av{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+.slr{margin-top:18px}
+.slr label{display:flex;justify-content:space-between;font-size:14px;color:#a1a1a6}
+.slr label b{color:#f5f5f7;font-family:var(--mono)}
+.stack{height:22px;border-radius:8px;background:rgba(255,255,255,.08);margin-top:26px;position:relative;display:flex;overflow:visible}
+.stack i{height:100%;transition:width .4s}
+.stack i:first-child{border-radius:8px 0 0 8px}
+.stack .lim{position:absolute;top:-8px;bottom:-8px;width:2px;background:#f5f5f7}
+.stack .lim span{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:11px;white-space:nowrap;font-family:var(--mono);color:#f5f5f7}
+.leg{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-size:12.5px;color:#a1a1a6}
+.leg span{display:flex;align-items:center;gap:6px}
+.leg i{width:10px;height:10px;border-radius:3px;display:block}
+.big{font-size:clamp(3rem,7vw,4.8rem);font-weight:700;letter-spacing:-.05em;line-height:1}
+.verdict{display:inline-block;margin-top:14px;font-size:13px;font-weight:700;padding:6px 14px;border-radius:980px}
+.verdict.ok{background:rgba(48,209,88,.15);color:var(--okd)}
+.verdict.bad{background:rgba(255,105,97,.15);color:var(--badd)}
+.clockrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.clockrow div{background:var(--blk3);border-radius:14px;padding:14px}
+.clockrow b{font-size:22px;font-family:var(--mono);display:block}
+.clockrow span{font-size:12px;color:#a1a1a6}
+
+/* roadmap */
+.rm-ctl{display:flex;align-items:center;gap:14px;margin-top:36px;flex-wrap:wrap}
+.rm-ctl .mon{font-size:28px;font-weight:700;letter-spacing:-.03em;min-width:220px}
+.rm-ctl .mon small{display:block;font-size:13px;color:var(--mut);font-weight:500;letter-spacing:0}
+.rm-ctl input{flex:1;min-width:200px}
+.gantt{background:#fff;border-radius:22px;padding:22px;margin-top:16px;overflow-x:auto}
+.g-in{min-width:760px;position:relative}
+.g-hd,.g-row{display:grid;grid-template-columns:190px 1fr;align-items:center}
+.g-hd .sc{display:grid;grid-template-columns:repeat(24,1fr);font-family:var(--mono);font-size:10.5px;color:var(--mut)}
+.g-hd .sc span{text-align:left;border-left:1px solid #eee;padding-left:3px}
+.g-row{height:34px;border-top:1px solid #f2f2f4}
+.g-row .lb{font-size:13px;font-weight:500;padding-right:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:.3s}
+.g-row .tr{position:relative;height:100%}
+.g-row .b{position:absolute;top:8px;height:18px;border-radius:9px;background:#e5e5ea;transition:background .3s,box-shadow .3s}
+.g-row .b.ph0{background:#cfe2fb}.g-row .b.ph1{background:#d8f2e5}.g-row .b.ph2{background:#e6defe}
+.g-row.act .b.ph0{background:var(--blue)}.g-row.act .b.ph1{background:var(--ok)}.g-row.act .b.ph2{background:var(--vio)}
+.g-row.act .b{box-shadow:0 4px 14px rgba(0,113,227,.3)}
+.g-row.act .lb{font-weight:700}
+.g-row .ms{position:absolute;top:9px;width:16px;height:16px;transform:translateX(-50%) rotate(45deg);background:#c7c7cc;border-radius:3px;transition:.3s}
+.g-row .ms.gl{background:var(--pink)}
+.g-row.act .ms{background:var(--pink);box-shadow:0 0 0 6px rgba(217,70,168,.18)}
+.g-now{position:absolute;top:0;bottom:0;width:2px;background:var(--pink);transition:left .35s;pointer-events:none;z-index:2}
+.g-now::after{content:"";position:absolute;top:-4px;left:-4px;width:10px;height:10px;border-radius:50%;background:var(--pink)}
+.rm-det{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.rm-det ul{margin-top:10px}
+.rm-det li{font-size:14px;line-height:1.5;margin:6px 0 0 18px}
+.gates{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+.gate{background:#fff;border-radius:20px;padding:20px;transition:.3s;border:2px solid transparent}
+.gate.on{border-color:var(--pink)}
+.gate .gm{font-family:var(--mono);font-size:12px;color:var(--pink);font-weight:700}
+.gate h4{font-size:16px;font-weight:600;margin-top:6px}
+.gate p{font-size:13px;color:var(--mut);margin-top:6px;line-height:1.45}
+
+/* capex */
+.cx{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;margin-top:36px}
+.hb{display:grid;grid-template-columns:230px 1fr;align-items:center;gap:12px;margin-top:12px;cursor:default}
+.hb .lb{font-size:14px}
+.hb .tr{height:26px;position:relative}
+.hb .fill{height:100%;border-radius:7px;background:#c7c7cc;width:0;transition:width 1s cubic-bezier(.28,.11,.32,1),background .3s}
+.hb .fill.top{background:linear-gradient(90deg,#0071e3,#7b61ff)}
+.hb .fill.opex{background:repeating-linear-gradient(45deg,#f5c48a,#f5c48a 6px,#fde7cc 6px,#fde7cc 12px)}
+.hb .vl{position:absolute;top:50%;transform:translateY(-50%);font-size:13px;font-family:var(--mono);white-space:nowrap;padding-left:8px;transition:left 1s cubic-bezier(.28,.11,.32,1)}
+.hb:hover .lb{color:var(--blue)}
+.tog{display:flex;align-items:center;gap:10px;margin-top:22px;font-size:14px;cursor:pointer;user-select:none}
+.sw{width:44px;height:26px;border-radius:13px;background:#d2d2d7;position:relative;transition:.25s;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.25s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.tog.on .sw{background:var(--warn)}
+.tog.on .sw::after{left:21px}
+.alert{font-size:13.5px;line-height:1.5;padding:14px;border-radius:14px;background:#fff5e8;color:#8a4b00;margin-top:12px;display:none}
+.alert.on{display:block}
+.donut{position:relative;width:220px;height:220px;margin:16px auto 0}
+.donut svg{width:100%;height:100%}
+.donut .c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.donut .c b{font-size:30px;letter-spacing:-.04em}
+.donut .c span{font-size:12px;color:var(--mut)}
+.perU{text-align:center;margin-top:18px}
+.perU b{font-size:30px;letter-spacing:-.03em}
+.opex{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:12px}
+.opex .card{padding:18px}
+.opex h4{font-size:15px;font-weight:600}
+.opex p{font-size:12.5px;color:var(--mut);margin-top:6px;line-height:1.4}
+.opex .tg{font-size:11.5px;font-weight:600;color:var(--blue);margin-top:10px}
+
+/* gobierno */
+.forums{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+.fo{background:var(--tile);border-radius:22px;padding:22px;position:relative}
+.fo .lv{font-family:var(--mono);font-size:11.5px;color:var(--blue);font-weight:700}
+.fo h4{font-size:17px;font-weight:600;margin-top:8px;line-height:1.25}
+.fo .cad{display:inline-block;font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:980px;background:#fff;margin-top:10px}
+.fo p{font-size:13px;color:var(--mut);margin-top:10px;line-height:1.45}
+.fo .dec{font-size:13px;margin-top:10px;font-weight:600}
+.raci-w{background:var(--tile);border-radius:22px;padding:22px;margin-top:12px}
+.raci-sc{overflow-x:auto;margin-top:14px}
+table.raci{border-collapse:separate;border-spacing:4px;width:100%;min-width:720px}
+.raci th{font-size:11.5px;font-weight:600;color:var(--mut);padding:6px 4px;cursor:pointer;transition:.2s;border-radius:8px}
+.raci th.on{background:var(--ink);color:#fff}
+.raci td{text-align:center;font-family:var(--mono);font-size:13px;font-weight:700;padding:8px 4px;border-radius:8px;background:#fff;transition:.25s}
+.raci td.lb{text-align:left;font-family:var(--font);font-weight:500;font-size:13px;background:transparent;padding-left:0}
+.raci td.R{color:var(--blue)}.raci td.A{color:var(--pink)}.raci td.C{color:var(--warn)}.raci td.I{color:#aeaeb2}
+.raci.f td:not(.lb){opacity:.25}
+.raci.f td.sel{opacity:1;transform:scale(1.08);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.raci-sum{font-size:14px;margin-top:12px;color:var(--mut);min-height:22px}
+.raci-sum b{color:var(--ink)}
+.team{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px}
+.people{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px}
+.people i{width:18px;height:18px;border-radius:50%;display:block;transform:scale(0);transition:transform .4s}
+.people.in i{transform:scale(1)}
+.team p{font-size:13px;color:var(--mut);margin-top:12px;line-height:1.45}
+.team .tn{font-size:40px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-top:6px}
+
+/* checklist */
+.cktabs{display:flex;gap:8px;overflow-x:auto;margin-top:36px;padding-bottom:4px;scrollbar-width:none}
+.cktabs::-webkit-scrollbar{display:none}
+.ckt{flex:none;background:#fff;border:0;border-radius:16px;padding:12px 14px;cursor:pointer;text-align:left;min-width:150px;transition:.25s;color:var(--ink)}
+.ckt.on{background:var(--ink);color:#fff}
+.ckt b{font-size:13px;display:block}
+.ckt span{font-size:11.5px;opacity:.65}
+.ckt .pb{height:4px;border-radius:4px;background:rgba(0,0,0,.08);margin-top:8px;overflow:hidden}
+.ckt.on .pb{background:rgba(255,255,255,.2)}
+.ckt .pb i{display:block;height:100%;background:var(--ok);transition:width .4s}
+.ckbox{display:grid;grid-template-columns:1fr 280px;gap:12px;margin-top:12px}
+.cki{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;border-radius:14px;cursor:pointer;transition:.2s;user-select:none}
+.cki:hover{background:var(--tile)}
+.cki .bx{width:22px;height:22px;border-radius:7px;border:2px solid #c7c7cc;flex:none;display:flex;align-items:center;justify-content:center;transition:.2s;color:#fff;font-size:13px;font-weight:700}
+.cki.ck .bx{background:var(--ok);border-color:var(--ok)}
+.cki.ck .tx{color:var(--mut);text-decoration:line-through}
+.cki .tx{font-size:14.5px;line-height:1.45}
+.crit{font-size:10.5px;font-weight:700;font-family:var(--mono);padding:2px 7px;border-radius:6px;background:#fdecec;color:var(--bad);margin-right:6px;text-decoration:none;display:inline-block}
+.gstat{text-align:center}
+.ring{width:150px;height:150px;margin:6px auto 0;position:relative}
+.ring svg{width:100%;height:100%}
+.ring .c{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700;letter-spacing:-.03em}
+.gpill{display:inline-block;margin-top:14px;font-size:13px;font-weight:700;padding:7px 14px;border-radius:980px}
+.gpill.ok{background:#e3f6ec;color:#0b6b40}.gpill.no{background:#fdecec;color:#a8282c}
+.gstat p{font-size:13px;color:var(--mut);margin-top:12px;line-height:1.45}
+
+/* kpis */
+.kpitog{display:flex;justify-content:center;margin-top:30px}
+.seg{display:inline-flex;background:rgba(255,255,255,.1);border-radius:980px;padding:3px}
+.seg button{border:0;background:transparent;color:#a1a1a6;font-size:13px;font-weight:600;padding:8px 16px;border-radius:980px;cursor:pointer;transition:.2s}
+.seg button.on{background:#f5f5f7;color:#000}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+.kc{background:var(--blk2);border-radius:22px;padding:22px}
+.kc .kt{font-size:15px;font-weight:600}
+.kc .kf{font-size:12px;color:#8e8e93;margin-top:4px;line-height:1.4;min-height:34px}
+.kc .kv{font-size:38px;font-weight:700;letter-spacing:-.04em;margin-top:12px;line-height:1;transition:color .4s}
+.kc .kv small{font-size:15px;font-weight:600;color:#a1a1a6;margin-left:4px;letter-spacing:0}
+.kc .kb{height:10px;border-radius:6px;background:rgba(255,255,255,.08);margin-top:14px;overflow:hidden}
+.kc .kb i{display:block;height:100%;border-radius:6px;transition:width 1s cubic-bezier(.28,.11,.32,1),background .4s}
+.kc .kd{display:flex;justify-content:space-between;margin-top:10px;font-size:12px;color:#8e8e93}
+.kc .kd b{color:var(--okd)}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.rules .card p{font-size:13.5px;color:#a1a1a6;line-height:1.5}
+.rules .card b{color:#f5f5f7;display:block;margin-bottom:6px;font-size:15px}
+
+/* riesgos */
+.rk{display:grid;grid-template-columns:auto 1fr;gap:12px;margin-top:36px}
+.hm-wrap{background:#fff;border-radius:22px;padding:22px;align-self:start}
+.hm{display:grid;grid-template-columns:28px repeat(5,64px);grid-template-rows:repeat(5,64px) 28px;gap:4px}
+.hm .cell{border-radius:10px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:3px;padding:3px}
+.hm .ax{font-size:11px;color:var(--mut);display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
+.rb{border:0;font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 6px;border-radius:7px;background:#fff;color:var(--ink);cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.15);transition:.2s}
+.rb:hover,.rb.on{background:var(--ink);color:#fff;transform:scale(1.12)}
+.hm-l{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut);margin-top:10px}
+.rk-r{display:flex;flex-direction:column;gap:12px}
+.rdet{background:#fff;border-radius:22px;padding:24px}
+.rdet .rid{font-family:var(--mono);font-size:12px;color:var(--bad);font-weight:700}
+.rdet h4{font-size:22px;font-weight:600;letter-spacing:-.02em;margin-top:6px;line-height:1.2}
+.rdet .ex{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.rdet .ex span{font-size:12px;font-weight:600;padding:5px 10px;border-radius:980px;background:var(--tile)}
+.rdet .mm{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.rdet .mm div{background:var(--tile);border-radius:14px;padding:14px;font-size:13.5px;line-height:1.45}
+.rdet .mm b{display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.rdet .mm .p b{color:var(--ok)}.rdet .mm .k b{color:var(--warn)}
+.rlist{background:#fff;border-radius:22px;padding:18px 22px}
+.rl{display:grid;grid-template-columns:40px 1fr 110px;gap:10px;align-items:center;padding:6px 0;cursor:pointer;font-size:13px}
+.rl:hover .nm{color:var(--blue)}
+.rl .id{font-family:var(--mono);font-weight:700;font-size:12px}
+.rl .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rl .eb{height:8px;border-radius:5px;background:var(--tile);position:relative}
+.rl .eb i{position:absolute;left:0;top:0;bottom:0;border-radius:5px;width:0;transition:width 1s}
+
+/* cambio */
+.adkar{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:40px}
+.ad{background:var(--tile);border:0;border-radius:18px;padding:18px 16px;text-align:left;cursor:pointer;transition:.3s;position:relative;color:var(--ink)}
+.ad .l{font-size:40px;font-weight:700;letter-spacing:-.04em;line-height:1;color:#c7c7cc;transition:.3s}
+.ad b{display:block;font-size:14px;margin-top:6px}
+.ad span{font-size:11.5px;color:var(--mut);font-family:var(--mono)}
+.ad.on{background:var(--ink);color:#fff}
+.ad.on .l{color:var(--linkd)}
+.ad.on span{color:#a1a1a6}
+.addet{background:var(--tile);border-radius:22px;padding:24px;margin-top:12px;display:grid;grid-template-columns:2fr 1fr;gap:20px;align-items:center}
+.addet h4{font-size:22px;font-weight:600;letter-spacing:-.02em}
+.addet p{font-size:15px;color:var(--mut);margin-top:6px}
+.addet .ind{background:#fff;border-radius:16px;padding:16px}
+.addet .ind span{font-size:11.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.addet .ind b{display:block;font-size:18px;margin-top:4px;letter-spacing:-.02em}
+.comp{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+.comp .card{padding:22px}
+.comp .ic{font-size:26px}
+.comp h4{font-size:16px;font-weight:600;margin-top:8px}
+.comp p{font-size:13px;color:var(--mut);margin-top:6px;line-height:1.45}
+.close{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.close ul{list-style:none;margin-top:10px}
+.close li{font-size:14px;line-height:1.45;padding:8px 0;border-top:1px solid #eee;display:flex;gap:10px}
+.close li:first-child{border-top:0}
+.close li i{color:var(--ok);font-style:normal;font-weight:700}
+
+.endcta{text-align:center}
+.endcta .hero-cta{justify-content:center}
+footer{background:var(--tile);color:var(--mut);font-size:12px;padding:22px;text-align:center;border-top:1px solid var(--ln);line-height:1.6}
+
+@media(max-width:1000px){
+  .kgrid{grid-template-columns:repeat(3,1fr)}
+  .hero-grid,.arch-wrap,.av,.cx,.scope,.rk,.ckbox,.rm-det,.addet,.close{grid-template-columns:1fr}
+  .forums,.gates,.comp,.results{grid-template-columns:repeat(2,1fr)}
+  .opex{grid-template-columns:repeat(2,1fr)}
+  .smart,.kpis{grid-template-columns:repeat(2,1fr)}
+  .scene{max-width:520px;margin:0 auto;width:100%}
+  .hm-wrap{justify-self:center}
+}
+@media(max-width:760px){
+  .gnav .links,.gnav .back{display:none}
+  .gnav .in{padding:0 16px}
+  .tile{padding:64px 16px}
+  #hero{padding:56px 16px 56px}
+  .phases,.smart,.kpis,.team,.rules,.forums,.gates,.comp,.results,.opex,.mods{grid-template-columns:1fr}
+  .kgrid{grid-template-columns:repeat(2,1fr)}
+  .adkar{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+  .ad{padding:12px 6px;text-align:center}.ad .l{font-size:26px}.ad b{font-size:11px}.ad span{display:none}
+  .hb{grid-template-columns:1fr;gap:4px}
+  .scene{height:380px}.erpw{width:86%}.phone{width:160px;height:330px}
+  .erpw .body{grid-template-columns:1fr}.erpw .side{display:none}
+  .hm{grid-template-columns:22px repeat(5,minmax(44px,1fr));grid-template-rows:repeat(5,52px) 22px}
+  .hm-wrap{padding:14px}
+  .rdet .mm{grid-template-columns:1fr}
+  .clockrow{grid-template-columns:1fr 1fr 1fr}
+  .rm-ctl .mon{min-width:0;width:100%}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<header class="gnav"><div class="in">
+  <a class="brand" href="/proyectos/en/">Projects <span>· ERP Dynamics &amp; App</span></a>
+  <nav class="links" id="navlinks">
+    <a href="#resumen">Summary</a><a href="#objetivos">Goals</a><a href="#arquitectura">Architecture</a><a href="#disponibilidad">99.7%</a><a href="#roadmap">Roadmap</a><a href="#presupuesto">Budget</a><a href="#gobierno">Governance</a><a href="#checklists">Checklists</a><a href="#kpis">KPIs</a><a href="#riesgos">Risks</a><a href="#cambio">Change</a>
+  </nav>
+  <div class="rt"><div class="lang"><a href="/proyectos/erp-dynamics-app/" onclick="setL('es')">ES</a><a class="on" href="/proyectos/erp-dynamics-app/en/" onclick="setL('en')">EN</a></div><a class="back" href="/proyectos/en/">← All projects</a></div>
+</div></header>
+
+<main>
+<!-- HERO -->
+<section class="tile" id="hero"><div class="inner">
+  <div class="hero-grid">
+    <div>
+      <span class="badge"><span class="live"></span>Digital transformation program · PMO document</span>
+      <h1 class="h1"><span class="grad">ERP Dynamics</span> &amp; App Project.</h1>
+      <p class="lead">From manual processes and siloed systems to one integrated digital operation: <b>Microsoft Dynamics 365</b> for 300 users and the <b>Movilform</b> mobile platform connected to the ERP for <span class="rot" id="rot">waste traceability</span>.</p>
+      <div class="hero-cta">
+        <a class="btn fill" href="#arquitectura">See how it works</a>
+        <a class="btn line" href="#roadmap">Walk through the 24 months ›</a>
+      </div>
+    </div>
+    <div class="scene" aria-hidden="true">
+      <div class="erpw">
+        <div class="bar"><i></i><i></i><i></i><span>Dynamics 365 · Finance & Operations</span></div>
+        <div class="body">
+          <div class="side" id="erpSide"><b>Finance</b><b>CFDI 4.0</b><b>Procurement</b><b>Inventory</b><b>Fleet</b><b>Services</b><b>Power BI</b></div>
+          <div class="main">
+            <div class="row1">
+              <div class="mini"><div class="v" id="mU">0</div><div class="t">active users</div></div>
+              <div class="mini"><div class="v" id="mA">99.7%</div><div class="t">availability</div></div>
+              <div class="mini"><div class="v" id="mF">0</div><div class="t">e-invoices stamped</div></div>
+            </div>
+            <div class="bars" id="mBars"></div>
+            <div class="feed" id="feed"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sync"><i></i>API in sync</div>
+      <div class="phone"><div class="scr"><div class="notch"></div>
+        <div class="ah">MOVILFORM</div><div class="at">Service #4821</div>
+        <div class="map"><svg viewBox="0 0 160 70"><path d="M10 55 C 40 10, 70 70, 100 30 S 140 20, 150 15" fill="none" stroke="#c9bfff" stroke-width="3" stroke-dasharray="5 5"/><circle r="5" fill="#7b61ff"><animateMotion dur="4s" repeatCount="indefinite" path="M10 55 C 40 10, 70 70, 100 30 S 140 20, 150 15"/></circle></svg></div>
+        <div class="steps-ph" id="phSteps">
+          <div class="sp"><span class="ic">1</span>Truck and route assigned</div>
+          <div class="sp"><span class="ic">2</span>Pickup recorded</div>
+          <div class="sp"><span class="ic">3</span>Manifest issued</div>
+          <div class="sp"><span class="ic">4</span>Evidence and weights → ERP</div>
+          <div class="sp"><span class="ic">5</span>Invoice on portal</div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+  <div class="kgrid">
+    <div class="k rv"><div class="n" data-c="22.0" data-p="$" data-s=" MM">$0</div><div class="l">MXN total program CAPEX</div></div>
+    <div class="k rv"><div class="n" data-c="300">0</div><div class="l">users on a single ERP</div></div>
+    <div class="k rv"><div class="n" data-c="24" data-s=" months">0</div><div class="l">Jan 2027 → Dec 2028</div></div>
+    <div class="k rv"><div class="n" data-c="99.7" data-s="%" data-d="1">0</div><div class="l">monthly ERP availability</div></div>
+    <div class="k rv"><div class="n" data-c="60" data-p="−" data-s="%">0</div><div class="l">cycle time in critical processes</div></div>
+    <div class="k rv"><div class="n" data-c="50" data-p="−" data-s="%">0</div><div class="l">operations and IT incidents</div></div>
+  </div>
+</div></section>
+
+<!-- RESUMEN -->
+<section class="tile dark" id="resumen"><div class="inner">
+  <div class="eyebrow rv"><span class="num">01</span>The program in 60 seconds</div>
+  <h2 class="h2 rv">Three phases, one goal: <span class="grad">an operation connected end to end.</span></h2>
+  <p class="lead rv">First the ERP from scratch, then stabilize it, then connect field operations. Tap each phase to see its place on the calendar.</p>
+  <div class="phases" id="phases"></div>
+  <div class="phbar rv" id="phbar"></div>
+  <div class="phlbl"><span>M1 · Jan 2027</span><span>M15 · go-live</span><span>M24 · Dec 2028</span></div>
+  <div class="results">
+    <div class="card rv"><div class="v grad">−60%</div><p>Cycle time: service order to invoice, manifest issuance and month-end close.</p></div>
+    <div class="card rv"><div class="v grad">−50%</div><p>Operations and IT incidents versus the baseline measured in M2.</p></div>
+    <div class="card rv"><div class="v grad">≤ 2.2 h</div><p>Of downtime per month: 99.7% end-to-end ERP service availability.</p></div>
+    <div class="card rv"><div class="v grad">Portal</div><p>Customer self-service and digital traceability as a scored differentiator in tenders.</p></div>
+  </div>
+  <p class="note">Planning assumption: start in January 2027 (M1). Phase 1 was not in the original scope; it is proposed as a stabilization bridge between the ERP and Movilform.</p>
+</div></section>
+
+<!-- OBJETIVOS -->
+<section class="tile" id="objetivos"><div class="inner">
+  <div class="eyebrow rv"><span class="num">02</span>Project Charter</div>
+  <h2 class="h2 rv">Six SMART goals. <span class="grad">Measurable from day one.</span></h2>
+  <p class="lead rv">The charter authorizes the Head of IT as Program Manager within <b>$22.0 MM MXN and 24 months</b>. Any deviation above 5% in cost or 4 weeks on the critical path escalates to the Steering Committee.</p>
+  <div class="smart" id="smart"></div>
+  <div class="scope">
+    <div class="card rv">
+      <h3>In scope</h3>
+      <p class="mut" style="font-size:14px;margin-top:6px">Tap a module to see what it covers.</p>
+      <div class="mods" id="mods"></div>
+    </div>
+    <div class="card rv">
+      <h3>Out of scope</h3>
+      <ul class="out">
+        <li>Payroll and core HR: integrated, not replaced.</li>
+        <li>Transaction history &gt; 2 years: archived in a read-only data lake.</li>
+        <li>Custom development that duplicates standard functionality. Rule: <b>adopt before you adapt</b>.</li>
+      </ul>
+      <h3 style="margin-top:24px">Key assumptions</h3>
+      <ul class="assume">
+        <li>Microsoft SaaS (SLA 99.9%); the remaining 0.2% is the margin for network, integrations and own operations.</li>
+        <li>Certified partner, Success by Design methodology, fixed price per deliverable.</li>
+        <li>Key users at 50% from M3 to M15, with budgeted backfill.</li>
+        <li>Change freeze on legacy processes from M12.</li>
+      </ul>
+      <div class="spons"><span><b>Sponsor:</b> CEO</span><span><b>Phase 0:</b> CFO</span><span><b>Phase 2:</b> COO</span><span><b>Program Manager:</b> Head of IT</span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ARQUITECTURA -->
+<section class="tile white" id="arquitectura"><div class="inner">
+  <div class="eyebrow rv"><span class="num">03</span>Target architecture</div>
+  <h2 class="h2 rv">Dynamics 365 is the core. <span class="grad">Everything flows through one integration layer.</span></h2>
+  <p class="lead rv">No application connects point to point. If Movilform or a bank fails, messages wait in a queue and <b>the ERP keeps running</b>. Play a service flow or simulate a failure.</p>
+  <div class="arch-wrap">
+    <div class="arch-svg rv"><svg viewBox="0 0 1000 640" id="arch" role="img" aria-label="Architecture: Dynamics 365, Movilform and Power Platform connected through Azure Integration Services"></svg></div>
+    <div class="side-p">
+      <div class="card rv">
+        <h4>A service flow · ERP ↔ Movilform</h4>
+        <div class="flowsteps" id="flowsteps"></div>
+        <div style="display:flex;gap:8px;margin-top:14px"><button class="btn fill" id="flowPlay">▶ Play flow</button></div>
+      </div>
+      <div class="card rv">
+        <h4>Failure simulator</h4>
+        <div class="simbtns" id="simbtns"></div>
+        <div class="qbox"><div><b id="qN">0</b><span>messages queued</span></div><div><b id="qE" style="color:var(--ok)">Running</b><span>ERP status</span></div></div>
+        <div class="simmsg" id="simmsg">All green: messages flow through API Management, Logic Apps and Service Bus.</div>
+      </div>
+      <div class="card rv" id="ndinfo"><h4>Tap a component</h4><p>Each box in the diagram explains its role in the architecture.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- DISPONIBILIDAD -->
+<section class="tile dark" id="disponibilidad"><div class="inner">
+  <div class="eyebrow rv"><span class="num">04</span>Availability budget</div>
+  <h2 class="h2 rv">99.7% is not a wish. <span class="grad">It is 131 minutes, allocated.</span></h2>
+  <p class="lead rv">0.3% of a 730-hour month = <b>2.19 h of unplanned downtime at most</b>. Each layer has its quota. Move the sliders and see whether the service still complies.</p>
+  <div class="av">
+    <div class="card rv">
+      <div class="slr"><label>Microsoft platform (SLA 99.9%) <b id="vM">44 min</b></label><input type="range" id="sM" min="0" max="150" value="44"></div>
+      <div class="slr"><label>Network and links <b id="vR">45 min</b></label><input type="range" id="sR" min="0" max="150" value="45"></div>
+      <div class="slr"><label>Own integrations <b id="vI">42 min</b></label><input type="range" id="sI" min="0" max="150" value="42"></div>
+      <div class="stack" id="stk"><i style="background:#2997ff"></i><i style="background:#9b7bff"></i><i style="background:#f472b6"></i><div class="lim" id="lim"><span>limit 131 min</span></div></div>
+      <div class="leg"><span><i style="background:#2997ff"></i>Microsoft ≤ 44</span><span><i style="background:#9b7bff"></i>Network ≤ 45</span><span><i style="background:#f472b6"></i>Integrations ≤ 42</span></div>
+      <div style="display:flex;gap:8px;margin-top:20px;flex-wrap:wrap"><button class="chip on" data-pre="44,45,42">Base plan</button><button class="chip" data-pre="44,120,42">No redundant link</button><button class="chip" data-pre="44,45,140">Integration without queues</button><button class="chip" data-pre="20,15,10">Excellent month</button></div>
+    </div>
+    <div class="card rv">
+      <div class="mut" style="font-size:14px">End-to-end monthly availability</div>
+      <div class="big" id="avV" style="margin-top:8px">99.70%</div>
+      <div class="verdict ok" id="avVer">Meets the 99.7% target</div>
+      <div class="clockrow">
+        <div><b id="avT">131</b><span>min down / month</span></div>
+        <div><b id="avB">0</b><span>min of headroom</span></div>
+        <div><b>≤ 4 h</b><span>planned maintenance, separate</span></div>
+      </div>
+      <p class="note">Measured user → ERP → integrations, not just the vendor SLA. Planned windows are reported separately and outside business hours. Controls: redundant links per critical site, synthetic monitoring and queues with retry.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ROADMAP -->
+<section class="tile" id="roadmap"><div class="inner">
+  <div class="eyebrow rv"><span class="num">05</span>Roadmap · M1 to M24</div>
+  <h2 class="h2 rv">ERP live in M15. <span class="grad">Movilform closes in M24.</span></h2>
+  <p class="lead rv">The critical path is <b>Build → Testing → Go-live</b>. Movilform starts one month after go-live so it does not compete for key users during cutover. Drag the slider or press play.</p>
+  <div class="rm-ctl rv">
+    <button class="btn fill" id="rmPlay">▶ Play</button>
+    <div class="mon" id="rmMon">M1<small>January 2027</small></div>
+    <input type="range" id="rmS" min="1" max="24" value="1" aria-label="Program month">
+  </div>
+  <div class="gantt rv"><div class="g-in" id="gantt"></div></div>
+  <div class="rm-det">
+    <div class="card"><h3 id="rmT">In progress</h3><ul id="rmL"></ul></div>
+    <div class="card"><h3>What gets decided this month</h3><p class="mut" id="rmG" style="font-size:14px;margin-top:10px;line-height:1.5"></p></div>
+  </div>
+  <div class="gates" id="gates"></div>
+</div></section>
+
+<!-- PRESUPUESTO -->
+<section class="tile white" id="presupuesto"><div class="inner">
+  <div class="eyebrow rv"><span class="num">06</span>CAPEX and OPEX</div>
+  <h2 class="h2 rv">$22.0 MM MXN. <span class="grad">Every peso with an owner and a contingency.</span></h2>
+  <p class="lead rv">The partner is hired at a <b>fixed price per deliverable</b> so the overrun risk does not fall on the 10% contingency.</p>
+  <div class="cx">
+    <div class="card rv">
+      <div class="chips" id="cxTabs"><button class="chip on" data-t="f0">Phase 0 · ERP $19.0 MM</button><button class="chip" data-t="f2">Phase 2 · Movilform $3.0 MM</button></div>
+      <div id="cxBars" style="margin-top:10px"></div>
+      <div class="tog" id="cxTog" role="switch" aria-checked="false" tabindex="0"><span class="sw"></span><span>Accounting scenario: year-1 SaaS licenses as OPEX</span></div>
+      <div class="alert" id="cxAlert"><b>Critical note.</b> SaaS subscriptions are normally operating expense. If accounting policy does not allow capitalizing year-1 licenses ($2.8 MM), that line moves to OPEX and is reallocated to contingency or integrations. Validated with the Controller before Gate 1.</div>
+    </div>
+    <div class="card rv">
+      <h3 style="text-align:center">Program split</h3>
+      <div class="donut"><svg viewBox="0 0 200 200" id="cxDonut"></svg><div class="c"><b>$22.0 MM</b><span>MXN · 24 months</span></div></div>
+      <div class="leg" style="justify-content:center;color:var(--mut)"><span><i style="background:#0071e3"></i>Phase 0 · $19.0 MM</span><span><i style="background:#7b61ff"></i>Phase 2 · $3.0 MM</span><span><i style="background:#30d158"></i>Phase 1 · included in P0</span></div>
+      <div class="perU"><b id="perU">$0</b><div class="mut" style="font-size:13px">MXN of CAPEX per user (Phase 0, 300 users)</div></div>
+    </div>
+  </div>
+  <h3 class="rv" style="margin-top:40px;font-size:21px;font-weight:600">Estimated recurring OPEX from M15</h3>
+  <div class="opex">
+    <div class="card rv"><h4>Dynamics 365 licenses</h4><p>~90 full, ~140 Activity, ~70 Team Members.</p><div class="tg">Contract in MXN or hedge FX</div></div>
+    <div class="card rv"><h4>Partner AMS support</h4><p>Monthly hour bank with P1 SLA ≤ 1 h.</p><div class="tg">Tender in M12</div></div>
+    <div class="card rv"><h4>Azure</h4><p>Integration, monitoring and storage; variable consumption.</p><div class="tg">Alerts at 80% of budget</div></div>
+    <div class="card rv"><h4>Movilform</h4><p>Subscription per unit / user.</p><div class="tg">Lock the price for 3 years</div></div>
+    <div class="card rv"><h4>Redundant links</h4><p>Two links per critical site.</p><div class="tg">Required for 99.7%</div></div>
+  </div>
+</div></section>
+
+<!-- GOBIERNO -->
+<section class="tile white" id="gobierno" style="padding-top:40px"><div class="inner">
+  <div class="eyebrow rv"><span class="num">07</span>Governance, RACI and team</div>
+  <h2 class="h2 rv">No scope, cost or date decision <span class="grad">is made outside its forum.</span></h2>
+  <div class="forums" id="forums"></div>
+  <div class="raci-w rv">
+    <h3 style="font-size:19px;font-weight:600">RACI matrix</h3>
+    <p class="mut" style="font-size:13.5px;margin-top:4px">R = Responsible · A = Accountable · C = Consulted · I = Informed. Tap a role to see its load.</p>
+    <div class="raci-sc"><table class="raci" id="raci"></table></div>
+    <div class="raci-sum" id="raciSum"></div>
+  </div>
+  <div class="team">
+    <div class="card rv"><div class="eyebrow" style="font-size:12px">Internal</div><div class="tn">12 FTE</div><div class="people" data-n="12" data-c="#0071e3"></div><p>Program Manager, solution architect, 2 integration analysts, data, security and 6 key users at 50% (Finance, Procurement, Warehouse, Operations, Sales, Fleet).</p></div>
+    <div class="card rv"><div class="eyebrow" style="font-size:12px;color:var(--vio)">Partner · peak</div><div class="tn">14</div><div class="people" data-n="14" data-c="#7b61ff"></div><p>PM, architect, 6 functional (Finance / SCM), 4 technical (X++, Power Platform, Azure) and 2 QA.</p></div>
+    <div class="card rv"><div class="eyebrow" style="font-size:12px;color:var(--pink)">Movilform · Phase 2</div><div class="tn">2</div><div class="people" data-n="2" data-c="#d946a8"></div><p>Vendor project lead and API specialist, plus a network of 30 change agents in the business.</p></div>
+  </div>
+</div></section>
+
+<!-- CHECKLISTS -->
+<section class="tile" id="checklists"><div class="inner">
+  <div class="eyebrow rv"><span class="num">08</span>Checklists by phase</div>
+  <h2 class="h2 rv">A gate is approved only with <span class="grad">100% of critical items closed.</span></h2>
+  <p class="lead rv">Items marked <span class="crit">C</span> are critical; the rest can pass with a dated closing plan. Tick items and watch the gate status change (saved in your browser).</p>
+  <div class="cktabs" id="cktabs"></div>
+  <div class="ckbox">
+    <div class="card" id="cklist"></div>
+    <div class="card gstat">
+      <div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#eee" stroke-width="12"/><circle id="ckArc" cx="60" cy="60" r="50" fill="none" stroke="#12a05f" stroke-width="12" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="314.16" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset .5s"/></svg><div class="c" id="ckPct">0%</div></div>
+      <div class="gpill no" id="ckGate">Gate blocked</div>
+      <p id="ckTxt"></p>
+      <button class="chip" id="ckReset" style="margin-top:14px">Reset marks</button>
+    </div>
+  </div>
+</div></section>
+
+<!-- KPIS -->
+<section class="tile dark" id="kpis"><div class="inner ctr">
+  <div class="eyebrow rv"><span class="num">09</span>KPIs and benefits</div>
+  <h2 class="h2 rv">From the starting point <span class="grad">to the audited M24 target.</span></h2>
+  <p class="lead rv">The −60% and −50% targets only hold if the baseline is measured in M2 with the same formula used in M24. Baseline values are <b>planning hypotheses</b> to be replaced by the real measurement.</p>
+  <div class="kpitog"><div class="seg" id="kseg"><button class="on" data-k="0">Baseline (hypothesis)</button><button data-k="1">M24 target</button></div></div>
+  <div class="kpis" id="kpiGrid" style="text-align:left"></div>
+  <div class="rules" style="text-align:left">
+    <div class="card rv"><p><b>End to end</b>Availability measured user → ERP → integrations, not just the Microsoft SLA.</p></div>
+    <div class="card rv"><p><b>Maintenance apart</b>Planned windows are reported separately and do not exceed 4 h/month, outside business hours.</p></div>
+    <div class="card rv"><p><b>Audited by Finance</b>Monthly Power BI dashboard to the SteerCo; Finance audits benefits in M18 and M24.</p></div>
+  </div>
+</div></section>
+
+<!-- RIESGOS -->
+<section class="tile" id="riesgos"><div class="inner">
+  <div class="eyebrow rv"><span class="num">10</span>Risk matrix</div>
+  <h2 class="h2 rv">The three biggest risks <span class="grad">are controlled from M1.</span></h2>
+  <p class="lead rv">Key users, data quality and over-customization. Exposure = Probability × Impact (1–5). Tap a risk on the heat map.</p>
+  <div class="rk">
+    <div class="hm-wrap rv"><div class="hm" id="hm"></div><div class="hm-l"><span>↑ Impact</span><span>Probability →</span></div></div>
+    <div class="rk-r">
+      <div class="rdet rv" id="rdet"></div>
+      <div class="rlist rv" id="rlist"></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CAMBIO -->
+<section class="tile white" id="cambio"><div class="inner">
+  <div class="eyebrow rv"><span class="num">11</span>Change management, compliance and closure</div>
+  <h2 class="h2 rv">Adoption is the variable <span class="grad">that moves ROI the most.</span></h2>
+  <p class="lead rv"><b>$0.9 MM MXN</b> and a network of <b>30 change agents</b> to reach 300 certified users before go-live, using the ADKAR model.</p>
+  <div class="adkar" id="adkar"></div>
+  <div class="addet" id="addet"></div>
+  <div class="comp">
+    <div class="card rv"><div class="ic">🧾</div><h4>Tax</h4><p>CFDI 4.0, payment and Carta Porte supplements for waste transport, and electronic accounting.</p></div>
+    <div class="card rv"><div class="ic">🌿</div><h4>Environmental</h4><p>Official waste and transport documents issued from Movilform and validated before the pilot.</p></div>
+    <div class="card rv"><div class="ic">🔐</div><h4>Personal data</h4><p>Privacy notice and controls for customer data on the portal.</p></div>
+    <div class="card rv"><div class="ic">🛡️</div><h4>ISO/IEC 27001:2022</h4><p>Access, encryption, event logging, suppliers; quarterly review of roles and SoD.</p></div>
+  </div>
+  <div class="close">
+    <div class="card rv"><h3>Documentary deliverables</h3><ul id="docs"></ul></div>
+    <div class="card rv"><h3>Closure criteria · M24</h3><ul>
+      <li><i>✓</i>M24 KPIs measured and audited by Finance.</li>
+      <li><i>✓</i>Executed CAPEX within ±5% of $22.0 MM MXN.</li>
+      <li><i>✓</i>Operations handed over to IT with AMS and SLA in force.</li>
+      <li><i>✓</i>Closure record signed by the Sponsor.</li>
+    </ul></div>
+  </div>
+</div></section>
+
+<section class="tile dark endcta"><div class="inner">
+  <h2 class="h2 rv" style="margin-left:auto;margin-right:auto">ERP + mobile app + integration: <span class="grad">one digital operation.</span></h2>
+  <p class="lead rv">Program designed and documented by Fernando Gómez Guerrero as Program Manager.</p>
+  <div class="hero-cta"><a class="btn fill" href="/proyectos/en/">See more projects</a><a class="btn line" href="/">See profile ›</a></div>
+</div></section>
+</main>
+
+<footer>© 2026 Fernando Gómez Guerrero · ERP Dynamics &amp; App Project<br>Based on the program PMO document (v1.0). KPI baseline values are planning hypotheses.</footer>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const MES=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const MESL=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const mLbl=m=>MESL[(m-1)%12]+' '+(2027+Math.floor((m-1)/12));
+const fmt=(n,d=0)=>n.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+
+/* progress + nav */
+const navA=$$('#navlinks a');
+addEventListener('scroll',()=>{const h=document.documentElement;$('#prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){navA.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-45% 0px -50% 0px'});
+$$('section[id]').forEach(s=>so.observe(s));
+
+/* reveal + once-hooks */
+const hooks=new Map();
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');const f=hooks.get(e.target);if(f){f();hooks.delete(e.target)}ro.unobserve(e.target)}}),{threshold:.15});
+const watch=(el,f)=>{if(f)hooks.set(el,f);ro.observe(el)};
+const reveal=()=>$$('.rv:not(.in)').forEach(el=>ro.observe(el));
+
+/* counters */
+function count(el){const t=+el.dataset.c,d=+(el.dataset.d||(t%1?1:0)),p=el.dataset.p||'',s=el.dataset.s||'';const t0=performance.now(),D=RM?0:1400;
+ (function f(now){const k=D?Math.min(1,(now-t0)/D):1,e=1-Math.pow(1-k,3);el.textContent=p+fmt(t*e,d)+s;if(k<1)requestAnimationFrame(f)})(t0)}
+$$('.k .n').forEach(el=>watch(el,()=>count(el)));
+
+/* hero rotator */
+const ROT=['waste traceability','transport and routing (TMS)','regulatory documents','customer self-service'];let ri=0;
+setInterval(()=>{ri=(ri+1)%ROT.length;const r=$('#rot');r.style.opacity=0;setTimeout(()=>{r.textContent=ROT[ri];r.style.opacity=1},250)},2600);
+$('#rot').style.transition='opacity .25s';
+
+/* hero scene */
+const bars=$('#mBars');for(let i=0;i<12;i++){const b=document.createElement('i');b.style.height='10%';bars.appendChild(b)}
+const side=$$('#erpSide b');let si=0,cf=0,us=0;
+const FEED=['SO-4821 published → Movilform','Route R-07 assigned · TMS','Manifest issued and validated','Evidence and weights received','CFDI stamped via PAC ✓','Invoice published on portal','Month-end close day 4 ✓','Payment reconciled · bank'];let fi=0;
+function heroTick(){[...bars.children].forEach(b=>b.style.height=(25+Math.random()*70)+'%');side.forEach((b,i)=>b.classList.toggle('on',i===si));si=(si+1)%side.length;
+ cf+=Math.floor(3+Math.random()*9);$('#mF').textContent=fmt(cf);if(us<300){us=Math.min(300,us+37);$('#mU').textContent=us}
+ const d=document.createElement('div');d.textContent='› '+FEED[fi++%FEED.length];const fd=$('#feed');fd.prepend(d);while(fd.children.length>2)fd.lastChild.remove()}
+heroTick();setInterval(heroTick,1800);
+const sps=$$('#phSteps .sp');let pi=0;
+setInterval(()=>{sps.forEach((s,i)=>{s.classList.toggle('on',i===pi);s.classList.toggle('done',i<pi);s.querySelector('.ic').textContent=i<pi?'✓':i+1});pi=(pi+1)%(sps.length+1)},1300);
+
+/* fases */
+const PH=[
+ {n:'PHASE 0',t:'Dynamics 365 ERP from scratch',cap:'19.0',m:'M1–M18',a:1,b:18,c:'#2997ff',p:'Finance, supply chain, sales and service for 300 users, with CFDI 4.0 e-invoicing, Power BI and integrations.',g:'Target: 99.7% availability'},
+ {n:'PHASE 1',t:'Stabilization, hypercare and optimization',cap:'Included',m:'M15–M20',a:15,b:20,c:'#30d158',p:'24×7 on-call, first month-end close in ≤ 7 days, knowledge transfer and AMS with SLA.',g:'Target: zero P1 open > 30 days'},
+ {n:'PHASE 2',t:'Movilform + TMS + customer portal',cap:'3.0',m:'M16–M24',a:16,b:24,c:'#9b7bff',p:'Waste and transport traceability, regulatory documents and customer self-service connected to the ERP.',g:'Target: −60% time, −50% incidents'}];
+const phEl=$('#phases'),pb=$('#phbar');
+PH.forEach((p,i)=>{const b=document.createElement('button');b.className='ph rv';b.innerHTML=`<div class="pn">${p.n}</div><h3>${p.t}</h3><div class="cap">${p.cap==='Included'?'Included':'$'+p.cap}<small>${p.cap==='Included'?'in Phase 0':'MM MXN'}</small></div><span class="mo">${p.m}</span><p>${p.p}</p><div class="meta">${p.g}</div>`;
+ b.onclick=()=>selPh(i);phEl.appendChild(b);
+ const s=document.createElement('i');s.style.left=((p.a-1)/24*100)+'%';s.style.width=((p.b-p.a+1)/24*100)+'%';s.style.background=p.c;s.style.top=(i*0)+'px';s.style.opacity=.35;pb.appendChild(s)});
+function selPh(i){$$('.ph').forEach((b,j)=>b.classList.toggle('on',j===i));[...pb.children].forEach((s,j)=>{s.style.opacity=j===i?1:.18})}
+selPh(0);
+
+/* SMART */
+const SM=[['O1','100%','Run a single ERP','Productive / licensed users: all 300.','M15'],['O2','≥ 99.7%','ERP service continuity','End-to-end monthly availability.','From M15'],['O3','−60%','Cut process time','Average cycle time of critical processes vs baseline.','M24'],['O4','−50%','Cut incidents','Incidents per month (operations + IT) vs baseline.','M24'],['O5','≥ 70%','Customer self-service','Active customers on the portal over the active customer base.','M24'],['O6','≤ ±5%','Stay on budget','Variance of executed CAPEX.','Closure']];
+$('#smart').innerHTML=SM.map(s=>`<div class="sm rv"><span class="when">${s[4]}</span><div class="id">${s[0]}</div><div class="goal grad">${s[1]}</div><h4>${s[2]}</h4><p>${s[3]}</p></div>`).join('');
+const MODS=[['Dynamics 365 Finance','General ledger, AP, AR, banks, fixed assets, budgets, consolidation and CFDI 4.0 e-invoicing via PAC.'],['Supply Chain Management','Procurement, inventory, warehouses, fleet/asset management and maintenance.'],['Sales and service','Service catalog, contracts, service orders and recurring billing.'],['Power Platform + Power BI','Approval flows and executive and operational dashboards.'],['Integrations','Banks, PAC/SAT, existing payroll and Movilform/TMS in Phase 2.'],['Data migration','Full master data, opening balances and open items; no transaction history.'],['Security','Entra ID with SSO and MFA, role-based segregation of duties (SoD), aligned with ISO 27001:2022.']];
+$('#mods').innerHTML=MODS.map((m,i)=>`<div class="mod${i?'':' on'}"><b>${m[0]}</b><span>${m[1]}</span></div>`).join('');
+$$('.mod').forEach(m=>m.onclick=()=>{$$('.mod').forEach(x=>x.classList.remove('on'));m.classList.add('on')});
+
+/* ARQUITECTURA */
+const NS='http://www.w3.org/2000/svg';
+const N={
+ usr:{x:20,y:16,w:300,h:76,t:'Internal users',s:'300 users · SSO + MFA',d:'300 users from Finance, Procurement, Warehouse, Operations, Sales and Fleet sign in with Entra ID (SSO + MFA) and roles with segregation of duties.'},
+ ops:{x:350,y:16,w:300,h:76,t:'Field operators',s:'Movilform mobile app',d:'Operators use the mobile app to record pickups, evidence and weights, even with intermittent connectivity (offline operation and later sync).'},
+ cli:{x:680,y:16,w:300,h:76,t:'Customers',s:'Self-service and traceability',d:'Customers raise requests and check manifests, invoices and evidence on the portal. Target: ≥ 70% of the active customer base by M24.'},
+ d365:{x:20,y:140,w:300,h:126,t:'Dynamics 365',s:['Finance · CFDI 4.0','Supply Chain · fleet','Sales and service orders'],c:'core',d:'The core (Phase 0): Finance, Supply Chain Management and sales/service on Microsoft SaaS (SLA 99.9%). Go-live in M15 (March 2028).'},
+ mf:{x:350,y:140,w:300,h:126,t:'Movilform',s:['Waste traceability','Regulatory documents','TMS: transport and services'],c:'mf',d:'Phase 2: the mobile platform assigns truck and route (TMS), records the pickup and issues the regulatory documents. The contract requires SLA ≥ 99.7% and data portability.'},
+ pp:{x:680,y:140,w:300,h:126,t:'Power Platform',s:['Customer portal (Power Pages)','Power BI: dashboards and KPIs','Approval flows'],d:'Self-service portal, Power BI dashboards for the SteerCo and approval flows without custom code.'},
+ ais:{x:20,y:326,w:960,h:84,t:'Azure Integration Services',s:'API Management · Logic Apps · Service Bus · queues with retry and monitoring',c:'ais',d:'The only exchange path. It concentrates monitoring, retries and security: if an external system goes down, messages wait in a queue and nothing is lost.'},
+ pac:{x:20,y:470,w:221,h:62,t:'PAC / SAT',d:'Stamping of CFDI 4.0 e-invoices and supplements (payments, Carta Porte). Contingency: emergency invoicing on the PAC portal.'},
+ bnk:{x:266,y:470,w:221,h:62,t:'Banks',d:'Payments and bank reconciliation. If a bank does not respond, payment instructions wait in a queue with retry.'},
+ nom:{x:513,y:470,w:221,h:62,t:'Current payroll',d:'Replacing it is out of scope: it is integrated with the ERP for accounting entries.'},
+ gps:{x:759,y:470,w:221,h:62,t:'GPS and telemetry',d:'Fleet devices and telemetry ($0.3 MM in Phase 2) for real-time traceability.'},
+ sec:{x:20,y:572,w:960,h:52,t:'Security and operations: Entra ID (SSO, MFA) · Azure Monitor · ISO 27001:2022',c:'sec',d:'Cross-cutting layer: identity, synthetic monitoring and ISO/IEC 27001:2022 controls with quarterly review of roles and SoD.'}};
+const L=[['usr','d365',[[170,92],[170,140]]],['ops','mf',[[500,92],[500,140]]],['cli','pp',[[830,92],[830,140]]],
+ ['d365','ais',[[170,266],[170,326]]],['mf','ais',[[500,266],[500,326]]],['pp','ais',[[830,266],[830,326]]],
+ ['ais','pac',[[130,410],[130,470]]],['ais','bnk',[[376,410],[376,470]]],['ais','nom',[[623,410],[623,470]]],['ais','gps',[[870,410],[870,470]]]];
+const svg=$('#arch');
+const mk=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const lkEl={};
+L.forEach(([a,b,pts])=>{lkEl[a+'-'+b]=mk('path',{d:'M'+pts.map(p=>p.join(' ')).join(' L'),class:'lk fl'},svg)});
+const ndEl={};
+for(const k in N){const n=N[k];const g=mk('g',{class:'nd '+(n.c||''),tabindex:0},svg);ndEl[k]=g;
+ mk('rect',{x:n.x,y:n.y,width:n.w,height:n.h,rx:14},g);
+ const cx=n.x+n.w/2;
+ if(k==='ais'||k==='sec'||['pac','bnk','nom','gps'].includes(k)){
+  const tt=mk('text',{x:cx,y:n.y+(n.s?34:n.h/2+6),'text-anchor':'middle',class:'t'},g);tt.textContent=n.t;if(k==='sec')tt.setAttribute('style','font-size:15px;font-weight:500');
+  if(n.s){const s=mk('text',{x:cx,y:n.y+60,'text-anchor':'middle',class:'s'},g);s.textContent=n.s}
+ }else{const t=mk('text',{x:n.x+20,y:n.y+32,class:'t'},g);t.textContent=n.t;
+  (Array.isArray(n.s)?n.s:[n.s]).forEach((s,i)=>{const e=mk('text',{x:n.x+20,y:n.y+58+i*24,class:'s'},g);e.textContent=s})}
+ const st=mk('text',{x:n.x+n.w-6,y:n.y+n.h+19,'text-anchor':'end',class:'st',fill:'#12a05f'},g);st.textContent='';g._st=st;
+ g.onclick=()=>{$('#ndinfo').innerHTML=`<h4>${n.t.split(':')[0]}</h4><p>${n.d}</p>`};
+}
+['d365','mf'].forEach(k=>{const n=N[k];const tag=mk('text',{x:n.x+n.w-16,y:n.y+32,'text-anchor':'end',style:'font-size:12px;font-weight:700',fill:k==='d365'?'#0071e3':'#7b61ff'},ndEl[k]);tag.textContent=k==='d365'?'PHASE 0':'PHASE 2'});
+const dot=mk('circle',{r:9,fill:'#d946a8',opacity:0,style:'filter:drop-shadow(0 0 6px rgba(217,70,168,.7))'},svg);
+function move(pts,dur){return new Promise(res=>{if(RM){res();return}dot.setAttribute('opacity',1);let L2=[0];for(let i=1;i<pts.length;i++)L2.push(L2[i-1]+Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]));const tot=L2[L2.length-1];const t0=performance.now();
+ (function f(now){let k=Math.min(1,(now-t0)/dur),d=k*tot,i=1;while(i<L2.length-1&&L2[i]<d)i++;const seg=(d-L2[i-1])/(L2[i]-L2[i-1]||1);dot.setAttribute('cx',pts[i-1][0]+(pts[i][0]-pts[i-1][0])*seg);dot.setAttribute('cy',pts[i-1][1]+(pts[i][1]-pts[i-1][1])*seg);if(k<1)requestAnimationFrame(f);else res()})(t0)})}
+const FLOW=[
+ {t:'The customer or sales rep creates the service order in D365 and it is published to Movilform.',h:['d365','ais','mf'],p:[[170,203],[170,368],[500,368],[500,203]]},
+ {t:'Movilform assigns truck and route (TMS), records the pickup and issues the regulatory documents.',h:['mf','ops','gps'],p:[[500,203],[500,54],[500,203],[500,368],[870,368],[870,501]]},
+ {t:'When the service closes, Movilform sends evidence and weights to D365.',h:['mf','ais','d365'],p:[[500,203],[500,368],[170,368],[170,203]]},
+ {t:'D365 invoices, stamps the CFDI with the PAC and publishes invoice and evidence on the customer portal.',h:['d365','ais','pac','pp','cli'],p:[[170,203],[170,368],[130,368],[130,501],[130,368],[830,368],[830,203],[830,54]]}];
+$('#flowsteps').innerHTML=FLOW.map((f,i)=>`<div class="fs"><span class="n">${i+1}</span><span>${f.t}</span></div>`).join('');
+let playing=false;
+$('#flowPlay').onclick=async()=>{if(playing)return;playing=true;gtag('event','erp_flow_play');const fs=$$('.fs');fs.forEach(f=>f.classList.remove('on','done'));
+ for(let i=0;i<FLOW.length;i++){fs.forEach((f,j)=>{f.classList.toggle('on',j===i);if(j<i){f.classList.add('done');f.classList.remove('on')}});
+  Object.values(ndEl).forEach(g=>g.classList.remove('hl'));FLOW[i].h.forEach(k=>ndEl[k].classList.add('hl'));
+  await move(FLOW[i].p,2200);await new Promise(r=>setTimeout(r,RM?900:350))}
+ fs.forEach(f=>{f.classList.remove('on');f.classList.add('done')});Object.values(ndEl).forEach(g=>g.classList.remove('hl'));dot.setAttribute('opacity',0);playing=false};
+/* simulator */
+const SIM=[['ok','All normal',null,'All green: messages flow through API Management, Logic Apps and Service Bus.'],
+ ['mf','Movilform down','mf','Movilform is not responding: service orders wait in Service Bus with retry. The ERP keeps invoicing and operating; Movilform can run offline and sync later.'],
+ ['bnk','A bank down','bnk','The bank is not responding: payment instructions are queued. Finance keeps working in D365 and the queue drains once the link is back.'],
+ ['pac','PAC down','pac','The PAC is not stamping: invoices wait in a queue with retry. Contingency: emergency invoicing on the PAC portal (risk R5).']];
+let down=null,q=0,qT=null;
+$('#simbtns').innerHTML=SIM.map((s,i)=>`<button class="chip${i?'':' on'}" data-i="${i}">${s[1]}</button>`).join('');
+$$('#simbtns .chip').forEach(b=>b.onclick=()=>{$$('#simbtns .chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');const s=SIM[+b.dataset.i];
+ if(down){ndEl[down].classList.remove('down');ndEl[down]._st.textContent='';Object.keys(lkEl).forEach(k=>lkEl[k].classList.remove('dn'))}
+ down=s[2];clearInterval(qT);const m=$('#simmsg');m.textContent=s[3];m.classList.toggle('bad',!!down);
+ if(down){gtag('event','erp_sim_fail',{node:down});ndEl[down].classList.add('down');ndEl[down]._st.textContent='OUT OF SERVICE';ndEl[down]._st.setAttribute('fill','#e5484d');Object.keys(lkEl).forEach(k=>{if(k.endsWith('-'+down)||k.startsWith(down+'-'))lkEl[k].classList.add('dn')});
+  qT=setInterval(()=>{q+=Math.floor(2+Math.random()*5);$('#qN').textContent=q},400)}
+ else{qT=setInterval(()=>{q=Math.max(0,q-Math.ceil(q/6+1));$('#qN').textContent=q;if(!q)clearInterval(qT)},120)}
+ $('#qE').textContent='Running'});
+
+/* DISPONIBILIDAD */
+const MON=43800;
+function av(){const m=+$('#sM').value,r=+$('#sR').value,i=+$('#sI').value,t=m+r+i;$('#vM').textContent=m+' min';$('#vR').textContent=r+' min';$('#vI').textContent=i+' min';
+ const a=(MON-t)/MON*100;$('#avV').textContent=a.toFixed(2)+'%';$('#avT').textContent=t;const mg=131-t;$('#avB').textContent=mg>=0?mg:mg;$('#avB').style.color=mg>=0?'var(--okd)':'var(--badd)';
+ const ok=t<=131;const v=$('#avVer');v.className='verdict '+(ok?'ok':'bad');v.textContent=ok?'Meets the 99.7% target':'Misses: over by '+(t-131)+' min';
+ const max=Math.max(450,t);const st=$$('#stk i');[m,r,i].forEach((x,j)=>st[j].style.width=(x/max*100)+'%');$('#lim').style.left=(131/max*100)+'%'}
+['sM','sR','sI'].forEach(id=>$('#'+id).oninput=()=>{$$('[data-pre]').forEach(c=>c.classList.remove('on'));av()});
+$$('[data-pre]').forEach(c=>c.onclick=()=>{const v=c.dataset.pre.split(',');$('#sM').value=v[0];$('#sR').value=v[1];$('#sI').value=v[2];$$('[data-pre]').forEach(x=>x.classList.remove('on'));c.classList.add('on');av()});
+av();
+
+/* ROADMAP */
+const G=[['Mobilization',1,2,0],['Analysis and design',3,6,0],['Gate 1 · design approved',6,6,'g'],['Build (sprints)',7,12,0],['SIT, UAT, DR testing',11,14,0],['Gate 2 · go/no-go',14,14,'g'],['ERP go-live',15,15,'gl'],['Hypercare (Phase 1)',15,20,1],['Movilform integration',16,21,2],['10-customer pilot · Gate 3',22,22,2],['Rollout and portal',23,24,2],['Program closure',24,24,'g']];
+const GATES=[[6,'Gate 1 · M6','Design approved','To-be processes signed off, fit-gap ≤ 10% custom development, architecture approved.'],
+ [14,'Gate 2 · M14','Go / no-go','UAT signed off, 0 critical defects, 3rd migration mock 100% reconciled, 300 users trained, DR tested.'],
+ [22,'Gate 3 · M22','Movilform pilot','10 customers and 1 route running for 4 weeks with validated regulatory documents.'],
+ [24,'Closure · M24','Program closed','KPIs audited, CAPEX within ±5%, operations handed over.']];
+const MEV={1:'Charter signed and fixed-price contract with the partner; KPI baseline.',2:'KPI baseline measured (M2): the reference for −60% and −50%.',12:'Change freeze on legacy processes; AMS support goes to tender.',15:'ERP go-live (March 1, 2028): hour-by-hour cutover, tested rollback and 24×7 on-call for 4 weeks.',18:'Finance audits the first benefits.',20:'Hypercare closes: knowledge transfer signed off and AMS with SLA in force.'};
+const gi=$('#gantt');
+gi.innerHTML=`<div class="g-hd"><div></div><div class="sc">${Array.from({length:24},(_,i)=>`<span>${i%3===0?MES[i%12]+(i%12===0?" '"+(27+i/12):''):''}</span>`).join('')}</div></div>`+
+ G.map(g=>{const l=(g[1]-1)/24*100,w=(g[2]-g[1]+1)/24*100;const isMs=typeof g[3]==='string';
+  return `<div class="g-row" data-a="${g[1]}" data-b="${g[2]}"><div class="lb">${g[0]}</div><div class="tr">${isMs?`<span class="ms${g[3]==='gl'?' gl':''}" style="left:${(g[1]-.5)/24*100}%"></span>`:`<span class="b ph${g[3]}" style="left:${l}%;width:${w}%"></span>`}</div></div>`}).join('')+'<div class="g-now" id="gNow"></div>';
+$('#gates').innerHTML=GATES.map(g=>`<div class="gate rv" data-m="${g[0]}"><div class="gm">${g[1]}</div><h4>${g[2]}</h4><p>${g[3]}</p></div>`).join('');
+function rm(m){$('#rmMon').innerHTML=`M${m}<small>${mLbl(m)}</small>`;
+ const rows=$$('.g-row');const act=[];rows.forEach((r,i)=>{const on=m>=+r.dataset.a&&m<=+r.dataset.b;r.classList.toggle('act',on);if(on)act.push(G[i][0])});
+ const tk=gi.querySelector('.g-row .tr'),gr=gi.getBoundingClientRect(),kr=tk.getBoundingClientRect();$('#gNow').style.left=(kr.left-gr.left+(m-.5)/24*kr.width)+'px';
+ const ph=m<=14?'Phase 0 · building the ERP':m<=15?'ERP go-live':'Phases 1 and 2 · stabilization and Movilform';
+ $('#rmT').textContent='In progress · '+ph;$('#rmL').innerHTML=act.map(a=>`<li>${a}</li>`).join('');
+ const gt=GATES.find(g=>g[0]===m);$('#rmG').innerHTML=gt?`<b style="color:var(--pink)">${gt[1]} · ${gt[2]}.</b> ${gt[3]}`:(MEV[m]||'Execution per plan; weekly PMO and monthly SteerCo review progress, risks and budget.');
+ $$('.gate').forEach(g=>g.classList.toggle('on',+g.dataset.m===m))}
+let rmT=null;
+$('#rmS').oninput=e=>{clearInterval(rmT);rmT=null;$('#rmPlay').textContent='▶ Play';rm(+e.target.value)};
+$('#rmPlay').onclick=()=>{if(rmT){clearInterval(rmT);rmT=null;$('#rmPlay').textContent='▶ Play';return}gtag('event','erp_roadmap_play');
+ let m=+$('#rmS').value;if(m>=24)m=0;$('#rmPlay').textContent='❚❚ Pause';rmT=setInterval(()=>{m++;$('#rmS').value=m;rm(m);if(m>=24){clearInterval(rmT);rmT=null;$('#rmPlay').textContent='↺ Replay'}},850)};
+addEventListener('resize',()=>rm(+$('#rmS').value));
+rm(1);
+watch($('#gantt').parentElement,()=>{if(!RM)$('#rmPlay').click()});
+
+/* CAPEX */
+const CX={f0:[['Partner implementation',8.4],['Year-1 licenses and environments',2.8],['Contingency (10%)',1.9],['Integrations and middleware',1.5],['Infrastructure, network and security',1.1],['Data migration and quality',1.0],['Change management and training',0.9],['PMO and key-user backfill',0.9],['QA and automated testing',0.5]],
+ f2:[['Movilform ↔ D365 API integration',0.9],['Initial subscription and setup',0.8],['Customer self-service portal',0.5],['Fleet devices and telemetry',0.3],['Contingency (10%)',0.3],['Operator training and rollout',0.2]]};
+let cxT='f0',opx=false;
+function cx(){const d=CX[cxT],tot=cxT==='f0'?19:3,mx=d[0][1];
+ $('#cxBars').innerHTML=d.map((r,i)=>{const isL=cxT==='f0'&&i===1&&opx;return `<div class="hb"><div class="lb">${r[0]}${isL?' <b style="color:var(--warn)">→ OPEX</b>':''}</div><div class="tr"><div class="fill${i===0?' top':''}${isL?' opex':''}" data-w="${r[1]/mx*82}"></div><span class="vl" style="left:0">$${r[1].toFixed(1)} MM · ${Math.round(r[1]/tot*100)}%</span></div></div>`}).join('');
+ requestAnimationFrame(()=>requestAnimationFrame(()=>$$('#cxBars .fill').forEach(f=>{f.style.width=f.dataset.w+'%';f.nextElementSibling.style.left=f.dataset.w+'%'})));
+ $('#cxTog').style.display=cxT==='f0'?'flex':'none';$('#cxAlert').classList.toggle('on',opx&&cxT==='f0')}
+$$('#cxTabs .chip').forEach(c=>c.onclick=()=>{$$('#cxTabs .chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');cxT=c.dataset.t;cx()});
+const tg=$('#cxTog');const tgf=()=>{opx=!opx;tg.classList.toggle('on',opx);tg.setAttribute('aria-checked',opx);cx()};tg.onclick=tgf;tg.onkeydown=e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();tgf()}};
+watch($('#cxBars').parentElement,cx);
+(function(){const ds=$('#cxDonut'),C=2*Math.PI*80;mk('circle',{cx:100,cy:100,r:80,fill:'none',stroke:'#f0f0f3','stroke-width':22},ds);
+ const a=mk('circle',{cx:100,cy:100,r:80,fill:'none',stroke:'#0071e3','stroke-width':22,'stroke-dasharray':`0 ${C}`,transform:'rotate(-90 100 100)',style:'transition:stroke-dasharray 1.4s cubic-bezier(.28,.11,.32,1)'},ds);
+ const b=mk('circle',{cx:100,cy:100,r:80,fill:'none',stroke:'#7b61ff','stroke-width':22,'stroke-dasharray':`0 ${C}`,'stroke-dashoffset':-(19/22*C),transform:'rotate(-90 100 100)',style:'transition:stroke-dasharray 1.4s cubic-bezier(.28,.11,.32,1) .6s'},ds);
+ watch(ds.parentElement,()=>{a.setAttribute('stroke-dasharray',`${19/22*C-2} ${C}`);b.setAttribute('stroke-dasharray',`${3/22*C-2} ${C}`);const e=$('#perU');e.dataset.c='63333';e.dataset.p='$';e.dataset.d='0';count(e)})})();
+
+/* GOBIERNO */
+const FO=[['Level 1','Steering Committee (SteerCo)','Monthly + at each gate','CEO, CFO, COO, Head of IT, partner principal','Budget, scope, go/no-go'],['Level 2','Design Authority','Weekly','Solution architect, functional leads, Security','Fit-gap, developments, integrations'],['Level 3','Operational PMO','Weekly + daily per stream','Program Manager, partner PM, stream leads','Plan, risks, resources'],['From M12','CAB · Change control','Weekly','IT Operations, Security, process owner','Changes to production']];
+$('#forums').innerHTML=FO.map(f=>`<div class="fo rv"><div class="lv">${f[0]}</div><h4>${f[1]}</h4><span class="cad">${f[2]}</span><p>${f[3]}</p><div class="dec">Decide: ${f[4]}</div></div>`).join('');
+const RO=['Sponsor (CEO)','CFO','COO','Head of IT / PMO','Partner','Key users','Security'];
+const RA=[['Charter and budget','A C C R I I I'],['Process design (fit-gap)','I A A C R R C'],['Architecture and integrations','I I C A R I C'],['Configuration and development','I I I A R C C'],['Data migration','I A C R R R I'],['Security, roles and SoD','I C C A R C R'],['UAT','I A A C C R I'],['Training and change management','I C C A R R I'],['Go/no-go and cutover','A R R R R C C'],['Movilform / TMS integration','I C A R C R C']];
+const rt=$('#raci');rt.innerHTML=`<thead><tr><th style="text-align:left;cursor:default">Deliverable</th>${RO.map((r,i)=>`<th data-c="${i}">${r}</th>`).join('')}</tr></thead><tbody>${RA.map(r=>`<tr><td class="lb">${r[0]}</td>${r[1].split(' ').map((x,i)=>`<td class="${x}" data-c="${i}">${x}</td>`).join('')}</tr>`).join('')}</tbody>`;
+let rsel=-1;
+$$('#raci th[data-c]').forEach(th=>th.onclick=()=>{const c=+th.dataset.c;rsel=rsel===c?-1:c;rt.classList.toggle('f',rsel>=0);$$('#raci th').forEach(h=>h.classList.toggle('on',+h.dataset.c===rsel&&h.dataset.c!==undefined));
+ $$('#raci td[data-c]').forEach(td=>td.classList.toggle('sel',+td.dataset.c===rsel));
+ if(rsel<0){$('#raciSum').textContent='';return}const cnt={R:0,A:0,C:0,I:0};RA.forEach(r=>cnt[r[1].split(' ')[rsel]]++);
+ $('#raciSum').innerHTML=`<b>${RO[rsel]}</b>: responsible for ${cnt.R}, approves ${cnt.A}, consulted on ${cnt.C} and informed on ${cnt.I} of ${RA.length} deliverables.`});
+$$('#raci th[data-c="3"]')[0].click();
+$$('.people').forEach(p=>{for(let i=0;i<+p.dataset.n;i++){const d=document.createElement('i');d.style.background=p.dataset.c;d.style.transitionDelay=(i*60)+'ms';p.appendChild(d)}watch(p,()=>p.classList.add('in'))});
+
+/* CHECKLISTS */
+const CK=[['0.1','Mobilization','M1–M2',['C|Charter signed by Sponsor, CFO and COO','C|Fixed-price-per-deliverable contract with the partner, with SLA penalties','Licensing defined by profile (Full / Activity / Team Members) and quoted with the LSP','Environments provisioned: production, Tier-2 sandbox (UAT) and development','KPI baseline measured (process times, incidents, current availability)','Communication plan and stakeholder map approved','Initial risk register with an owner per risk']],
+ ['0.2','Analysis and design','M3–M6',['C|To-be processes documented (O2C, P2P, R2R, inventory, fleet)','C|Fit-gap with ≤ 10% of requirements as custom development','Integration architecture approved by the Design Authority','Role-based security model and SoD matrix validated by Audit','Migration strategy and data-cleansing rules','CFDI 4.0 and tax supplements design with the selected PAC','Solution Blueprint Review with Microsoft']],
+ ['0.3','Build','M7–M12',['C|Full configuration in 3-week sprints with a business demo','Integrations built with monitoring and automatic retries','DevOps pipeline (versioning, builds and deployment to environments)','Automated regression tests for critical processes','Two migration mocks with ≥ 98% reconciliation','Executive Power BI reports and dashboards']],
+ ['0.4','Testing','M11–M14',['C|SIT: 100% of integrations tested end to end','C|UAT signed off by every process owner, 0 open critical defects','Performance test with 300 concurrent users, response < 3 s','Documented DR test: RTO ≤ 4 h and RPO ≤ 15 min on own integrations','Pentest of integrations and portal','Third migration mock with 100% accounting reconciliation']],
+ ['0.5','Go-live','M15',['C|Go/no-go signed by the SteerCo with criteria met','C|Hour-by-hour cutover plan rehearsed (dress rehearsal)','C|Rollback plan tested with a defined point of no return','300 users trained and certified (≥ 80% on the assessment)','Help desk with 24×7 on-call for the first 4 weeks','Opening balances reconciled and signed off by the Controller','First CFDI invoice stamped and validated in production']],
+ ['1','Hypercare','M15–M20',['C|First month-end close in the ERP in ≤ 7 business days','Availability ≥ 99.7% for 3 consecutive months','P1/P2 backlog at zero; P3 with committed dates','Knowledge transfer from the partner signed off','AMS second-level support agreement with SLA in force']],
+ ['2','Movilform and portal','M16–M24',['C|Movilform contract with SLA ≥ 99.7% and a data-portability clause','C|Movilform ↔ D365 API in production: customers, orders, manifests, trips and invoicing','Regulatory validation of the official documents (waste and transport)','Real-time traceability of trucks and services (TMS)','Portal: requests, manifests, invoices and evidence','Pilot with 10 customers and 1 route before full rollout','Tender kit: digital traceability evidence, SLA and certifications','Benefits (−60% time, −50% incidents) audited by Finance']]];
+let ckS={};try{ckS=JSON.parse(localStorage.getItem('fgg-erp-ck')||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem('fgg-erp-ck',JSON.stringify(ckS))}catch(e){}};
+let ckI=0;
+function ckTabs(){$('#cktabs').innerHTML=CK.map((c,i)=>{const n=c[3].length,d=c[3].filter((_,j)=>ckS[i+'-'+j]).length;return `<button class="ckt${i===ckI?' on':''}" data-i="${i}"><b>Phase ${c[0]} · ${c[1]}</b><span>${c[2]} · ${d}/${n}</span><div class="pb"><i style="width:${d/n*100}%"></i></div></button>`}).join('');
+ $$('.ckt').forEach(b=>b.onclick=()=>{ckI=+b.dataset.i;ckRender()})}
+function ckRender(){ckTabs();const c=CK[ckI];
+ $('#cklist').innerHTML=`<h3>Phase ${c[0]} · ${c[1]} <span class="mut" style="font-weight:400;font-size:15px">(${c[2]})</span></h3>`+c[3].map((it,j)=>{const cr=it.startsWith('C|'),tx=cr?it.slice(2):it,on=ckS[ckI+'-'+j];return `<div class="cki${on?' ck':''}" data-j="${j}" role="checkbox" aria-checked="${!!on}" tabindex="0"><span class="bx">${on?'✓':''}</span><span class="tx">${cr?'<span class="crit">C</span>':''}${tx}</span></div>`}).join('');
+ $$('.cki').forEach(el=>{const t=()=>{const k=ckI+'-'+el.dataset.j;ckS[k]=!ckS[k];save();ckRender()};el.onclick=t;el.onkeydown=e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();t()}}});
+ const n=c[3].length,d=c[3].filter((_,j)=>ckS[ckI+'-'+j]).length,crit=c[3].map((x,j)=>[x,j]).filter(x=>x[0].startsWith('C|')),cd=crit.filter(x=>ckS[ckI+'-'+x[1]]).length;
+ $('#ckArc').setAttribute('stroke-dashoffset',314.16*(1-d/n));$('#ckPct').textContent=Math.round(d/n*100)+'%';
+ const ok=cd===crit.length;const g=$('#ckGate');g.className='gpill '+(ok?'ok':'no');g.textContent=ok?'Gate ready for approval':'Gate blocked';
+ $('#ckTxt').textContent=ok?(d===n?'All items closed.':`Critical items closed. ${n-d} item(s) can pass with a dated closing plan.`):`${crit.length-cd} of ${crit.length} critical item(s) still open.`}
+$('#ckReset').onclick=()=>{CK[ckI][3].forEach((_,j)=>delete ckS[ckI+'-'+j]);save();ckRender()};
+ckRender();
+
+/* KPIS */
+const KP=[['Service order to invoice','Hours from service closed to CFDI stamped',72,29,'h','CFO'],['Regulatory documents','Minutes per document issued and validated',45,18,'min','COO'],['Month-end close','Business days to close',10,4,'days','Controller'],['Purchase cycle (P2P)','Days from requisition to PO',5,2,'days','Procurement'],['Total incidents','Operations + IT tickets per month',400,200,'/mo','Head of IT'],['Billing errors','Credit notes due to errors / invoices issued',6,3,'%','CFO'],['Portal adoption','Active customers on portal / active customer base',0,70,'%','Sales'],['ERP availability','Minutes without unplanned downtime / minutes in the month',null,99.7,'%','Head of IT'],['Tenders','Won with traceability as a criterion',null,20,'%','Sales']];
+$('#kpiGrid').innerHTML=KP.map((k,i)=>`<div class="kc rv"><div class="kt">${k[0]}</div><div class="kf">${k[1]}</div><div class="kv" id="kv${i}"></div><div class="kb"><i id="kb${i}"></i></div><div class="kd"><span>Owner: ${k[5]}</span><span id="kd${i}"></span></div></div>`).join('');
+function kpi(s){KP.forEach((k,i)=>{const b=k[2],g=k[3],v=s?g:b,mx=Math.max(b||0,g),up=g>(b||0);const vEl=$('#kv'+i),bar=$('#kb'+i),dl=$('#kd'+i);
+ if(v===null){vEl.innerHTML=i===7?'n/a<small>siloed systems</small>':'—<small>not measured</small>';bar.style.width='4%';bar.style.background='#48484a';dl.textContent='';return}
+ const pre=i===8?'+':(i===7&&s?'≥ ':(s&&!up?'≤ ':(s&&up?'≥ ':'')));
+ vEl.innerHTML=pre+fmt(v,v%1?1:0)+'<small>'+(i===8?'% win rate':k[4])+'</small>';vEl.style.color=s?'var(--okd)':'#f5f5f7';
+ bar.style.width=(i===7||i===8?(s?100:4):Math.max(4,v/mx*100))+'%';bar.style.background=s?'linear-gradient(90deg,#30d158,#2997ff)':'#8e8e93';
+ dl.innerHTML=s&&b!==null&&b>0?`<b>${up?'+':'−'}${Math.round(Math.abs(g-b)/b*100)}%</b>`:(s&&i===6?'<b>from 0 to 70%</b>':'')})}
+let ks=0;$$('#kseg button').forEach(b=>b.onclick=()=>{ks=+b.dataset.k;$$('#kseg button').forEach(x=>x.classList.toggle('on',x===b));kpi(ks)});
+kpi(0);watch($('#kpiGrid'),()=>setTimeout(()=>{if(ks===0)$$('#kseg button')[1].click()},1600));
+
+/* RIESGOS */
+const RK=[['R1','Key users without time for the project',4,5,'50% release with budgeted backfill and goals in performance reviews','Escalate to SteerCo; move sprint','COO / CFO'],
+ ['R2','Poor-quality master data',4,4,'Cleansing from M3, 3 migration mocks, a data owner per domain','Go-live with critical masters; the rest in hypercare','Head of IT'],
+ ['R3','Over-customization of the ERP',3,5,'Rule of ≤ 10% custom development; Design Authority approves every gap','Re-prioritize to Phase 1','Architect'],
+ ['R4','Movilform integration without a mature API',3,4,'API proof of concept before signing the contract (M15)','Scheduled file-based integration as a bridge','Head of IT'],
+ ['R5','Tax non-compliance in CFDI / supplements',2,5,'Certified PAC, SAT sandbox testing, Tax team validation','Emergency invoicing on the PAC portal','CFO'],
+ ['R6','Availability < 99.7% due to network or integrations',3,4,'Redundant links per site, synthetic monitoring, queues with retry','Offline operation in Movilform and later sync','Head of IT'],
+ ['R7','Resistance to change',4,3,'Network of 30 change agents, role-based training, visible quick wins','One-on-one coaching during hypercare','HR / PMO'],
+ ['R8','Partner consultant turnover',3,3,'Key-personnel clause and approval of replacements','Contractual penalty','PMO'],
+ ['R9','FX variation on USD licenses',3,3,'Contract in MXN or 12-month FX hedge','Use of contingency','CFO'],
+ ['R10','Security breach in the customer portal',2,5,'SSO, MFA, WAF, pentest before go-live, ISO 27001 controls','Incident response plan','Security']];
+const heat=e=>e>=15?'#ff8a8f':e>=10?'#ffc27a':e>=6?'#ffe69a':'#d8f2e5';
+let hm='';for(let im=5;im>=1;im--){hm+=`<div class="ax">${im}</div>`;for(let p=1;p<=5;p++){const rs=RK.filter(r=>r[2]===p&&r[3]===im);hm+=`<div class="cell" style="background:${heat(p*im)}">${rs.map(r=>`<button class="rb" data-r="${r[0]}">${r[0]}</button>`).join('')}</div>`}}
+hm+='<div></div>'+[1,2,3,4,5].map(p=>`<div class="ax">${p}</div>`).join('');$('#hm').innerHTML=hm;
+const sorted=[...RK].sort((a,b)=>b[2]*b[3]-a[2]*a[3]);
+$('#rlist').innerHTML=sorted.map(r=>{const e=r[2]*r[3];return `<div class="rl" data-r="${r[0]}"><span class="id">${r[0]}</span><span class="nm">${r[1]}</span><span class="eb"><i data-w="${e/25*100}" style="background:${heat(e)}"></i></span></div>`}).join('');
+watch($('#rlist'),()=>$$('#rlist .eb i').forEach(i=>i.style.width=i.dataset.w+'%'));
+function rsel2(id){const r=RK.find(x=>x[0]===id),e=r[2]*r[3];$$('.rb').forEach(b=>b.classList.toggle('on',b.dataset.r===id));
+ $('#rdet').innerHTML=`<div class="rid">${r[0]} · Exposure ${e}</div><h4>${r[1]}</h4><div class="ex"><span>Probability ${r[2]}/5</span><span>Impact ${r[3]}/5</span><span>Owner: ${r[6]}</span></div><div class="mm"><div class="p"><b>Mitigation</b>${r[4]}</div><div class="k"><b>Contingency</b>${r[5]}</div></div>`}
+$$('[data-r]').forEach(b=>b.onclick=()=>rsel2(b.dataset.r));rsel2('R1');
+
+/* ADKAR */
+const AD=[['A','Awareness','M2–M3','CEO message and roadshow by area','100% of areas informed'],['D','Desire','M7–M12','Change agents and sprint demos','≥ 30 active agents'],['K','Knowledge','M12–M14','Role-based training (train-the-trainer)','300 users, ≥ 80% on the assessment'],['A','Ability','M13–M15','Sandbox practice and quick guides','≥ 10 h of practice per user'],['R','Reinforcement','M15–M20','Hypercare, surveys and recognition','Satisfaction ≥ 4/5']];
+$('#adkar').innerHTML=AD.map((a,i)=>`<button class="ad rv" data-i="${i}"><div class="l">${a[0]}</div><b>${a[1]}</b><span>${a[2]}</span></button>`).join('');
+let adI=0,adT=null;
+function ad(i){adI=i;$$('.ad').forEach((b,j)=>b.classList.toggle('on',j===i));const a=AD[i];$('#addet').innerHTML=`<div><span class="mut" style="font-family:var(--mono);font-size:12px">${a[2]}</span><h4>${a[1]}</h4><p>${a[3]}</p></div><div class="ind"><span>Indicator</span><b>${a[4]}</b></div>`}
+$$('.ad').forEach(b=>b.onclick=()=>{clearInterval(adT);ad(+b.dataset.i)});ad(0);
+watch($('#adkar'),()=>{if(!RM)adT=setInterval(()=>ad((adI+1)%AD.length),2600)});
+$('#docs').innerHTML=['Project Charter and business case','Master plan and schedule baseline','Solution design (to-be + fit-gap)','Integration architecture and interface catalog','Data migration strategy and log','Test plan and UAT sign-offs','Cutover and rollback plan','Operations and continuity (DR) runbooks','Role-based manuals and training material','Benefits report and lessons learned'].map(d=>`<li><i>✓</i>${d}</li>`).join('');
+
+reveal();
+})();
+</script>
+</body>
+</html>
