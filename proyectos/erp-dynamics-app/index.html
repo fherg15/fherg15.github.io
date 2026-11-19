@@ -9,8 +9,11 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-VC2D4V1FP5');
+  function setL(l){try{localStorage.setItem('fgg-lang',l)}catch(e){}}
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="alternate" hreflang="es" href="https://fherg15.github.io/proyectos/erp-dynamics-app/">
+<link rel="alternate" hreflang="en" href="https://fherg15.github.io/proyectos/erp-dynamics-app/en/">
 <title>Proyecto ERP Dynamics y App — Fernando Gómez Guerrero</title>
 <meta name="description" content="Programa de transformación digital: ERP Microsoft Dynamics 365 para 300 usuarios + plataforma móvil Movilform integrada. $22.0 MM MXN de CAPEX, 24 meses, 99.7% de disponibilidad, −60% en tiempos de proceso y −50% en incidentes.">
 <style>
@@ -38,6 +41,10 @@ button{font-family:inherit}
 .gnav .links a:hover,.gnav .links a.on{opacity:1}
 .gnav .links a.on{color:var(--blue)}
 .gnav .back{font-size:12px;color:var(--link);text-decoration:none;white-space:nowrap}
+.gnav .rt{display:flex;align-items:center;gap:12px}
+.lang{display:flex;background:rgba(0,0,0,.06);border-radius:980px;padding:2px}
+.lang a{font-size:11px;font-weight:600;padding:4px 10px;border-radius:980px;text-decoration:none;color:var(--mut)}
+.lang a.on{background:var(--ink);color:#fff}
 
 main{display:flex;flex-direction:column;gap:12px;padding-bottom:12px}
 .tile{background:var(--tile);padding:90px 22px;overflow:hidden;position:relative}
@@ -459,7 +466,7 @@ footer{background:var(--tile);color:var(--mut);font-size:12px;padding:22px;text-
   <nav class="links" id="navlinks">
     <a href="#resumen">Resumen</a><a href="#objetivos">Objetivos</a><a href="#arquitectura">Arquitectura</a><a href="#disponibilidad">99.7%</a><a href="#roadmap">Roadmap</a><a href="#presupuesto">Presupuesto</a><a href="#gobierno">Gobierno</a><a href="#checklists">Checklists</a><a href="#kpis">KPIs</a><a href="#riesgos">Riesgos</a><a href="#cambio">Cambio</a>
   </nav>
-  <a class="back" href="/proyectos/">← Todos los proyectos</a>
+  <div class="rt"><div class="lang"><a class="on" href="/proyectos/erp-dynamics-app/" onclick="setL('es')">ES</a><a href="/proyectos/erp-dynamics-app/en/" onclick="setL('en')">EN</a></div><a class="back" href="/proyectos/">← Todos los proyectos</a></div>
 </div></header>
 
 <main>
