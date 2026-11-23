@@ -425,5 +425,14 @@ const BE=[[['🔎',T('Búsqueda más rápida','Faster search'),T('−70% estimad
 function ben(k){$('#ben').innerHTML=BE[k].map(b=>`<div class="ben"><div class="ic">${b[0]}</div><b>${b[1]}</b><p>${b[2]}</p></div>`).join('')}seg($('#benSeg'),ben);ben(0);
 })();
 </script>
+<!--fgg-origin--><script>
+/* Si se llegó desde el sitio de una vacante, "volver al perfil" regresa a ese sitio y no a la raíz */
+(function(){try{
+  var K='fgg-origin',OK={dir_sol_ti:'/dir_sol_ti/'},q=new URLSearchParams(location.search).get('from'),o=sessionStorage.getItem(K);
+  if(q&&OK[q]){o=q;sessionStorage.setItem(K,q);}
+  else if(document.referrer){var u=new URL(document.referrer);if(u.origin===location.origin&&(u.pathname==='/'||u.pathname==='/index.html')){o=null;sessionStorage.removeItem(K);}}
+  if(o&&OK[o]){document.querySelectorAll('a[href="/"]').forEach(function(a){a.setAttribute('href',OK[o]);});}
+}catch(e){}})();
+</script>
 </body>
 </html>
