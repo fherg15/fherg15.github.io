@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VC2D4V1FP5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VC2D4V1FP5');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="alternate" hreflang="es" href="https://fherg15.github.io/dir_sol_ti/proyectos/drp-rto-rpo/">
+<link rel="alternate" hreflang="en" href="https://fherg15.github.io/dir_sol_ti/proyectos/drp-rto-rpo/en/">
+<title>DRP con RTO/RPO — Proyecto · Fernando Gómez Guerrero</title>
+<meta name="description" content="Proyecto DRP para ERP Oracle NetSuite: 99.7% de disponibilidad de negocio, RTO/RPO por componente, modo degradado de 72 h en 9 unidades de negocio, arquitectura, escenarios, pruebas y roadmap.">
+<style>
+:root{
+  --bg:#fff;--tile:#f5f5f7;--ink:#1d1d1f;--mut:#6e6e73;--blk:#000;--blk2:#161617;--blk3:#232325;--ln:#d2d2d7;
+  --blue:#0071e3;--blueh:#0077ed;--link:#0066cc;--linkd:#2997ff;
+  --ok:#12a05f;--okd:#30d158;--warn:#e8890c;--warnd:#ffb340;--bad:#e5484d;--badd:#ff6961;
+  --t0:#e5484d;--t1:#e8890c;--t2:#0071e3;--t3:#8e8e93;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.47;letter-spacing:-.022em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+button{font-family:inherit}
+
+/* progress + nav */
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0071e3,#7b61ff,#d946a8);z-index:200}
+.gnav{position:sticky;top:0;z-index:100;height:44px;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
+.gnav .in{max-width:1100px;height:100%;margin:0 auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.gnav .brand{font-size:.92rem;font-weight:600;text-decoration:none;white-space:nowrap}
+.gnav .brand span{color:var(--mut);font-weight:400}
+.gnav .links{display:flex;gap:22px;overflow:auto;scrollbar-width:none}
+.gnav .links::-webkit-scrollbar{display:none}
+.gnav .links a{font-size:12px;opacity:.75;text-decoration:none;white-space:nowrap;transition:opacity .2s}
+.gnav .links a:hover,.gnav .links a.on{opacity:1}
+.gnav .links a.on{color:var(--blue)}
+.gnav .back{font-size:12px;color:var(--link);text-decoration:none;white-space:nowrap}
+.gnav .rt{display:flex;align-items:center;gap:12px}
+.lang{display:flex;background:rgba(0,0,0,.06);border-radius:980px;padding:2px}
+.lang a{font-size:11px;font-weight:600;padding:4px 10px;border-radius:980px;text-decoration:none;color:var(--mut)}
+.lang a.on{background:var(--ink);color:#fff}
+
+/* tiles */
+main{display:flex;flex-direction:column;gap:12px;padding-bottom:12px}
+.tile{background:var(--tile);padding:90px 22px;overflow:hidden;position:relative}
+.tile.white{background:var(--bg)}
+.tile.dark{background:var(--blk);color:#f5f5f7}
+.inner{max-width:1100px;margin:0 auto}
+.ctr{text-align:center}
+.eyebrow{font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.dark .eyebrow{color:var(--linkd)}
+.num{font-family:var(--mono);font-size:13px;color:var(--mut);margin-right:8px}
+.h1{font-size:clamp(2.7rem,7vw,5.6rem);font-weight:700;line-height:1.02;letter-spacing:-.04em;margin-top:10px}
+.h2{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:600;line-height:1.07;letter-spacing:-.03em;max-width:860px;margin-top:10px}
+.ctr .h2{margin-left:auto;margin-right:auto}
+.lead{font-size:clamp(1.1rem,1.7vw,1.35rem);color:var(--mut);max-width:780px;margin-top:18px;line-height:1.45}
+.ctr .lead{margin-left:auto;margin-right:auto}
+.dark .lead,.dark .mut{color:#a1a1a6}
+.lead b{color:var(--ink);font-weight:600}
+.dark .lead b{color:#f5f5f7}
+.grad{background:linear-gradient(92deg,#0071e3 0%,#7b61ff 55%,#d946a8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.dark .grad{background:linear-gradient(92deg,#2997ff 0%,#9b7bff 55%,#f472b6 100%);-webkit-background-clip:text;background-clip:text}
+.mut{color:var(--mut)}
+.card{background:#fff;border-radius:22px;padding:26px}
+.white .card{background:var(--tile)}
+.dark .card{background:var(--blk2)}
+.note{font-size:13px;color:var(--mut);margin-top:16px;line-height:1.5}
+.dark .note{color:#8e8e93}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:980px;background:rgba(0,0,0,.06);border:0;color:var(--ink);cursor:pointer;transition:.2s}
+.dark .chip{background:rgba(255,255,255,.1);color:#f5f5f7}
+.chip.on{background:var(--ink);color:#fff}
+.dark .chip.on{background:#f5f5f7;color:#000}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:10px 20px;border-radius:980px;border:1px solid transparent;cursor:pointer;text-decoration:none;transition:.2s}
+.btn.fill{background:var(--blue);color:#fff}.btn.fill:hover{background:var(--blueh)}
+.btn.line{background:transparent;color:var(--link);border-color:var(--link)}.btn.line:hover{background:var(--link);color:#fff}
+.dark .btn.line{color:var(--linkd);border-color:var(--linkd)}.dark .btn.line:hover{background:var(--linkd);color:#000}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+.tier{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:22px;padding:0 7px;border-radius:7px;font-size:11px;font-weight:700;color:#fff;font-family:var(--mono)}
+.t0{background:var(--t0)}.t1{background:var(--t1)}.t2{background:var(--t2)}.t3{background:var(--t3)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.28,.11,.32,1),transform .8s cubic-bezier(.28,.11,.32,1)}
+.rv.in{opacity:1;transform:none}
+
+/* HERO */
+#hero{padding:80px 22px 70px;text-align:center;background:radial-gradient(1200px 500px at 50% -10%,#e8f1ff 0%,var(--tile) 60%)}
+.badge{display:inline-flex;gap:8px;align-items:center;font-size:13px;font-weight:600;padding:7px 14px;border-radius:980px;background:#fff;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.badge .live{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(18,160,95,.6);animation:live 2s infinite}
+@keyframes live{70%{box-shadow:0 0 0 8px rgba(18,160,95,0)}100%{box-shadow:0 0 0 0 rgba(18,160,95,0)}}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:28px;align-items:center;margin-top:56px;text-align:left}
+.gauge{position:relative;width:min(380px,100%);aspect-ratio:1;margin:0 auto}
+.gauge svg{width:100%;height:100%}
+.gauge .c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.gauge .v{font-size:clamp(3rem,7vw,4.6rem);font-weight:700;letter-spacing:-.05em;line-height:1}
+.gauge .l{font-size:14px;color:var(--mut);margin-top:6px;max-width:190px;line-height:1.3}
+.gauge .s{font-family:var(--mono);font-size:12px;color:var(--ok);margin-top:10px}
+.unmap{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.reg{background:#fff;border-radius:18px;padding:16px 14px}
+.reg .rn{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.reg .uns{display:flex;flex-direction:column;gap:7px;margin-top:10px}
+.un{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;font-weight:600}
+.un .dot{background:var(--ok);animation:blink 2.4s infinite}
+.un:nth-child(2) .dot{animation-delay:.4s}.un:nth-child(3) .dot{animation-delay:.8s}
+@keyframes blink{50%{opacity:.35}}
+.reg .th{font-size:11.5px;color:var(--mut);margin-top:10px;line-height:1.35}
+.kgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:40px}
+.k{background:#fff;border-radius:18px;padding:20px 16px;text-align:left}
+.k .n{font-size:clamp(1.6rem,2.8vw,2.3rem);font-weight:700;letter-spacing:-.04em;line-height:1}
+.k .l{font-size:12.5px;color:var(--mut);margin-top:8px;line-height:1.3}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+
+/* 60 seg */
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:44px}
+.four .card{position:relative;overflow:hidden}
+.four .i{font-family:var(--mono);font-size:12px;color:var(--linkd)}
+.four h3{font-size:19px;font-weight:600;letter-spacing:-.02em;margin-top:12px;line-height:1.2}
+.four p{font-size:14px;color:#a1a1a6;margin-top:8px;line-height:1.5}
+.defs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.defs .card{display:flex;gap:16px;align-items:flex-start}
+.defs .ab{font-size:28px;font-weight:700;letter-spacing:-.03em;min-width:86px}
+.defs p{font-size:14px;color:#a1a1a6;line-height:1.45}
+.defs b{color:#f5f5f7}
+
+/* SMART */
+.smart{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:44px}
+.sm{background:#fff;border-radius:22px;padding:24px;position:relative;overflow:hidden;transition:transform .3s}
+.sm:hover{transform:translateY(-3px)}
+.sm .id{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--blue)}
+.sm .goal{font-size:28px;font-weight:700;letter-spacing:-.035em;margin-top:10px;line-height:1.05}
+.sm h4{font-size:16px;font-weight:600;margin-top:10px;line-height:1.3}
+.sm p{font-size:13.5px;color:var(--mut);margin-top:6px;line-height:1.45}
+.sm .when{position:absolute;top:22px;right:22px;font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:980px;background:var(--tile)}
+.scope{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.scope .card{background:#fff}
+.scope h4{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px}
+.scope ul{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:7px}
+.scope li{font-size:13.5px;color:var(--mut);line-height:1.4;padding-left:14px;position:relative}
+.scope li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.5}
+
+/* RACI */
+.org{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:44px}
+.org .card h4{font-size:16px;font-weight:600}
+.org .card .f{font-size:12px;font-weight:600;color:var(--blue);margin-top:4px}
+.org .card p{font-size:13.5px;color:var(--mut);margin-top:8px;line-height:1.45}
+.raci-wrap{margin-top:14px;background:var(--tile);border-radius:22px;padding:22px;overflow-x:auto}
+.raci-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.raci-head .lg{display:flex;gap:14px;font-size:12.5px;color:var(--mut);flex-wrap:wrap}
+.raci-head .lg b{font-family:var(--mono);color:var(--ink)}
+table.raci{border-collapse:separate;border-spacing:3px;width:100%;min-width:760px;font-size:13px}
+.raci th{font-size:11.5px;font-weight:600;color:var(--mut);padding:8px 4px;cursor:pointer;border-radius:8px;transition:.2s;vertical-align:bottom}
+.raci th:first-child{text-align:left;cursor:default}
+.raci th.sel{background:var(--ink);color:#fff}
+.raci td{text-align:center;padding:9px 4px;border-radius:8px;font-family:var(--mono);font-weight:700;font-size:12px;background:#fff;transition:opacity .25s,transform .25s}
+.raci td:first-child{text-align:left;font-family:var(--font);font-weight:500;font-size:13px;padding-left:12px}
+.raci td.A{background:#1d1d1f;color:#fff}
+.raci td.R{background:var(--blue);color:#fff}
+.raci td.AR{background:linear-gradient(135deg,#1d1d1f 50%,var(--blue) 50%);color:#fff}
+.raci td.C{background:#dbe9ff;color:#0a3d91}
+.raci td.I{background:#fff;color:#a1a1a6}
+.raci.focus td:not(:first-child){opacity:.18}
+.raci.focus td.hl{opacity:1;transform:scale(1.04)}
+
+/* BIA */
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:44px}
+.tc{border-radius:22px;padding:22px;color:#fff;cursor:pointer;transition:transform .25s,opacity .25s;border:0;text-align:left}
+.tc:hover{transform:translateY(-3px)}
+.tc.dim{opacity:.35}
+.tc .tn{font-family:var(--mono);font-size:12px;font-weight:700;opacity:.85}
+.tc h4{font-size:20px;font-weight:600;margin-top:6px;letter-spacing:-.02em}
+.tc p{font-size:13px;opacity:.9;margin-top:8px;line-height:1.4}
+.tc .ex{font-size:12px;opacity:.75;margin-top:8px}
+.tc .cnt{font-size:34px;font-weight:700;letter-spacing:-.04em;margin-top:12px}
+.tc .cnt small{font-size:13px;font-weight:500;opacity:.8;letter-spacing:0}
+.bia-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+.bi{background:#fff;border-radius:16px;padding:15px 18px;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;transition:opacity .3s,transform .3s}
+.bi.hide{display:none}
+.bi h5{font-size:14.5px;font-weight:600;line-height:1.3}
+.bi .d{font-size:12.5px;color:var(--mut);margin-top:3px;line-height:1.35}
+.bi .u{font-size:12px;font-weight:600;color:var(--mut);text-align:right;white-space:nowrap}
+.bi .u b{display:block;font-size:15px;color:var(--ink)}
+
+/* RTO butterfly */
+.bf-ctrl{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:40px}
+.bf-lg{display:flex;gap:16px;font-size:12.5px;color:var(--mut);flex-wrap:wrap}
+.bf-lg span{display:inline-flex;align-items:center;gap:6px}
+.bf-lg i{display:inline-block;width:18px;height:8px;border-radius:4px}
+.bf{margin-top:18px;background:#fff;border-radius:22px;padding:18px 18px 10px}
+.bf-axis,.bf-row{display:grid;grid-template-columns:230px 1fr;gap:14px;align-items:center}
+.bf-axis .sc{position:relative;height:30px;font-family:var(--mono);font-size:10.5px;color:var(--mut)}
+.bf-axis .sc span{position:absolute;bottom:4px;transform:translateX(-50%);white-space:nowrap}
+.bf-axis .sc .ev{color:var(--bad);font-weight:700}
+.bf-row{padding:7px 0;border-top:1px solid #f0f0f2;cursor:pointer;border-radius:10px;transition:background .2s}
+.bf-row:hover,.bf-row.sel{background:#f5f8ff}
+.bf-row.hide{display:none}
+.bf-row .nm{display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:500;line-height:1.25;padding-left:6px}
+.bf-row .track{position:relative;height:26px}
+.track .grid{position:absolute;top:0;bottom:0;width:1px;background:#eef0f3}
+.track .ev{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--bad);border-radius:2px}
+.track .rpo,.track .rto,.track .mtpd{position:absolute;top:50%;height:12px;margin-top:-6px;border-radius:6px;transition:width 1s cubic-bezier(.28,.11,.32,1),left 1s cubic-bezier(.28,.11,.32,1)}
+.track .rpo{background:#7b61ff}
+.track .rto{background:var(--blue);z-index:2}
+.track .mtpd{background:repeating-linear-gradient(45deg,#ffd6d7 0 6px,#ffe9ea 6px 12px);z-index:1;height:20px;margin-top:-10px}
+.track .rpo0{position:absolute;top:50%;width:10px;height:10px;margin:-5px 0 0 -12px;border-radius:50%;border:2px solid #7b61ff;background:#fff}
+.track .lb{position:absolute;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:10.5px;font-weight:700;color:var(--blue);white-space:nowrap;z-index:3;transition:left 1s cubic-bezier(.28,.11,.32,1)}
+.track .lb.p{color:#7b61ff}
+.bf-detail{margin-top:12px;background:var(--ink);color:#f5f5f7;border-radius:22px;padding:26px 28px;display:grid;grid-template-columns:1.2fr repeat(3,.7fr);gap:22px;align-items:center}
+.bf-detail h4{font-size:21px;font-weight:600;letter-spacing:-.02em;line-height:1.2}
+.bf-detail .st{font-size:13.5px;color:#a1a1a6;margin-top:8px;line-height:1.45}
+.bf-detail .m .k1{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#a1a1a6}
+.bf-detail .m .v1{font-size:20px;font-weight:700;letter-spacing:-.02em;margin-top:4px;line-height:1.15}
+.zero{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px}
+.zero .card{background:#fff;padding:20px}
+.zero .z{font-size:22px}
+.zero h5{font-size:14.5px;font-weight:600;margin-top:8px}
+.zero p{font-size:12.5px;color:var(--mut);margin-top:5px;line-height:1.4}
+
+/* Budget */
+.bud{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:44px}
+.bud>*,.sim>*,.mx-wrap>*,.hero-grid>*{min-width:0}
+.calc .row{margin-top:18px}
+.calc label{display:flex;justify-content:space-between;font-size:13.5px;color:#a1a1a6}
+.calc label b{color:#f5f5f7;font-family:var(--mono)}
+input[type=range]{width:100%;margin-top:8px;accent-color:#2997ff;height:24px}
+.res{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-top:22px;padding-top:20px;border-top:1px solid #2c2c2e;flex-wrap:wrap}
+.res .big{font-size:clamp(2.6rem,5vw,3.6rem);font-weight:700;letter-spacing:-.045em;line-height:1;transition:color .3s}
+.res .verdict{font-size:13px;font-weight:700;padding:7px 13px;border-radius:980px;transition:.3s}
+.res .verdict.ok{background:rgba(48,209,88,.15);color:var(--okd)}
+.res .verdict.ko{background:rgba(255,105,97,.15);color:var(--badd)}
+.res .dt{font-size:13px;color:#a1a1a6;margin-top:6px}
+.formula{font-family:var(--mono);font-size:12px;color:#a1a1a6;background:#000;border-radius:12px;padding:12px 14px;margin-top:16px;line-height:1.6;overflow-x:auto;white-space:nowrap}
+.formula b{color:#f5f5f7}
+.presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.donut-wrap{display:grid;grid-template-columns:160px 1fr;gap:18px;align-items:center}
+.donut{position:relative;width:160px;height:160px}
+.donut .c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.donut .c b{font-size:28px;letter-spacing:-.04em}
+.donut .c span{font-size:12px;color:#a1a1a6}
+.donut path{transition:opacity .2s;cursor:pointer}
+.legend{display:flex;flex-direction:column;gap:9px}
+.legend .it{display:grid;grid-template-columns:12px 1fr auto;gap:10px;align-items:start;font-size:13px;line-height:1.3;cursor:pointer;padding:4px 6px;border-radius:8px;transition:.2s}
+.legend .it:hover,.legend .it.on{background:#232325}
+.legend .it i{width:12px;height:12px;border-radius:4px;margin-top:2px}
+.legend .it b{font-family:var(--mono);white-space:nowrap}
+.dDesc{font-size:13px;color:#a1a1a6;margin-top:14px;min-height:38px;line-height:1.45}
+.periods{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.periods .card{text-align:center;padding:18px 10px}
+.periods b{display:block;font-size:22px;letter-spacing:-.03em}
+.periods span{font-size:12px;color:#a1a1a6}
+.eb{margin-top:12px}
+.eb-bar{position:relative;height:16px;border-radius:8px;background:linear-gradient(90deg,#30d158 0 50%,#ffb340 50% 75%,#ff6961 75% 100%);margin-top:14px}
+.eb-bar .mk{position:absolute;top:-6px;width:4px;height:28px;border-radius:2px;background:#fff;box-shadow:0 0 0 2px #000;transition:left .2s}
+.eb-ticks{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:#8e8e93;margin-top:6px}
+.eb-msg{margin-top:14px;font-size:15px;font-weight:600;min-height:44px}
+
+/* Arquitectura simulador */
+.sim{display:grid;grid-template-columns:1fr;gap:12px;margin-top:40px}
+.sim-svg{background:#fff;border-radius:22px;padding:14px}
+.sim-svg svg{width:100%;height:auto;display:block}
+.sim-svg text{font-family:var(--font)}
+.sim .box{fill:#fff;stroke:#d2d2d7;stroke-width:1.5;transition:fill .4s,stroke .4s}
+.sim .lay{fill:#f5f5f7;stroke:none}
+.sim .tt{font-size:15px;font-weight:600;fill:#1d1d1f}
+.sim .ts{font-size:12.5px;fill:#6e6e73}
+.sim .tl{font-size:12px;font-weight:700;fill:#6e6e73;letter-spacing:.04em}
+.sim .flow{fill:none;stroke:#0071e3;stroke-width:2.5;stroke-dasharray:7 7;animation:flow 1s linear infinite;transition:stroke .3s,opacity .3s}
+.sim .flow.off{stroke:#d2d2d7;animation:none;stroke-dasharray:4 6}
+.sim .flow.cut{stroke:#e5484d;animation:none;stroke-dasharray:3 5}
+.sim .flow.alt{stroke:#e8890c}
+@keyframes flow{to{stroke-dashoffset:-14}}
+.sim .down{fill:#fff0f0;stroke:#e5484d;stroke-width:2.5}
+.sim .warnb{fill:#fff6e8;stroke:#e8890c;stroke-width:2.5}
+.sim .hot{fill:#eaf9f0;stroke:#12a05f;stroke-width:2.5}
+.sim .unb{transition:fill .4s,stroke .4s}
+.sim .q{fill:#e8890c;transition:width .4s}
+.sim .qbg{fill:#f0f0f2}
+.sim .badgeS{font-size:11px;font-weight:700}
+.sim-panel{background:var(--ink);color:#f5f5f7;border-radius:22px;padding:24px;display:grid;grid-template-columns:1.15fr 1.25fr .8fr;gap:24px;align-items:start}
+.sim-panel .mid h4{margin-top:0}
+.sc-btns{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.sc-btns button{border:0;border-radius:12px;padding:10px 12px;text-align:left;background:#232325;color:#f5f5f7;font-size:13px;font-weight:600;cursor:pointer;transition:.2s;line-height:1.25}
+.sc-btns button small{display:block;font-weight:400;color:#8e8e93;font-size:11.5px;margin-top:2px}
+.sc-btns button.on{background:#f5f5f7;color:#000}
+.sc-btns button.on small{color:#6e6e73}
+.sim-panel h4{font-size:20px;font-weight:600;letter-spacing:-.02em;margin-top:20px;line-height:1.2}
+.sim-panel p{font-size:13.5px;color:#a1a1a6;margin-top:8px;line-height:1.5}
+.ctrs{display:grid;grid-template-columns:1fr;gap:8px}
+.ctr1{background:#232325;border-radius:14px;padding:12px}
+.ctr1 b{display:block;font-size:22px;font-family:var(--mono);letter-spacing:-.03em}
+.ctr1 span{font-size:11px;color:#8e8e93;line-height:1.25;display:block;margin-top:2px}
+.sim-act{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.design{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.design .card{background:#fff;padding:20px}
+.design h5{font-size:14.5px;font-weight:600}
+.design .w{font-size:12.5px;color:var(--mut);margin-top:6px;line-height:1.4}
+.design .y{font-size:12.5px;margin-top:8px;line-height:1.4;color:var(--blue);font-weight:500}
+.vs{margin-top:14px;background:#fff;border-radius:22px;padding:22px;overflow-x:auto}
+.vs table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:620px}
+.vs th{text-align:left;font-size:12px;color:var(--mut);padding:8px 10px;border-bottom:1px solid var(--ln)}
+.vs td{padding:10px;border-bottom:1px solid #f0f0f2;vertical-align:top;line-height:1.4}
+.vs td:first-child{font-weight:600;width:22%}
+
+/* Escenarios y riesgos (matrices) */
+.mx-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+.mx{display:grid;grid-template-columns:70px repeat(3,1fr);grid-template-rows:repeat(3,1fr) 40px;gap:6px;min-height:340px}
+.mx .yl,.mx .xl{font-size:11.5px;font-weight:600;color:#a1a1a6;display:flex;align-items:center}
+.mx .xl{justify-content:center}
+.mx .cell{border-radius:14px;padding:8px;display:flex;flex-wrap:wrap;align-content:flex-start;gap:6px}
+.mx .cell.h1{background:rgba(48,209,88,.12)}
+.mx .cell.h2{background:rgba(255,179,64,.16)}
+.mx .cell.h3{background:rgba(255,105,97,.18)}
+.mx .cell.h4{background:rgba(255,105,97,.32)}
+.mx button{border:0;border-radius:9px;font-family:var(--mono);font-size:12px;font-weight:700;padding:7px 9px;background:#f5f5f7;color:#000;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.mx button:hover{transform:scale(1.08)}
+.mx button.on{background:#2997ff;color:#fff;box-shadow:0 0 0 3px rgba(41,151,255,.35)}
+.mx-axis{font-size:11px;color:#8e8e93;text-align:center;margin-top:6px}
+.mx-det h4{font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.2;margin-top:6px}
+.mx-det .id{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--linkd)}
+.mx-det .kv{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.mx-det .kv div{background:#232325;border-radius:12px;padding:10px 12px}
+.mx-det .kv span{font-size:11px;color:#8e8e93;display:block}
+.mx-det .kv b{font-size:14px}
+.mx-det p{font-size:14px;color:#c7c7cc;margin-top:14px;line-height:1.5}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.rules h5{font-size:15px;font-weight:600}
+.rules p{font-size:13.5px;color:#a1a1a6;margin-top:6px;line-height:1.45}
+
+/* Activación */
+.player{margin-top:40px;background:#fff;border-radius:22px;padding:26px}
+.pl-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.clock{font-family:var(--mono);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;letter-spacing:-.03em}
+.clock small{font-size:13px;color:var(--mut);font-weight:500;letter-spacing:0;margin-left:8px}
+.steps{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin-top:22px;position:relative}
+.stp{border:0;background:var(--tile);border-radius:12px;padding:12px 10px;text-align:left;cursor:pointer;transition:.3s;position:relative;overflow:hidden}
+.stp .t{font-family:var(--mono);font-size:11.5px;font-weight:700;color:var(--blue)}
+.stp .n{font-size:12.5px;font-weight:600;margin-top:4px;line-height:1.25;color:var(--ink)}
+.stp.done{background:#e6f0ff}
+.stp.on{background:var(--ink)}
+.stp.on .n{color:#fff}.stp.on .t{color:var(--linkd)}
+.stp .pb{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--blue)}
+.stp.on .pb{animation:pb 3.2s linear forwards}
+@keyframes pb{to{width:100%}}
+.pl-det{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;margin-top:20px;align-items:start}
+.pl-det h4{font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.2}
+.pl-det p{font-size:15px;color:var(--mut);margin-top:8px;line-height:1.5}
+.pl-det .who{background:var(--tile);border-radius:16px;padding:16px 18px;font-size:13.5px;line-height:1.5}
+.pl-det .who b{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-bottom:4px}
+.esc{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.esc .card{background:#fff;padding:20px;position:relative}
+.esc .lv{font-family:var(--mono);font-weight:700;font-size:26px;letter-spacing:-.03em}
+.esc .tm{position:absolute;top:20px;right:20px;font-size:12px;font-weight:700;padding:4px 10px;border-radius:980px;background:var(--tile)}
+.esc h5{font-size:14px;font-weight:600;margin-top:8px;line-height:1.3}
+.esc p{font-size:12.5px;color:var(--mut);margin-top:4px;line-height:1.4}
+.esc .card:nth-child(1) .lv{color:var(--ok)}.esc .card:nth-child(2) .lv{color:var(--warn)}.esc .card:nth-child(3) .lv{color:var(--bad)}.esc .card:nth-child(4) .lv{color:#b4232a}
+.rb{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}
+.rb div{background:#fff;border-radius:14px;padding:12px 14px;font-size:12.5px;line-height:1.35}
+.rb b{font-family:var(--mono);color:var(--blue);display:block;font-size:12px}
+.back2{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.back2 .card{background:#fff;font-size:14px;line-height:1.45}
+.back2 .card b{display:block;font-size:22px;margin-bottom:6px}
+
+/* Pruebas */
+.tests{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+.ts{background:#fff;border-radius:22px;padding:22px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.white .ts{background:var(--tile)}
+.ts .fq{font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--blue)}
+.ts h5{font-size:16px;font-weight:600;margin-top:8px;line-height:1.25;letter-spacing:-.01em}
+.ts .sc{font-size:13px;color:var(--mut);margin-top:6px;line-height:1.4}
+.ts .ok{margin-top:auto;padding-top:14px;font-size:12.5px;line-height:1.35;display:flex;gap:8px}
+.ts .ok::before{content:'✓';color:var(--ok);font-weight:700}
+.ts.star{background:linear-gradient(150deg,#0b1f3d,#000);color:#f5f5f7;grid-column:span 2}
+.ts.star .sc,.ts.star .ok{color:#a1a1a6}
+.ts.star .fq{color:var(--linkd)}
+.ts.star h5{font-size:24px}
+.cycle{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:14px;counter-reset:c}
+.cycle div{padding:18px 22px 18px 54px;position:relative;font-size:13.5px;line-height:1.45;color:var(--mut)}
+.cycle div::before{counter-increment:c;content:counter(c);position:absolute;left:16px;top:16px;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.cycle div::after{content:'';position:absolute;right:-6px;top:28px;width:12px;height:2px;background:var(--ln)}
+.cycle div:last-child::after{display:none}
+
+/* Comms */
+.comms{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
+.cm h5{font-size:16px;font-weight:600;line-height:1.25}
+.cm .rs{font-size:12.5px;color:var(--linkd);margin-top:4px;font-weight:600}
+.cm .ch{display:flex;flex-direction:column;gap:6px;margin-top:14px;font-size:13px}
+.cm .ch span{display:flex;gap:8px;color:#c7c7cc}
+.cm .ch span i{font-style:normal;color:#8e8e93;min-width:62px;font-size:11.5px}
+.cm .fr{margin-top:14px;font-size:12px;font-weight:700;padding:5px 10px;border-radius:980px;background:#232325;display:inline-block}
+
+/* Roadmap */
+.gantt{margin-top:40px;background:#fff;border-radius:22px;padding:22px 22px 14px;overflow-x:auto}
+.g-inner{min-width:760px}
+.g-row{display:grid;grid-template-columns:230px 1fr;align-items:center;height:42px;cursor:pointer;border-radius:10px;transition:background .2s}
+.g-row:hover,.g-row.on{background:#f5f8ff}
+.g-row .lb{font-size:13.5px;font-weight:500;padding-left:8px}
+.g-row.gate .lb{color:var(--mut);font-size:13px}
+.g-row.gate.key .lb{color:var(--ink);font-weight:700}
+.g-track{position:relative;height:100%}
+.g-bar{position:absolute;top:11px;height:20px;border-radius:10px;background:linear-gradient(90deg,#0071e3,#7b61ff);width:0;transition:width 1.2s cubic-bezier(.28,.11,.32,1)}
+.g-bar.f6{background:linear-gradient(90deg,#12a05f,#30d158)}
+.g-dia{position:absolute;top:13px;width:16px;height:16px;transform:rotate(45deg) scale(0);background:#a1a1a6;margin-left:-8px;transition:transform .5s .9s}
+.g-dia.key{background:var(--blue)}
+.g-dia.in{transform:rotate(45deg) scale(1)}
+.g-dt{position:absolute;top:12px;font-size:11.5px;color:var(--mut);white-space:nowrap;font-family:var(--mono);opacity:0;transition:opacity .5s 1s}
+.g-dt.in{opacity:1}
+.g-head{display:grid;grid-template-columns:230px 1fr;height:28px}
+.g-months{position:relative;font-family:var(--mono);font-size:11px;color:var(--mut)}
+.g-months span{position:absolute;top:6px;transform:translateX(-50%)}
+.g-months span{white-space:nowrap}.g-months span:last-child{transform:translateX(-100%)}
+.g-lines{position:absolute;top:0;bottom:0;left:230px;right:0;pointer-events:none}
+.g-lines i{position:absolute;top:28px;bottom:0;width:1px;background:#f0f0f2}
+.g-det{margin-top:12px;display:grid;grid-template-columns:1fr 1.4fr 1.2fr;gap:12px}
+.g-det .card{background:#fff}
+.g-det .k1{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.g-det .v1{font-size:15px;margin-top:6px;line-height:1.45}
+.g-det h4{font-size:22px;font-weight:600;letter-spacing:-.02em}
+
+/* Checklist */
+.ck{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:40px}
+.ck button{border:0;background:var(--tile);border-radius:14px;padding:14px 10px;cursor:pointer;text-align:left;transition:.2s}
+.ck button.on{background:var(--ink);color:#fff}
+.ck button b{font-family:var(--mono);font-size:13px;display:block}
+.ck button span{font-size:12px;line-height:1.25;display:block;margin-top:4px;opacity:.75}
+.ck .pg{height:4px;background:rgba(0,0,0,.1);border-radius:2px;margin-top:10px;overflow:hidden}
+.ck button.on .pg{background:rgba(255,255,255,.2)}
+.ck .pg i{display:block;height:100%;width:0;background:var(--ok);transition:width .4s}
+.ck-list{margin-top:12px;background:var(--tile);border-radius:22px;padding:22px 26px;display:grid;grid-template-columns:1fr 1fr;gap:4px 28px}
+.ck-list label{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;line-height:1.4;padding:9px 0;border-bottom:1px solid #e8e8ed;cursor:pointer}
+.ck-list input{width:18px;height:18px;margin-top:1px;accent-color:var(--ok);flex:none}
+.ck-list label.dn span{color:var(--mut);text-decoration:line-through}
+.ck-foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:13px;color:var(--mut);flex-wrap:wrap;gap:8px}
+
+/* KPIs */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+.kpi{background:var(--blk2);border-radius:22px;padding:22px;display:flex;flex-direction:column}
+.kpi .mt{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;letter-spacing:-.04em;line-height:1}
+.kpi h5{font-size:15px;font-weight:600;margin-top:12px;line-height:1.25}
+.kpi p{font-size:12.5px;color:#a1a1a6;margin-top:6px;line-height:1.4}
+.kpi .fq{margin-top:auto;padding-top:12px;font-size:11.5px;color:#8e8e93}
+.kpi.key{background:linear-gradient(150deg,#0b2a52,#161617)}
+.std{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.std .card h5{font-size:17px;font-weight:600}
+.std .card p{font-size:13.5px;color:#a1a1a6;margin-top:6px;line-height:1.45}
+
+/* Glosario */
+.gl-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:36px;flex-wrap:wrap}
+.gl-top input{flex:1;min-width:220px;max-width:420px;font:15px var(--font);padding:12px 16px;border-radius:12px;border:1px solid var(--ln);background:#fff;outline:none}
+.gl-top input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,113,227,.15)}
+.gl{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.gl div{background:#fff;border-radius:14px;padding:14px 16px}
+.gl b{font-family:var(--mono);font-size:13.5px;color:var(--blue)}
+.gl .f{font-size:13px;font-weight:600;margin-top:3px;line-height:1.3}
+.gl .u{font-size:12.5px;color:var(--mut);margin-top:4px;line-height:1.35}
+
+/* CTA + footer */
+.cta{text-align:center;padding:100px 22px}
+footer{background:var(--tile);color:var(--mut);font-size:12px;line-height:1.6;padding:20px 22px 28px;text-align:center;border-top:1px solid var(--ln)}
+
+@media(max-width:1000px){
+  .hero-grid{grid-template-columns:1fr}
+  .kgrid{grid-template-columns:repeat(3,1fr)}
+  .four,.org,.tiers,.tests,.kpis,.design{grid-template-columns:repeat(2,1fr)}
+  .smart,.scope,.defs,.comms,.rules,.std,.gl{grid-template-columns:1fr 1fr}
+  .zero{grid-template-columns:repeat(3,1fr)}
+  .bud,.mx-wrap{grid-template-columns:1fr}
+  .sim-panel{grid-template-columns:1fr 1fr}.sim-panel .ctrs{grid-column:1/-1;grid-template-columns:repeat(3,1fr)}
+  .bf-detail{grid-template-columns:1fr 1fr 1fr}.bf-detail>div:first-child{grid-column:1/-1}
+  .steps{grid-template-columns:repeat(4,1fr)}
+  .rb{grid-template-columns:repeat(3,1fr)}
+  .ck{grid-template-columns:repeat(4,1fr)}
+  .g-det{grid-template-columns:1fr}
+  .cycle{grid-template-columns:1fr 1fr}.cycle div::after{display:none}
+}
+@media(max-width:760px){
+  .gnav .links{display:none}
+  .gnav .in{padding:0 16px}
+  .gnav .brand span{display:none}
+  .tile{padding:64px 16px}
+  #hero{padding:56px 16px 52px}
+  .kgrid{grid-template-columns:repeat(2,1fr)}
+  .unmap{grid-template-columns:1fr 1fr 1fr;gap:6px}.reg{padding:12px 10px}.reg .th{display:none}
+  .four,.org,.tiers,.tests,.kpis,.design,.smart,.scope,.defs,.comms,.rules,.std,.gl,.zero,.esc,.back2,.bia-list,.periods{grid-template-columns:1fr}
+  .periods{grid-template-columns:1fr 1fr}
+  .ts.star{grid-column:auto}
+  .bf-axis,.bf-row{grid-template-columns:1fr}
+  .bf-axis>div:first-child{display:none}
+  .bf-row .nm{padding-top:4px}
+  .bf-detail{grid-template-columns:1fr}
+  .donut-wrap{grid-template-columns:1fr;justify-items:center}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .rb{grid-template-columns:1fr 1fr}
+  .ck{grid-template-columns:repeat(2,1fr)}
+  .ck-list{grid-template-columns:1fr;padding:16px 18px}
+  .pl-det{grid-template-columns:1fr}
+  .cycle{grid-template-columns:1fr}
+  .mx{grid-template-columns:52px repeat(3,1fr);min-height:300px}
+  .mx-det .kv{grid-template-columns:1fr}
+  .ctrs{grid-template-columns:1fr 1fr 1fr}
+  .sim-panel{grid-template-columns:1fr}
+  .defs .card{flex-direction:column;gap:6px}
+  .sim-svg{overflow-x:auto}.sim-svg svg{min-width:720px}
+}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+  *{animation:none!important}
+}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+
+<header class="gnav"><div class="in">
+  <a class="brand" href="/dir_sol_ti/proyectos/">Proyectos <span>/ DRP con RTO/RPO</span></a>
+  <nav class="links" id="navlinks">
+    <a href="#objetivos">Objetivos</a>
+    <a href="#bia">BIA</a>
+    <a href="#rto">RTO/RPO</a>
+    <a href="#presupuesto">99.7%</a>
+    <a href="#arquitectura">Arquitectura</a>
+    <a href="#escenarios">Escenarios</a>
+    <a href="#activacion">Activación</a>
+    <a href="#pruebas">Pruebas</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#kpis">KPIs</a>
+  </nav>
+  <div class="rt"><div class="lang"><a class="on" href="/dir_sol_ti/proyectos/drp-rto-rpo/" onclick="setL('es')">ES</a><a href="/dir_sol_ti/proyectos/drp-rto-rpo/en/" onclick="setL('en')">EN</a></div><a class="back" href="/dir_sol_ti/">Perfil ›</a></div>
+</div></header>
+
+<main>
+
+<!-- HERO -->
+<section class="tile" id="hero"><div class="inner">
+  <div class="badge rv"><span class="live"></span> Proyecto · Continuidad de negocio para ERP SaaS</div>
+  <h1 class="h1 rv">DRP con <span class="grad">RTO/RPO</span></h1>
+  <p class="lead rv ctr" style="margin-left:auto;margin-right:auto">ERP Oracle NetSuite con <b>99.7% de disponibilidad de negocio</b> — mantenimiento incluido — y <b>9 unidades de negocio</b> en México que siguen operando aunque el ERP no esté disponible.</p>
+
+  <div class="hero-grid">
+    <div class="gauge rv">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#0071e3"/><stop offset=".6" stop-color="#7b61ff"/><stop offset="1" stop-color="#d946a8"/></linearGradient></defs>
+        <circle cx="100" cy="100" r="84" fill="none" stroke="#e8e8ed" stroke-width="14"/>
+        <circle id="gArc" cx="100" cy="100" r="84" fill="none" stroke="url(#gg)" stroke-width="14" stroke-linecap="round" stroke-dasharray="527.8" stroke-dashoffset="527.8" transform="rotate(-90 100 100)" style="transition:stroke-dashoffset 2.2s cubic-bezier(.28,.11,.32,1)"/>
+        <circle cx="100" cy="100" r="66" fill="none" stroke="#f0f0f2" stroke-width="1" stroke-dasharray="2 4"/>
+      </svg>
+      <div class="c">
+        <div class="v" id="gVal">0.0%</div>
+        <div class="l">disponibilidad del servicio de negocio</div>
+        <div class="s">≤ 26 h 17 min / año</div>
+      </div>
+    </div>
+    <div class="rv">
+      <div class="unmap">
+        <div class="reg"><div class="rn">Norte</div><div class="uns"><div class="un"><span class="dot"></span>UN-01</div><div class="un"><span class="dot"></span>UN-02</div><div class="un"><span class="dot"></span>UN-03</div></div><div class="th">Calor extremo, cortes de energía, huracanes costeros</div></div>
+        <div class="reg"><div class="rn">Centro</div><div class="uns"><div class="un"><span class="dot"></span>UN-04</div><div class="un"><span class="dot"></span>UN-05</div><div class="un"><span class="dot"></span>UN-06</div></div><div class="th">Sismos y saturación de redes celulares</div></div>
+        <div class="reg"><div class="rn">Sur</div><div class="uns"><div class="un"><span class="dot"></span>UN-07</div><div class="un"><span class="dot"></span>UN-08</div><div class="un"><span class="dot"></span>UN-09</div></div><div class="th">Huracanes, inundaciones, menor oferta de carriers</div></div>
+      </div>
+      <p class="note">Las 9 UN operan en GMT-6. Tres regiones reducen la probabilidad de que un mismo evento afecte a todas.</p>
+    </div>
+  </div>
+
+  <div class="kgrid">
+    <div class="k rv"><div class="n">99.7%</div><div class="l">disponibilidad de negocio</div></div>
+    <div class="k rv"><div class="n">≤ 15<small style="font-size:.5em"> min</small></div><div class="l">a modo degradado en cada UN</div></div>
+    <div class="k rv"><div class="n">≤ 1 h</div><div class="l">RTO de lo que controla la empresa</div></div>
+    <div class="k rv"><div class="n" data-count="0">0</div><div class="l">transacciones perdidas (RPO 0)</div></div>
+    <div class="k rv"><div class="n"><span data-count="72">0</span> h</div><div class="l">de operación autónoma por UN</div></div>
+    <div class="k rv"><div class="n"><span data-count="9">0</span> m</div><div class="l">programa dic 2026 → ago 2027</div></div>
+  </div>
+  <div class="hero-cta rv">
+    <a class="btn fill" href="#arquitectura">Simular una caída ›</a>
+    <a class="btn line" href="#rto">Ver matriz RTO/RPO</a>
+  </div>
+</div></section>
+
+<!-- 60 SEGUNDOS -->
+<section class="tile dark" id="resumen"><div class="inner">
+  <div class="eyebrow rv"><span class="num">01</span>El proyecto en 60 segundos</div>
+  <h2 class="h2 rv">Oracle recupera NetSuite. <span class="grad">Este plan asegura todo lo demás.</span></h2>
+  <p class="lead rv">El SLA de Oracle (99.7% mensual) <b>no cuenta el mantenimiento programado</b>, que puede rondar 15 h por trimestre. Si contara contra nuestro 99.7%, agotaría el margen anual. Por eso la meta se mide como <b>disponibilidad del servicio de negocio</b>: las ventanas de NetSuite se cubren con el modo degradado de las UN.</p>
+  <div class="four">
+    <div class="card rv"><div class="i">IDEA 1</div><h3>NetSuite no se conmuta</h3><p>El DR del núcleo es de Oracle por contrato. La empresa exige y verifica el SLA, y reclama crédito si no se cumple.</p></div>
+    <div class="card rv"><div class="i">IDEA 2</div><h3>Las UN no se detienen</h3><p>Store-and-forward local de 72 h y folios propios: se vende, recibe y factura aunque NetSuite no responda.</p></div>
+    <div class="card rv"><div class="i">IDEA 3</div><h3>Cero mensajes perdidos</h3><p>iPaaS activo-activo en dos regiones, colas persistentes, consumidores idempotentes y DLQ con revisión diaria.</p></div>
+    <div class="card rv"><div class="i">IDEA 4</div><h3>Una copia propia</h3><p>Extracción incremental ≤ 1 h y copia inmutable diaria: consulta durante una caída, defensa ante ransomware y salida del proveedor.</p></div>
+  </div>
+  <div class="defs">
+    <div class="card rv"><div class="ab grad">RTO</div><p><b>Recovery Time Objective.</b> Tiempo máximo para restablecer el servicio.</p></div>
+    <div class="card rv"><div class="ab grad">RPO</div><p><b>Recovery Point Objective.</b> Datos máximos que se pueden perder.</p></div>
+    <div class="card rv"><div class="ab grad">MTPD</div><p><b>Max. Tolerable Period of Disruption.</b> Punto en que el impacto se vuelve inaceptable.</p></div>
+  </div>
+</div></section>
+
+<!-- OBJETIVOS -->
+<section class="tile" id="objetivos"><div class="inner">
+  <div class="eyebrow rv"><span class="num">02</span>Objetivos SMART y alcance</div>
+  <h2 class="h2 rv">Seis metas medibles. "100% de continuidad" con una definición operativa.</h2>
+  <p class="lead rv">Cero transacciones perdidas en las integraciones y que cada UN pueda operar sola hasta 72 h aunque NetSuite no esté disponible.</p>
+  <div class="smart" id="smart"></div>
+  <div class="scope">
+    <div class="card rv"><h4><span class="dot" style="background:var(--ok)"></span>Incluye (la empresa)</h4><ul>
+      <li>Integración NetSuite con iPaaS (SuiteTalk, RESTlets)</li><li>Identidad IdP/SSO, DNS, WAN/SD-WAN de 9 UN</li><li>Copia propia de los datos de NetSuite</li><li>CFDI 4.0 con PAC y banca host-to-host</li><li>Aplicaciones satélite y gestión del SLA con Oracle</li></ul></div>
+    <div class="card rv"><h4><span class="dot" style="background:var(--blue)"></span>Responsabilidad de Oracle</h4><ul>
+      <li>Infraestructura y base de datos</li><li>Aplicación NetSuite</li><li>DR entre centros de datos</li><li>SLA 99.7% mensual, sin mantenimiento programado</li></ul></div>
+    <div class="card rv"><h4><span class="dot" style="background:var(--t3)"></span>Excluye (BCP corporativo)</h4><ul>
+      <li>Continuidad de instalaciones físicas</li><li>Seguridad patrimonial</li><li>Recursos humanos</li><li>Interfaz definida en la activación</li></ul></div>
+  </div>
+</div></section>
+
+<!-- GOBIERNO -->
+<section class="tile white" id="gobierno"><div class="inner">
+  <div class="eyebrow rv"><span class="num">03</span>Gobierno y RACI</div>
+  <h2 class="h2 rv">Sin dueños de negocio firmando el BIA, los RTO/RPO son solo números de TI.</h2>
+  <p class="lead rv">Patrocina la Dirección General y dirige el CIO; cada UN aporta un líder de continuidad con autoridad para operar en modo degradado.</p>
+  <div class="org">
+    <div class="card rv"><h4>Comité de Continuidad</h4><div class="f">Mensual</div><p>CEO o CFO (sponsor), CIO (presidente), COO, CISO, Legal/Cumplimiento, Finanzas.</p></div>
+    <div class="card rv"><h4>Equipo de Gestión de Crisis</h4><div class="f">Activado en incidente</div><p>CIO como Incident Commander, CISO, Infraestructura, líder ERP, Comunicación.</p></div>
+    <div class="card rv"><h4>Equipos de recuperación</h4><div class="f">Técnicos</div><p>Nube, base de datos, ERP, Integraciones, Red y telecom, Identidad y seguridad, Mesa de servicio.</p></div>
+    <div class="card rv"><h4>Líderes UN-01 a UN-09</h4><div class="f">Operación local</div><p>Ejecutan procedimientos manuales y el modo degradado de su sede.</p></div>
+  </div>
+  <div class="raci-wrap rv">
+    <div class="raci-head">
+      <div style="font-weight:600;font-size:15px">Matriz RACI <span class="mut" style="font-weight:400;font-size:13px">· toca un rol para ver su responsabilidad</span></div>
+      <div class="lg"><span><b>R</b> Responsable</span><span><b>A</b> Aprueba</span><span><b>C</b> Consultado</span><span><b>I</b> Informado</span></div>
+    </div>
+    <table class="raci" id="raci"></table>
+  </div>
+</div></section>
+
+<!-- BIA -->
+<section class="tile" id="bia"><div class="inner">
+  <div class="eyebrow rv"><span class="num">04</span>Análisis de impacto al negocio (BIA)</div>
+  <h2 class="h2 rv">Cada proceso se clasifica por el costo de detenerse 1, 4, 24 y 72 h.</h2>
+  <p class="lead rv">El tier resultante fija su RTO/RPO. El BIA se levanta con entrevistas en las 9 UN y lo firma el dueño de cada proceso. <b>Toca un tier</b> para filtrar el inventario.</p>
+  <div class="tiers" id="tiers"></div>
+  <div class="bia-list" id="bialist"></div>
+</div></section>
+
+<!-- RTO/RPO -->
+<section class="tile white" id="rto"><div class="inner">
+  <div class="eyebrow rv"><span class="num">05</span>Matriz RTO / RPO / MTPD</div>
+  <h2 class="h2 rv">Lo propio se recupera en ≤ 1 h. <span class="grad">Las integraciones, con RPO 0.</span></h2>
+  <p class="lead rv">Cada fila es un componente. A la izquierda del desastre, cuántos datos se pueden perder (RPO); a la derecha, cuánto tarda en volver (RTO) y hasta dónde aguanta el negocio (MTPD). Escala logarítmica.</p>
+  <div class="bf-ctrl rv">
+    <div class="chips" id="bfchips"></div>
+    <div class="bf-lg"><span><i style="background:#7b61ff"></i>RPO</span><span><i style="background:var(--blue)"></i>RTO</span><span><i style="background:repeating-linear-gradient(45deg,#ffd6d7 0 4px,#ffe9ea 4px 8px)"></i>MTPD</span><span><i style="background:var(--bad);width:3px"></i>Desastre</span></div>
+  </div>
+  <div class="bf rv" id="bf"></div>
+  <div class="bf-detail rv" id="bfdet"></div>
+  <p class="note rv">* El RTO del núcleo de NetSuite lo define Oracle; ante su caída la estrategia no es conmutar, sino que las UN sigan operando en modo degradado. Antes de la Fase 2 se confirma en el contrato el RTO/RPO del DR de Oracle (si no se fija, es el riesgo R08).</p>
+  <h3 class="rv" style="font-size:22px;font-weight:600;letter-spacing:-.02em;margin-top:44px">"100% de continuidad" en integraciones significa:</h3>
+  <div class="zero">
+    <div class="card rv"><div class="z">🔒</div><h5>Cero pérdida</h5><p>Todo mensaje se confirma solo después de persistirse en cola replicada.</p></div>
+    <div class="card rv"><div class="z">🧬</div><h5>Cero duplicado efectivo</h5><p>Consumidores idempotentes con llave única de transacción.</p></div>
+    <div class="card rv"><div class="z">📦</div><h5>Autonomía local</h5><p>Cada UN guarda 72 h y reenvía en orden al recuperar enlace.</p></div>
+    <div class="card rv"><div class="z">🧭</div><h5>Trazabilidad</h5><p>ID de correlación punta a punta; DLQ con alerta y revisión diaria.</p></div>
+    <div class="card rv"><div class="z">⚖️</div><h5>Conciliación</h5><p>Conteos y montos origen vs. ERP por UN tras cada evento.</p></div>
+  </div>
+</div></section>
+
+<!-- PRESUPUESTO -->
+<section class="tile dark" id="presupuesto"><div class="inner">
+  <div class="eyebrow rv"><span class="num">06</span>Presupuesto de disponibilidad</div>
+  <h2 class="h2 rv">Con el SLA de Oracle como único respaldo, <span class="grad">el 99.7% no se cumple.</span></h2>
+  <p class="lead rv">Red, identidad e iPaaS están en serie con NetSuite; el modo degradado actúa en paralelo y cubre una fracción <b>c</b> de su caída. <b>Mueve los controles</b> para comprobarlo.</p>
+  <div class="bud">
+    <div class="card calc rv">
+      <div style="font-weight:600;font-size:17px">Calculadora de disponibilidad compuesta</div>
+      <div class="row"><label>Red, IdP e iPaaS (cada uno) <b id="vA">99.95%</b></label><input type="range" id="sA" min="9980" max="9999" value="9995"></div>
+      <div class="row"><label>NetSuite <b id="vN">99.70%</b></label><input type="range" id="sN" min="9900" max="9999" value="9970"></div>
+      <div class="row"><label>Cobertura del modo degradado (c) <b id="vC">90%</b></label><input type="range" id="sC" min="0" max="100" value="90"></div>
+      <div class="presets"><button class="chip" data-p="0">Sin modo degradado</button><button class="chip on" data-p="90">Con modo degradado (90%)</button></div>
+      <div class="res">
+        <div><div class="big" id="rA">99.82%</div><div class="dt" id="rH">≈ 15.8 h de caída al año</div></div>
+        <div class="verdict ok" id="rV">Cumple 99.7%</div>
+      </div>
+      <div class="formula">A<sub>negocio</sub> = <b>A<sub>red</sub> × A<sub>IdP</sub> × A<sub>iPaaS</sub></b> × [ <b>A<sub>NetSuite</sub></b> + (1 − A<sub>NetSuite</sub>) × <b>c</b> ]</div>
+      <p class="note">Oracle reporta un histórico de 99.96%, pero el plan se diseña contra el SLA contractual, no contra el histórico.</p>
+    </div>
+    <div class="card rv">
+      <div style="font-weight:600;font-size:17px;margin-bottom:16px">Asignación del presupuesto anual: 26.3 h</div>
+      <div class="donut-wrap">
+        <div class="donut"><svg viewBox="0 0 200 200" id="donut"></svg><div class="c"><b id="dV">26.3 h</b><span id="dL">al año</span></div></div>
+        <div class="legend" id="legend"></div>
+      </div>
+      <div class="dDesc" id="dDesc">Pasa el cursor o toca un segmento para ver su regla de control.</div>
+      <div class="eb">
+        <div style="font-weight:600;font-size:15px;margin-top:22px">Política de presupuesto de error</div>
+        <label class="mut" style="font-size:13px;display:flex;justify-content:space-between;margin-top:10px">Consumo del presupuesto <b id="ebv" style="color:#f5f5f7;font-family:var(--mono)">40%</b></label>
+        <input type="range" id="ebs" min="0" max="110" value="40">
+        <div class="eb-bar"><div class="mk" id="ebm"></div></div>
+        <div class="eb-ticks"><span>0%</span><span>50%</span><span>75%</span><span>100%</span></div>
+        <div class="eb-msg" id="ebmsg"></div>
+      </div>
+    </div>
+  </div>
+  <div class="periods">
+    <div class="card rv"><b>26 h 17 min</b><span>Año (8,760 h)</span></div>
+    <div class="card rv"><b>6 h 34 min</b><span>Trimestre</span></div>
+    <div class="card rv"><b>2 h 11 min</b><span>Mes (730 h)</span></div>
+    <div class="card rv"><b>30 min</b><span>Semana</span></div>
+  </div>
+</div></section>
+
+<!-- ARQUITECTURA -->
+<section class="tile" id="arquitectura"><div class="inner">
+  <div class="eyebrow rv"><span class="num">07</span>Arquitectura objetivo · simulador</div>
+  <h2 class="h2 rv">Si NetSuite cae, <span class="grad">las 9 UN siguen operando.</span></h2>
+  <p class="lead rv">Las UN escriben a NetSuite a través del iPaaS; si NetSuite no responde, las transacciones quedan en colas y en el store-and-forward local, y se aplican en orden al volver el servicio. <b>Elige un escenario.</b></p>
+  <div class="sim rv">
+    <div class="sim-svg"><svg viewBox="0 0 1000 664" id="arch" role="img" aria-label="Arquitectura objetivo de continuidad"></svg></div>
+    <div class="sim-panel">
+      <div class="sc-btns" id="scbtns"></div>
+      <div class="mid"><h4 id="simT"></h4>
+      <p id="simP"></p>
+      <div class="sim-act" id="simAct"></div></div>
+      <div class="ctrs">
+        <div class="ctr1"><b id="cClock">00:00</b><span>tiempo en contingencia (simulado)</span></div>
+        <div class="ctr1"><b id="cQ">0</b><span>transacciones en cola (ilustrativo)</span></div>
+        <div class="ctr1"><b id="cL" style="color:var(--okd)">0</b><span>transacciones perdidas</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="design">
+    <div class="card rv"><h5>Integraciones</h5><div class="w">iPaaS activo-activo en dos regiones, colas persistentes, idempotencia, DLQ, control de concurrencia de NetSuite.</div><div class="y">Garantiza cero mensajes perdidos.</div></div>
+    <div class="card rv"><h5>Unidades de negocio</h5><div class="w">Agente store-and-forward local con 72 h de capacidad y folios propios.</div><div class="y">Siguen vendiendo, recibiendo y facturando.</div></div>
+    <div class="card rv"><h5>Facturación CFDI</h5><div class="w">Timbrado desde la UN con doble PAC cuando NetSuite no está disponible.</div><div class="y">Los plazos legales no esperan al ERP.</div></div>
+    <div class="card rv"><h5>Identidad</h5><div class="w">IdP multi-región; cuentas de emergencia de NetSuite con MFA en bóveda.</div><div class="y">Si cae el SSO, se puede entrar a NetSuite.</div></div>
+    <div class="card rv"><h5>Red</h5><div class="w">DNS con health checks; SD-WAN doble carrier + LTE/5G o satelital (sur).</div><div class="y">Conmutación en minutos, sin intervención.</div></div>
+    <div class="card rv"><h5>Copia propia</h5><div class="w">Extracción incremental por SuiteAnalytics Connect o API; copia completa diaria inmutable.</div><div class="y">Consulta, ransomware y salida del proveedor.</div></div>
+    <div class="card rv"><h5>Observabilidad</h5><div class="w">Monitoreo sintético desde cada UN hacia NetSuite e iPaaS; tablero de presupuesto de error.</div><div class="y">Mide lo que vive el usuario y sustenta reclamos de SLA.</div></div>
+    <div class="card rv"><h5>NetSuite</h5><div class="w">DR de Oracle por contrato; suscripción a la página de estado y avisos de mantenimiento.</div><div class="y">No se conmuta; se exige y verifica el SLA.</div></div>
+  </div>
+  <div class="vs rv">
+    <div style="font-weight:600;font-size:17px;margin-bottom:6px">Plataforma de integración: ejemplo de referencia</div>
+    <p class="mut" style="font-size:13.5px;margin-bottom:10px">Boomi permite desplegar el motor en la nube de la empresa y en dos regiones — lo que exige RTO 1 h y RPO 0 mensajes. Se confirma o sustituye en la Fase 2.</p>
+    <table>
+      <tr><th>Criterio</th><th>Boomi (referencia)</th><th>Celigo integrator.io (alternativa)</th></tr>
+      <tr><td>Despliegue</td><td>Runtime cluster propio en AWS, Azure o GCP, o nube de Boomi</td><td>SaaS administrado por Celigo</td></tr>
+      <tr><td>Alta disponibilidad</td><td>Clúster de varios nodos; replicable en dos regiones</td><td>Responsabilidad de Celigo, bajo su SLA</td></tr>
+      <tr><td>Control sobre RTO/RPO</td><td><b>Alto:</b> la empresa decide regiones, colas y conmutación</td><td>Medio: depende del proveedor</td></tr>
+      <tr><td>Cuándo conviene</td><td>Muchas integraciones propias y RPO 0 exigido</td><td>Integraciones estándar y equipo pequeño</td></tr>
+    </table>
+    <p class="note">Oracle anunció el fin de SOAP en NetSuite 2028.2: toda integración nueva se construye sobre REST. El store-and-forward local es obligatorio con cualquier plataforma.</p>
+  </div>
+</div></section>
+
+<!-- ESCENARIOS -->
+<section class="tile dark" id="escenarios"><div class="inner">
+  <div class="eyebrow rv"><span class="num">08</span>Escenarios de desastre</div>
+  <h2 class="h2 rv">Ocho escenarios. <span class="grad">El ransomware es el peor:</span> contamina también la réplica.</h2>
+  <p class="lead rv">Por eso exige respaldos inmutables y un entorno limpio de recuperación. <b>Toca un escenario</b> en la matriz de probabilidad × impacto.</p>
+  <div class="mx-wrap">
+    <div class="card rv"><div class="mx" id="mxE"></div><div class="mx-axis">Probabilidad →</div></div>
+    <div class="card mx-det rv" id="mxEd"></div>
+  </div>
+  <div class="rules">
+    <div class="card rv"><h5>NetSuite no se conmuta</h5><p>Ante E1 se activa el modo degradado, se abre caso con Oracle sev. 1 y se documentan tiempos para el reclamo de SLA.</p></div>
+    <div class="card rv"><h5>Restaurar vs. conmutar</h5><p>Si el daño es lógico (E2, E3), conmutar el iPaaS replica el problema: se corrige desde un punto limpio.</p></div>
+    <div class="card rv"><h5>Modo degradado primero</h5><p>Ante cualquier escenario, las UN activan store-and-forward en el minuto 0 para proteger datos mientras se decide.</p></div>
+  </div>
+</div></section>
+
+<!-- ACTIVACIÓN -->
+<section class="tile" id="activacion"><div class="inner">
+  <div class="eyebrow rv"><span class="num">09</span>Activación, escalamiento y regreso</div>
+  <h2 class="h2 rv">Ninguna UN deja de operar más de 15 min, <span class="grad">aunque NetSuite tarde horas.</span></h2>
+  <p class="lead rv">Solo el CIO (o su suplente) declara contingencia mayor; el modo degradado lo activa el líder de guardia sin esperar esa declaración. <b>Reproduce la línea de tiempo.</b></p>
+  <div class="player rv">
+    <div class="pl-top">
+      <div class="clock" id="plClock">T+0<small>caída de NetSuite o de un componente Tier 0</small></div>
+      <div style="display:flex;gap:8px"><button class="btn fill" id="plPlay">▶ Reproducir</button><button class="btn line" id="plReset">Reiniciar</button></div>
+    </div>
+    <div class="steps" id="steps"></div>
+    <div class="pl-det" id="plDet"></div>
+  </div>
+  <h3 class="rv" style="font-size:22px;font-weight:600;letter-spacing:-.02em;margin-top:40px">Matriz de escalamiento</h3>
+  <div class="esc">
+    <div class="card rv"><div class="lv">N1</div><span class="tm">15 min</span><h5>Alerta o degradación</h5><p>Guardia de TI, mesa de servicio</p></div>
+    <div class="card rv"><div class="lv">N2</div><span class="tm">30 min</span><h5>Caída confirmada Tier 0/1</h5><p>Líderes técnicos, líder ERP</p></div>
+    <div class="card rv"><div class="lv">N3</div><span class="tm">30 min</span><h5>Riesgo de exceder RTO o ciberataque</h5><p>CIO, CISO, Equipo de Crisis</p></div>
+    <div class="card rv"><div class="lv">N4</div><span class="tm">1 h</span><h5>Desastre declarado o impacto a clientes/regulador</h5><p>Sponsor, Dirección General, Legal, Comunicación</p></div>
+  </div>
+  <h3 class="rv" style="font-size:22px;font-weight:600;letter-spacing:-.02em;margin-top:40px">Regreso a operación normal</h3>
+  <div class="back2">
+    <div class="card rv"><b>⚖️</b>El modo degradado se desactiva solo con colas drenadas y conciliación de la UN en cero diferencias.</div>
+    <div class="card rv"><b>🗓️</b>El regreso del iPaaS a la región A se programa en ventana planeada con aprobación del CAB.</div>
+    <div class="card rv"><b>🧾</b>Los CFDI emitidos en contingencia se registran con su UUID original; nunca se vuelven a timbrar.</div>
+  </div>
+  <h3 class="rv" style="font-size:22px;font-weight:600;letter-spacing:-.02em;margin-top:40px">10 runbooks</h3>
+  <div class="rb" id="rb"></div>
+</div></section>
+
+<!-- PRUEBAS -->
+<section class="tile white" id="pruebas"><div class="inner">
+  <div class="eyebrow rv"><span class="num">10</span>Plan de pruebas y ejercicios</div>
+  <h2 class="h2 rv">La prueba que valida el plan: <span class="grad">desconectar NetSuite para las 9 UN.</span></h2>
+  <p class="lead rv">NetSuite no se puede conmutar, así que se prueba la continuidad alrededor de él. El programa escala de ejercicios de escritorio a la prueba completa una vez al año.</p>
+  <div class="tests" id="tests"></div>
+  <h3 class="rv" style="font-size:22px;font-weight:600;letter-spacing:-.02em;margin-top:40px">Ciclo de cada prueba</h3>
+  <div class="cycle rv">
+    <div>Plan aprobado por el CAB con alcance, ventana y criterio de reversa.</div>
+    <div>Ejecución con cronometrista y bitácora de tiempos por paso.</div>
+    <div>Informe en 5 días hábiles: RTO/RPO real vs. meta, hallazgos y responsables.</div>
+    <div>Actualización de runbooks y seguimiento en el Comité de Continuidad.</div>
+  </div>
+</div></section>
+
+<!-- COMUNICACIÓN -->
+<section class="tile dark" id="comunicacion"><div class="inner">
+  <div class="eyebrow rv"><span class="num">11</span>Comunicación de crisis</div>
+  <h2 class="h2 rv">Si el IdP cae, el correo también. <span class="grad">Los canales no dependen del ERP.</span></h2>
+  <p class="lead rv">Un solo vocero por audiencia y actualizaciones con hora comprometida. Directorio impreso y en bóveda fuera de línea, revisado cada trimestre.</p>
+  <div class="comms" id="comms"></div>
+</div></section>
+
+<!-- ROADMAP -->
+<section class="tile" id="roadmap"><div class="inner">
+  <div class="eyebrow rv"><span class="num">12</span>Roadmap</div>
+  <h2 class="h2 rv">9 meses. <span class="grad">Certificado en julio de 2027</span> con una desconexión completa de NetSuite.</h2>
+  <p class="lead rv">7 fases y 4 compuertas; ninguna fase avanza sin aprobar la suya. F3 y F4 se traslapan cuatro semanas para que los runbooks se escriban sobre la infraestructura real. <b>Toca una fase.</b></p>
+  <div class="gantt rv"><div class="g-inner" id="gantt" style="position:relative"></div></div>
+  <div class="g-det" id="gdet"></div>
+</div></section>
+
+<!-- CHECKLIST -->
+<section class="tile white" id="checklist"><div class="inner">
+  <div class="eyebrow rv"><span class="num">13</span>Checklist maestro</div>
+  <h2 class="h2 rv">Una fase se cierra solo con todos sus puntos marcados.</h2>
+  <p class="lead rv">Marca los puntos para ver el avance por fase. Incluye el checklist operativo para usar durante un incidente.</p>
+  <div class="ck" id="ck"></div>
+  <div class="ck-list" id="cklist"></div>
+  <div class="ck-foot"><span id="ckfoot"></span><button class="chip" id="ckreset">Reiniciar marcas</button></div>
+</div></section>
+
+<!-- RIESGOS -->
+<section class="tile dark" id="riesgos"><div class="inner">
+  <div class="eyebrow rv"><span class="num">14</span>Registro de riesgos</div>
+  <h2 class="h2 rv">El mayor riesgo no es técnico: <span class="grad">que el negocio no valide los RTO/RPO.</span></h2>
+  <p class="lead rv">O que el plan se desactualice tras el primer año. Once riesgos con dueño y mitigación.</p>
+  <div class="mx-wrap">
+    <div class="card rv"><div class="mx" id="mxR"></div><div class="mx-axis">Probabilidad →</div></div>
+    <div class="card mx-det rv" id="mxRd"></div>
+  </div>
+</div></section>
+
+<!-- KPIs -->
+<section class="tile dark" id="kpis"><div class="inner">
+  <div class="eyebrow rv"><span class="num">15</span>KPIs y cumplimiento</div>
+  <h2 class="h2 rv">Ocho indicadores al mes. Dos importan al negocio.</h2>
+  <p class="lead rv">La disponibilidad de punta a punta y las transacciones perdidas, que deben ser <b>0</b>.</p>
+  <div class="kpis" id="kpigrid"></div>
+  <div class="std">
+    <div class="card rv"><h5>ISO 22301</h5><p>BIA, estrategia de continuidad, planes, ejercicios y revisión por la dirección.</p></div>
+    <div class="card rv"><h5>ISO/IEC 27001:2022</h5><p>A.5.29 seguridad en interrupciones · A.5.30 TIC para la continuidad · A.8.13 respaldo · A.8.14 redundancia.</p></div>
+    <div class="card rv"><h5>NIST SP 800-34</h5><p>Referencia metodológica para BIA y planes de contingencia de TI.</p></div>
+  </div>
+</div></section>
+
+<!-- GLOSARIO -->
+<section class="tile" id="glosario"><div class="inner">
+  <div class="eyebrow rv"><span class="num">16</span>Glosario</div>
+  <h2 class="h2 rv">Cada sigla, en una línea.</h2>
+  <div class="gl-top rv"><input id="glq" type="search" placeholder="Buscar: RTO, PAC, iPaaS, CFDI…" aria-label="Buscar en el glosario"><span class="mut" id="glc" style="font-size:13px"></span></div>
+  <div class="gl" id="gl"></div>
+</div></section>
+
+<!-- CTA -->
+<section class="tile dark cta"><div class="inner">
+  <h2 class="h2 rv" style="margin:0 auto">Continuidad que se diseña, <span class="grad">se prueba y se mide.</span></h2>
+  <p class="lead rv" style="margin-left:auto;margin-right:auto">Proyecto de Fernando Gómez Guerrero · Líder Regional de TI LATAM.</p>
+  <div class="hero-cta rv">
+    <a class="btn fill" href="/dir_sol_ti/">Ver perfil completo</a>
+    <a class="btn line" href="/dir_sol_ti/proyectos/">Más proyectos</a>
+  </div>
+</div></section>
+
+</main>
+<footer>© 2026 Fernando Gómez Guerrero · Proyecto DRP — ERP 99.7% y continuidad de 9 unidades de negocio · Contenido de referencia; las cifras de la simulación son ilustrativas.</footer>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!==undefined)e.innerHTML=h;return e};
+const ga=(n,p)=>{try{gtag('event',n,p||{})}catch(e){}};
+function setL(l){try{localStorage.setItem('fgg-lang',l)}catch(e){}}
+
+/* ── reveal + counters + nav ── */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);
+  e.target.querySelectorAll('[data-count]').forEach(countUp);if(e.target.matches('[data-count]'))countUp(e.target);}}),{threshold:.12});
+function observe(){ $$('.rv:not(.in)').forEach(x=>io.observe(x)); }
+function countUp(n){if(n._d)return;n._d=1;const to=+n.dataset.count,t0=performance.now();const f=t=>{const p=Math.min(1,(t-t0)/1400);n.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+window.addEventListener('scroll',()=>{const h=document.documentElement;$('#prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+const secIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){$$('#navlinks a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-45% 0px -50% 0px'});
+$$('main>section[id]').forEach(s=>secIO.observe(s));
+
+/* hero gauge */
+setTimeout(()=>{$('#gArc').style.strokeDashoffset=527.8*(1-.997);const t0=performance.now();const f=t=>{const p=Math.min(1,(t-t0)/2200);$('#gVal').textContent=(99.7*(1-Math.pow(1-p,3))).toFixed(1)+'%';if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)},300);
+
+/* ── SMART ── */
+const SMART=[
+ ['O1','≥ 99.7%','Disponibilidad del servicio de negocio','Minutos en que las 9 UN registran transacciones, en NetSuite o en modo degradado (≤ 131 min/mes).','Desde mes 7'],
+ ['O2','≥ 99.7%','Cumplimiento del SLA de NetSuite','Disponibilidad mensual fuera de mantenimiento; reclamar crédito si no se cumple.','Mensual'],
+ ['O3','≤ 1 h','Recuperación de lo que controla la empresa','RTO demostrado de integraciones, identidad y red.','Mes 8'],
+ ['O4','≤ 1 h','Copia propia de los datos','Antigüedad de la última extracción incremental; completa diaria.','Mes 6'],
+ ['O5','0','Integridad de las integraciones','Mensajes perdidos o duplicados sin conciliar en las 9 UN.','Mes 7'],
+ ['O6','≥ 72 h','Operación autónoma de cada UN','Horas en modo degradado sin NetSuite.','Mes 8']];
+SMART.forEach(s=>$('#smart').append(el('div','sm rv',`<span class="when">${s[4]}</span><div class="id">${s[0]}</div><div class="goal">${s[1]}</div><h4>${s[2]}</h4><p>${s[3]}</p>`)));
+
+/* ── RACI ── */
+const ROLES=['Sponsor','CIO','CISO','Líder ERP','Infraestructura','Integraciones','Líderes UN','Finanzas'];
+const RACI=[
+ ['Aprobar política y presupuesto DRP','A R C I I I I C'],
+ ['Ejecutar BIA y validar RTO/RPO','I A C R C C R C'],
+ ['Diseñar arquitectura y gestionar SLA con Oracle','I A C C R R I I'],
+ ['Implementar copia propia y respaldos','I A C C R C I I'],
+ ['Resiliencia de integraciones (colas, store-and-forward)','I A C C C R C I'],
+ ['Redactar runbooks','I A C R R R C I'],
+ ['Declarar desastre','I AR C C C C I I'],
+ ['Conmutación de componentes propios y regreso','I A C R R R I I'],
+ ['Operar en modo degradado en cada UN','I C I C I C AR C'],
+ ['Conciliación post-recuperación','I A I R I R R R'],
+ ['Pruebas y ejercicios anuales','I A C R R R R I'],
+ ['Auditoría y mejora continua','I A R C C C C I']];
+(function(){const t=$('#raci');let h='<tr><th>Actividad</th>'+ROLES.map((r,i)=>`<th data-c="${i}">${r}</th>`).join('')+'</tr>';
+ RACI.forEach(r=>{h+='<tr><td>'+r[0]+'</td>'+r[1].split(' ').map((v,i)=>`<td class="${v.replace('/','')}" data-c="${i}">${v==='AR'?'A/R':v}</td>`).join('')+'</tr>'});t.innerHTML=h;
+ let sel=-1;t.querySelectorAll('th[data-c]').forEach(th=>th.onclick=()=>{const c=+th.dataset.c;sel=sel===c?-1:c;t.classList.toggle('focus',sel>=0);
+  t.querySelectorAll('th').forEach(x=>x.classList.toggle('sel',+x.dataset.c===sel));t.querySelectorAll('td[data-c]').forEach(td=>td.classList.toggle('hl',+td.dataset.c===sel&&!td.classList.contains('I')));ga('raci_role',{role:ROLES[c]})});})();
+
+/* ── BIA ── */
+const TIERS=[
+ ['Tier 0','Misión crítica','Detiene ingresos, cumplimiento fiscal o seguridad en < 4 h','> 1% de venta diaria por hora o multa regulatoria','t0'],
+ ['Tier 1','Crítico','Afecta clientes u operación en < 24 h','Retrasos de embarque, pagos a proveedores','t1'],
+ ['Tier 2','Importante','Afecta gestión interna en < 72 h','Reportes, análisis, CRM','t2'],
+ ['Tier 3','Diferible','Tolerable > 72 h','Desarrollo, pruebas, archivo histórico','t3']];
+const BIA=[
+ ['NetSuite: finanzas, OTC, P2P, inventario',0,'9 de 9','Oracle (SLA 99.7%)','Internet, IdP, integraciones'],
+ ['iPaaS / middleware de integración',0,'9 de 9','Empresa','Colas persistentes, red'],
+ ['Identidad (IdP, SSO, MFA) y DNS',0,'9 de 9','Empresa','Directorio, certificados'],
+ ['Red WAN / SD-WAN e internet',0,'9 de 9','Empresa / carriers','Dos carriers por UN'],
+ ['Copia propia de datos de NetSuite',1,'9 de 9','Empresa','SuiteAnalytics Connect o API'],
+ ['Facturación electrónica CFDI 4.0 (PAC / SAT)',1,'9 de 9','Empresa / PAC','NetSuite, integración, certificados de sello'],
+ ['Tesorería y banca host-to-host',1,'9 de 9','Empresa / bancos','NetSuite, VPN bancaria'],
+ ['WMS / logística / POS',1,'Por UN','Empresa','Integración, store-and-forward'],
+ ['EDI con clientes y proveedores',1,'Por UN','Empresa / VAN','iPaaS'],
+ ['Nómina (en período de pago)',1,'9 de 9','Empresa / proveedor','NetSuite o HCM, banca'],
+ ['BI y reportería',2,'9 de 9','Empresa','Copia propia de datos'],
+ ['CRM, portal de proveedores',2,'Por UN','Empresa','Integración'],
+ ['Sandbox NetSuite, desarrollo, archivo',3,'—','Empresa','—']];
+let biaSel=-1;
+TIERS.forEach((t,i)=>{const n=BIA.filter(b=>b[1]===i).length;const b=el('button','tc rv '+t[4],`<div class="tn">${t[0]}</div><h4>${t[1]}</h4><p>${t[2]}</p><div class="ex">Ej.: ${t[3]}</div><div class="cnt">${n} <small>procesos</small></div>`);
+ b.onclick=()=>{biaSel=biaSel===i?-1:i;$$('.tc').forEach((x,j)=>x.classList.toggle('dim',biaSel>=0&&j!==biaSel));$$('.bi').forEach(x=>x.classList.toggle('hide',biaSel>=0&&+x.dataset.t!==biaSel));ga('bia_tier',{tier:i})};$('#tiers').append(b)});
+BIA.forEach(b=>{const d=el('div','bi rv',`<span class="tier t${b[1]}">T${b[1]}</span><div><h5>${b[0]}</h5><div class="d">Recupera: ${b[3]} · Depende de: ${b[4]}</div></div><div class="u"><b>${b[2]}</b>UN</div>`);d.dataset.t=b[1];$('#bialist').append(d)});
+
+/* ── RTO butterfly ── */
+const COMP=[
+ {n:'NetSuite (aplicación y BD)',t:0,rto:15,rtoL:'≤ 15 min*',rpo:0,rpoL:'0 en colas',m:480,mL:'8 h',s:'DR de Oracle por contrato + modo degradado de las UN + copia propia.',x:'RTO del núcleo según Oracle; la continuidad de negocio llega por modo degradado.'},
+ {n:'iPaaS / middleware',t:0,rto:60,rtoL:'1 h',rpo:0,rpoL:'0 mensajes',m:240,mL:'4 h',s:'Activo-activo en dos regiones, colas persistentes replicadas.'},
+ {n:'Identidad, SSO, DNS',t:0,rto:30,rtoL:'30 min',rpo:0,rpoL:'0',m:120,mL:'2 h',s:'IdP multi-región, cuentas de emergencia de NetSuite con MFA en bóveda, DNS con failover.'},
+ {n:'Red WAN / SD-WAN por UN',t:0,rto:15,rtoL:'15 min',rpo:null,rpoL:'n/a',m:120,mL:'2 h',s:'Doble carrier + LTE/5G o satelital, conmutación automática.'},
+ {n:'Copia propia de NetSuite',t:1,rto:240,rtoL:'4 h (consulta)',rpo:60,rpoL:'1 h / 24 h',m:4320,mL:'72 h',s:'Extracción incremental a data warehouse + copia inmutable diaria.',x:'RPO 1 h incremental; 24 h para la copia completa.'},
+ {n:'Facturación CFDI',t:1,rto:240,rtoL:'4 h',rpo:0,rpoL:'0 documentos',m:1440,mL:'24 h',s:'Doble PAC, cola local de emisión en cada UN.'},
+ {n:'Tesorería / host-to-host',t:1,rto:240,rtoL:'4 h',rpo:15,rpoL:'15 min',m:1440,mL:'24 h',s:'VPN bancaria redundante, control de duplicados en archivos de pago.'},
+ {n:'WMS / POS / logística',t:1,rto:240,rtoL:'4 h',rpo:0,rpoL:'0 local',m:4320,mL:'72 h',s:'Operación local + store-and-forward 72 h.'},
+ {n:'EDI',t:1,rto:480,rtoL:'8 h',rpo:0,rpoL:'0 mensajes',m:2880,mL:'48 h',s:'VAN con buzón retenido y reprocesamiento.'},
+ {n:'BI y reportería',t:2,rto:1440,rtoL:'24 h',rpo:60,rpoL:'1 h',m:7200,mL:'5 días',s:'Se sirve desde la copia propia; no depende de NetSuite.'},
+ {n:'CRM, portales',t:2,rto:1440,rtoL:'24 h',rpo:60,rpoL:'1 h',m:7200,mL:'5 días',s:'Pilot light.'},
+ {n:'Sandbox, desarrollo, archivo',t:3,rto:4320,rtoL:'72 h',rpo:1440,rpoL:'24 h',m:21600,mL:'15 días',s:'Respaldo y restauración.'}];
+const EVX=24, LMAX=1440, RMAX=21600;
+const fx=m=>Math.log10(1+m/5)/Math.log10(1+RMAX/5);
+const lx=m=>Math.log10(1+m/5)/Math.log10(1+LMAX/5);
+const posR=m=>EVX+(100-EVX-2)*fx(m), posL=m=>EVX-(EVX-2)*lx(m);
+let bfTier=-1,bfSel=0;
+(function(){
+ const ch=$('#bfchips');['Todos','Tier 0','Tier 1','Tier 2','Tier 3'].forEach((t,i)=>{const b=el('button','chip'+(i===0?' on':''),t);b.onclick=()=>{bfTier=i-1;$$('#bfchips .chip').forEach((x,j)=>x.classList.toggle('on',j===i));$$('.bf-row').forEach(r=>r.classList.toggle('hide',bfTier>=0&&+r.dataset.t!==bfTier));ga('rto_filter',{tier:bfTier})};ch.append(b)});
+ const bf=$('#bf');
+ const ticks=[[0,'0'],[15,'15m'],[60,'1h'],[240,'4h'],[1440,'24h'],[4320,'72h'],[21600,'15d']];
+ const lt=[[60,'1h'],[1440,'24h']];
+ let ax='<div></div><div class="sc">'+lt.map(t=>`<span style="left:${posL(t[0])}%">−${t[1]}</span>`).join('')+`<span class="ev" style="left:${EVX}%">⚡ desastre</span>`+ticks.slice(1).map(t=>`<span style="left:${posR(t[0])}%">${t[1]}</span>`).join('')+'</div>';
+ bf.append(el('div','bf-axis',ax));
+ const grid=ticks.slice(1).map(t=>`<i class="grid" style="left:${posR(t[0])}%"></i>`).join('')+lt.map(t=>`<i class="grid" style="left:${posL(t[0])}%"></i>`).join('');
+ COMP.forEach((c,i)=>{
+  const r=el('div','bf-row'+(i===0?' sel':''),`<div class="nm"><span class="tier t${c.t}">T${c.t}</span>${c.n}</div><div class="track">${grid}<i class="mtpd" data-w="${posR(c.m)-EVX}" style="left:${EVX}%;width:0"></i><i class="rto" data-w="${posR(c.rto)-EVX}" style="left:${EVX}%;width:0"></i>${c.rpo?`<i class="rpo" data-l="${posL(c.rpo)}" data-w="${EVX-posL(c.rpo)}" style="left:${EVX}%;width:0"></i>`:c.rpo===0?`<i class="rpo0" style="left:${EVX}%"></i>`:''}<i class="ev" style="left:${EVX}%"></i><span class="lb" data-l="${posR(c.rto)+1}" style="left:${EVX}%">${c.rtoL}</span></div>`);
+  r.dataset.t=c.t;r.onclick=()=>{bfSel=i;$$('.bf-row').forEach((x,j)=>x.classList.toggle('sel',j===i));bfDetail();ga('rto_component',{c:c.n})};bf.append(r)});
+ const once=new IntersectionObserver(es=>{if(es[0].isIntersecting){once.disconnect();$$('.bf-row').forEach((r,k)=>setTimeout(()=>{
+   r.querySelectorAll('[data-w]').forEach(b=>{b.style.width=b.dataset.w+'%';if(b.dataset.l)b.style.left=b.dataset.l+'%'});
+   const lb=r.querySelector('.lb');let L=+lb.dataset.l;if(L>84)L=84;lb.style.left=L+'%';},k*70))}},{threshold:.2});once.observe(bf);
+ bfDetail();
+})();
+function bfDetail(){const c=COMP[bfSel];$('#bfdet').innerHTML=`<div><span class="tier t${c.t}">Tier ${c.t}</span><h4 style="margin-top:10px">${c.n}</h4><div class="st">${c.s}${c.x?'<br><span style="color:#8e8e93">'+c.x+'</span>':''}</div></div>
+ <div class="m"><div class="k1">RTO</div><div class="v1" style="color:#2997ff">${c.rtoL}</div></div><div class="m"><div class="k1">RPO</div><div class="v1" style="color:#b9a8ff">${c.rpoL}</div></div><div class="m"><div class="k1">MTPD</div><div class="v1" style="color:#ff9b9b">${c.mL}</div></div>`}
+
+/* ── Calculadora ── */
+function calc(){const a=$('#sA').value/10000,n=$('#sN').value/10000,c=$('#sC').value/100;
+ $('#vA').textContent=(a*100).toFixed(2)+'%';$('#vN').textContent=(n*100).toFixed(2)+'%';$('#vC').textContent=Math.round(c*100)+'%';
+ const A=a*a*a*(n+(1-n)*c);const ok=A>=.997;$('#rA').textContent=(A*100).toFixed(2)+'%';$('#rA').style.color=ok?'var(--okd)':'var(--badd)';
+ const h=(1-A)*8760;$('#rH').textContent=`≈ ${h.toFixed(1)} h de caída al año (límite 26.3 h)`;
+ const v=$('#rV');v.textContent=ok?'Cumple 99.7%':'No cumple 99.7%';v.className='verdict '+(ok?'ok':'ko');
+ $$('.presets .chip').forEach(b=>b.classList.toggle('on',+b.dataset.p===Math.round(c*100)&&a===.9995&&n===.997))}
+['#sA','#sN','#sC'].forEach(s=>$(s).addEventListener('input',calc));
+$$('.presets .chip').forEach(b=>b.onclick=()=>{$('#sA').value=9995;$('#sN').value=9970;$('#sC').value=b.dataset.p;calc();ga('calc_preset',{c:b.dataset.p})});
+calc();
+
+/* donut */
+const BUD=[['Mantenimiento NetSuite no cubierto',4.0,'#2997ff','Ventanas fuera del horario de las 9 UN; procesos 24x7 en store-and-forward'],
+ ['Mantenimiento propio (iPaaS, red, IdP)',6.0,'#9b7bff','Máx. 30 min/mes, domingo 02:00–05:00 GMT-6'],
+ ['Incidentes no planeados de NetSuite',6.0,'#f472b6','Página de estado; reclamo de crédito si se incumple el SLA'],
+ ['Incidentes no planeados propios',6.0,'#ffb340','Causa raíz en todo incidente > 15 min'],
+ ['Reserva para evento mayor',4.3,'#30d158','Cubre un incidente regional de red o identidad']];
+(function(){const svg=$('#donut');const R=80,r=56,cx=100,cy=100;let a0=-Math.PI/2;const tot=26.3;
+ BUD.forEach((b,i)=>{const a1=a0+b[1]/tot*Math.PI*2-.02;const p=(a,rr)=>[cx+rr*Math.cos(a),cy+rr*Math.sin(a)];const L=a1-a0>Math.PI?1:0;
+  const [x1,y1]=p(a0,R),[x2,y2]=p(a1,R),[x3,y3]=p(a1,r),[x4,y4]=p(a0,r);
+  const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',`M${x1},${y1}A${R},${R} 0 ${L} 1 ${x2},${y2}L${x3},${y3}A${r},${r} 0 ${L} 0 ${x4},${y4}Z`);path.setAttribute('fill',b[2]);path.dataset.i=i;svg.append(path);a0=a1+.02;
+  const it=el('div','it',`<i style="background:${b[2]}"></i><span>${b[0]}</span><b>${b[1].toFixed(1)} h</b>`);it.dataset.i=i;$('#legend').append(it)});
+ const hi=i=>{$$('#donut path').forEach(p=>p.style.opacity=i<0||+p.dataset.i===i?1:.25);$$('#legend .it').forEach(x=>x.classList.toggle('on',+x.dataset.i===i));$('#dV').textContent=i<0?'26.3 h':BUD[i][1].toFixed(1)+' h';$('#dL').textContent=i<0?'al año':Math.round(BUD[i][1]/26.3*100)+'% del total';if(i>=0)$('#dDesc').innerHTML='<b style="color:#f5f5f7">Regla:</b> '+BUD[i][3]};
+ [...$$('#donut path'),...$$('#legend .it')].forEach(x=>{x.addEventListener('mouseenter',()=>hi(+x.dataset.i));x.addEventListener('mouseleave',()=>hi(-1));x.addEventListener('click',()=>hi(+x.dataset.i))});})();
+function eb(){const v=+$('#ebs').value;$('#ebv').textContent=v+'%';$('#ebm').style.left=`calc(${Math.min(v,100)}% - 2px)`;
+ $('#ebmsg').innerHTML=v<50?'<span style="color:var(--okd)">●</span> Cambios normales.':v<75?'<span style="color:var(--warnd)">●</span> Cambios solo con aprobación del CAB y plan de reversa probado.':v<100?'<span style="color:var(--badd)">●</span> Congelamiento de cambios no críticos hasta el cierre del trimestre.':'<span style="color:var(--badd)">●</span> Revisión ejecutiva y plan de remediación en 10 días.'}
+$('#ebs').addEventListener('input',eb);eb();
+
+/* ── Simulador de arquitectura ── */
+const NS='http://www.w3.org/2000/svg';
+const svgEl=(t,a,txt)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(txt!==undefined)e.textContent=txt;return e};
+const arch=$('#arch');const N={};
+function box(id,x,y,w,h,t,s){const g=svgEl('g',{});const r=svgEl('rect',{x,y,width:w,height:h,rx:12,class:'box'});g.append(r,svgEl('text',{x:x+16,y:y+27,class:'tt'},t));const st=svgEl('text',{x:x+16,y:y+47,class:'ts'},s);g.append(st);arch.append(g);N[id]={r,st,s,x,y,w,h};return g}
+function flow(id,d){const p=svgEl('path',{d,class:'flow'});arch.append(p);N[id]=p}
+// capas
+arch.append(svgEl('rect',{x:10,y:10,width:980,height:132,rx:18,class:'lay'}));
+arch.append(svgEl('text',{x:30,y:36,class:'tl'},'ORACLE NETSUITE (SaaS) · RESPONSABILIDAD DE ORACLE · SLA 99.7%'));
+arch.append(svgEl('rect',{x:10,y:186,width:980,height:212,rx:18,class:'lay'}));
+arch.append(svgEl('text',{x:30,y:386,class:'tl'},'CAPA DE LA EMPRESA · ALCANCE DE ESTE DRP'));
+arch.append(svgEl('rect',{x:10,y:530,width:980,height:124,rx:18,class:'lay',style:'fill:#eaf2ff'}));
+// flujos (debajo de cajas)
+flow('fNS','M150,214 L150,128');
+flow('fNSb','M370,214 C370,170 200,170 200,128');
+flow('fDR','M470,85 L540,85');
+flow('fEx','M440,128 C440,170 850,160 850,214');
+flow('fVault','M850,276 L850,300');
+flow('fNetA','M500,446 C500,400 150,320 150,276');
+flow('fNetB','M500,446 C500,400 370,320 370,276');
+flow('fIdp','M500,446 L600,276');
+flow('fUN','M500,534 L500,488');
+// cajas
+box('nsA',30,50,440,78,'Centro de datos activo','aplicación y base de datos NetSuite');
+box('nsDR',540,50,430,78,'Centro de datos de DR','failover gestionado por Oracle');
+box('ipA',30,214,220,62,'iPaaS región A','colas persistentes');
+box('ipB',260,214,220,62,'iPaaS región B','colas replicadas');
+box('idp',490,214,220,62,'IdP / SSO','MFA, break-glass');
+box('cp',740,214,230,62,'Copia propia','incremental ≤ 1 h');
+box('bv',740,300,230,62,'Bóveda inmutable','diaria, 3-2-1-1-0');
+box('net',30,446,940,42,'','');
+N.net.st.setAttribute('x',500);N.net.st.setAttribute('y',473);N.net.st.setAttribute('text-anchor','middle');N.net.st.setAttribute('class','tt');N.net.s='Red: DNS con failover · SD-WAN doble carrier + LTE/5G o satelital por UN';N.net.st.textContent=N.net.s;
+// colas en iPaaS
+['ipA','ipB'].forEach(k=>{const b=N[k];arch.append(svgEl('rect',{x:b.x+150,y:b.y+12,width:56,height:8,rx:4,class:'qbg'}));const q=svgEl('rect',{x:b.x+150,y:b.y+12,width:0,height:8,rx:4,class:'q'});arch.append(q);N[k].q=q});
+// UN
+arch.append(svgEl('text',{x:30,y:554,class:'tl'},'9 UNIDADES DE NEGOCIO · OPERACIÓN LOCAL Y STORE-AND-FORWARD 72 H'));
+const UNS=[];for(let i=0;i<9;i++){const x=30+i*106,y=566;const g=svgEl('g',{});const r=svgEl('rect',{x,y,width:96,height:52,rx:10,class:'box unb'});g.append(r);g.append(svgEl('text',{x:x+48,y:y+22,'text-anchor':'middle',class:'tt',style:'font-size:14px'},'UN-0'+(i+1)));
+ const d=svgEl('circle',{cx:x+14,cy:y+34,r:4.5,fill:'#12a05f'});const s=svgEl('text',{x:x+24,y:y+38,class:'ts badgeS'},'en línea');const qb=svgEl('rect',{x:x+8,y:y+44,width:80,height:4,rx:2,class:'qbg'});const q=svgEl('rect',{x:x+8,y:y+44,width:0,height:4,rx:2,class:'q'});g.append(d,s,qb,q);arch.append(g);UNS.push({r,d,s,q})}
+[['Norte',189],['Centro',507],['Sur',825]].forEach(([t,x])=>arch.append(svgEl('text',{x,y:640,'text-anchor':'middle',class:'tl',style:'font-size:11px'},t.toUpperCase())));
+const lblNS=svgEl('text',{x:160,y:178,class:'ts',style:'font-size:11.5px'},'SuiteTalk / RESTlets');arch.append(lblNS);
+arch.append(svgEl('text',{x:620,y:160,class:'ts',style:'font-size:11.5px'},'extracción incremental'));
+arch.append(svgEl('text',{x:494,y:76,class:'ts',style:'font-size:11.5px'},'DR'));
+
+const SC={
+ ok:{b:'Operación normal',sm:'Todo en línea',t:'Operación normal',p:'Las UN escriben a NetSuite a través del iPaaS en la región A; la copia propia se actualiza cada hora y la bóveda inmutable cada día.'},
+ E1:{b:'E1 · NetSuite cae',sm:'≤ 15 min a modo degradado',t:'E1 · Caída o mantenimiento de NetSuite',p:'Modo degradado en las 9 UN: siguen vendiendo con folios propios y timbrado CFDI directo; consultan saldos e inventario desde la copia propia. El iPaaS pausa los envíos y acumula en colas. Caso con Oracle severidad 1.'},
+ E4:{b:'E4 · Falla del iPaaS',sm:'RTO 1 h',t:'E4 · Falla del iPaaS región A',p:'El tráfico conmuta a la región B con colas replicadas: no se pierde ningún mensaje. Mientras tanto las UN continúan con store-and-forward.'},
+ E5:{b:'E5 · UN sin enlace',sm:'RTO 15 min',t:'E5 · Pérdida de conectividad (región Sur)',p:'SD-WAN conmuta al segundo carrier, LTE/5G o enlace satelital. Si todo falla, la UN opera en modo degradado local y reenvía en orden al reconectar.'},
+ E6:{b:'E6 · Cae el IdP/SSO',sm:'RTO 30 min',t:'E6 · Caída de identidad',p:'Se activa el IdP secundario. Para entrar a NetSuite existen cuentas de emergencia (break-glass) con MFA guardadas en bóveda.'},
+ E2:{b:'E2 · Ransomware',sm:'4–24 h sistemas propios',t:'E2 · Ransomware o compromiso de credenciales',p:'Aislar, revocar tokens de integración y revisar el registro de auditoría. Conmutar replicaría el daño: se recupera desde la copia inmutable en un entorno limpio. Las UN siguen en modo degradado.'}};
+let sc='ok',simT=null,simMin=0,queue=0,draining=false;
+Object.entries(SC).forEach(([k,v])=>{const b=el('button',k==='ok'?'on':'',`${v.b}<small>${v.sm}</small>`);b.dataset.k=k;b.onclick=()=>setSc(k);$('#scbtns').append(b)});
+function cls(id,c){N[id].r.setAttribute('class','box'+(c?' '+c:''))}
+function fl(id,c){N[id].setAttribute('class','flow'+(c?' '+c:''))}
+function un(i,state){const u=UNS[i];const m={ok:['#12a05f','en línea','box unb'],deg:['#e8890c','degradado','box unb warnb'],sw:['#0071e3','respaldo','box unb']}[state];u.d.setAttribute('fill',m[0]);u.s.textContent=m[1];u.r.setAttribute('class',m[2])}
+function setSc(k){sc=k;draining=false;$$('#scbtns button').forEach(b=>b.classList.toggle('on',b.dataset.k===k));$('#simT').textContent=SC[k].t;$('#simP').textContent=SC[k].p;ga('sim_scenario',{s:k});
+ ['nsA','nsDR','ipA','ipB','idp','cp','bv','net'].forEach(i=>{cls(i,'');N[i].st.textContent=N[i].s});
+ ['fNS','fDR','fEx','fVault','fNetA','fIdp','fUN'].forEach(f=>fl(f,''));fl('fNSb','off');fl('fNetB','off');fl('fDR','off');
+ for(let i=0;i<9;i++)un(i,'ok');
+ clearInterval(simT);simMin=0;queue=0;paint();
+ const act=$('#simAct');act.innerHTML='';
+ if(k==='ok')return;
+ if(k==='E1'){cls('nsA','down');N.nsA.st.textContent='no disponible · caso con Oracle sev. 1';fl('fNS','cut');fl('fEx','cut');cls('cp','hot');N.cp.st.textContent='consulta de saldos e inventario';for(let i=0;i<9;i++)un(i,'deg');}
+ if(k==='E4'){cls('ipA','down');N.ipA.st.textContent='falla';fl('fNS','cut');fl('fNetA','cut');fl('fNSb','alt');fl('fNetB','alt');cls('ipB','hot');N.ipB.st.textContent='activa · colas replicadas';}
+ if(k==='E5'){cls('net','warnb');N.net.st.textContent='SD-WAN: carrier principal caído en el Sur → LTE/5G / satelital';[6,7,8].forEach(i=>un(i,'sw'));}
+ if(k==='E6'){cls('idp','down');N.idp.st.textContent='IdP primario caído';fl('fIdp','cut');cls('bv','hot');N.bv.st.textContent='cuentas break-glass con MFA';}
+ if(k==='E2'){['ipA','ipB','idp'].forEach(i=>cls(i,'down'));N.ipA.st.textContent='aislado';N.ipB.st.textContent='aislado (no conmutar)';N.idp.st.textContent='tokens revocados';['fNS','fNSb','fNetA','fNetB','fIdp'].forEach(f=>fl(f,'cut'));cls('bv','hot');N.bv.st.textContent='restaurar en entorno limpio';for(let i=0;i<9;i++)un(i,'deg');}
+ const rec=el('button','btn fill','✓ Restablecer servicio');rec.style.fontSize='13px';rec.onclick=restore;act.append(rec);
+ simT=setInterval(tick,400);
+}
+function tick(){simMin+=2;if(['E1','E2','E4'].includes(sc)||(sc==='E5'&&simMin<10))queue+=Math.round(18+Math.random()*14);paint()}
+function paint(){const h=Math.floor(simMin/60),m=simMin%60;$('#cClock').textContent=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0');$('#cQ').textContent=queue.toLocaleString('es-MX');
+ const f=Math.min(1,queue/2500);['ipA','ipB'].forEach(k=>N[k].q.setAttribute('width',(sc==='E4'&&k==='ipA'?0:56*f).toFixed(1)));UNS.forEach(u=>u.q.setAttribute('width',(['E1','E2'].includes(sc)?80*f:0).toFixed(1)))}
+function restore(){clearInterval(simT);if(draining)return;draining=true;ga('sim_restore',{s:sc});
+ $('#simT').textContent='Al volver el servicio: drenado controlado';$('#simP').textContent='Prueba de humo y una transacción de prueba por UN; las colas se drenan en orden, a velocidad controlada para no exceder los límites de concurrencia de NetSuite. Conciliación por UN en < 24 h.';
+ ['nsA','ipA','ipB','idp','net'].forEach(i=>{cls(i,'');N[i].st.textContent=N[i].s});['fNS','fEx','fNetA','fIdp'].forEach(f=>fl(f,''));fl('fNSb','off');fl('fNetB','off');for(let i=0;i<9;i++)un(i,'ok');
+ const step=Math.max(1,Math.round(queue/30));const d=setInterval(()=>{if(!draining){clearInterval(d);return}queue=Math.max(0,queue-step);paint();if(queue===0){clearInterval(d);draining=false;
+  $('#simAct').innerHTML='<span style="color:var(--okd);font-weight:600;font-size:14px">✓ Colas drenadas · conciliación con 0 diferencias · 0 transacciones perdidas</span>'}},90)}
+setSc('ok');
+
+/* ── Matrices (escenarios y riesgos) ── */
+function matrix(host,det,items,yl,colors,render,evt){
+ const P=['Baja','Media','Alta'],I=yl;const g=$(host);
+ for(let r=2;r>=0;r--){g.append(el('div','yl',I[r]));for(let c=0;c<3;c++){const cell=el('div','cell h'+colors[r][c]);cell.dataset.k=r+'-'+c;g.append(cell)}}
+ g.append(el('div','xl',''));P.forEach(p=>g.append(el('div','xl',p)));
+ items.forEach((it,i)=>{const b=el('button','',it.id);b.title=it.n;b.onclick=()=>{g.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');$(det).innerHTML=render(it);ga(evt,{id:it.id})};
+  g.querySelector(`.cell[data-k="${it.i}-${it.p}"]`).append(b);if(i===0){b.classList.add('on');$(det).innerHTML=render(it)}});
+}
+const PI={'Baja':0,'Media':1,'Alta':2},II={'Medio':0,'Alto':1,'Muy alto':2};
+const ESC=[
+ ['E1','Caída o mantenimiento de NetSuite','Media','Muy alto','Modo degradado en las 9 UN; Oracle recupera; drenado de colas al volver.','≤ 15 min (modo degradado)'],
+ ['E2','Ransomware o compromiso de credenciales (incluida una cuenta de NetSuite)','Media','Muy alto','Aislar, revocar tokens de integración, revisar el registro de auditoría de NetSuite y recuperar sistemas propios desde copia inmutable.','4–24 h sistemas propios'],
+ ['E3','Corrupción lógica de datos en NetSuite (error humano, script, importación masiva)','Media','Alto','Identificar alcance con la copia propia; corregir por CSV/API; caso con soporte de Oracle.','4–24 h'],
+ ['E4','Falla del iPaaS','Media','Alto','Conmutar a la región B; las UN continúan con store-and-forward.','1 h'],
+ ['E5','Pérdida de conectividad de una o varias UN','Alta','Medio','SD-WAN conmuta a segundo carrier, LTE/5G o satelital; si falla, modo degradado local.','15 min'],
+ ['E6','Caída de identidad (IdP/SSO)','Baja','Muy alto','IdP secundario; cuentas de emergencia de NetSuite en bóveda.','30 min'],
+ ['E7','Falla de PAC o banco','Media','Alto','PAC alterno; VPN bancaria redundante.','4 h'],
+ ['E8','Evento regional (sismo en el centro, huracán en el sur o el norte)','Media','Medio','Modo degradado y trabajo remoto en las UN afectadas; las otras regiones no se ven afectadas.','Según BCP']
+].map(e=>({id:e[0],n:e[1],pl:e[2],il:e[3],p:PI[e[2]],i:II[e[3]],r:e[4],t:e[5]}));
+const HC=[[1,1,2],[1,2,3],[2,3,4]];
+matrix('#mxE','#mxEd',ESC,['Medio','Alto','Muy alto'],HC,e=>`<div class="id">${e.id} · ESCENARIO</div><h4>${e.n}</h4><div class="kv"><div><span>Probabilidad</span><b>${e.pl}</b></div><div><span>Impacto</span><b>${e.il}</b></div><div><span>Tiempo a continuidad</span><b>${e.t}</b></div></div><p><b style="color:#f5f5f7">Respuesta:</b> ${e.r}</p>`,'scenario_select');
+const RSK=[
+ ['R01','Dueños de proceso no firman el BIA a tiempo','Alta','Alto','Mandato del sponsor; BIA como compuerta de la Fase 1','Sponsor'],
+ ['R02','El mantenimiento programado de NetSuite consume el margen del 99.7%','Alta','Alto','Modo degradado en ventanas; meta medida como disponibilidad de negocio','CIO'],
+ ['R03','Ransomware o robo de credenciales con acceso a NetSuite','Media','Muy alto','MFA, tokens de integración rotados, copia inmutable, monitoreo del registro de auditoría','CISO'],
+ ['R04','Integraciones punto a punto sin reintento ni idempotencia','Alta','Alto','Migración al iPaaS con colas; prioridad por volumen de cada UN','Líder de integraciones'],
+ ['R05','Un solo carrier en UN del sur','Media','Medio','Enlace satelital o LTE/5G; contrato con SLA','Telecom'],
+ ['R06','Runbooks desactualizados tras cambios o actualizaciones de NetSuite','Alta','Alto','Revisión en cada actualización mayor de NetSuite y en el proceso de cambios','Líder NetSuite'],
+ ['R07','Dependencia de personas clave','Media','Alto','Suplentes entrenados por región','CIO'],
+ ['R08','El contrato con Oracle no fija RTO/RPO de su DR','Media','Alto','Anexo de continuidad; copia propia como respaldo','Compras / Legal'],
+ ['R09','Drenado de colas excede los límites de concurrencia de NetSuite','Media','Medio','Drenado a velocidad controlada; prueba anual','Líder de integraciones'],
+ ['R10','CFDI duplicados o fuera de plazo en contingencia','Media','Alto','Folios propios, control de UUID, timbrado directo con doble PAC','Finanzas / Fiscal'],
+ ['R11','Integraciones sobre SOAP dejan de funcionar con el fin de SOAP en NetSuite 2028.2','Alta','Alto','Toda integración nueva en REST; inventario y plan de migración antes de 2028','Líder de integraciones']
+].map(e=>({id:e[0],n:e[1],pl:e[2],il:e[3],p:PI[e[2]],i:II[e[3]],m:e[4],o:e[5]}));
+matrix('#mxR','#mxRd',RSK,['Medio','Alto','Muy alto'],HC,e=>`<div class="id">${e.id} · RIESGO</div><h4>${e.n}</h4><div class="kv"><div><span>Probabilidad</span><b>${e.pl}</b></div><div><span>Impacto</span><b>${e.il}</b></div><div><span>Dueño</span><b>${e.o}</b></div></div><p><b style="color:#f5f5f7">Mitigación:</b> ${e.m}</p>`,'risk_select');
+
+/* ── Activación ── */
+const STEPS=[
+ ['T+0','Detección','Alerta de monitoreo sintético, página de estado de NetSuite o reporte de una UN. La mesa de servicio abre un incidente P1.','Mesa de servicio','N1'],
+ ['T+5 min','Protección','El líder de guardia ordena a las 9 UN activar el modo degradado; el iPaaS pausa los envíos a NetSuite y acumula en colas.','Líder de guardia · 9 líderes UN','N1'],
+ ['T+15 min','Diagnóstico','¿Es NetSuite (Oracle), iPaaS, identidad o red? Si es NetSuite, caso con Oracle con severidad 1.','Líderes técnicos · líder ERP','N2'],
+ ['T+30 min','Decisión','El CIO declara contingencia mayor si se espera más de 2 h de afectación; se convoca al Equipo de Crisis y se activa la comunicación.','CIO · Equipo de Gestión de Crisis','N3'],
+ ['T+30–60','Recuperación propia','Conmutar iPaaS, IdP, DNS o red según el componente afectado.','Infraestructura · Integraciones · Identidad','N3'],
+ ['Durante','Operación degradada','Las UN facturan con timbrado directo, registran en folios propios y consultan saldos e inventario desde la copia propia.','Líderes UN · Finanzas','N3–N4'],
+ ['Al volver','Drenado','Prueba de humo y una transacción de prueba por UN; las colas se drenan en orden a velocidad controlada.','Integraciones · líder ERP','N2'],
+ ['Cierre','Conciliación','Conciliación por UN en < 24 h, registro de tiempos para el reclamo de SLA e informe post-incidente en 5 días hábiles.','Líder ERP · Finanzas · CIO','—']];
+let stI=0,stT=null;
+STEPS.forEach((s,i)=>{const b=el('button','stp'+(i===0?' on':''),`<div class="t">${s[0]}</div><div class="n">${s[1]}</div><i class="pb"></i>`);b.onclick=()=>{stop();showStep(i)};$('#steps').append(b)});
+function showStep(i){stI=i;$$('.stp').forEach((b,j)=>{b.classList.toggle('on',j===i);b.classList.toggle('done',j<i);const pb=b.querySelector('.pb');pb.style.animation='none';pb.offsetWidth;pb.style.animation=''});
+ const s=STEPS[i];$('#plClock').innerHTML=`${s[0]}<small>${s[1]}</small>`;
+ $('#plDet').innerHTML=`<div><h4>${s[1]}</h4><p>${s[2]}</p></div><div class="who"><b>Quién</b>${s[3]}<br><br><b>Nivel de escalamiento</b>${s[4]}</div>`}
+function stop(){clearInterval(stT);stT=null;$('#plPlay').textContent='▶ Reproducir';$$('.stp').forEach(b=>b.classList.remove('on'));$$('.stp')[stI].classList.add('on');$$('.stp .pb').forEach(p=>p.style.animation='none')}
+$('#plPlay').onclick=()=>{if(stT){stop();return}ga('activation_play');if(stI>=STEPS.length-1)stI=-1;$('#plPlay').textContent='❚❚ Pausa';showStep(++stI);stT=setInterval(()=>{if(stI>=STEPS.length-1){stop();return}showStep(++stI)},3200)};
+$('#plReset').onclick=()=>{stop();showStep(0)};showStep(0);$$('.stp .pb').forEach(p=>p.style.animation='none');
+const RB=[['RB-01','Declaración de contingencia y convocatoria'],['RB-02','Caída de NetSuite: caso con Oracle y evidencia SLA'],['RB-03','Modo degradado por UN (Norte, Centro, Sur)'],['RB-04','Conmutación del iPaaS e integraciones'],['RB-05','DNS, certificados, IdP y cuentas de emergencia'],['RB-06','CFDI en contingencia y cambio de PAC'],['RB-07','Ransomware o compromiso de cuentas'],['RB-08','Corrección de datos con la copia propia'],['RB-09','Drenado de colas y conciliación'],['RB-10','Regreso a operación normal']];
+RB.forEach(r=>$('#rb').append(el('div','rv',`<b>${r[0]}</b>${r[1]}`)));
+
+/* ── Pruebas ── */
+const TESTS=[
+ ['Anual','Desconexión completa de NetSuite','Las 9 UN en modo degradado ≥ 4 h, con drenado y conciliación. Participan todos.','Continuidad ≤ 15 min, 0 transacciones perdidas, conciliación 100%',1],
+ ['Semestral · rota N/C/S','Modo degradado por región','Desconexión simulada de 4 h en las 3 UN de una región.','0 transacciones perdidas al reconectar'],
+ ['Trimestral','Ejercicio de escritorio','Escenarios E1–E8 con Equipo de Crisis y líderes UN.','Modo degradado ordenado en ≤ 5 min; brechas documentadas'],
+ ['Semestral','Prueba de componente','iPaaS, IdP, DNS y red por separado.','Conmutación dentro de su RTO'],
+ ['Mensual / anual','Restauración de copia propia','Consulta mensual; importación anual de una muestra a sandbox.','Datos íntegros; antigüedad ≤ 1 h'],
+ ['Mensual','Revisión del SLA de NetSuite','Disponibilidad reportada vs. monitoreo propio.','Diferencias explicadas; crédito reclamado si aplica'],
+ ['Cada actualización mayor','Ventana de mantenimiento real','Operación de procesos 24x7 durante una ventana de NetSuite.','Sin minutos de negocio detenido'],
+ ['Anual','Ransomware / compromiso de cuentas','Revocación de tokens y recuperación de sistemas propios en entorno limpio.','Accesos revocados en ≤ 30 min; tiempos registrados']];
+TESTS.forEach(t=>$('#tests').append(el('div','ts rv'+(t[4]?' star':''),`<div class="fq">${t[0]}</div><h5>${t[1]}</h5><div class="sc">${t[2]}</div><div class="ok">${t[3]}</div>`)));
+
+/* ── Comunicación ── */
+const COMMS=[
+ ['Equipo de Gestión de Crisis','CIO','Puente de conferencia fijo','Mensajería fuera de banda','Continuo'],
+ ['Líderes de las 9 UN','Líder de continuidad corporativo','Notificación masiva (SMS/llamada)','Mensajería móvil','Cada 30 min'],
+ ['Dirección General / Sponsor','CIO','Llamada','SMS','Cada hora y en hitos'],
+ ['Usuarios internos','Mesa de servicio','Página de estado externa','SMS','Cada hora'],
+ ['Clientes y proveedores clave','Comercial / Compras','Correo desde dominio alterno','Llamada','Inicio, hitos y cierre'],
+ ['Proveedores de nube, SaaS, PAC','Infraestructura','Portal de soporte sev. 1','Gerente de cuenta','Al detectar']];
+COMMS.forEach(c=>$('#comms').append(el('div','card cm rv',`<h5>${c[0]}</h5><div class="rs">Vocero: ${c[1]}</div><div class="ch"><span><i>Primario</i>${c[2]}</span><span><i>Alterno</i>${c[3]}</span></div><span class="fr">${c[4]}</span>`)));
+
+/* ── Roadmap ── */
+const D0=Date.UTC(2026,11,1),D1=Date.UTC(2027,8,1);const gx=d=>(d-D0)/(D1-D0)*100;const U=(m,d)=>Date.UTC(m<11?2027:2026,m,d);
+const RM=[
+ {l:'F0 Inicio y gobierno',a:U(11,1),b:U(11,14),dt:'1 dic a 14 dic',dur:'2 semanas',e:'Acta, política, comité, líderes de UN por región',x:'Sponsor firma acta y presupuesto inicial'},
+ {l:'F1 BIA y riesgos',a:U(11,15),b:U(0,31),dt:'15 dic a 31 ene',dur:'7 semanas',e:'BIA de las 9 UN, matriz RTO/RPO firmada, riesgos por región, revisión del contrato y SLA de Oracle',x:'C1: dueños de proceso firman tiers y RTO/RPO'},
+ {g:'C1: BIA firmado',d:U(0,31),dt:'31 ene'},
+ {l:'F2 Diseño de estrategia',a:U(1,1),b:U(1,28),dt:'1 feb a 28 feb',dur:'4 semanas',e:'Arquitectura de continuidad, diseño de iPaaS y modo degradado, copia propia, caso de negocio',x:'C2: el Comité aprueba arquitectura y presupuesto'},
+ {g:'C2: diseño y presupuesto',d:U(1,28),dt:'28 feb'},
+ {l:'F3 Implementación técnica',a:U(2,1),b:U(4,23),dt:'1 mar a 23 may',dur:'12 semanas',e:'iPaaS activo-activo, store-and-forward en 9 UN, copia propia, IdP, SD-WAN, monitoreo',x:'C3: iPaaS en dos regiones, copia ≤ 1 h y store-and-forward en las 9 UN'},
+ {l:'F4 Runbooks y capacitación',a:U(3,26),b:U(5,20),dt:'26 abr a 20 jun',dur:'8 semanas',e:'RB-01 a RB-10, procedimientos por región, comunicación, entrenamiento',x:'Runbooks revisados y 100% del personal clave capacitado'},
+ {g:'C3: iPaaS, copia y 9 UN listas',d:U(4,23),dt:'23 may'},
+ {l:'F5 Pruebas y certificación',a:U(5,1),b:U(6,25),dt:'1 jun a 25 jul',dur:'8 semanas',e:'Tabletop, pruebas de componente, modo degradado por región, desconexión completa de NetSuite',x:'C4: continuidad ≤ 15 min y 0 transacciones perdidas'},
+ {g:'C4: continuidad ≤ 15 min',d:U(6,25),dt:'25 jul',key:1},
+ {l:'F6 Operación continua',a:U(7,1),b:U(7,31),dt:'1 ago → permanente',dur:'Permanente',e:'Calendario anual de pruebas, KPIs mensuales, revisión de SLA, revisión anual del BIA',x:'99.7% de negocio sostenido y auditoría sin hallazgos mayores',f6:1}];
+(function(){const G=$('#gantt');const M=['dic 26','ene 27','feb 27','mar 27','abr 27','may 27','jun 27','jul 27','ago 27','sep 27'];
+ const mds=[U(11,1),U(0,1),U(1,1),U(2,1),U(3,1),U(4,1),U(5,1),U(6,1),U(7,1),D1];
+ G.append(el('div','g-head','<div></div><div class="g-months">'+mds.map((d,i)=>`<span style="left:${gx(d)}%">${M[i]}</span>`).join('')+'</div>'));
+ const lines=el('div','g-lines',mds.map(d=>`<i style="left:${gx(d)}%"></i>`).join(''));G.append(lines);
+ let first=null;
+ RM.forEach((r,i)=>{let row;
+  if(r.g){row=el('div','g-row gate'+(r.key?' key':''),`<div class="lb">${r.g}</div><div class="g-track"><i class="g-dia${r.key?' key':''}" style="left:${gx(r.d)}%"></i><span class="g-dt" style="left:calc(${gx(r.d)}% + 14px)">${r.dt}</span></div>`)}
+  else{const L=gx(r.a),W=gx(r.b+864e5)-L;const right=L+W>70;
+   row=el('div','g-row',`<div class="lb">${r.l}</div><div class="g-track"><i class="g-bar${r.f6?' f6':''}" data-w="${W}" style="left:${L}%"></i><span class="g-dt" style="${right?`right:${100-L+1.2}%`:`left:calc(${L+W}% + 10px)`}">${r.dt}</span></div>`);
+   row.onclick=()=>{$$('.g-row').forEach(x=>x.classList.remove('on'));row.classList.add('on');gdet(r);ga('roadmap_phase',{p:r.l})};if(!first)first=[row,r]}
+  G.append(row)});
+ // las líneas cubren toda la altura
+ const once=new IntersectionObserver(es=>{if(es[0].isIntersecting){once.disconnect();$$('.g-bar').forEach((b,k)=>setTimeout(()=>b.style.width=b.dataset.w+'%',k*160));$$('.g-dia,.g-dt').forEach(x=>x.classList.add('in'))}},{threshold:.25});once.observe(G);
+ first[0].classList.add('on');gdet(first[1]);
+})();
+function gdet(r){$('#gdet').innerHTML=`<div class="card"><div class="k1">${r.dt} · ${r.dur}</div><h4 style="margin-top:6px">${r.l}</h4></div><div class="card"><div class="k1">Entregables</div><div class="v1">${r.e}</div></div><div class="card"><div class="k1">Criterio de salida</div><div class="v1">${r.x}</div></div>`}
+
+/* ── Checklist ── */
+const CK={
+ F0:['Inicio y gobierno',['Acta de constitución firmada por el sponsor','Política de continuidad de TI aprobada','Comité de Continuidad y Equipo de Crisis nombrados, con suplentes','Líder de continuidad designado en cada una de las 9 UN','Presupuesto CAPEX/OPEX aprobado','Supuestos confirmados (plataforma ERP, ubicaciones, medición del SLA)']],
+ F1:['BIA y riesgos',['Entrevistas BIA completadas en las 9 UN','Inventario de aplicaciones, integraciones y dependencias (CMDB) validado','Tiers, RTO, RPO y MTPD firmados por cada dueño de proceso','Análisis de riesgos y amenazas por ubicación (sísmico, clima, carriers)','Requisitos regulatorios (facturación electrónica, retención, protección de datos)','Brechas entre capacidad actual y RTO/RPO objetivo documentadas']],
+ F2:['Diseño',['Arquitectura de continuidad aprobada (iPaaS, modo degradado, copia propia, red)','Contrato con Oracle revisado: SLA, exclusiones, RTO/RPO del DR, créditos y notificaciones','Integración resiliente: colas, idempotencia, DLQ, store-and-forward 72 h, concurrencia','Facturación CFDI en contingencia con doble PAC','Red por región: doble carrier + LTE/5G o satelital','Modelo de costo total y caso de negocio aprobados']],
+ F3:['Implementación',['iPaaS desplegado activo-activo en dos regiones','Store-and-forward instalado y probado en las 9 UN','Copia propia: incremental ≤ 1 h y completa diaria','Copia inmutable en cuenta separada con MFA y retención bloqueada','IdP multi-región y cuentas de emergencia en bóveda','DNS con failover por health check','SD-WAN con conmutación automática; satelital en el sur','Doble PAC configurado y probado','Monitoreo sintético desde cada UN hacia NetSuite e iPaaS','Suscripción a la página de estado y avisos de mantenimiento','Tablero de disponibilidad de negocio y presupuesto de error']],
+ F4:['Runbooks',['RB-01 a RB-10 escritos, revisados y accesibles fuera de línea','Procedimientos manuales / modo degradado por UN','Plantillas de comunicación y directorio de emergencia','Herramienta de notificación masiva configurada','Capacitación de equipos técnicos y líderes de UN con constancia']],
+ F5:['Pruebas',['Tabletop de los 8 escenarios','Pruebas de componente: iPaaS, IdP, DNS y red','Modo degradado en las regiones Norte, Centro y Sur','Procesos 24x7 durante una ventana real de NetSuite','Desconexión completa con continuidad ≤ 15 min y 0 transacciones perdidas','Respuesta a ransomware o compromiso de cuentas','Informe de certificación aprobado por el Comité']],
+ OP:['En incidente',['Incidente P1 abierto con hora de detección','Modo degradado activado en las UN afectadas','iPaaS en pausa hacia NetSuite y acumulando en colas','Componente afectado identificado (NetSuite, iPaaS, IdP o red)','Caso con Oracle con severidad 1, si aplica','Contingencia mayor declarada por el CIO, con hora registrada','Componentes propios conmutados','Comunicación inicial enviada a las 9 UN y a la dirección','Servicio verificado con una transacción de prueba por UN','Colas drenadas a velocidad controlada','Conciliación por UN cerrada en cero diferencias','Tiempos registrados para reclamo de SLA e informe en 5 días']]};
+let ckState={};try{ckState=JSON.parse(localStorage.getItem('drp_ck')||'{}')}catch(e){}
+let ckSel='F0';
+Object.entries(CK).forEach(([k,v])=>{const b=el('button',k===ckSel?'on':'',`<b>${k==='OP'?'⚡ OP':k}</b><span>${v[0]}</span><div class="pg"><i></i></div>`);b.dataset.k=k;b.onclick=()=>{ckSel=k;renderCk()};$('#ck').append(b)});
+function renderCk(){$$('#ck button').forEach(b=>{b.classList.toggle('on',b.dataset.k===ckSel);const k=b.dataset.k,n=CK[k][1].length,d=CK[k][1].filter((_,i)=>ckState[k+i]).length;b.querySelector('.pg i').style.width=(d/n*100)+'%'});
+ const L=$('#cklist');L.innerHTML='';CK[ckSel][1].forEach((t,i)=>{const id=ckSel+i;const lb=el('label',ckState[id]?'dn':'',`<input type="checkbox" ${ckState[id]?'checked':''}><span>${t}</span>`);lb.querySelector('input').onchange=e=>{ckState[id]=e.target.checked;try{localStorage.setItem('drp_ck',JSON.stringify(ckState))}catch(_){}renderCk()};L.append(lb)});
+ const all=Object.entries(CK).filter(([k])=>k!=='OP').reduce((a,[k,v])=>[a[0]+v[1].filter((_,i)=>ckState[k+i]).length,a[1]+v[1].length],[0,0]);
+ const n=CK[ckSel][1].length,d=CK[ckSel][1].filter((_,i)=>ckState[ckSel+i]).length;
+ $('#ckfoot').innerHTML=`<b style="color:var(--ink)">${ckSel==='OP'?'Checklist operativo':ckSel+' — '+CK[ckSel][0]}:</b> ${d}/${n} ${d===n?'· <span style="color:var(--ok);font-weight:600">fase lista para compuerta ✓</span>':''} &nbsp;·&nbsp; Programa F0–F5: ${all[0]}/${all[1]}`}
+$('#ckreset').onclick=()=>{ckState={};try{localStorage.removeItem('drp_ck')}catch(_){}renderCk()};renderCk();
+
+/* ── KPIs ── */
+const KPI=[
+ ['≥ 99.7%','Disponibilidad de negocio','Minutos en que las 9 UN registran transacciones / minutos totales, mantenimiento incluido.','Monitoreo sintético + agentes · Mensual',1],
+ ['0','Transacciones perdidas','Mensajes sin confirmar tras la conciliación.','Reporte de conciliación · Por evento',1],
+ ['≥ 99.7%','NetSuite vs. SLA','Disponibilidad fuera de mantenimiento programado.','Monitoreo propio y página de estado · Mensual'],
+ ['≤ 15 min','Tiempo a modo degradado','Desde la detección hasta que la última UN opera en contingencia.','Bitácora de incidentes · Por evento'],
+ ['≤ 60 min','Antigüedad de la copia propia','Minutos desde la última extracción incremental.','Monitoreo de datos · Continuo'],
+ ['100%','Calendario de pruebas','Pruebas ejecutadas / planeadas.','Plan anual · Trimestral'],
+ ['≥ 90%','Hallazgos cerrados a tiempo','Hallazgos de prueba cerrados en fecha.','Registro de hallazgos · Mensual'],
+ ['< 75%','Consumo del presupuesto de error','Horas de afectación acumuladas / 26.3 h.','Tablero de disponibilidad · Mensual']];
+KPI.forEach(k=>$('#kpigrid').append(el('div','kpi rv'+(k[4]?' key':''),`<div class="mt${k[4]?' grad':''}">${k[0]}</div><h5>${k[1]}</h5><p>${k[2]}</p><div class="fq">${k[3]}</div>`)));
+
+/* ── Glosario ── */
+const GL=[['API','Application Programming Interface','Acceso programático a NetSuite para integraciones y copia'],['BCP','Business Continuity Plan','Plan corporativo para instalaciones y personas'],['BI','Business Intelligence','Reportería servida desde la copia propia'],['BIA','Business Impact Analysis','Base para clasificar procesos y fijar RTO/RPO'],['CAB','Change Advisory Board','Aprueba pruebas y cambios a componentes Tier 0'],['CAPEX / OPEX','Gasto de inversión / operativo','Presupuesto del programa'],['CFDI','Comprobante Fiscal Digital por Internet','Factura electrónica mexicana (4.0)'],['CIO','Chief Information Officer','Dirige el DRP y declara la contingencia'],['CISO','Chief Information Security Officer','Seguridad, ransomware y cumplimiento'],['CMDB','Configuration Management Database','Inventario de aplicaciones y dependencias'],['CRM','Customer Relationship Management','Aplicación Tier 2'],['CSV','Comma-Separated Values','Importación para corregir datos en NetSuite'],['DLQ','Dead Letter Queue','Mensajes con error, revisados a diario'],['DNS','Domain Name System','Redirección de tráfico con health checks'],['DR / DRP','Disaster Recovery (Plan)','Recuperación ante desastres y su plan'],['EDI','Electronic Data Interchange','Intercambio con clientes y proveedores'],['ERP','Enterprise Resource Planning','Oracle NetSuite'],['HCM','Human Capital Management','Nómina y personal'],['IdP','Identity Provider','Autenticación centralizada para NetSuite'],['iPaaS','Integration Platform as a Service','Middleware entre las UN y NetSuite'],['ISO','International Organization for Standardization','ISO 22301 e ISO/IEC 27001'],['KPI','Key Performance Indicator','Indicadores del plan'],['LTE / 5G','Redes celulares','Enlace de respaldo de cada UN'],['MFA','Multi-Factor Authentication','Doble factor, incluido el de emergencia'],['MTPD','Maximum Tolerable Period of Disruption','Límite de interrupción aceptable'],['NIST','National Institute of Standards and Technology','Guía SP 800-34'],['OTC','Order to Cash','Proceso de ventas Tier 0'],['P1','Prioridad 1','Severidad máxima de incidente'],['P2P','Procure to Pay','Proceso de compras Tier 0'],['PAC','Proveedor Autorizado de Certificación','Timbra los CFDI ante el SAT'],['POS','Point of Sale','Operación local en las UN'],['RACI','Responsable, Aprueba, Consultado, Informado','Matriz de roles'],['RB','Runbook','Procedimientos RB-01 a RB-10'],['REST','Representational State Transfer','Interfaz para integraciones nuevas'],['RPO','Recovery Point Objective','Datos máximos que se pueden perder'],['RTO','Recovery Time Objective','Tiempo máximo para restablecer el servicio'],['SaaS','Software as a Service','Modelo de servicio de NetSuite'],['SAT','Servicio de Administración Tributaria','Autoridad fiscal mexicana'],['SD-WAN','Software-Defined WAN','Red de las UN con conmutación automática'],['SLA','Service Level Agreement','Compromiso de 99.7% de Oracle'],['SMART','Específico, Medible, Alcanzable, Relevante, Temporal','Formato de los objetivos'],['SOAP','Simple Object Access Protocol','SuiteTalk SOAP; fin en NetSuite 2028.2'],['SSO','Single Sign-On','Inicio de sesión único hacia NetSuite'],['TTL','Time To Live','Vigencia de registros DNS'],['UN','Unidad de negocio','UN-01 a UN-09 en Norte, Centro y Sur'],['UPS','Uninterruptible Power Supply','Respaldo eléctrico de red'],['UUID','Identificador único universal','Folio fiscal de cada CFDI'],['VAN','Value-Added Network','Red de intercambio EDI'],['VPN','Virtual Private Network','Enlace seguro con bancos'],['WAN','Wide Area Network','Red entre las UN y la nube'],['WMS','Warehouse Management System','Gestión de almacenes en las UN'],['GMT-6','Hora del centro de México','Zona de todas las ventanas del plan']];
+function renderGl(){const q=$('#glq').value.trim().toLowerCase();const g=$('#gl');g.innerHTML='';const f=GL.filter(x=>!q||x.join(' ').toLowerCase().includes(q));
+ f.forEach(x=>g.append(el('div','',`<b>${x[0]}</b><div class="f">${x[1]}</div><div class="u">${x[2]}</div>`)));$('#glc').textContent=f.length+' de '+GL.length+' términos'}
+$('#glq').addEventListener('input',renderGl);renderGl();
+
+observe();
+</script>
+</body>
+</html>
