@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VC2D4V1FP5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VC2D4V1FP5');
+  function setL(l){try{localStorage.setItem('fgg-lang',l)}catch(e){}}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="alternate" hreflang="es" href="https://fherg15.github.io/dir_sol_ti/proyectos/netsuite-claude-mcp/">
+<link rel="alternate" hreflang="en" href="https://fherg15.github.io/dir_sol_ti/proyectos/netsuite-claude-mcp/en/">
+<title>Conector Oracle NetSuite – Claude AI (MCP) — Fernando Gómez Guerrero</title>
+<meta name="description" content="Proyecto Conector Oracle NetSuite – Claude AI (MCP): −70% en tiempo de reportes (3.0 h → 0.9 h), 120 usuarios en 4 países, 26 semanas, $2.4 MM MXN de CAPEX y ROI a 3 años ≈ 153%.">
+<style>
+:root{
+  --bg:#fff;--tile:#f5f5f7;--ink:#1d1d1f;--mut:#6e6e73;--blk:#000;--blk2:#161617;--blk3:#232325;--ln:#d2d2d7;
+  --blue:#0071e3;--blueh:#0077ed;--link:#0066cc;--linkd:#2997ff;--vio:#7b61ff;--acc:#d97757;--accd:#f0a07f;
+  --ok:#12a05f;--okd:#30d158;--warn:#e8890c;--bad:#e5484d;--badd:#ff6961;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.47;letter-spacing:-.022em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+button{font-family:inherit;color:inherit}
+
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0071e3,#7b61ff,#d97757);z-index:200}
+.gnav{position:sticky;top:0;z-index:100;height:44px;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
+.gnav .in{max-width:1100px;height:100%;margin:0 auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.gnav .brand{font-size:.92rem;font-weight:600;text-decoration:none;white-space:nowrap}
+.gnav .brand span{color:var(--mut);font-weight:400}
+.gnav .links{display:flex;gap:20px;overflow:auto;scrollbar-width:none}
+.gnav .links::-webkit-scrollbar{display:none}
+.gnav .links a{font-size:12px;opacity:.75;text-decoration:none;white-space:nowrap;transition:opacity .2s}
+.gnav .links a:hover,.gnav .links a.on{opacity:1}
+.gnav .links a.on{color:var(--blue)}
+.gnav .back{font-size:12px;color:var(--link);text-decoration:none;white-space:nowrap}
+.gnav .rt{display:flex;align-items:center;gap:12px}
+.lang{display:flex;background:rgba(0,0,0,.06);border-radius:980px;padding:2px}
+.lang a{font-size:11px;font-weight:600;padding:4px 10px;border-radius:980px;text-decoration:none;color:var(--mut)}
+.lang a.on{background:var(--ink);color:#fff}
+
+main{display:flex;flex-direction:column;gap:12px;padding-bottom:12px}
+.tile{background:var(--tile);padding:90px 22px;overflow:hidden;position:relative}
+.tile.white{background:var(--bg)}
+.tile.dark{background:var(--blk);color:#f5f5f7}
+.inner{max-width:1100px;margin:0 auto}
+.ctr{text-align:center}
+.eyebrow{font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.dark .eyebrow{color:var(--linkd)}
+.num{font-family:var(--mono);font-size:13px;color:var(--mut);margin-right:8px}
+.h1{font-size:clamp(2.3rem,5.6vw,4.5rem);font-weight:700;line-height:1.03;letter-spacing:-.04em;margin-top:10px}
+.h2{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:600;line-height:1.07;letter-spacing:-.03em;max-width:900px;margin-top:10px}
+.ctr .h2{margin-left:auto;margin-right:auto}
+.lead{font-size:clamp(1.08rem,1.7vw,1.3rem);color:var(--mut);max-width:780px;margin-top:18px;line-height:1.45}
+.ctr .lead{margin-left:auto;margin-right:auto}
+.dark .lead,.dark .mut{color:#a1a1a6}
+.lead b{color:var(--ink);font-weight:600}
+.dark .lead b{color:#f5f5f7}
+.grad{background:linear-gradient(92deg,#0071e3 0%,#7b61ff 50%,#d97757 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.dark .grad{background:linear-gradient(92deg,#2997ff 0%,#9b7bff 50%,#f0a07f 100%);-webkit-background-clip:text;background-clip:text}
+.mut{color:var(--mut)}
+.card{background:#fff;border-radius:22px;padding:26px}
+.white .card{background:var(--tile)}
+.dark .card{background:var(--blk2)}
+.card h3{font-size:19px;font-weight:600;letter-spacing:-.02em}
+.note{font-size:13px;color:var(--mut);margin-top:16px;line-height:1.5}
+.dark .note{color:#8e8e93}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:980px;background:rgba(0,0,0,.06);border:0;cursor:pointer;transition:.2s}
+.dark .chip{background:rgba(255,255,255,.1);color:#f5f5f7}
+.chip.on{background:var(--ink);color:#fff}
+.dark .chip.on{background:#f5f5f7;color:#000}
+.chip.bad.on{background:var(--bad);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:10px 20px;border-radius:980px;border:1px solid transparent;cursor:pointer;text-decoration:none;transition:.2s}
+.btn.fill{background:var(--blue);color:#fff}.btn.fill:hover{background:var(--blueh)}
+.btn.line{background:transparent;color:var(--link);border-color:var(--link)}.btn.line:hover{background:var(--link);color:#fff}
+.dark .btn.line{color:var(--linkd);border-color:var(--linkd)}.dark .btn.line:hover{background:var(--linkd);color:#000}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.28,.11,.32,1),transform .8s cubic-bezier(.28,.11,.32,1)}
+.rv.in{opacity:1;transform:none}
+input[type=range]{width:100%;accent-color:var(--blue)}
+.dark input[type=range]{accent-color:var(--accd)}
+.seg{display:inline-flex;background:rgba(0,0,0,.06);border-radius:980px;padding:3px}
+.dark .seg{background:rgba(255,255,255,.1)}
+.seg button{border:0;background:none;font-size:13px;font-weight:600;padding:7px 16px;border-radius:980px;cursor:pointer;color:inherit;opacity:.7}
+.seg button.on{background:#fff;color:#1d1d1f;opacity:1;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+
+/* HERO */
+#hero{padding:76px 22px 70px;background:radial-gradient(1100px 540px at 75% -10%,#fde9df 0%,var(--tile) 60%)}
+.badge{display:inline-flex;gap:8px;align-items:center;font-size:13px;font-weight:600;padding:7px 14px;border-radius:980px;background:#fff;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.badge .live{width:8px;height:8px;border-radius:50%;background:var(--acc);animation:live 2s infinite}
+@keyframes live{0%{box-shadow:0 0 0 0 rgba(217,119,87,.6)}70%{box-shadow:0 0 0 8px rgba(217,119,87,0)}100%{box-shadow:0 0 0 0 rgba(217,119,87,0)}}
+.hero-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:44px;align-items:center}
+.big70{font-size:clamp(4.4rem,10vw,7.4rem);font-weight:800;letter-spacing:-.06em;line-height:.9;margin-top:22px;display:flex;align-items:baseline;gap:14px}
+.big70 small{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:600;letter-spacing:-.02em;color:var(--mut);line-height:1.2;max-width:200px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.kgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:48px}
+.k{background:#fff;border-radius:18px;padding:20px 16px}
+.k .n{font-size:clamp(1.45rem,2.5vw,2.05rem);font-weight:700;letter-spacing:-.04em;line-height:1;white-space:nowrap}
+.k .l{font-size:12.5px;color:var(--mut);margin-top:8px;line-height:1.3}
+/* chat */
+.chat{background:#fff;border-radius:20px;box-shadow:0 30px 70px rgba(0,0,0,.13);overflow:hidden;display:flex;flex-direction:column;height:452px}
+.chat .bar{height:38px;background:#f6f5f2;display:flex;align-items:center;gap:6px;padding:0 14px;border-bottom:1px solid #eceae4;flex:none}
+.chat .bar i{width:10px;height:10px;border-radius:50%;background:#d8d5cc;display:block}
+.chat .bar span{font-size:12px;color:var(--mut);margin-left:8px;font-weight:600}
+.conn{margin-left:auto;font-size:11px;font-weight:700;font-style:normal;display:flex;gap:6px;align-items:center;padding:4px 9px;border-radius:980px;background:#eaf7ef;color:var(--ok)}
+.conn i{width:7px!important;height:7px!important;background:var(--ok)!important;animation:blink 1.3s infinite}
+@keyframes blink{50%{opacity:.3}}
+.msgs{flex:1;padding:16px;display:flex;flex-direction:column;gap:10px;overflow:hidden;justify-content:flex-end}
+.mu{align-self:flex-end;max-width:84%;background:#efece6;border-radius:16px 16px 4px 16px;padding:10px 13px;font-size:13.5px;line-height:1.4;animation:fin .4s}
+.mt{align-self:flex-start;font-family:var(--mono);font-size:11.5px;padding:8px 11px;border-radius:12px;background:#f3f6ff;border:1px solid #dfe7fb;color:#3a4a6b;animation:fin .4s;display:flex;flex-direction:column;gap:3px}
+.mt .r{display:flex;gap:6px;align-items:center}
+.mt .sp{width:11px;height:11px;border:2px solid #9fb4e6;border-top-color:transparent;border-radius:50%;animation:spin .8s linear infinite;flex:none}
+.mt.done .sp{border:0;animation:none;width:auto;height:auto}
+.mt.done .sp::before{content:'✓';color:var(--ok);font-weight:700}
+.mt .m{color:#7d8aa8}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ma{align-self:flex-start;max-width:92%;font-size:13.5px;line-height:1.45;animation:fin .4s;width:92%}
+.ma .who{font-size:11px;font-weight:700;color:var(--acc);display:flex;gap:6px;align-items:center}
+.ma .who::before{content:'';width:14px;height:14px;border-radius:4px;background:conic-gradient(from 0deg,#d97757,#f0a07f,#d97757)}
+.ma p{margin-top:4px}
+.mbars{display:flex;align-items:flex-end;gap:8px;height:84px;margin-top:8px;padding:8px 10px 0;background:#faf9f6;border-radius:10px}
+.mbars div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:3px}
+.mbars i{display:block;width:100%;background:linear-gradient(180deg,#f0a07f,#d97757);border-radius:4px 4px 0 0;height:0;transition:height .9s cubic-bezier(.28,.11,.32,1)}
+.mbars b{font-size:10px;font-weight:600}
+.mbars span{font-size:9.5px;color:var(--mut);padding-bottom:4px;white-space:nowrap}
+.ok-line{font-size:11.5px;color:var(--ok);font-weight:600;margin-top:6px}
+@keyframes fin{from{opacity:0;transform:translateY(8px)}}
+.inp{flex:none;margin:0 12px 12px;border:1px solid #e3e0d8;border-radius:14px;padding:10px 12px;display:flex;align-items:center;gap:10px;font-size:13px;min-height:44px}
+.inp span{flex:1;color:var(--ink)}
+.inp span:empty::before{content:attr(data-ph);color:#aaa}
+.inp b{width:26px;height:26px;border-radius:8px;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+.cmp{display:grid;grid-template-columns:auto 1fr auto;gap:8px 12px;align-items:center;margin-top:14px;font-size:12.5px}
+.cmp .bb{height:10px;border-radius:6px;background:#e5e5ea;overflow:hidden}
+.cmp .bb i{display:block;height:100%;border-radius:6px;transition:width 1.2s cubic-bezier(.28,.11,.32,1);width:0}
+.cmp b{font-family:var(--mono);font-size:12px}
+.disc{font-size:11px;color:var(--mut);margin-top:8px}
+
+/* before / after */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:44px}
+.flow{background:var(--blk2);border-radius:22px;padding:26px}
+.flow h3{font-size:20px;font-weight:600;display:flex;justify-content:space-between;align-items:baseline}
+.flow h3 b{font-family:var(--mono);font-size:24px}
+.stp{display:flex;align-items:center;gap:12px;margin-top:12px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.05);transition:.4s;opacity:.4}
+.stp.on{opacity:1;background:rgba(255,255,255,.1)}
+.stp .ic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex:none;background:rgba(255,255,255,.08)}
+.stp .tx{flex:1;font-size:14.5px;line-height:1.35}
+.stp .tx small{display:block;color:#8e8e93;font-size:12.5px}
+.stp .hh{font-family:var(--mono);font-size:13px;color:#a1a1a6}
+.before .stp.on .ic{background:rgba(255,105,97,.25)}
+.after .stp.on .ic{background:rgba(48,209,88,.22)}
+.gone{text-decoration:line-through;opacity:.25!important}
+.results{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:12px}
+.results .card .v{font-size:30px;font-weight:700;letter-spacing:-.04em;line-height:1}
+.results .card p{font-size:13.5px;color:#a1a1a6;margin-top:10px;line-height:1.45}
+
+/* SMART + alcance */
+.smart{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:44px}
+.sm{background:#fff;border-radius:22px;padding:24px;position:relative;overflow:hidden;transition:transform .3s}
+.sm:hover{transform:translateY(-3px)}
+.sm .id{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--acc)}
+.sm .goal{font-size:30px;font-weight:700;letter-spacing:-.035em;margin-top:10px;line-height:1.05}
+.sm h4{font-size:16px;font-weight:600;margin-top:10px;line-height:1.3}
+.sm p{font-size:13.5px;color:var(--mut);margin-top:6px;line-height:1.45}
+.sm .when{position:absolute;top:22px;right:22px;font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:980px;background:var(--tile)}
+.scope{display:grid;grid-template-columns:1.4fr 1fr;gap:12px;margin-top:12px}
+.mods{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:14px}
+.mod{border-radius:14px;padding:14px;background:var(--tile)}
+.mod b{font-size:14px;display:block}
+.mod span{font-size:12.5px;color:var(--mut);display:block;margin-top:4px;line-height:1.4}
+.lst li{font-size:14px;line-height:1.5;margin:10px 0 0 18px}
+.lst.out li::marker{color:var(--bad)}
+.lst.in li::marker{color:var(--blue)}
+.spons{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.spons span{font-size:12.5px;padding:7px 12px;border-radius:12px;background:var(--tile)}
+.spons b{font-weight:600}
+.dom{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.dom span{font-size:12px;font-weight:600;padding:5px 10px;border-radius:980px;background:#fdf0ea;color:#a8532f}
+
+/* arquitectura */
+.arch-wrap{display:grid;grid-template-columns:1.6fr 1fr;gap:12px;margin-top:40px}
+.arch-svg{background:var(--tile);border-radius:22px;padding:14px}
+.arch-svg svg{width:100%;height:auto;display:block}
+.nd rect{fill:#fff;stroke:#d2d2d7;stroke-width:1.5;transition:fill .3s,stroke .3s}
+.nd .t{font-size:19px;font-weight:700;fill:#1d1d1f}
+.nd .s{font-size:14px;fill:#6e6e73}
+.nd.core rect{fill:#e8f1ff;stroke:var(--blue);stroke-width:2.5}
+.nd.cl rect{fill:#fdf0ea;stroke:var(--acc)}
+.nd.hl rect{stroke:var(--acc);stroke-width:3.5}
+.nd.core.hl rect{stroke:var(--vio)}
+.nd.blk rect{fill:#fdecec;stroke:var(--bad);stroke-width:3}
+.cont{fill:#ececee;stroke:#d2d2d7;stroke-width:1.5}
+.lk{stroke:#b8b8be;stroke-width:2;fill:none}
+.lk.on{stroke:var(--acc);stroke-dasharray:6 7;animation:dash 1s linear infinite}
+.lk.cut{stroke:var(--bad);stroke-dasharray:3 6}
+@keyframes dash{to{stroke-dashoffset:-26}}
+.lbl{font-size:13px;fill:#6e6e73;font-family:var(--mono)}
+.nd rect.sub{fill:#d2d2d7;stroke:none;transition:fill .35s}
+.nd rect.sub.y{fill:#30d158}
+#pkt{transition:transform .7s cubic-bezier(.45,.05,.3,1),opacity .3s}
+.side-p{display:flex;flex-direction:column;gap:12px}
+.stepbox .sn{font-family:var(--mono);font-size:12px;color:var(--acc);font-weight:700}
+.stepbox h4{font-size:19px;font-weight:600;margin-top:6px;letter-spacing:-.02em}
+.stepbox p{font-size:14px;color:var(--mut);margin-top:6px;line-height:1.5;min-height:63px}
+.dots{display:flex;gap:6px;margin-top:14px}
+.dots i{flex:1;height:4px;border-radius:4px;background:#e5e5ea;transition:.3s}
+.dots i.on{background:var(--acc)}
+.rolebox p{font-size:13.5px;margin-top:10px;line-height:1.5}
+.vis{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.vis span{font-size:11px;font-weight:700;font-family:var(--mono);padding:4px 7px;border-radius:7px;background:#e5e5ea;color:#8e8e93;transition:.3s}
+.vis span.y{background:#e3f6ea;color:var(--ok)}
+.cfg{width:100%;border-collapse:collapse;margin-top:14px;font-size:13.5px}
+.cfg td{padding:11px 10px;border-top:1px solid var(--ln);vertical-align:top;line-height:1.45}
+.cfg td:first-child{font-weight:600;white-space:nowrap;width:1%}
+.cfg code{font-family:var(--mono);font-size:11.5px;word-break:break-all;background:var(--tile);padding:2px 5px;border-radius:5px}
+
+/* modelo 70 */
+.m70{display:grid;grid-template-columns:1.25fr 1fr;gap:12px;margin-top:40px}
+.wf{display:flex;flex-direction:column;gap:12px;margin-top:18px}
+.wfr{display:grid;grid-template-columns:170px 1fr 64px;gap:12px;align-items:center;font-size:14px}
+.wfr .tr{position:relative;height:30px;background:rgba(255,255,255,.05);border-radius:8px}
+.wfr .tr i{position:absolute;top:0;bottom:0;border-radius:8px;transition:left .5s,width .5s}
+.wfr .vv{font-family:var(--mono);font-size:13px;text-align:right}
+.wfr.tot .tr i{background:#8e8e93}
+.wfr.cut .tr i{background:linear-gradient(90deg,#30d158,#2fbf71)}
+.wfr.goal .tr i{background:linear-gradient(90deg,#2997ff,#9b7bff)}
+.wfr .nm{line-height:1.25}
+.slid{margin-top:14px}
+.slid label{display:flex;justify-content:space-between;font-size:13.5px;margin-top:14px}
+.slid label b{font-family:var(--mono)}
+.gauge{text-align:center}
+.gauge .gv{font-size:64px;font-weight:800;letter-spacing:-.05em;line-height:1;margin-top:8px}
+.gauge .gs{font-size:13px;color:#a1a1a6;margin-top:6px}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:5px 12px;border-radius:980px;margin-top:12px}
+.pill.ok{background:rgba(48,209,88,.18);color:var(--okd)}
+.pill.no{background:rgba(255,105,97,.18);color:var(--badd)}
+.formula{font-family:var(--mono);font-size:13px;background:rgba(255,255,255,.06);border-radius:14px;padding:16px;margin-top:14px;line-height:1.7;text-align:center}
+.formula .fr{display:inline-flex;flex-direction:column;vertical-align:middle;margin:0 6px}
+.formula .fr span:first-child{border-bottom:1px solid #8e8e93;padding:0 6px}
+.minis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.minis div{background:rgba(255,255,255,.06);border-radius:14px;padding:14px}
+.minis b{font-size:24px;letter-spacing:-.03em;display:block}
+.minis span{font-size:12px;color:#a1a1a6}
+.rule{display:flex;gap:14px;align-items:center;margin-top:12px;background:var(--blk2);border-radius:22px;padding:22px 26px}
+.rule .ic{font-size:26px}
+.rule p{font-size:14.5px;color:#d1d1d6;line-height:1.5}
+.rule b{color:#fff}
+
+/* roadmap */
+.gwrap{background:#fff;border-radius:22px;padding:26px;margin-top:40px}
+.gtop{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.gantt{margin-top:22px;position:relative}
+.grow{display:grid;grid-template-columns:230px 1fr;gap:14px;align-items:center;padding:7px 0}
+.grow .gn{font-size:14px;font-weight:600;line-height:1.25}
+.grow .gn small{display:block;font-size:12px;color:var(--mut);font-weight:400}
+.gtr{position:relative;height:28px}
+.gbar{position:absolute;top:4px;height:20px;border-radius:7px;background:#e5e5ea;transition:left .6s,width .6s,background .3s}
+.gbar.act{background:linear-gradient(90deg,#0071e3,#7b61ff)}
+.gbar.done{background:#b9d6f7}
+.gbar.pilot{background:linear-gradient(90deg,#f0a07f,#d97757)}
+.gbar.rep{background:repeating-linear-gradient(45deg,#ffd7c7 0 6px,#ffc1a8 6px 12px)}
+.gate{position:absolute;top:6px;width:16px;height:16px;transform:translateX(-8px) rotate(45deg);background:#8e8e93;border-radius:3px;transition:left .6s,background .3s}
+.gate.ok{background:var(--ok)}
+.gate span{position:absolute;transform:rotate(-45deg);left:18px;top:-2px;font-size:11px;font-weight:700;font-family:var(--mono);white-space:nowrap}
+.gaxis{display:grid;grid-template-columns:230px 1fr;gap:14px;margin-top:6px}
+.gaxis .ax{position:relative;height:18px;font-family:var(--mono);font-size:11px;color:var(--mut)}
+.gaxis .ax span{position:absolute;transform:translateX(-50%)}
+.gnow{position:absolute;top:0;bottom:24px;width:2px;background:var(--acc);transition:left .3s;pointer-events:none}
+.gnow::before{content:attr(data-w);position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;color:#fff;background:var(--acc);padding:2px 7px;border-radius:980px;font-family:var(--mono);white-space:nowrap}
+.scrub{margin-top:18px}
+.phinfo{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.phinfo .card{background:var(--tile)}
+.phinfo h4{font-size:20px;font-weight:600;margin-top:6px}
+.phinfo p{font-size:14px;color:var(--mut);margin-top:8px;line-height:1.5}
+.decide{background:linear-gradient(135deg,#fff4ee,#fff);border:1px solid #f6d3c3}
+
+/* presupuesto */
+.bud{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+.cx{display:flex;flex-direction:column;gap:12px;margin-top:18px}
+.cxr .tp{display:flex;justify-content:space-between;font-size:14px;gap:10px}
+.cxr .tp b{font-family:var(--mono);white-space:nowrap}
+.cxr .tb{height:10px;border-radius:6px;background:#e5e5ea;margin-top:6px;overflow:hidden}
+.cxr .tb i{display:block;height:100%;width:0;border-radius:6px;transition:width 1.2s cubic-bezier(.28,.11,.32,1)}
+.opx{width:100%;border-collapse:collapse;margin-top:14px;font-size:13.5px}
+.opx td{padding:10px 6px;border-top:1px solid var(--ln);vertical-align:top;line-height:1.4}
+.opx td:nth-child(2){font-family:var(--mono);text-align:right;white-space:nowrap;font-weight:600}
+.opx tr:last-child td{font-weight:700}
+.roi{display:grid;grid-template-columns:1fr 1.2fr;gap:12px;margin-top:12px}
+.roiv{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:6px}
+.roiv div{background:var(--tile);border-radius:14px;padding:14px}
+.roiv b{font-size:26px;letter-spacing:-.03em;display:block;line-height:1.1}
+.roiv span{font-size:12px;color:var(--mut)}
+.cf svg{width:100%;height:auto;display:block;margin-top:10px}
+
+/* RACI */
+.gov{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+.gov .card b{font-size:12px;font-family:var(--mono);color:var(--acc)}
+.gov .card h4{font-size:17px;font-weight:600;margin-top:6px}
+.gov .card p{font-size:13.5px;color:var(--mut);margin-top:6px;line-height:1.45}
+.raci-w{margin-top:12px;background:var(--tile);border-radius:22px;padding:24px;overflow:auto}
+.raci{width:100%;border-collapse:separate;border-spacing:3px;font-size:13px;min-width:760px}
+.raci th{font-size:11.5px;font-weight:600;color:var(--mut);padding:6px 4px;vertical-align:bottom;transition:.2s}
+.raci th.on{color:var(--ink)}
+.raci td{text-align:center;padding:8px 4px;border-radius:7px;font-weight:700;font-family:var(--mono);font-size:12px;transition:.25s}
+.raci td:first-child{text-align:left;font-family:var(--font);font-weight:500;font-size:13.5px;padding-left:2px}
+.raci td.A{background:#1d1d1f;color:#fff}
+.raci td.R{background:var(--acc);color:#fff}
+.raci td.AR{background:linear-gradient(135deg,#1d1d1f 50%,#d97757 50%);color:#fff}
+.raci td.C{background:#e0e9f8;color:#2759a6}
+.raci td.I{background:#ececee;color:#8e8e93}
+.raci.f td:not(:first-child){opacity:.18}
+.raci.f td.sel{opacity:1}
+.team{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:12px}
+.team div{background:var(--tile);border-radius:16px;padding:14px}
+.team b{font-size:13.5px;display:block;line-height:1.3}
+.team span{font-size:12px;color:var(--mut);display:block;margin-top:6px}
+.team em{font-style:normal;font-size:11px;font-weight:700;color:var(--acc);display:block;margin-top:6px}
+
+/* checklists */
+.ckw{display:grid;grid-template-columns:300px 1fr;gap:12px;margin-top:40px}
+.cktabs{display:flex;flex-direction:column;gap:6px}
+.ckt{text-align:left;border:0;background:#fff;border-radius:14px;padding:12px 14px;cursor:pointer;transition:.2s;border:1px solid transparent}
+.ckt.on{border-color:var(--acc)}
+.ckt b{font-size:14px;display:block}
+.ckt span{font-size:12px;color:var(--mut)}
+.ckt .pb{height:4px;border-radius:4px;background:#e5e5ea;margin-top:8px;overflow:hidden}
+.ckt .pb i{display:block;height:100%;background:var(--acc);transition:width .4s}
+.ckbox{background:#fff;border-radius:22px;padding:26px;display:grid;grid-template-columns:1fr 150px;gap:20px}
+.ckbox h3{font-size:20px}
+.cki{display:flex;gap:12px;align-items:flex-start;padding:11px 10px;border-radius:12px;cursor:pointer;font-size:14.5px;line-height:1.4;transition:.2s;margin-top:4px}
+.cki:hover{background:var(--tile)}
+.cki .bx{width:22px;height:22px;border-radius:7px;border:2px solid #c7c7cc;flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff;transition:.2s}
+.cki.ck .bx{background:var(--ok);border-color:var(--ok)}
+.cki.ck .tx{color:var(--mut);text-decoration:line-through}
+.cki .gt{font-size:10.5px;font-weight:700;color:var(--acc);border:1px solid var(--acc);padding:1px 6px;border-radius:980px;margin-left:6px;white-space:nowrap}
+.ckside{text-align:center}
+.ckside svg{width:130px;height:130px}
+.gpill{display:inline-block;font-size:12px;font-weight:700;padding:5px 11px;border-radius:980px;margin-top:10px}
+.gpill.ok{background:#e3f6ea;color:var(--ok)}
+.gpill.no{background:#fdecec;color:var(--bad)}
+.ckside button{margin-top:12px;font-size:12px;border:0;background:none;color:var(--link);cursor:pointer}
+
+/* kpis */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:30px;text-align:left}
+.kc{background:var(--blk2);border-radius:20px;padding:22px}
+.kc .kt{font-size:15px;font-weight:600}
+.kc .kf{font-size:12px;color:#8e8e93;margin-top:4px;line-height:1.4;min-height:34px}
+.kc .kv{font-size:34px;font-weight:700;letter-spacing:-.04em;margin-top:14px;line-height:1;transition:color .4s}
+.kc .kv small{font-size:13px;color:#a1a1a6;font-weight:500;letter-spacing:0;margin-left:4px}
+.kc .kb{height:6px;border-radius:6px;background:rgba(255,255,255,.08);margin-top:14px;overflow:hidden}
+.kc .kb i{display:block;height:100%;border-radius:6px;transition:width 1s cubic-bezier(.28,.11,.32,1),background .4s}
+.kc .kd{display:flex;justify-content:space-between;font-size:11.5px;color:#8e8e93;margin-top:10px;gap:8px}
+.kc .kd b{color:var(--okd)}
+
+/* riesgos */
+.rk{display:grid;grid-template-columns:400px 1fr;gap:12px;margin-top:40px}
+.hm{display:grid;grid-template-columns:24px repeat(5,1fr);gap:4px}
+.hm .cell{aspect-ratio:1;border-radius:9px;display:flex;flex-wrap:wrap;gap:3px;align-items:center;justify-content:center;padding:3px}
+.hm .ax{font-family:var(--mono);font-size:11px;color:var(--mut);display:flex;align-items:center;justify-content:center}
+.rb{border:0;font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 6px;border-radius:7px;background:#fff;cursor:pointer;transition:.2s}
+.rb.on{background:#1d1d1f;color:#fff;transform:scale(1.1)}
+.hml{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut);margin-top:8px;padding-left:28px}
+.rdet .rid{font-family:var(--mono);font-size:12px;color:var(--acc);font-weight:700}
+.rdet h4{font-size:22px;font-weight:600;letter-spacing:-.02em;margin-top:6px;line-height:1.2}
+.rdet .ex{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.rdet .ex span{font-size:12px;font-weight:600;padding:5px 10px;border-radius:980px;background:var(--tile)}
+.rdet .mm{margin-top:16px;font-size:14.5px;line-height:1.55}
+.rdet .mm b{display:block;font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.rlist{display:flex;flex-direction:column;gap:6px;margin-top:18px}
+.rl{display:grid;grid-template-columns:34px 1fr 120px;gap:10px;align-items:center;font-size:13px;cursor:pointer;padding:4px 6px;border-radius:8px}
+.rl:hover{background:var(--tile)}
+.rl .id{font-family:var(--mono);font-weight:700;font-size:12px}
+.rl .eb{height:8px;border-radius:5px;background:#ececee;overflow:hidden}
+.rl .eb i{display:block;height:100%;width:0;transition:width 1s}
+
+/* cambio */
+.adk{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:40px}
+.ad{border:0;background:var(--tile);border-radius:18px;padding:18px 14px;text-align:left;cursor:pointer;transition:.3s}
+.ad .l{font-size:34px;font-weight:800;letter-spacing:-.04em;color:#c7c7cc;transition:.3s}
+.ad b{display:block;font-size:15px;margin-top:4px}
+.ad span{font-size:12px;color:var(--mut);font-family:var(--mono)}
+.ad.on{background:#1d1d1f;color:#fff}
+.ad.on .l{color:var(--accd)}
+.addet{margin-top:10px;background:var(--tile);border-radius:18px;padding:20px 22px;font-size:15px;line-height:1.5;min-height:66px}
+.pol{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.pol .card{display:flex;gap:14px;align-items:flex-start}
+.pol .ic{font-size:22px;flex:none;width:42px;height:42px;border-radius:12px;background:#fdf0ea;display:flex;align-items:center;justify-content:center}
+.pol p{font-size:14px;line-height:1.5}
+.cmpl{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+.cmpl h4{font-size:16px;font-weight:600}
+.cmpl p{font-size:13px;color:var(--mut);margin-top:8px;line-height:1.5}
+.close2{display:grid;grid-template-columns:1.3fr 1fr;gap:12px;margin-top:12px}
+.dl{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--ln);font-size:13.5px}
+.dl .ph{font-family:var(--mono);font-size:11.5px;font-weight:700;color:var(--acc)}
+.dl .ap{font-size:12px;color:var(--mut);text-align:right}
+.crit li{list-style:none;display:flex;gap:10px;font-size:14.5px;margin-top:12px;line-height:1.4}
+.crit i{font-style:normal;width:22px;height:22px;border-radius:50%;background:var(--ok);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;flex:none}
+.glo{margin-top:12px}
+.glo input{width:100%;font:inherit;font-size:15px;padding:12px 16px;border-radius:12px;border:1px solid var(--ln);background:#fff;margin-top:14px}
+.gl{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
+.gl div{background:#fff;border-radius:14px;padding:12px 14px;font-size:13.5px;line-height:1.45}
+.gl b{display:block;font-size:14px}
+.src{font-size:12.5px;color:var(--mut);margin-top:16px;line-height:1.6}
+
+.endcta{text-align:center}
+footer{background:var(--tile);color:var(--mut);font-size:12px;padding:22px;text-align:center;border-top:1px solid var(--ln);line-height:1.6}
+
+@media(max-width:1000px){
+  .hero-grid,.arch-wrap,.m70,.bud,.roi,.rk,.ckw,.close2,.scope{grid-template-columns:1fr}
+  .kgrid{grid-template-columns:repeat(3,1fr)}
+  .results{grid-template-columns:repeat(2,1fr)}
+  .gov,.kpis,.cmpl{grid-template-columns:repeat(2,1fr)}
+  .team{grid-template-columns:repeat(3,1fr)}
+  .smart,.pol{grid-template-columns:repeat(2,1fr)}
+  .gnav .links{display:none}
+}
+@media(max-width:760px){
+  .tile{padding:64px 16px}#hero{padding:52px 16px 56px}
+  .gnav .in{padding:0 16px}.gnav .back{display:none}
+  .gnav .brand span{display:none}
+  .kgrid{grid-template-columns:repeat(2,1fr)}
+  .ba,.smart,.pol,.gov,.kpis,.cmpl,.mods,.gl,.phinfo{grid-template-columns:1fr}
+  .results{grid-template-columns:1fr 1fr}
+  .team{grid-template-columns:1fr 1fr}
+  .adk{grid-template-columns:repeat(5,1fr);gap:4px}.ad{padding:12px 6px}.ad b{font-size:11px}.ad span{display:none}.ad .l{font-size:24px}
+  .grow,.gaxis{grid-template-columns:96px 1fr;gap:8px}.grow .gn{font-size:12px}.grow .gn small{display:none}
+  .gate span{display:none}
+  .wfr{grid-template-columns:110px 1fr 52px;font-size:12.5px}
+  .ckbox{grid-template-columns:1fr}.ckside{order:-1}
+  .chat{height:430px}
+  .rk{grid-template-columns:1fr}
+  .cfg td:first-child{white-space:normal}
+  .rl{grid-template-columns:30px 1fr 70px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<header class="gnav"><div class="in">
+  <a class="brand" href="/dir_sol_ti/proyectos/" data-en="Projects <span>· NetSuite – Claude MCP</span>">Proyectos <span>· NetSuite – Claude MCP</span></a>
+  <nav class="links" id="navlinks">
+    <a href="#resumen" data-en="Summary">Resumen</a><a href="#objetivos" data-en="Goals">Objetivos</a><a href="#arquitectura" data-en="Architecture">Arquitectura</a><a href="#modelo" data-en="The 70%">El 70%</a><a href="#roadmap">Roadmap</a><a href="#presupuesto" data-en="Budget &amp; ROI">Presupuesto</a><a href="#gobierno" data-en="Governance">Gobierno</a><a href="#checklists">Checklists</a><a href="#kpis">KPIs</a><a href="#riesgos" data-en="Risks">Riesgos</a><a href="#cambio" data-en="Change">Cambio</a>
+  </nav>
+  <div class="rt"><div class="lang"><a class="on" href="/dir_sol_ti/proyectos/netsuite-claude-mcp/" onclick="setL('es')">ES</a><a href="/dir_sol_ti/proyectos/netsuite-claude-mcp/en/" onclick="setL('en')">EN</a></div><a class="back" href="/dir_sol_ti/proyectos/" data-en="← All projects">← Todos los proyectos</a></div>
+</div></header>
+
+<main>
+<!-- HERO -->
+<section class="tile" id="hero"><div class="inner">
+  <div class="hero-grid">
+    <div>
+      <span class="badge"><span class="live"></span><span data-en="IA applied to finance · PMO case study">IA aplicada a Finanzas · Caso PMO</span></span>
+      <h1 class="h1">Conector Oracle NetSuite – <span class="grad">Claude AI</span> (MCP)</h1>
+      <div class="big70"><span class="grad" id="cnt70">−70%</span><small data-en="in report turnaround time">en tiempo de generación de reportes</small></div>
+      <p class="lead" data-en="Finance, Operations and Leadership ask NetSuite questions <b>in plain language</b>, with <b>the same permissions as their role</b> and without exporting data to Excel. NetSuite calculates; Claude asks and explains.">Finanzas, Operaciones y Dirección consultan NetSuite <b>en lenguaje natural</b>, con <b>los mismos permisos de su rol</b> y sin exportar datos a Excel. NetSuite calcula; Claude pregunta y explica.</p>
+      <div class="hero-cta"><a class="btn fill" href="#arquitectura" data-en="See how it works">Ver cómo funciona</a><a class="btn line" href="#modelo" data-en="Play with the 70% ›">Jugar con el 70% ›</a></div>
+    </div>
+    <div>
+      <div class="chat" aria-label="Demo">
+        <div class="bar"><i></i><i></i><i></i><span data-en="Claude · Finance project">Claude · Proyecto Finanzas</span><em class="conn"><i></i>NetSuite MCP</em></div>
+        <div class="msgs" id="msgs"></div>
+        <div class="inp"><span id="typing" data-ph="Pregunta a NetSuite…"></span><b>↑</b></div>
+      </div>
+      <div class="cmp">
+        <span data-en="Before">Antes</span><div class="bb"><i id="cmpA" style="background:#8e8e93"></i></div><b>3.0 h</b>
+        <span data-en="With MCP">Con MCP</span><div class="bb"><i id="cmpB" style="background:linear-gradient(90deg,#f0a07f,#d97757)"></i></div><b>0.9 h</b>
+      </div>
+      <div class="disc" data-en="Illustrative questions and figures. Time measured from request to validated delivery.">Preguntas y cifras ilustrativas. Tiempo medido de la solicitud a la entrega validada.</div>
+    </div>
+  </div>
+  <div class="kgrid">
+    <div class="k rv"><div class="n" data-c="3.0" data-d="1" data-s=" → 0.9 h">3.0 → 0.9 h</div><div class="l" data-en="avg. time per report">tiempo promedio por reporte</div></div>
+    <div class="k rv"><div class="n" data-c="882" data-s=" h">882 h</div><div class="l" data-en="analyst hours freed per month">horas-analista liberadas al mes</div></div>
+    <div class="k rv"><div class="n" data-c="120">120</div><div class="l" data-en="users in 4 countries">usuarios en 4 países</div></div>
+    <div class="k rv"><div class="n" data-c="26" data-p="" data-s=" sem">26 sem</div><div class="l" data-en="weeks · 7 phases · 5 gates">7 fases · 5 gates</div></div>
+    <div class="k rv"><div class="n" data-c="2.4" data-d="1" data-p="$" data-s=" MM">$2.4 MM</div><div class="l" data-en="MXN CAPEX">MXN de CAPEX</div></div>
+    <div class="k rv"><div class="n" data-c="153" data-p="≈" data-s="%">≈153%</div><div class="l" data-en="3-year ROI · 8-month payback">ROI a 3 años · recuperación en 8 meses</div></div>
+  </div>
+</div></section>
+
+<!-- RESUMEN -->
+<section class="tile dark" id="resumen"><div class="inner">
+  <div class="eyebrow"><span class="num">01</span><span data-en="Executive summary">Resumen ejecutivo</span></div>
+  <h2 class="h2" data-en="The 70% is not won by asking faster. It is won by <span class=grad>no longer exporting and stitching data together.</span>">El 70% no se gana preguntando más rápido. Se gana <span class="grad">dejando de exportar y armar datos.</span></h2>
+  <p class="lead" data-en="Extraction and Excel consolidation account for 1.7 of the 2.1 hours removed. Validation stays human by policy: every figure that leaves the company is checked against NetSuite.">La extracción y la consolidación en Excel explican 1.7 de las 2.1 h que se eliminan. La validación sigue siendo humana por política: toda cifra que sale se verifica contra NetSuite.</p>
+  <div style="margin-top:28px"><div class="seg" id="baSeg"><button class="on" data-k="0" data-en="Today">Hoy</button><button data-k="1" data-en="With the connector">Con el conector</button></div></div>
+  <div class="ba">
+    <div class="flow before"><h3><span data-en="Today: export and stitch">Hoy: exportar y armar</span><b id="baA">3.0 h</b></h3><div id="flowA"></div></div>
+    <div class="flow after"><h3><span data-en="With MCP: ask and validate">Con MCP: preguntar y validar</span><b id="baB" style="color:var(--okd)">0.9 h</b></h3><div id="flowB"></div></div>
+  </div>
+  <div class="results">
+    <div class="card rv"><div class="v grad">−70%</div><p data-en="Average time per report, sustained 4 consecutive weeks.">Tiempo promedio por reporte, sostenido 4 semanas consecutivas.</p></div>
+    <div class="card rv"><div class="v">882 h</div><p data-en="Analyst hours per month redeployed to analysis — not headcount cuts.">Horas-analista al mes reasignadas a análisis, no a recorte de plantilla.</p></div>
+    <div class="card rv"><div class="v">120</div><p data-en="Users in Mexico, Peru, Colombia and Chile using the connector.">Usuarios en México, Perú, Colombia y Chile operando con el conector.</p></div>
+    <div class="card rv"><div class="v">0</div><p data-en="Security incidents or improper data access attributable to the connector.">Incidentes de seguridad o acceso indebido atribuibles al conector.</p></div>
+    <div class="card rv"><div class="v">8 <small style="font-size:15px" data-en="months">meses</small></div><p data-en="Payback after rollout; 3-year ROI ≈ 153%.">Recuperación después del despliegue; ROI a 3 años ≈ 153%.</p></div>
+  </div>
+  <p class="note" data-en="Planning assumptions: NetSuite OneWorld with 12 subsidiaries in 4 countries; kickoff January 2027 (W1); 420 recurring and ad hoc reports per month. The baseline is replaced by real measurement at Gate 1.">Supuestos de planeación: NetSuite OneWorld con 12 subsidiarias en 4 países; arranque en enero 2027 (S1); 420 reportes recurrentes y ad hoc al mes. La línea base se reemplaza por la medición real al cerrar el Gate 1.</p>
+</div></section>
+
+<!-- OBJETIVOS -->
+<section class="tile" id="objetivos"><div class="inner">
+  <div class="eyebrow"><span class="num">02</span><span data-en="Project charter">Project Charter</span></div>
+  <h2 class="h2" data-en="Six SMART objectives. <span class=grad>Speed never at the expense of accuracy.</span>">Seis objetivos SMART. <span class="grad">Velocidad sin sacrificar exactitud.</span></h2>
+  <p class="lead" data-en="The charter authorizes the Head of IT as Project Manager within $2.4 MM MXN, 26 weeks and the defined scope. Any deviation &gt; 5% in cost or &gt; 2 weeks on the critical path escalates to the Steering Committee.">El charter autoriza al Director de TI como Project Manager dentro de $2.4 MM MXN, 26 semanas y el alcance descrito. Cualquier desviación &gt; 5% en costo o &gt; 2 semanas en ruta crítica escala al Comité Directivo.</p>
+  <div class="smart" id="smart"></div>
+  <div class="scope">
+    <div class="card rv">
+      <h3 data-en="In scope">Alcance incluido</h3>
+      <div class="mods" id="mods"></div>
+      <div class="dom" id="doms"></div>
+    </div>
+    <div class="card rv">
+      <h3 data-en="Out of scope">Fuera de alcance</h3>
+      <ul class="lst out" id="outs"></ul>
+      <h3 style="margin-top:22px" data-en="Sponsorship">Patrocinio</h3>
+      <div class="spons" id="spons"></div>
+    </div>
+  </div>
+  <div class="card rv" style="margin-top:12px">
+    <h3 data-en="Assumptions and constraints">Supuestos y restricciones</h3>
+    <ul class="lst in" id="assume"></ul>
+  </div>
+</div></section>
+
+<!-- ARQUITECTURA -->
+<section class="tile white" id="arquitectura"><div class="inner">
+  <div class="eyebrow"><span class="num">03</span><span data-en="Target architecture &amp; security">Arquitectura objetivo y seguridad</span></div>
+  <h2 class="h2" data-en="Claude only sees NetSuite <span class=grad>through the user’s role.</span>">Claude solo ve NetSuite <span class="grad">a través del rol del usuario.</span></h2>
+  <p class="lead" data-en="No custom MCP server is built: Oracle’s <b>NetSuite AI Connector Service</b> enforces each user’s role permissions, and only the tools that calculate corporate KPIs are developed. Security risk stays inside the NetSuite role model the company already audits.">No se construye un servidor MCP propio: se usa el <b>NetSuite AI Connector Service</b> de Oracle, que hace cumplir los permisos del rol de cada usuario, y solo se desarrollan las herramientas que calculan los KPIs corporativos. El riesgo de seguridad queda en el modelo de roles de NetSuite, que la empresa ya audita.</p>
+  <div class="arch-wrap">
+    <div class="arch-svg rv">
+      <svg viewBox="0 0 1000 640" role="img" aria-label="Arquitectura">
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#b8b8be"/></marker></defs>
+        <rect class="cont" x="30" y="282" width="660" height="340" rx="22"/>
+        <text x="56" y="316" font-size="17" font-weight="700" fill="#1d1d1f" id="tOra">Oracle NetSuite OneWorld (Sandbox → Producción)</text>
+        <path class="lk" id="l1" d="M360 102 V150" marker-end="url(#ar)"/>
+        <path class="lk" id="l2" d="M600 240 V334" marker-end="url(#ar)"/>
+        <path class="lk" id="l3" d="M205 414 V444" marker-end="url(#ar)"/>
+        <path class="lk" id="l4" d="M515 414 V444" marker-end="url(#ar)"/>
+        <path class="lk" id="l5" d="M205 514 V532" marker-end="url(#ar)"/>
+        <path class="lk" id="l6" d="M515 514 V532" marker-end="url(#ar)"/>
+        <path class="lk" id="l7" d="M660 374 H730" marker-end="url(#ar)"/>
+        <text class="lbl" x="372" y="132" id="tNL">pregunta en lenguaje natural</text>
+        <text class="lbl" x="612" y="275">MCP · streamable HTTP</text>
+        <text class="lbl" x="612" y="293">OAuth 2.0 + PKCE</text>
+        <g class="nd" id="nU"><rect x="60" y="22" width="600" height="80" rx="16"/><text class="t" x="84" y="56" id="tU1">Usuarios del negocio</text><text class="s" x="84" y="82" id="tU2">120 usuarios · Finanzas, Operaciones y Dirección · MX PE CO CL</text></g>
+        <g class="nd cl" id="nC"><rect x="60" y="150" width="600" height="90" rx="16"/><text class="t" x="84" y="184">Claude (Team / Enterprise)</text><text class="s" x="84" y="210" id="tC2">Proyectos por área · biblioteca de prompts aprobados</text><text class="s" x="84" y="229" id="tC3">Conector remoto MCP hacia la cuenta de NetSuite</text></g>
+        <g class="nd core" id="nK"><rect x="60" y="334" width="600" height="80" rx="16"/><text class="t" x="84" y="366" id="tK1">NetSuite AI Connector Service (servidor MCP)</text><text class="s" x="84" y="392" id="tK2">Aplica el rol del usuario · Administrador bloqueado · solo lectura</text></g>
+        <g class="nd" id="nS"><rect x="60" y="444" width="290" height="70" rx="14"/><text class="t" x="80" y="474" font-size="17">MCP Standard Tools</text><text class="s" x="80" y="498" id="tS2">Saved searches · SuiteQL lectura</text></g>
+        <g class="nd" id="nO"><rect x="370" y="444" width="290" height="70" rx="14"/><text class="t" x="390" y="474" id="tO1">Herramientas MCP propias</text><text class="s" x="390" y="498" id="tO2">SuiteScript · KPIs certificados</text></g>
+        <g class="nd" id="nD"><rect x="60" y="532" width="600" height="72" rx="14"/><text class="t" x="84" y="557" style="font-size:16px" id="tD1">Datos de NetSuite · 12 subsidiarias</text>
+          <g id="subs"></g></g>
+        <g class="nd" id="nL"><rect x="730" y="334" width="240" height="80" rx="16"/><text class="t" x="750" y="366" id="tL1">SIEM corporativo</text><text class="s" x="750" y="392" id="tL2">Bitácora MCP · alertas</text></g>
+        <g id="pkt" style="opacity:0"><circle r="11" fill="#d97757"/><circle r="18" fill="#d97757" opacity=".25"/></g>
+      </svg>
+    </div>
+    <div class="side-p">
+      <div class="card stepbox rv">
+        <div class="sn" id="stN">PASO 0 / 7</div>
+        <h4 id="stT"></h4>
+        <p id="stP"></p>
+        <div class="dots" id="stD"></div>
+        <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap"><button class="btn fill" id="play" style="font-size:14px;padding:8px 16px" data-en="▶ Play a query">▶ Reproducir consulta</button><button class="chip" id="nextS" data-en="Next step ›">Paso siguiente ›</button></div>
+      </div>
+      <div class="card rolebox rv">
+        <h3 data-en="Try a role">Prueba un rol</h3>
+        <div class="chips" id="roles" style="margin-top:12px"></div>
+        <p id="roleTx"></p>
+        <div class="vis" id="vis"></div>
+      </div>
+    </div>
+  </div>
+  <div class="card rv" style="margin-top:12px">
+    <h3 data-en="Configuration">Configuración</h3>
+    <table class="cfg" id="cfg"></table>
+    <p class="note" data-en="Claude requests data; NetSuite computes it. Figures in certified reports come from saved searches and custom tools — never from the model calculating over exported data.">Claude pide datos; NetSuite los calcula. Las cifras de los reportes certificados salen de saved searches y herramientas propias, nunca de cálculos del modelo sobre datos exportados.</p>
+  </div>
+</div></section>
+
+<!-- MODELO 70 -->
+<section class="tile dark" id="modelo"><div class="inner">
+  <div class="eyebrow"><span class="num">04</span><span data-en="Baseline &amp; the 70% model">Línea base y modelo del 70%</span></div>
+  <h2 class="h2" data-en="Move the levers. <span class=grad>See whether the 70% holds.</span>">Mueve las palancas. <span class="grad">Comprueba si el 70% se sostiene.</span></h2>
+  <p class="lead" data-en="The 70% is the drop in the volume-weighted average time per report, from request to validated delivery, against a 3-week baseline signed by the Controller at Gate 1. Weighting by volume prevents hitting the goal with rare reports.">El 70% es la caída del tiempo promedio ponderado por volumen, de la solicitud a la entrega validada, contra una línea base de 3 semanas firmada por el Contralor en el Gate 1. Ponderar por volumen evita cumplir la meta solo con reportes raros.</p>
+  <div class="m70">
+    <div class="card rv">
+      <h3 data-en="Hours per report (waterfall)">Horas por reporte (cascada)</h3>
+      <div class="wf" id="wf"></div>
+      <div class="slid" id="sl"></div>
+    </div>
+    <div class="card gauge rv">
+      <div class="mut" style="font-size:13px" data-en="Weighted reduction">Reducción ponderada</div>
+      <div class="gv" id="gv">70%</div>
+      <div class="gs" id="gs">3.0 h → 0.9 h</div>
+      <div class="pill ok" id="gp"></div>
+      <div class="formula">
+        <span data-en="Reduction">Reducción</span> = 1 − <span class="fr"><span>Σ t<sub>i</sub><sup>post</sup> · v<sub>i</sub></span><span>Σ t<sub>i</sub><sup>base</sup> · v<sub>i</sub></span></span> ≥ 70%
+      </div>
+      <div class="minis">
+        <div><b id="mH">882 h</b><span data-en="analyst hours freed / month">horas-analista liberadas / mes</span></div>
+        <div><b id="mR">420</b><span data-en="reports / month (assumed)">reportes / mes (supuesto)</span></div>
+      </div>
+      <p class="note" style="text-align:left" data-en="How the baseline is measured (Phase 1): analysts’ daily log per report and activity, cross-checked with service-desk tickets, for 3 weeks that include a month-end close.">Cómo se mide la línea base (F1): bitácora diaria de los analistas por reporte y actividad, cruzada con tickets de la mesa de servicio, durante 3 semanas que incluyan un cierre de mes.</p>
+    </div>
+  </div>
+  <div class="rule rv"><div class="ic">⏱️</div><p data-en="<b>Measurement rule:</b> time runs from request to validated delivery, not just query time. A report Claude generates in 2 minutes but the analyst then corrects for 1 hour counts as 1 hour.">
+    <b>Regla de medición:</b> el tiempo va de la solicitud a la entrega validada, no solo el tiempo de consulta. Un reporte que Claude genera en 2 minutos pero que el analista corrige durante 1 h cuenta 1 h.</p></div>
+</div></section>
+
+<!-- ROADMAP -->
+<section class="tile" id="roadmap"><div class="inner">
+  <div class="eyebrow"><span class="num">05</span>Roadmap</div>
+  <h2 class="h2" data-en="26 weeks, 7 phases, 5 gates. <span class=grad>The pilot decides the rollout.</span>">26 semanas, 7 fases, 5 gates. <span class="grad">El piloto decide el despliegue.</span></h2>
+  <p class="lead" data-en="Critical path: Build → Pilot → Waves. The Finance Mexico pilot starts in W14 so it covers a full month-end close. Simulate the Gate 4 decision below.">Ruta crítica: Construcción → Piloto → Olas. El piloto de Finanzas México arranca en S14 para incluir un cierre contable completo. Simula abajo la decisión del Gate 4.</p>
+  <div class="gwrap rv">
+    <div class="gtop">
+      <div><b style="font-size:17px" data-en="Master plan · W1 (Jan 2027) to W26 (Jun 2027)">Plan maestro · S1 (enero 2027) a S26 (junio 2027)</b></div>
+      <div class="seg" id="g4"><button class="on" data-k="1" data-en="Pilot hits −50% and 98%">Piloto logra −50% y 98%</button><button data-k="0" data-en="Pilot misses">Piloto no llega</button></div>
+    </div>
+    <div class="gantt" id="gantt"><div class="gnow" id="gnow" data-w="S1"></div></div>
+    <div class="gaxis"><div></div><div class="ax" id="gax"></div></div>
+    <div class="scrub"><input type="range" id="wk" min="1" max="26" value="1" aria-label="Semana"></div>
+  </div>
+  <div class="phinfo">
+    <div class="card rv"><span class="mut" style="font-family:var(--mono);font-size:12px" id="phW"></span><h4 id="phT"></h4><p id="phP"></p></div>
+    <div class="card decide rv"><span class="mut" style="font-family:var(--mono);font-size:12px">GATE 4 · S18</span><h4 id="g4T"></h4><p id="g4P"></p></div>
+  </div>
+</div></section>
+
+<!-- PRESUPUESTO -->
+<section class="tile white" id="presupuesto"><div class="inner">
+  <div class="eyebrow"><span class="num">06</span><span data-en="CAPEX, OPEX &amp; ROI">Presupuesto CAPEX, OPEX y ROI</span></div>
+  <h2 class="h2" data-en="$2.4 MM in. <span class=grad>$4.8 MM a year back.</span>">$2.4 MM de inversión. <span class="grad">$4.8 MM al año de regreso.</span></h2>
+  <p class="lead" data-en="With $1.1 MM MXN of annual OPEX, the project frees $4.8 MM MXN a year in analyst hours. The largest line item is building the custom MCP tools and certifying the data — accuracy is what sustains adoption.">Con $1.1 MM MXN anuales de OPEX, el proyecto libera $4.8 MM MXN al año en horas-analista. El mayor rubro es construir las herramientas MCP propias y certificar los datos, porque la exactitud es lo que sostiene la adopción.</p>
+  <div class="bud">
+    <div class="card rv"><h3 data-en="CAPEX · $2.4 MM MXN">CAPEX · $2.4 MM MXN</h3><div class="cx" id="cx"></div></div>
+    <div class="card rv"><h3 data-en="Recurring OPEX (from W18)">OPEX recurrente (desde S18)</h3><table class="opx" id="opx"></table>
+      <p class="note" data-en="Claude price to be confirmed with Anthropic; confirm with the Oracle account executive that the AI Connector Service carries no additional cost.">Precio de Claude a confirmar con Anthropic; confirmar con el ejecutivo de cuenta de Oracle que el AI Connector Service no tiene costo adicional.</p></div>
+  </div>
+  <div class="roi">
+    <div class="card rv">
+      <h3 data-en="ROI simulator">Simulador de ROI</h3>
+      <div class="slid" id="roiS"></div>
+    </div>
+    <div class="card cf rv">
+      <div class="roiv">
+        <div><b id="rB">$4.76 MM</b><span data-en="annual benefit">beneficio anual</span></div>
+        <div><b id="rN">$3.68 MM</b><span data-en="net annual benefit (less OPEX)">beneficio neto anual (menos OPEX)</span></div>
+        <div><b id="rP">8 meses</b><span data-en="payback after rollout">recuperación después del despliegue</span></div>
+        <div><b id="rR" class="grad">153%</b><span data-en="3-year ROI">ROI a 3 años</span></div>
+      </div>
+      <svg id="cfs" viewBox="0 0 600 200" aria-label="Flujo acumulado"></svg>
+      <p class="note" data-en="Benefit is capacity redeployed to analysis. Even if it is not redeployed, the case holds thanks to faster close and answers to Leadership in hours instead of days.">El beneficio es capacidad reasignada a análisis; si no se reasigna, el caso se sostiene igual por el cierre más rápido y la respuesta a Dirección en horas en vez de días.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- GOBIERNO -->
+<section class="tile" id="gobierno"><div class="inner">
+  <div class="eyebrow"><span class="num">07</span><span data-en="Governance, RACI &amp; team">Gobierno, RACI y equipo</span></div>
+  <h2 class="h2" data-en="IT leads it. <span class=grad>Finance certifies the truth.</span>">TI lo dirige. <span class="grad">Finanzas certifica la verdad.</span></h2>
+  <p class="lead" data-en="If the Controller does not sign off on which report is the truth, the connector just answers faster with something nobody trusts.">Si el Contralor no firma qué reporte es la verdad, el conector solo responde más rápido algo que nadie confía.</p>
+  <div class="gov" id="gov"></div>
+  <div class="raci-w rv">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px"><h3 style="font-size:19px" data-en="RACI matrix · filter by role">Matriz RACI · filtra por rol</h3><div class="chips" id="rf"></div></div>
+    <table class="raci" id="raci" style="margin-top:16px"></table>
+    <p class="note" data-en="R = Responsible · A = Accountable · C = Consulted · I = Informed">R = Responsable · A = Aprueba · C = Consultado · I = Informado</p>
+  </div>
+  <div class="team" id="team"></div>
+</div></section>
+
+<!-- CHECKLISTS -->
+<section class="tile white" id="checklists"><div class="inner">
+  <div class="eyebrow"><span class="num">08</span><span data-en="Phase checklists">Checklists por fase</span></div>
+  <h2 class="h2" data-en="A phase closes only <span class=grad>when every box is ticked.</span>">Una fase se cierra solo <span class="grad">con todos sus puntos marcados.</span></h2>
+  <p class="lead" data-en="Tick items to see whether the gate can be approved. Your progress is saved in this browser.">Marca los puntos para ver si el gate se puede aprobar. Tu avance se guarda en este navegador.</p>
+  <div class="ckw">
+    <div class="cktabs" id="cktabs"></div>
+    <div class="ckbox"><div id="cklist"></div>
+      <div class="ckside"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#e5e5ea" stroke-width="12"/><circle id="ckArc" cx="60" cy="60" r="50" fill="none" stroke="#d97757" stroke-width="12" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="314.16" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset .5s"/><text id="ckPct" x="60" y="67" text-anchor="middle" font-size="22" font-weight="700" fill="#1d1d1f">0%</text></svg>
+        <div class="gpill no" id="ckGate"></div><div class="mut" style="font-size:12.5px;margin-top:8px" id="ckTxt"></div><button id="ckReset" data-en="Reset phase">Reiniciar fase</button></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- KPIS -->
+<section class="tile dark" id="kpis"><div class="inner ctr">
+  <div class="eyebrow"><span class="num">09</span><span data-en="KPIs &amp; benefit measurement">KPIs y medición de beneficios</span></div>
+  <h2 class="h2" data-en="One guiding KPI. <span class=grad>Seven guardrails.</span>">Un KPI rector. <span class="grad">Siete que lo protegen.</span></h2>
+  <p class="lead" data-en="The others exist so the 70% is never achieved at the cost of accuracy or security. Weekly dashboard from W14; FP&amp;A audits the W26 result.">Los demás existen para impedir que el 70% se logre a costa de exactitud o seguridad. Tablero semanal desde S14; FP&amp;A audita el resultado de S26.</p>
+  <div style="margin-top:26px"><div class="seg" id="kseg"><button class="on" data-k="0" data-en="Baseline">Línea base</button><button data-k="1" data-en="Goal W26">Meta S26</button></div></div>
+  <div class="kpis" id="kpiGrid"></div>
+</div></section>
+
+<!-- RIESGOS -->
+<section class="tile" id="riesgos"><div class="inner">
+  <div class="eyebrow"><span class="num">10</span><span data-en="Risk matrix">Matriz de riesgos</span></div>
+  <h2 class="h2" data-en="Two risks can sink the goal. <span class=grad>Both are controlled before the pilot.</span>">Dos riesgos pueden tumbar la meta. <span class="grad">Ambos se controlan antes del piloto.</span></h2>
+  <p class="lead" data-en="Wrong answers that destroy trust (R1) and badly designed permissions that expose another subsidiary’s data (R2). Click any risk on the heatmap.">Respuestas incorrectas que destruyan la confianza (R1) y permisos mal diseñados que expongan datos de otra subsidiaria (R2). Haz clic en cualquier riesgo del mapa.</p>
+  <div class="rk">
+    <div class="card rv"><div class="hm" id="hm"></div><div class="hml"><span data-en="← Probability →">← Probabilidad →</span><span data-en="(rows: impact)">(filas: impacto)</span></div><div class="rlist" id="rlist"></div></div>
+    <div class="card rdet rv" id="rdet"></div>
+  </div>
+</div></section>
+
+<!-- CAMBIO -->
+<section class="tile white" id="cambio"><div class="inner">
+  <div class="eyebrow"><span class="num">11</span><span data-en="Change, AI policy, compliance &amp; closure">Cambio, política de IA, cumplimiento y cierre</span></div>
+  <h2 class="h2" data-en="The 70% is won in adoption, <span class=grad>not in technology.</span>">El 70% se gana en la adopción, <span class="grad">no en la tecnología.</span></h2>
+  <p class="lead" data-en="The goal is reached when the 50 reports that concentrate the effort stop being built in Excel.">La meta se alcanza cuando los 50 reportes que concentran el esfuerzo dejan de hacerse en Excel.</p>
+  <div class="adk" id="adk"></div>
+  <div class="addet" id="addet"></div>
+  <h3 style="font-size:22px;margin-top:44px;letter-spacing:-.02em" data-en="AI usage policy">Política de uso de IA</h3>
+  <div class="pol" id="pol"></div>
+  <h3 style="font-size:22px;margin-top:44px;letter-spacing:-.02em" data-en="Regulatory compliance &amp; security">Cumplimiento regulatorio y seguridad</h3>
+  <div class="cmpl" id="cmpl"></div>
+  <div class="close2">
+    <div class="card rv"><h3 data-en="Project deliverables">Entregables documentales</h3><div id="dels" style="margin-top:10px"></div></div>
+    <div class="card rv"><h3 data-en="Closure criteria · W26">Criterios de cierre · S26</h3><ul class="crit" id="crit"></ul></div>
+  </div>
+  <div class="card glo rv">
+    <h3 data-en="Glossary">Glosario</h3>
+    <input id="gq" type="search" placeholder="Buscar término (MCP, PKCE, SuiteQL…)" aria-label="Glosario">
+    <div class="gl" id="gl"></div>
+    <p class="src" data-en="Sources: Oracle — NetSuite AI Connector Service FAQ · Connect to the NetSuite AI Connector Service · MCP Standard Tools SuiteApp.">Fuentes: Oracle — NetSuite AI Connector Service FAQ · Connect to the NetSuite AI Connector Service · MCP Standard Tools SuiteApp.</p>
+  </div>
+</div></section>
+
+<section class="tile dark endcta"><div class="inner">
+  <h2 class="h2" style="margin:0 auto" data-en="NetSuite calculates. Claude explains. <span class=grad>Finance decides.</span>">NetSuite calcula. Claude explica. <span class="grad">Finanzas decide.</span></h2>
+  <p class="lead" data-en="Project designed and documented by Fernando Gómez Guerrero as Project Manager.">Proyecto diseñado y documentado por Fernando Gómez Guerrero como Project Manager.</p>
+  <div class="hero-cta" style="justify-content:center"><a class="btn fill" href="/dir_sol_ti/proyectos/" id="ctaMore" data-en="See more projects">Ver más proyectos</a><a class="btn line" href="/dir_sol_ti/" data-en="See profile ›">Ver perfil ›</a></div>
+</div></section>
+</main>
+
+<footer data-en="© 2026 Fernando Gómez Guerrero · Oracle NetSuite – Claude AI (MCP) Connector Project<br>Based on the project’s PMO document (v1.0). Baselines are planning assumptions; chat figures are illustrative.">© 2026 Fernando Gómez Guerrero · Proyecto Conector Oracle NetSuite – Claude AI (MCP)<br>Basado en el documento PMO del proyecto (v1.0). Las líneas base son supuestos de planeación; las cifras del chat son ilustrativas.</footer>
+
+<script>
+(function(){
+const EN=document.documentElement.lang==='en';
+const T=(es,en)=>EN?en:es;
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const fmt=(n,d=0)=>n.toLocaleString(EN?'en-US':'es-MX',{minimumFractionDigits:d,maximumFractionDigits:d});
+if(EN){$$('[data-en]').forEach(e=>e.innerHTML=e.dataset.en);
+  $('#typing').dataset.ph='Ask NetSuite…';$('#gq').placeholder='Search a term (MCP, PKCE, SuiteQL…)';$('#ctaMore').href='/dir_sol_ti/proyectos/en/';
+  $$('a.brand,a.back').forEach(a=>a.href='/dir_sol_ti/proyectos/en/');
+  $$('.k .n').forEach(e=>{if(e.dataset.s===' sem')e.dataset.s=' wks'});
+  [['tOra','Oracle NetSuite OneWorld (Sandbox → Production)'],['tNL','natural-language question'],['tU1','Business users'],['tU2','120 users · Finance, Operations and Leadership · MX PE CO CL'],['tC2','Projects per area · approved prompt library'],['tC3','Remote MCP connector to the NetSuite account'],['tK1','NetSuite AI Connector Service (MCP server)'],['tK2','Enforces the user’s role · Administrator blocked · read-only'],['tS2','Saved searches · read-only SuiteQL'],['tO1','Custom MCP tools'],['tO2','SuiteScript · certified KPIs'],['tD1','NetSuite data · 12 subsidiaries'],['tL1','Corporate SIEM'],['tL2','MCP execution log · alerts']].forEach(([i,t])=>{const el=document.getElementById(i);if(el)el.textContent=t})}
+
+/* helpers */
+function watch(el,fn,th=.35){if(!el)return;const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fn();io.disconnect()}}),{threshold:th});io.observe(el)}
+function reveal(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});$$('.rv:not(.in)').forEach(el=>io.observe(el))}
+function countUp(el){const t=+el.dataset.c,d=+(el.dataset.d||0),p=el.dataset.p||'',s=el.dataset.s||'';if(RM){el.textContent=p+fmt(t,d)+s;return}
+ const t0=performance.now(),D=1300;(function f(n){const k=Math.min(1,(n-t0)/D),e=1-Math.pow(1-k,3);el.textContent=p+fmt(t*e,d)+s;if(k<1)requestAnimationFrame(f)})(t0)}
+$$('.k .n').forEach(el=>watch(el,()=>countUp(el)));
+
+/* progress + nav */
+const secs=$$('main section[id]'),nl=$$('#navlinks a');
+addEventListener('scroll',()=>{const h=document.documentElement;$('#prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+ let cur='';secs.forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id});nl.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))},{passive:true});
+
+/* HERO chat */
+const SC=[
+ {q:T('¿Antigüedad de saldos de CxC de Perú al 31 de octubre?','AR aging for Peru as of October 31?'),tool:'ns_runSavedSearch',src:T('CxC · Antigüedad (certificada)','AR · Aging (certified)'),role:T('Finanzas PE','Finance PE'),lb:[T('0–30 d','0–30 d'),'31–60','61–90','>90'],v:[62,21,11,6],u:'%',a:T('S/ 18.4 M por cobrar; 6% con más de 90 días, concentrado en 3 clientes.','S/ 18.4 M receivable; 6% over 90 days, concentrated in 3 customers.')},
+ {q:T('Presupuesto vs real de gasto operativo del Q3 por país','Q3 operating expense, budget vs actual, by country'),tool:'kpi_presupuestoVsReal',src:T('herramienta propia · SuiteScript','custom tool · SuiteScript'),role:T('Dirección','Leadership'),lb:['MX','PE','CO','CL'],v:[97,102,99,104],u:'%',a:T('Consolidado al 99.6% del presupuesto; Chile +4% por fletes.','Consolidated at 99.6% of budget; Chile +4% due to freight.')},
+ {q:T('Margen bruto por línea de producto, Chile vs Colombia','Gross margin by product line, Chile vs Colombia'),tool:'ns_runReport',src:T('Ventas y margen','Sales & margin'),role:T('Operaciones','Operations'),lb:[T('Línea 1','Line 1'),T('Línea 2','Line 2'),T('Línea 3','Line 3'),T('Línea 4','Line 4')],v:[34,29,41,26],u:'%',a:T('La línea 3 lidera con 41%; la 4 cae 3 pp vs el trimestre anterior.','Line 3 leads at 41%; line 4 is down 3 pp vs last quarter.')},
+ {q:T('Flujo de efectivo consolidado en MXN, próximas 4 semanas','Consolidated cash flow in MXN, next 4 weeks'),tool:'kpi_flujoConsolidado',src:T('herramienta propia · 12 subsidiarias','custom tool · 12 subsidiaries'),role:T('Finanzas MX','Finance MX'),lb:['S1','S2','S3','S4'],v:[42,38,45,51],u:'',a:T('$176 MM MXN acumulados; ninguna semana con saldo negativo.','$176 MM MXN cumulative; no week with a negative balance.')}];
+const msgs=$('#msgs'),typ=$('#typing');let si=0;
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+function add(html,cls){const d=document.createElement('div');d.className=cls;d.innerHTML=html;msgs.appendChild(d);return d}
+function bars(s){const mx=Math.max(...s.v);return `<div class="mbars">${s.v.map((v,i)=>`<div><b>${v}${s.u}</b><i data-h="${v/mx*100}"></i><span>${s.lb[i]}</span></div>`).join('')}</div>`}
+async function runScene(){
+ const s=SC[si%SC.length];si++;msgs.innerHTML='';typ.textContent='';
+ for(const ch of s.q){typ.textContent+=ch;await wait(28)}
+ await wait(350);typ.textContent='';add(s.q,'mu');await wait(500);
+ const t=add(`<div class="r"><span class="sp"></span><span>${s.tool}</span></div><div class="m">${s.src} · ${T('rol','role')}: ${s.role}</div>`,'mt');
+ await wait(1300);t.classList.add('done');t.querySelector('.m').innerHTML+=` · ${(0.8+Math.random()*1.2).toFixed(1)} s`;
+ await wait(300);const a=add(`<div class="who">Claude</div><p>${s.a}</p>${bars(s)}<div class="ok-line">✓ ${T('Cuadra con el reporte oficial de NetSuite','Matches the official NetSuite report')}</div>`,'ma');
+ await wait(60);a.querySelectorAll('.mbars i').forEach(i=>i.style.height=i.dataset.h*.62+'px');
+ await wait(4200);runScene()}
+if(RM){const s=SC[0];add(s.q,'mu');add(`<div class="r"><span class="sp"></span><span>${s.tool}</span></div><div class="m">${s.src}</div>`,'mt done');const a=add(`<div class="who">Claude</div><p>${s.a}</p>${bars(s)}`,'ma');a.querySelectorAll('.mbars i').forEach(i=>i.style.height=i.dataset.h*.62+'px')}
+else runScene();
+setTimeout(()=>{$('#cmpA').style.width='100%';$('#cmpB').style.width='30%'},400);
+
+/* BEFORE / AFTER */
+const FA=[['📤',T('Extraer datos','Extract data'),T('Exportar saved searches a CSV, una por subsidiaria','Export saved searches to CSV, one per subsidiary'),'1.0+'],
+ ['🧮',T('Consolidar en Excel','Consolidate in Excel'),T('Unir 12 subsidiarias y monedas a mano','Merge 12 subsidiaries and currencies by hand'),'0.7+'],
+ ['🔍',T('Validar y conciliar','Validate & reconcile'),T('Revisar contra el reporte oficial','Check against the official report'),''],
+ ['🎨',T('Formato y distribución','Format & distribute'),T('Armar la presentación y enviarla','Build the deck and send it'),'']];
+const FB=[['💬',T('Preguntar en lenguaje natural','Ask in plain language'),T('Desde el proyecto de Claude del área','From the area’s Claude project')],
+ ['⚙️',T('NetSuite calcula','NetSuite calculates'),T('Saved searches certificadas y herramientas MCP propias','Certified saved searches and custom MCP tools')],
+ ['✅',T('Validar contra NetSuite','Validate against NetSuite'),T('Fuente única: se reduce, no desaparece','Single source: shorter, never skipped')],
+ ['📨',T('Entregar con plantilla','Deliver with a template'),T('Plantillas de respuesta por reporte','Response templates per report')]];
+$('#flowA').innerHTML=FA.map(f=>`<div class="stp"><div class="ic">${f[0]}</div><div class="tx">${f[1]}<small>${f[2]}</small></div></div>`).join('');
+$('#flowB').innerHTML=FB.map(f=>`<div class="stp"><div class="ic">${f[0]}</div><div class="tx">${f[1]}<small>${f[2]}</small></div></div>`).join('');
+let baT=null,baI=0;
+function baShow(k){$$('#baSeg button').forEach(b=>b.classList.toggle('on',+b.dataset.k===k));
+ const A=$$('#flowA .stp'),B=$$('#flowB .stp');clearInterval(baT);baI=0;A.forEach(x=>x.classList.remove('on','gone'));B.forEach(x=>x.classList.remove('on'));
+ const L=k?B:A;baT=setInterval(()=>{if(baI<L.length){L[baI].classList.add('on');if(k&&baI<2)A[baI].classList.add('gone');baI++}else clearInterval(baT)},RM?0:520)}
+$$('#baSeg button').forEach(b=>b.onclick=()=>baShow(+b.dataset.k));
+watch($('#flowA'),()=>{baShow(0);if(!RM)setTimeout(()=>baShow(1),3600)});
+
+/* SMART */
+const SM=[['O1','−70%',T('Reducir el tiempo de reportes','Cut report time'),T('Tiempo promedio ponderado por reporte vs línea base.','Weighted average time per report vs baseline.'),'S26'],
+ ['O2','≥ 98%',T('Exactitud de la información','Information accuracy'),T('Respuestas que cuadran con el reporte oficial de NetSuite.','Answers that match the official NetSuite report.'),T('S18 piloto','W18 pilot')],
+ ['O3','≥ 80%',T('Adopción del conector','Connector adoption'),T('Usuarios activos semanales / habilitados (96 de 120).','Weekly active / enabled users (96 of 120).'),'S26'],
+ ['O4','0',T('Seguridad y cumplimiento','Security & compliance'),T('Incidentes de acceso indebido o fuga de datos.','Incidents of improper access or data leakage.'),T('Continuo','Ongoing')],
+ ['O5','≥ 60%',T('Autoservicio','Self-service'),T('Reportes resueltos sin intervención de TI o FP&A.','Reports resolved without IT or FP&A.'),'S26'],
+ ['O6','≤ ±5%',T('Presupuesto','Budget'),T('Variación del CAPEX ejecutado.','Variance of executed CAPEX.'),T('Cierre','Closure')]];
+$('#smart').innerHTML=SM.map(s=>`<div class="sm rv"><span class="when">${EN?s[4].replace(/^S/,'W'):s[4]}</span><div class="id">${s[0]}</div><div class="goal">${s[1]}</div><h4>${s[2]}</h4><p>${s[3]}</p></div>`).join('');
+const MO=[[T('Plataforma','Platform'),T('AI Connector Service, MCP Standard Tools SuiteApp y herramientas MCP propias (SuiteScript).','AI Connector Service, MCP Standard Tools SuiteApp and custom MCP tools (SuiteScript).')],
+ [T('Cliente de IA','AI client'),T('Claude Team o Enterprise con conector remoto MCP, proyectos por área y prompts aprobados.','Claude Team or Enterprise with remote MCP connector, projects per area and approved prompts.')],
+ [T('Datos','Data'),T('Saved searches y reportes canónicos certificados; SuiteQL de solo lectura.','Certified saved searches and canonical reports; read-only SuiteQL.')],
+ [T('Seguridad','Security'),T('Roles MCP sin Administrador, OAuth 2.0 con PKCE, bitácora y política de IA alineada a ISO 27001:2022.','MCP roles without Administrator, OAuth 2.0 with PKCE, logging and an AI policy aligned to ISO 27001:2022.')],
+ [T('Personas','People'),T('120 usuarios en 4 países, capacitación y red de campeones.','120 users in 4 countries, training and a champions network.')],
+ [T('Sandbox primero','Sandbox first'),T('Todo se construye y prueba en Sandbox antes de producción.','Everything is built and tested in Sandbox before production.')]];
+$('#mods').innerHTML=MO.map(m=>`<div class="mod"><b>${m[0]}</b><span>${m[1]}</span></div>`).join('');
+$('#doms').innerHTML=[T('Cierre y estados financieros','Close & financial statements'),T('CxC / CxP y antigüedad','AR / AP & aging'),T('Ventas y margen','Sales & margin'),T('Inventario','Inventory'),T('Flujo de efectivo','Cash flow'),T('Presupuesto vs real','Budget vs actual')].map(d=>`<span>${d}</span>`).join('');
+$('#outs').innerHTML=[T('Crear o modificar transacciones desde Claude (fase 1 es solo lectura).','Creating or modifying transactions from Claude (phase 1 is read-only).'),T('Sustituir el BI corporativo o construir un data warehouse.','Replacing corporate BI or building a data warehouse.'),T('Reportes regulatorios a autoridades (SAT, SUNAT, DIAN, SII) sin revisión humana.','Regulatory reports to authorities (SAT, SUNAT, DIAN, SII) without human review.'),T('Integración con sistemas distintos de NetSuite.','Integration with systems other than NetSuite.')].map(x=>`<li>${x}</li>`).join('');
+$('#spons').innerHTML=[[T('Sponsor','Sponsor'),'CFO'],[T('Dueños de negocio','Business owners'),T('Contralor y FP&A','Controller & FP&A')],['Project Manager',T('Director de TI','Head of IT')],[T('Seguridad','Security'),'CISO']].map(s=>`<span>${s[0]}: <b>${s[1]}</b></span>`).join('');
+$('#assume').innerHTML=[T('NetSuite 2025.2 o posterior, que incluye el AI Connector Service.','NetSuite 2025.2 or later, which includes the AI Connector Service.'),T('Server SuiteScript, OAuth 2.0 y REST Web Services se habilitan sin afectar integraciones vigentes.','Server SuiteScript, OAuth 2.0 and REST Web Services can be enabled without affecting current integrations.'),T('Claude con MCP remoto, streamable HTTP y OAuth 2.0 con PKCE, requisitos que Oracle publica para el conector.','Claude with remote MCP, streamable HTTP and OAuth 2.0 with PKCE — the requirements Oracle publishes for the connector.'),T('Usuarios clave de Finanzas liberados 20% de su tiempo de S2 a S18.','Finance key users released 20% of their time from W2 to W18.')].map(x=>`<li>${x}</li>`).join('');
+
+/* ARQUITECTURA: subsidiarias + flujo */
+const SUBS=[['MX',4],['PE',3],['CO',3],['CL',2]];let sx=84,sh='';
+SUBS.forEach(([c,n])=>{sh+=`<text x="${sx}" y="585" font-size="12" fill="#6e6e73" font-family="ui-monospace,Menlo,monospace" font-weight="700">${c}</text>`;sx+=26;
+ for(let k=0;k<n;k++){sh+=`<rect class="sub" data-c="${c}" x="${sx}" y="571" width="22" height="18" rx="5" fill="#d2d2d7"/>`;sx+=26}sx+=16});
+$('#subs').innerHTML=sh;
+const P={U:[360,62],C:[360,195],K:[600,374],S:[205,479],O:[515,479],D:[360,568],L:[850,374]};
+const ST=[[T('Listo','Ready'),T('Pulsa “Reproducir consulta” o avanza paso a paso.','Press “Play a query” or step through it.'),null,[],[]],
+ [T('El usuario pregunta','The user asks'),T('Una analista de Finanzas Perú escribe: “¿Antigüedad de saldos de CxC al 31 de octubre?” en el proyecto de Claude de su área.','A Finance Peru analyst types: “AR aging as of October 31?” in her area’s Claude project.'),'U',['nU'],[]],
+ [T('Claude elige la herramienta','Claude picks the tool'),T('Claude no calcula: decide qué herramienta MCP llamar y la invoca por el conector remoto (streamable HTTP, OAuth 2.0 con PKCE).','Claude does not calculate: it decides which MCP tool to call and invokes it through the remote connector (streamable HTTP, OAuth 2.0 with PKCE).'),'C',['nC'],['l1']],
+ [T('NetSuite aplica el rol','NetSuite enforces the role'),T('El AI Connector Service ejecuta con el rol del usuario autenticado. El rol Administrador está bloqueado y la fase 1 es solo lectura.','The AI Connector Service runs with the authenticated user’s role. The Administrator role is blocked and phase 1 is read-only.'),'K',['nK'],['l2']],
+ [T('Se ejecuta la herramienta','The tool runs'),T('MCP Standard Tools corre la saved search certificada; las herramientas propias (SuiteScript) calculan KPIs corporativos dentro de NetSuite.','MCP Standard Tools runs the certified saved search; custom tools (SuiteScript) compute corporate KPIs inside NetSuite.'),'S',['nS','nO'],['l3','l4']],
+ [T('Solo los datos permitidos','Only permitted data'),T('Se leen únicamente las subsidiarias que el rol puede ver. Las cifras salen calculadas por NetSuite, no por el modelo.','Only the subsidiaries the role can see are read. Figures come computed by NetSuite, not by the model.'),'D',['nD'],['l5','l6']],
+ [T('Bitácora al SIEM','Log to the SIEM'),T('Cada ejecución MCP queda en la bitácora de NetSuite y se envía al SIEM corporativo con alertas de acceso anómalo.','Every MCP execution is logged by NetSuite and sent to the corporate SIEM with anomalous-access alerts.'),'L',['nL'],['l7']],
+ [T('Respuesta y validación','Answer & validation'),T('Claude redacta la respuesta con la plantilla del reporte. La analista la valida contra NetSuite antes de enviarla a Dirección.','Claude drafts the answer using the report template. The analyst validates it against NetSuite before sending it to Leadership.'),'U',['nC','nU'],['l1','l2']]];
+const NS=ST.length-1;let stI=0,stT=null;
+$('#stD').innerHTML=Array.from({length:NS},()=>'<i></i>').join('');
+function step(i){stI=i;const s=ST[i];$('#stN').textContent=`${T('PASO','STEP')} ${i} / ${NS}`;$('#stT').textContent=s[0];$('#stP').textContent=s[1];
+ $$('#stD i').forEach((d,j)=>d.classList.toggle('on',j<i));
+ $$('.nd').forEach(n=>n.classList.remove('hl'));s[3].forEach(id=>document.getElementById(id).classList.add('hl'));
+ $$('.lk').forEach(l=>l.classList.remove('on'));s[4].forEach(id=>document.getElementById(id).classList.add('on'));
+ const pk=$('#pkt');if(s[2]){const[x,y]=P[s[2]];pk.style.opacity=1;pk.style.transform=`translate(${x}px,${y}px)`}else pk.style.opacity=0;
+ if(i===5)roleApply(curRole,true)}
+$('#play').onclick=()=>{clearInterval(stT);step(1);let k=1;stT=setInterval(()=>{k++;if(k>NS){clearInterval(stT);return}step(k)},RM?50:2200);gtag('event','ns_play')};
+$('#nextS').onclick=()=>{clearInterval(stT);step(stI>=NS?1:stI+1)};
+step(0);watch($('#arquitectura .arch-svg'),()=>{if(!RM)$('#play').click()},.5);
+const ROLES=[[T('Finanzas MX','Finance MX'),['MX'],T('Ve las 4 subsidiarias de México en solo lectura. Perú, Colombia y Chile no existen para este rol.','Sees Mexico’s 4 subsidiaries, read-only. Peru, Colombia and Chile do not exist for this role.')],
+ [T('Finanzas PE','Finance PE'),['PE'],T('Ve solo las 3 subsidiarias de Perú. Una pregunta sobre México devuelve “sin acceso”.','Sees only Peru’s 3 subsidiaries. A question about Mexico returns “no access”.')],
+ [T('Operaciones','Operations'),['MX','CO'],T('Perfil de Operaciones por subsidiaria asignada: ventas, inventario y margen, sin estados financieros completos.','Operations profile per assigned subsidiary: sales, inventory and margin, without full financial statements.')],
+ [T('Dirección','Leadership'),['MX','PE','CO','CL'],T('Ve las 12 subsidiarias consolidadas, siempre en solo lectura.','Sees all 12 subsidiaries consolidated, always read-only.')],
+ [T('Administrador','Administrator'),[],T('Bloqueado por diseño de Oracle: el AI Connector Service no acepta el rol Administrador. Nadie consulta NetSuite desde Claude con privilegios totales.','Blocked by Oracle’s design: the AI Connector Service does not accept the Administrator role. Nobody queries NetSuite from Claude with full privileges.')]];
+let curRole=0;
+$('#roles').innerHTML=ROLES.map((r,i)=>`<button class="chip${i===4?' bad':''}${i===0?' on':''}" data-i="${i}">${r[0]}</button>`).join('');
+function roleApply(i,quiet){curRole=i;const r=ROLES[i];$$('#roles .chip').forEach((b,j)=>b.classList.toggle('on',j===i));$('#roleTx').textContent=r[2];
+ $$('.sub').forEach(s=>s.classList.toggle('y',r[1].includes(s.dataset.c)));
+ $('#vis').innerHTML=SUBS.map(([c,n])=>`<span class="${r[1].includes(c)?'y':''}">${c} · ${n}</span>`).join('');
+ const blk=i===4;document.getElementById('nK').classList.toggle('blk',blk);document.getElementById('l2').classList.toggle('cut',blk)}
+$$('#roles .chip').forEach(b=>b.onclick=()=>{roleApply(+b.dataset.i);gtag('event','ns_role',{role:b.dataset.i})});roleApply(0);
+$('#cfg').innerHTML=[[T('Funciones de NetSuite','NetSuite features'),T('Server SuiteScript, OAuth 2.0 y REST Web Services habilitados','Server SuiteScript, OAuth 2.0 and REST Web Services enabled')],
+ ['SuiteApp',T('MCP Standard Tools, desde el SuiteApp Marketplace','MCP Standard Tools, from the SuiteApp Marketplace')],
+ [T('Registro de integración','Integration record'),T('OAuth 2.0 Authorization Code con PKCE; único alcance: NetSuite AI Connector Service','OAuth 2.0 Authorization Code with PKCE; single scope: NetSuite AI Connector Service')],
+ [T('Roles','Roles'),T('Uno por perfil (Finanzas, Operaciones, Dirección) y subsidiaria, con MCP Server Connection, OAuth 2.0 Access Tokens y REST Web Services; nunca Administrador','One per profile (Finance, Operations, Leadership) and subsidiary, with MCP Server Connection, OAuth 2.0 Access Tokens and REST Web Services; never Administrator')],
+ [T('URL del servidor','Server URL'),'<code>https://&lt;accountid&gt;.suitetalk.api.netsuite.com/services/mcp/v1/suiteapp/com.netsuite.mcpstandardtools</code>'],
+ [T('Monitoreo','Monitoring'),T('Bitácora de ejecución MCP de NetSuite enviada al SIEM','NetSuite MCP execution log sent to the SIEM')]].map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('');
+
+/* MODELO 70 */
+const BASE=3.0,REP=420;
+const LV=[[T('Extracción de datos','Data extraction'),1.0,1.3],[T('Consolidación en Excel','Excel consolidation'),0.7,1.0],[T('Validación y conciliación','Validation & reconciliation'),0.2,0.5],[T('Formato y distribución','Format & distribution'),0.2,0.4]];
+const lv=LV.map(l=>l[1]);
+$('#sl').innerHTML=LV.map((l,i)=>`<label><span>${l[0]} · ${T('horas eliminadas','hours removed')}</span><b id="lvv${i}">−${l[1].toFixed(1)} h</b></label><input type="range" min="0" max="${l[2]}" step="0.1" value="${l[1]}" data-i="${i}">`).join('');
+function wf(){const cut=lv.reduce((a,b)=>a+b,0),post=Math.max(0,BASE-cut),red=cut/BASE;const sc=v=>v/BASE*100;
+ let pos=BASE,rows=`<div class="wfr tot"><span class="nm">${T('Línea base','Baseline')}</span><div class="tr"><i style="left:0;width:100%"></i></div><span class="vv">3.0 h</span></div>`;
+ LV.forEach((l,i)=>{const w=lv[i];pos-=w;rows+=`<div class="wfr cut"><span class="nm">${l[0]}</span><div class="tr"><i style="left:${sc(Math.max(0,pos))}%;width:${sc(w)}%"></i></div><span class="vv">−${w.toFixed(1)} h</span></div>`});
+ rows+=`<div class="wfr goal"><span class="nm"><b>${T('Resultado','Result')}</b></span><div class="tr"><i style="left:0;width:${sc(post)}%"></i></div><span class="vv"><b>${post.toFixed(1)} h</b></span></div>`;
+ $('#wf').innerHTML=rows;const pct=Math.round(red*100);
+ $('#gv').textContent=pct+'%';$('#gv').style.color=pct>=70?'var(--okd)':(pct>=50?'#ffb340':'var(--badd)');
+ $('#gs').textContent=`3.0 h → ${post.toFixed(1)} h`;
+ const gp=$('#gp');gp.className='pill '+(pct>=70?'ok':'no');gp.textContent=pct>=70?T('Meta del 70% alcanzada','70% goal met'):(pct>=50?T('Pasa el piloto (−50%), no la meta','Passes the pilot (−50%), not the goal'):T('No pasa el Gate 4','Fails Gate 4'));
+ $('#mH').textContent=fmt(Math.round(REP*cut))+' h'}
+$$('#sl input').forEach(r=>r.oninput=()=>{const i=+r.dataset.i;lv[i]=+r.value;$('#lvv'+i).textContent='−'+lv[i].toFixed(1)+' h';wf()});wf();
+
+/* ROADMAP */
+const PH=[['F0',T('Movilización y gobierno','Mobilization & governance'),1,2,null,T('Charter firmado, Comité Directivo, equipo núcleo y consejo de datos nombrados; plan de Claude contratado; Sandbox refrescado.','Charter signed; Steering Committee, core team and data council named; Claude plan contracted; Sandbox refreshed.')],
+ ['F1',T('Diagnóstico y línea base','Diagnosis & baseline'),2,5,'G1',T('Inventario de reportes y 3 semanas de medición. G1: línea base firmada por el Contralor.','Report inventory and 3 weeks of measurement. G1: baseline signed by the Controller.')],
+ ['F2',T('Diseño y seguridad','Design & security'),5,8,'G2',T('Roles MCP por perfil y subsidiaria, política de IA, evaluación de impacto por país. G2: modelo aprobado por el CISO.','MCP roles by profile and subsidiary, AI policy, per-country impact assessment. G2: model approved by the CISO.')],
+ ['F3',T('Construcción en Sandbox','Build in Sandbox'),8,14,'G3',T('SuiteApp, OAuth 2.0 + PKCE, herramientas propias, saved searches certificadas, SIEM. G3: exactitud ≥ 98% en 200 preguntas y pentest sin altos.','SuiteApp, OAuth 2.0 + PKCE, custom tools, certified saved searches, SIEM. G3: ≥ 98% accuracy on 200 questions and pentest with no highs.')],
+ ['F4',T('Piloto Finanzas México','Finance Mexico pilot'),14,18,'G4',T('25 usuarios, capacitación de 4 h y un cierre de mes completo con el conector. G4: Go/No-Go del CFO.','25 users, 4-hour training and a full month-end close with the connector. G4: CFO Go/No-Go.')],
+ ['F5',T('Despliegue por olas','Rollout in waves'),18,22,null,T('Ola 1: Perú y Colombia (50 usuarios). Ola 2: Chile y Operaciones/Dirección México (45). 12 campeones activos.','Wave 1: Peru and Colombia (50 users). Wave 2: Chile and Operations/Leadership Mexico (45). 12 active champions.')],
+ ['F6',T('Hypercare, medición y cierre','Hypercare, measurement & closure'),22,26,'G5',T('Tablero semanal, −70% sostenido 4 semanas, operación transferida. G5: beneficios auditados por FP&A.','Weekly dashboard, −70% sustained 4 weeks, operations handed over. G5: benefits audited by FP&A.')]];
+let pass=1,wk=1;
+function gantt(){const mx=pass?26:30;const X=w=>(w/mx*100);
+ const rows=PH.map((p,i)=>{let s=p[2]-1,e=p[3];if(!pass&&i>=5){s+=4;e+=4}
+   let cls=wk>e?'done':(wk>s?'act':'');if(i===4&&cls==='act')cls='pilot';
+   let rep='';if(!pass&&i===4)rep=`<div class="gbar rep" style="left:${X(18)}%;width:${X(4)}%" title="${T('Ciclo adicional de 4 semanas','Extra 4-week cycle')}"></div>`;
+   const gate=p[4]?`<div class="gate${wk>=(!pass&&i>=5?e:e)&&!(i===4&&!pass&&wk<22)?' ok':''}" style="left:${X(!pass&&i===4?22:e)}%"><span>${p[4]}</span></div>`:'';
+   return `<div class="grow"><div class="gn">${p[0]} · ${p[1]}<small>${EN?'W':'S'}${s+1}–${EN?'W':'S'}${e}</small></div><div class="gtr"><div class="gbar ${cls}" style="left:${X(s)}%;width:${X(e-s)}%"></div>${rep}${gate}</div></div>`}).join('');
+ $('#gantt').innerHTML=rows+'<div class="gnow" id="gnow"></div>';
+ $('#gax').innerHTML=Array.from({length:mx/2+1},(_,k)=>k*2).filter(w=>(w%4===0&&mx-w>=3)||w===mx).map(w=>`<span style="left:${X(w)}%">${EN?'W':'S'}${w}</span>`).join('');
+ const g=$('#gnow'),tr=$('#gantt .gtr');const off=tr.offsetLeft,wd=tr.offsetWidth;g.style.left=(off+wd*X(wk-.5)/100)+'px';g.dataset.w=(EN?'W':'S')+wk;
+ $('#wk').max=mx;
+ const cur=PH.map((p,i)=>{let s=p[2],e=p[3];if(!pass&&i>=5){s+=4;e+=4}if(!pass&&i===4)e=22;return [p,s,e]}).filter(x=>wk>=x[1]&&wk<=x[2]).pop()||[PH[0],1,2];
+ const mo=T(['enero','febrero','marzo','abril','mayo','junio','julio'],['January','February','March','April','May','June','July'])[Math.min(6,Math.floor((wk-1)/4.33))];
+ $('#phW').textContent=`${EN?'WEEK':'SEMANA'} ${wk} · ${mo} 2027`;$('#phT').textContent=`${cur[0][0]} · ${cur[0][1]}`;$('#phP').textContent=cur[0][5];
+ $('#g4T').textContent=pass?T('Go: se abren las olas en S18','Go: waves open in W18'):T('No-Go: se repite un ciclo de 4 semanas','No-Go: repeat a 4-week cycle');
+ $('#g4P').textContent=pass?T('El piloto alcanzó ≤ 1.5 h por reporte (−50%) y ≥ 98% de exactitud. El CFO firma y arrancan Perú y Colombia.','The pilot reached ≤ 1.5 h per report (−50%) and ≥ 98% accuracy. The CFO signs and Peru and Colombia start.'):T('Sin −50% y 98%, no se abren las olas: se ajustan catálogo y capacitación y se repite el piloto 4 semanas, sin ampliar el presupuesto. El cierre se mueve a S30.','Without −50% and 98%, the waves do not open: the catalog and training are adjusted and the pilot repeats for 4 weeks with no budget increase. Closure moves to W30.')}
+$('#wk').oninput=e=>{wk=+e.target.value;gantt()};
+$$('#g4 button').forEach(b=>b.onclick=()=>{pass=+b.dataset.k;$$('#g4 button').forEach(x=>x.classList.toggle('on',x===b));wk=Math.min(wk,pass?26:30);$('#wk').value=wk;gantt();gtag('event','ns_gate4',{pass})});
+gantt();addEventListener('resize',gantt);
+watch($('#gantt'),()=>{if(RM){wk=16;$('#wk').value=16;gantt();return}let t=setInterval(()=>{if(wk>=16){clearInterval(t);return}wk++;$('#wk').value=wk;gantt()},110)});
+
+/* PRESUPUESTO */
+const CX=[[T('Herramientas MCP propias (SuiteScript) e integración','Custom MCP tools (SuiteScript) & integration'),0.90,'#d97757'],[T('Certificación de saved searches y reportes canónicos','Certification of saved searches & canonical reports'),0.40,'#7b61ff'],[T('Gestión del cambio, capacitación y campeones','Change management, training & champions'),0.35,'#0071e3'],[T('Seguridad: pentest, evaluación de impacto, SIEM','Security: pentest, impact assessment, SIEM'),0.30,'#12a05f'],[T('Contingencia (10%)','Contingency (10%)'),0.25,'#8e8e93'],[T('PMO y aseguramiento de calidad','PMO & quality assurance'),0.20,'#e8890c']];
+$('#cx').innerHTML=CX.map(c=>`<div class="cxr"><div class="tp"><span>${c[0]}</span><b>$${c[1].toFixed(2)} · ${Math.round(c[1]/2.4*100)}%</b></div><div class="tb"><i data-w="${c[1]/0.9*100}" style="background:${c[2]}"></i></div></div>`).join('');
+watch($('#cx'),()=>$$('#cx i').forEach(i=>i.style.width=i.dataset.w+'%'));
+const RS=[['rep',T('Reportes al mes','Reports per month'),200,800,10,420,v=>fmt(v)],['hrs',T('Horas eliminadas por reporte','Hours removed per report'),0.5,2.5,0.1,2.1,v=>v.toFixed(1)+' h'],['cost',T('Costo cargado por hora-analista','Loaded cost per analyst hour'),300,700,10,450,v=>'$'+fmt(v)+' MXN'],['usd',T('Licencia Claude por usuario / mes','Claude license per user / month'),20,60,1,30,v=>'USD '+v],['adop',T('Usuarios con licencia','Licensed users'),60,200,5,120,v=>fmt(v)]];
+const rv={};RS.forEach(r=>rv[r[0]]=r[5]);
+$('#roiS').innerHTML=RS.map(r=>`<label><span>${r[1]}</span><b id="rv_${r[0]}">${r[6](r[5])}</b></label><input type="range" min="${r[2]}" max="${r[3]}" step="${r[4]}" value="${r[5]}" data-k="${r[0]}">`).join('');
+const MM=v=>'$'+fmt(v,2)+' MM';
+const r2=x=>Math.round(x*100)/100;
+function roi(){const ben=r2(rv.rep*rv.hrs*12*rv.cost/1e6),lic=r2(rv.adop*rv.usd*12*18/1e6),opx=r2(lic+0.30),net=r2(ben-opx),cap=2.4;
+ const pb=net>0?cap/net*12:Infinity,r3=(3*ben-3*opx-cap)/(cap+3*opx);
+ $('#rB').textContent=MM(ben);$('#rN').textContent=MM(net);$('#rP').textContent=isFinite(pb)?fmt(Math.round(pb))+' '+T('meses','months'):T('no se recupera','no payback');$('#rR').textContent=fmt(Math.round(r3*100))+'%';
+ $('#opx').innerHTML=`<tr><td>${T('Licencias Claude Team/Enterprise','Claude Team/Enterprise licenses')}<br><span class="mut" style="font-size:12px">${fmt(rv.adop)} × USD ${rv.usd} × 12 × 18 MXN/USD</span></td><td>${fmt(lic,2)}</td></tr><tr><td>${T('Soporte y mejora de herramientas MCP','Support & improvement of MCP tools')}<br><span class="mut" style="font-size:12px">${T('0.25 FTE desarrollador NetSuite','0.25 FTE NetSuite developer')}</span></td><td>0.30</td></tr><tr><td>MCP Standard Tools SuiteApp<br><span class="mut" style="font-size:12px">${T('SuiteApp gratuita de Oracle','Free Oracle SuiteApp')}</span></td><td>0.00</td></tr><tr><td>Total ${T('MM MXN/año','MM MXN/yr')}</td><td>${fmt(opx,2)}</td></tr>`;
+ // flujo acumulado 36 meses desde despliegue (CAPEX al inicio)
+ const W=600,H=200,pad=30;let pts=[],cum=-cap,mn=-cap,mxv=-cap;for(let m=0;m<=36;m++){if(m>0)cum+=net/12;pts.push(cum);mn=Math.min(mn,cum);mxv=Math.max(mxv,cum)}
+ mxv=Math.max(mxv,0.5);const xs=m=>pad+m/36*(W-pad-10),ys=v=>10+(mxv-v)/(mxv-mn)*(H-40);
+ const d=pts.map((v,m)=>(m?'L':'M')+xs(m).toFixed(1)+' '+ys(v).toFixed(1)).join(' ');
+ const z=ys(0);let be='';if(isFinite(pb)&&pb<=36){const bx=xs(pb);be=`<line x1="${bx}" x2="${bx}" y1="10" y2="${H-30}" stroke="#12a05f" stroke-dasharray="4 4"/><circle cx="${bx}" cy="${z}" r="5" fill="#12a05f"/><text x="${bx+8}" y="${z-8}" font-size="12" font-weight="700" fill="#12a05f">${T('Recuperación','Payback')} · ${T('mes','month')} ${Math.round(pb)}</text>`}
+ $('#cfs').innerHTML=`<line x1="${pad}" x2="${W-10}" y1="${z}" y2="${z}" stroke="#d2d2d7"/><path d="${d} L${xs(36)} ${z} L${xs(0)} ${z}Z" fill="rgba(217,119,87,.12)"/><path d="${d}" fill="none" stroke="#d97757" stroke-width="3"/>${be}<text x="${pad}" y="${H-8}" font-size="11" fill="#6e6e73" font-family="ui-monospace,Menlo,monospace">${T('mes','month')} 0</text><text x="${W-10}" y="${H-8}" font-size="11" fill="#6e6e73" text-anchor="end" font-family="ui-monospace,Menlo,monospace">${T('mes','month')} 36 · ${MM(pts[36])}</text>`}
+$$('#roiS input').forEach(i=>i.oninput=()=>{const k=i.dataset.k,r=RS.find(x=>x[0]===k);rv[k]=+i.value;$('#rv_'+k).textContent=r[6](rv[k]);roi()});roi();
+
+/* GOBIERNO */
+$('#gov').innerHTML=[[T('MENSUAL','MONTHLY'),T('Comité Directivo','Steering Committee'),T('CFO (sponsor), Director de TI, CISO, Contralor, líder de FP&A.','CFO (sponsor), Head of IT, CISO, Controller, FP&A lead.')],[T('SEMANAL','WEEKLY'),T('Equipo núcleo','Core team'),T('PM, arquitecto NetSuite, desarrollador, seguridad, gestión del cambio y 4 usuarios clave (uno por país).','PM, NetSuite architect, developer, security, change lead and 4 key users (one per country).')],[T('QUINCENAL','BIWEEKLY'),T('Consejo de datos','Data council'),T('Contralor, FP&A y arquitecto: aprueban cada saved search y herramienta MCP antes de publicarla.','Controller, FP&A and architect: approve every saved search and MCP tool before release.')],['1 : 10',T('Red de campeones','Champions network'),T('12 campeones: primer nivel de soporte y voz del usuario.','12 champions: first-line support and the voice of the user.')]].map(g=>`<div class="card rv"><b>${g[0]}</b><h4>${g[1]}</h4><p>${g[2]}</p></div>`).join('');
+const RO=['CFO',T('Dir. TI','Head of IT'),'CISO',T('Contralor / FP&A','Controller / FP&A'),T('Arquitecto NetSuite','NetSuite architect'),T('Desarrollador','Developer'),T('Gestión del cambio','Change lead'),T('Usuarios clave','Key users')];
+const RA=[[T('Aprobar charter y presupuesto','Approve charter & budget'),'A R C C I I I I'],[T('Medir línea base de reportes','Measure report baseline'),'I A I R C I C R'],[T('Diseñar arquitectura y roles MCP','Design architecture & MCP roles'),'I A C I R C I I'],[T('Aprobar seguridad y política de IA','Approve security & AI policy'),'I R A C C I I I'],[T('Certificar saved searches y reportes','Certify saved searches & reports'),'I C I AR R C I C'],[T('Construir herramientas MCP propias','Build custom MCP tools'),'I A C C R R I C'],[T('Pruebas de exactitud (UAT)','Accuracy testing (UAT)'),'I A I R C C I R'],[T('Capacitación y adopción','Training & adoption'),'I A I C I I R R'],[T('Go/No-Go del piloto y de cada ola','Go/No-Go for pilot & each wave'),'A R C C C I C C'],[T('Medición de beneficios y cierre','Benefit measurement & closure'),'A R I R I I C C']];
+$('#rf').innerHTML=`<button class="chip on" data-i="-1">${T('Todos','All')}</button>`+RO.map((r,i)=>`<button class="chip" data-i="${i}">${r}</button>`).join('');
+function raci(f){$('#raci').className='raci'+(f>=0?' f':'');
+ $('#raci').innerHTML=`<tr><th></th>${RO.map((r,i)=>`<th class="${i===f?'on':''}">${r}</th>`).join('')}</tr>`+RA.map(r=>`<tr><td>${r[0]}</td>${r[1].split(' ').map((c,i)=>`<td class="${c}${i===f?' sel':''}">${c==='AR'?'A/R':c}</td>`).join('')}</tr>`).join('')}
+$$('#rf .chip').forEach(b=>b.onclick=()=>{$$('#rf .chip').forEach(x=>x.classList.toggle('on',x===b));raci(+b.dataset.i)});raci(-1);
+$('#team').innerHTML=[[T('Project Manager (Dir. TI)','Project Manager (Head of IT)'),'30%',T('Interno','Internal')],[T('Arquitecto NetSuite','NetSuite architect'),T('100% S5–S18, 50% después','100% W5–W18, 50% after'),T('Interno o partner','Internal or partner')],[T('Desarrollador SuiteScript','SuiteScript developer'),T('100% S8–S22','100% W8–W22'),T('Partner, precio fijo','Partner, fixed price')],[T('Analista de seguridad','Security analyst'),'25%',T('Interno','Internal')],[T('Líder de gestión del cambio','Change lead'),T('50% S10–S26','50% W10–W26'),T('Interno','Internal')],[T('Usuarios clave (4)','Key users (4)'),T('20% S2–S18','20% W2–W18'),T('Finanzas de cada país','Finance in each country')]].map(t=>`<div class="rv"><b>${t[0]}</b><span>${t[2]}</span><em>${t[1]}</em></div>`).join('');
+
+/* CHECKLISTS */
+const CK=[['F0',T('Movilización y gobierno','Mobilization & governance'),'S1–S2',[T('Charter firmado por el CFO','Charter signed by the CFO'),T('Comité Directivo, equipo núcleo y consejo de datos nombrados','Steering Committee, core team and data council named'),T('CAPEX/OPEX aprobado y orden de compra al partner emitida','CAPEX/OPEX approved and partner PO issued'),T('NetSuite 2025.2+ confirmado y Sandbox refrescado','NetSuite 2025.2+ confirmed and Sandbox refreshed'),T('Plan de Claude (Team o Enterprise) con conectores personalizados','Claude plan (Team or Enterprise) with custom connectors'),T('Plan de comunicación publicado','Communication plan published')]],
+ ['F1',T('Diagnóstico y línea base','Diagnosis & baseline'),'S2–S5',[T('Inventario de reportes: nombre, dueño, frecuencia, consumidores, fuente','Report inventory: name, owner, frequency, consumers, source'),T('Medición de tiempos durante 3 semanas (bitácora + tickets)','3 weeks of time measurement (log + tickets)'),T('Desglose por actividad: extracción, consolidación, validación, formato','Breakdown by activity: extraction, consolidation, validation, format'),T('Top 50 reportes con ≥ 80% del esfuerzo priorizados','Top 50 reports with ≥ 80% of effort prioritized'),'G|'+T('Línea base firmada por el Contralor (Gate 1)','Baseline signed by the Controller (Gate 1)')]],
+ ['F2',T('Diseño y seguridad','Design & security'),'S5–S8',[T('Arquitectura objetivo aprobada','Target architecture approved'),T('Roles MCP por perfil definidos, sin Administrador','MCP roles per profile defined, no Administrator'),T('Matriz de acceso por subsidiaria con segregación de funciones','Access matrix per subsidiary with segregation of duties'),T('Política de uso de IA y clasificación de datos aprobada','AI usage policy and data classification approved'),T('Evaluación de impacto en datos por país (MX, PE, CO, CL)','Data protection impact assessment per country (MX, PE, CO, CL)'),T('Catálogo de herramientas MCP propias especificado','Custom MCP tool catalog specified'),'G|'+T('Diseño aprobado por el CISO (Gate 2)','Design approved by the CISO (Gate 2)')]],
+ ['F3',T('Construcción en Sandbox','Build in Sandbox'),'S8–S14',[T('Server SuiteScript, OAuth 2.0 y REST Web Services habilitados','Server SuiteScript, OAuth 2.0 and REST Web Services enabled'),T('MCP Standard Tools SuiteApp instalada','MCP Standard Tools SuiteApp installed'),T('Registro OAuth 2.0 con alcance único y PKCE','OAuth 2.0 record with single scope and PKCE'),T('Roles con MCP Server Connection, Access Tokens y REST','Roles with MCP Server Connection, Access Tokens and REST'),T('Saved searches canónicas certificadas','Canonical saved searches certified'),T('Herramientas MCP propias con pruebas unitarias','Custom MCP tools with unit tests'),T('Biblioteca de prompts y proyectos de Claude por área','Prompt library and Claude projects per area'),T('Bitácora MCP enviada al SIEM con alertas','MCP log sent to the SIEM with alerts'),T('Pentest sin hallazgos críticos ni altos abiertos','Pentest with no open critical or high findings'),'G|'+T('Exactitud ≥ 98% en 200 preguntas de referencia (Gate 3)','≥ 98% accuracy on 200 reference questions (Gate 3)')]],
+ ['F4',T('Piloto Finanzas México','Finance Mexico pilot'),'S14–S18',[T('Producción para 25 usuarios del piloto','Production for 25 pilot users'),T('Capacitación de 4 h y guía rápida entregadas','4-hour training and quick guide delivered'),T('Cierre contable mensual completo con el conector','Full month-end close with the connector'),T('Tiempo por reporte ≤ 1.5 h (−50%) y exactitud ≥ 98%','Time per report ≤ 1.5 h (−50%) and accuracy ≥ 98%'),T('Lecciones aprendidas incorporadas','Lessons learned incorporated'),'G|'+T('Go/No-Go firmado por el CFO (Gate 4)','Go/No-Go signed by the CFO (Gate 4)')]],
+ ['F5',T('Despliegue por olas','Rollout in waves'),'S18–S22',[T('Ola 1: Perú y Colombia (50 usuarios)','Wave 1: Peru and Colombia (50 users)'),T('Ola 2: Chile y Operaciones/Dirección México (45 usuarios)','Wave 2: Chile and Operations/Leadership Mexico (45 users)'),T('Herramientas MCP locales por país validadas','Local per-country MCP tools validated'),T('12 campeones activos y canal de soporte operando','12 active champions and support channel running')]],
+ ['F6',T('Hypercare, medición y cierre','Hypercare, measurement & closure'),'S22–S26',[T('Tablero semanal de KPIs publicado','Weekly KPI dashboard published'),T('−70% sostenido 4 semanas consecutivas','−70% sustained 4 consecutive weeks'),T('Adopción ≥ 80% de usuarios activos semanales','Adoption ≥ 80% weekly active users'),T('Operación transferida con runbook y dueños por herramienta','Operations handed over with runbook and tool owners'),'G|'+T('Beneficios auditados por FP&A y cierre firmado (Gate 5)','Benefits audited by FP&A and closure signed (Gate 5)')]]];
+let ckS={};try{ckS=JSON.parse(localStorage.getItem('fgg-ns-ck')||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem('fgg-ns-ck',JSON.stringify(ckS))}catch(e){}};
+let ckI=0;const wkL=s=>EN?s.replace(/S/g,'W'):s;
+function ckTabs(){$('#cktabs').innerHTML=CK.map((c,i)=>{const n=c[3].length,d=c[3].filter((_,j)=>ckS[i+'-'+j]).length;return `<button class="ckt${i===ckI?' on':''}" data-i="${i}"><b>${c[0]} · ${c[1]}</b><span>${wkL(c[2])} · ${d}/${n}</span><div class="pb"><i style="width:${d/n*100}%"></i></div></button>`}).join('');
+ $$('.ckt').forEach(b=>b.onclick=()=>{ckI=+b.dataset.i;ckRender()})}
+function ckRender(){ckTabs();const c=CK[ckI];
+ $('#cklist').innerHTML=`<h3>${c[0]} · ${c[1]} <span class="mut" style="font-weight:400;font-size:15px">(${wkL(c[2])})</span></h3>`+c[3].map((it,j)=>{const g=it.startsWith('G|'),tx=g?it.slice(2):it,on=ckS[ckI+'-'+j];return `<div class="cki${on?' ck':''}" data-j="${j}" role="checkbox" aria-checked="${!!on}" tabindex="0"><span class="bx">${on?'✓':''}</span><span class="tx">${tx}${g?'<span class="gt">GATE</span>':''}</span></div>`}).join('');
+ $$('.cki').forEach(el=>{const t=()=>{const k=ckI+'-'+el.dataset.j;ckS[k]=!ckS[k];save();ckRender()};el.onclick=t;el.onkeydown=e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();t()}}});
+ const n=c[3].length,d=c[3].filter((_,j)=>ckS[ckI+'-'+j]).length;
+ $('#ckArc').setAttribute('stroke-dashoffset',314.16*(1-d/n));$('#ckPct').textContent=Math.round(d/n*100)+'%';
+ const ok=d===n,g=$('#ckGate');g.className='gpill '+(ok?'ok':'no');g.textContent=ok?T('Fase lista para cerrar','Phase ready to close'):T('Fase abierta','Phase open');
+ $('#ckTxt').textContent=ok?T('Todos los puntos cerrados; aprueba quien indica la RACI.','All items closed; approval per the RACI.'):T(`Faltan ${n-d} de ${n} puntos.`,`${n-d} of ${n} items remaining.`)}
+$('#ckReset').onclick=()=>{CK[ckI][3].forEach((_,j)=>delete ckS[ckI+'-'+j]);save();ckRender()};ckRender();
+
+/* KPIS */
+const KP=[[T('Tiempo por reporte','Time per report'),T('Σ(horas × volumen) ÷ Σ volumen · semanal','Σ(hours × volume) ÷ Σ volume · weekly'),3.0,0.9,'h',1],
+ [T('Horas-analista en reportes','Analyst hours on reports'),T('Horas registradas en la familia “reportes” · mensual','Hours logged under “reports” · monthly'),1260,378,T('h/mes','h/mo'),0],
+ [T('Exactitud','Accuracy'),T('Respuestas que cuadran ÷ 50 muestreadas · semanal','Matching answers ÷ 50 sampled · weekly'),null,98,'%',0],
+ [T('Adopción','Adoption'),T('Usuarios con ≥ 1 sesión semanal ÷ habilitados','Users with ≥ 1 weekly session ÷ enabled'),0,80,'%',0],
+ [T('Autoservicio','Self-service'),T('Reportes sin TI ni FP&A ÷ total · mensual','Reports without IT or FP&A ÷ total · monthly'),10,60,'%',0],
+ [T('Respuesta a Dirección','Response to Leadership'),T('Horas de solicitud a entrega, peticiones ad hoc','Hours from request to delivery, ad hoc asks'),48,14,'h',0],
+ [T('Seguridad','Security'),T('Incidentes de acceso indebido o fuga · SIEM','Improper access or leakage incidents · SIEM'),null,0,T('incidentes','incidents'),0],
+ [T('Satisfacción','Satisfaction'),T('Encuesta de 1 a 5 · trimestral','1-to-5 survey · quarterly'),null,4.2,'/ 5',1]];
+$('#kpiGrid').innerHTML=KP.map((k,i)=>`<div class="kc rv"><div class="kt">${k[0]}</div><div class="kf">${k[1]}</div><div class="kv" id="kv${i}"></div><div class="kb"><i id="kb${i}"></i></div><div class="kd"><span id="kl${i}"></span><span id="kd${i}"></span></div></div>`).join('');
+function kpi(s){KP.forEach((k,i)=>{const b=k[2],g=k[3],v=s?g:b,vEl=$('#kv'+i),bar=$('#kb'+i);
+ $('#kl'+i).textContent=s?T('Meta','Goal'):T('Línea base','Baseline');
+ if(v===null){vEl.innerHTML=(i===2?T('No medida','Not measured'):'n/d')+'<small></small>';vEl.style.color='#f5f5f7';bar.style.width='4%';bar.style.background='#48484a';$('#kd'+i).textContent='';return}
+ const down=b!==null&&g<b,pre=s?(i===6?'':(down?'≤ ':'≥ ')):(i===4?'< ':'');
+ vEl.innerHTML=pre+fmt(v,k[5])+'<small>'+k[4]+'</small>';vEl.style.color=s?'var(--okd)':'#f5f5f7';
+ const mx=Math.max(b||0,g,1);bar.style.width=(i===6?(s?100:4):Math.max(4,v/mx*100))+'%';bar.style.background=s?'linear-gradient(90deg,#30d158,#2997ff)':'#8e8e93';
+ $('#kd'+i).innerHTML=s&&b!==null&&b>0?`<b>${down?'−':'+'}${Math.round(Math.abs(g-b)/b*100)}%</b>`:(s&&b===0?'<b>0 → 80%</b>':'')})}
+let ks=0;$$('#kseg button').forEach(b=>b.onclick=()=>{ks=+b.dataset.k;$$('#kseg button').forEach(x=>x.classList.toggle('on',x===b));kpi(ks)});
+kpi(0);watch($('#kpiGrid'),()=>setTimeout(()=>{if(ks===0)$$('#kseg button')[1].click()},1600));
+
+/* RIESGOS */
+const RK=[['R1',T('Respuestas incorrectas o “alucinadas” sobre cifras financieras','Wrong or “hallucinated” answers on financial figures'),3,5,T('Solo saved searches certificadas; herramientas propias con cálculo en NetSuite, no en el modelo; muestreo semanal de exactitud; Gate 3 exige ≥ 98%.','Only certified saved searches; custom tools that compute in NetSuite, not in the model; weekly accuracy sampling; Gate 3 requires ≥ 98%.'),T('Contralor','Controller')],
+ ['R2',T('Exposición de datos entre subsidiarias o roles','Data exposure across subsidiaries or roles'),2,5,T('Roles MCP por perfil y subsidiaria; pruebas de acceso negativo; pentest; Administrador bloqueado por diseño de Oracle.','MCP roles by profile and subsidiary; negative access tests; pentest; Administrator blocked by Oracle’s design.'),'CISO'],
+ ['R3',T('Línea base sobreestimada que infle el 70%','Overstated baseline that inflates the 70%'),3,4,T('Medir 3 semanas con bitácora real; firma del Contralor; auditoría de FP&A al cierre.','Measure 3 weeks with a real log; Controller sign-off; FP&A audit at closure.'),'FP&A'],
+ ['R4',T('Baja adopción: los analistas siguen en Excel','Low adoption: analysts stay in Excel'),3,4,T('Campeones por país; prompts listos por reporte; retiro gradual de exportaciones manuales del top 50.','Champions per country; ready-made prompts per report; gradual retirement of manual exports for the top 50.'),T('Gestión del cambio','Change lead')],
+ ['R5',T('Límites de concurrencia de NetSuite en cierre de mes','NetSuite concurrency limits at month-end'),2,3,T('Pruebas de carga en Sandbox; ventanas de consulta pesada; reportes de cierre programados.','Load tests in Sandbox; heavy-query windows; scheduled close reports.'),T('Arquitecto NetSuite','NetSuite architect')],
+ ['R6',T('Cambios de Oracle o Anthropic en el conector o el protocolo','Oracle or Anthropic changes to the connector or protocol'),2,3,T('Seguimiento de notas de versión; Sandbox como ambiente de regresión antes de cada release.','Track release notes; Sandbox as a regression environment before each release.'),T('Arquitecto NetSuite','NetSuite architect')],
+ ['R7',T('Incumplimiento de protección de datos por país','Data protection non-compliance per country'),2,4,T('Evaluación de impacto por país; plan Claude con retención y sin entrenamiento con datos de la empresa; datos personales fuera de las herramientas.','Per-country impact assessment; Claude plan with retention controls and no training on company data; personal data kept out of the tools.'),T('Legal / CISO','Legal / CISO')],
+ ['R8',T('Usuarios clave sin tiempo durante el cierre','Key users without time during close'),3,3,T('Calendario del proyecto fuera de los días de cierre; backfill presupuestado.','Project calendar avoids close days; budgeted backfill.'),'Project Manager']];
+const heat=e=>e>=15?'#ff8a8f':e>=10?'#ffc27a':e>=6?'#ffe69a':'#d8f2e5';
+let hm='';for(let im=5;im>=1;im--){hm+=`<div class="ax">${im}</div>`;for(let p=1;p<=5;p++){const rs=RK.filter(r=>r[2]===p&&r[3]===im);hm+=`<div class="cell" style="background:${heat(p*im)}">${rs.map(r=>`<button class="rb" data-r="${r[0]}">${r[0]}</button>`).join('')}</div>`}}
+hm+='<div></div>'+[1,2,3,4,5].map(p=>`<div class="ax">${p}</div>`).join('');$('#hm').innerHTML=hm;
+$('#rlist').innerHTML=[...RK].sort((a,b)=>b[2]*b[3]-a[2]*a[3]).map(r=>{const e=r[2]*r[3];return `<div class="rl" data-r="${r[0]}"><span class="id">${r[0]}</span><span>${r[1]}</span><span class="eb"><i data-w="${e/25*100}" style="background:${heat(e)}"></i></span></div>`}).join('');
+watch($('#rlist'),()=>$$('#rlist .eb i').forEach(i=>i.style.width=i.dataset.w+'%'));
+function rsel(id){const r=RK.find(x=>x[0]===id),e=r[2]*r[3];$$('.rb').forEach(b=>b.classList.toggle('on',b.dataset.r===id));
+ $('#rdet').innerHTML=`<div class="rid">${r[0]} · ${T('Severidad','Severity')} ${e} / 25</div><h4>${r[1]}</h4><div class="ex"><span>${T('Probabilidad','Probability')} ${r[2]}/5</span><span>${T('Impacto','Impact')} ${r[3]}/5</span><span>${T('Dueño','Owner')}: ${r[5]}</span></div><div class="mm"><b>${T('Mitigación','Mitigation')}</b>${r[4]}</div>`}
+$$('[data-r]').forEach(b=>b.onclick=()=>rsel(b.dataset.r));rsel('R1');
+
+/* CAMBIO */
+const AD=[['A',T('Conciencia','Awareness'),'S2',T('Mensaje del CFO: por qué, qué cambia y qué no (no hay recorte de plantilla).','CFO message: why, what changes and what does not (no headcount cuts).')],['D',T('Deseo','Desire'),'S10–S14',T('Demostraciones con reportes reales de cada país; medición pública de horas ahorradas.','Demos with real reports from each country; public tracking of hours saved.')],['K',T('Conocimiento','Knowledge'),'S14–S20',T('Capacitación de 4 h por usuario: cómo preguntar, cómo verificar, qué no preguntar.','4-hour training per user: how to ask, how to verify, what not to ask.')],['A',T('Habilidad','Ability'),'S14–S26',T('Biblioteca de prompts por reporte; campeones en cada área.','Prompt library per report; champions in every area.')],['R',T('Refuerzo','Reinforcement'),'S22–S26',T('Retiro de exportaciones manuales del top 50; reconocimiento a equipos con mayor ahorro.','Retire manual exports for the top 50; recognize the teams that save the most.')]];
+$('#adk').innerHTML=AD.map((a,i)=>`<button class="ad rv" data-i="${i}"><div class="l">${a[0]}</div><b>${a[1]}</b><span>${wkL(a[2])}</span></button>`).join('');
+let adI=0,adT=null;function ad(i){adI=i;$$('.ad').forEach((b,j)=>b.classList.toggle('on',j===i));$('#addet').innerHTML=`<b>${AD[i][1]} · <span class="mut" style="font-family:var(--mono);font-size:13px">${wkL(AD[i][2])}</span></b><br>${AD[i][3]}`}
+$$('.ad').forEach(b=>b.onclick=()=>{clearInterval(adT);ad(+b.dataset.i)});ad(0);
+watch($('#adk'),()=>{if(!RM)adT=setInterval(()=>ad((adI+1)%AD.length),2800)});
+$('#pol').innerHTML=[['🔐',T('Claude consulta NetSuite solo con el rol del usuario; nadie usa el rol de Administrador.','Claude queries NetSuite only with the user’s role; nobody uses the Administrator role.')],['👁️',T('Fase 1 es solo lectura: no se crean ni modifican transacciones desde Claude.','Phase 1 is read-only: no transactions are created or changed from Claude.')],['🧑‍⚖️',T('Toda cifra que sale a un tercero, a Dirección o a una autoridad la valida una persona contra NetSuite.','Every figure going to a third party, Leadership or an authority is validated by a person against NetSuite.')],['🏢',T('No se comparten datos de NetSuite con herramientas de IA distintas de la cuenta corporativa de Claude.','NetSuite data is not shared with any AI tool other than the corporate Claude account.')],['🗂️',T('Las conversaciones con datos financieros viven en proyectos del área, no en cuentas personales.','Conversations with financial data live in area projects, not personal accounts.')],['🚩',T('Cualquier respuesta sospechosa se reporta al canal de soporte para revisión del consejo de datos.','Any suspicious answer is reported to the support channel for data-council review.')]].map(p=>`<div class="card rv"><div class="ic">${p[0]}</div><p>${p[1]}</p></div>`).join('');
+$('#cmpl').innerHTML=[['ISO 27001:2022',T('Control de acceso (A.5.15, A.8.2), registro y monitoreo (A.8.15, A.8.16), servicios en la nube (A.5.23) y proveedores (A.5.19–A.5.22).','Access control (A.5.15, A.8.2), logging and monitoring (A.8.15, A.8.16), cloud services (A.5.23) and suppliers (A.5.19–A.5.22).')],[T('Protección de datos','Data protection'),T('LFPDPPP (MX), Ley 29733 (PE), Ley 1581 (CO), Ley 19.628 y su reforma (CL); vigencia confirmada con Legal.','LFPDPPP (MX), Law 29733 (PE), Law 1581 (CO), Law 19.628 and its amendment (CL); validity confirmed with Legal.')],[T('Control interno','Internal control'),T('Las herramientas MCP propias se versionan y pasan por el proceso de cambios de TI, como cualquier objeto de NetSuite.','Custom MCP tools are versioned and go through IT change management like any NetSuite object.')],[T('Auditoría','Audit'),T('La bitácora MCP de NetSuite y los registros de Claude se conservan según la política de retención.','NetSuite’s MCP log and Claude records are kept per the retention policy.')]].map(c=>`<div class="card rv"><h4>${c[0]}</h4><p>${c[1]}</p></div>`).join('');
+$('#dels').innerHTML=[['F0',T('Charter y plan del proyecto','Charter & project plan'),'CFO'],['F1',T('Inventario de reportes y línea base firmada','Report inventory & signed baseline'),T('Contralor','Controller')],['F2',T('Arquitectura y modelo de seguridad','Architecture & security model'),'CISO'],['F2',T('Política de uso de IA','AI usage policy'),T('CISO y Legal','CISO & Legal')],['F3',T('Catálogo de herramientas MCP y saved searches certificadas','MCP tool catalog & certified saved searches'),T('Consejo de datos','Data council')],['F3',T('Informe de exactitud y de penetración','Accuracy & penetration test report'),T('Dir. TI y CISO','Head of IT & CISO')],['F4',T('Informe de piloto y Go/No-Go','Pilot report & Go/No-Go'),'CFO'],['F6',T('Runbook de operación y soporte','Operations & support runbook'),T('Dir. TI','Head of IT')],['F6',T('Informe de beneficios y acta de cierre','Benefits report & closure record'),T('CFO y FP&A','CFO & FP&A')]].map(d=>`<div class="dl"><span class="ph">${d[0]}</span><span>${d[1]}</span><span class="ap">${d[2]}</span></div>`).join('');
+$('#crit').innerHTML=[T('−70% en tiempo por reporte sostenido 4 semanas y auditado por FP&A.','−70% time per report sustained 4 weeks and audited by FP&A.'),T('Exactitud ≥ 98% y cero incidentes de seguridad.','Accuracy ≥ 98% and zero security incidents.'),T('Adopción ≥ 80% de los 120 usuarios.','Adoption ≥ 80% of the 120 users.'),T('CAPEX dentro de ±5%.','CAPEX within ±5%.'),T('Operación transferida con dueño para cada herramienta MCP.','Operations handed over with an owner for each MCP tool.')].map(c=>`<li><i>✓</i>${c}</li>`).join('');
+const GL=[['ADKAR',T('Modelo de cambio: conciencia, deseo, conocimiento, habilidad, refuerzo.','Change model: awareness, desire, knowledge, ability, reinforcement.')],['AI Connector Service',T('Servicio de Oracle que expone NetSuite a clientes de IA mediante MCP.','Oracle service that exposes NetSuite to AI clients via MCP.')],['FP&A',T('Planeación y análisis financiero.','Financial planning and analysis.')],['Gate',T('Punto de control donde se decide si el proyecto avanza.','Checkpoint where the project decides whether to advance.')],['MCP',T('Model Context Protocol: estándar abierto para que un cliente de IA use herramientas externas.','Model Context Protocol: open standard for an AI client to use external tools.')],['MCP Standard Tools',T('SuiteApp de Oracle con herramientas para registros, reportes, saved searches y SuiteQL.','Oracle SuiteApp with tools for records, reports, saved searches and SuiteQL.')],['OAuth 2.0 / PKCE',T('Protocolo de autorización y extensión que protege el intercambio del código de acceso.','Authorization protocol and the extension that protects the authorization-code exchange.')],['OneWorld',T('Edición de NetSuite para múltiples subsidiarias, monedas y países.','NetSuite edition for multiple subsidiaries, currencies and countries.')],['Saved search',T('Búsqueda guardada de NetSuite, base de los reportes certificados.','NetSuite saved search, the basis of certified reports.')],['SIEM',T('Sistema de monitoreo y correlación de eventos de seguridad.','Security event monitoring and correlation system.')],['SuiteQL',T('Lenguaje de consulta tipo SQL de NetSuite.','NetSuite’s SQL-like query language.')],['SuiteScript',T('Lenguaje de personalización de NetSuite con el que se construyen las herramientas MCP propias.','NetSuite customization language used to build custom MCP tools.')]];
+function gl(q){q=(q||'').toLowerCase();$('#gl').innerHTML=GL.filter(g=>!q||(g[0]+' '+g[1]).toLowerCase().includes(q)).map(g=>`<div><b>${g[0]}</b>${g[1]}</div>`).join('')||`<div class="mut">${T('Sin resultados','No results')}</div>`}
+$('#gq').oninput=e=>gl(e.target.value);gl('');
+
+reveal();
+})();
+</script>
+</body>
+</html>
