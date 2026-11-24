@@ -35,7 +35,7 @@ a{color:inherit}button{font-family:inherit}
 .gnav .in{max-width:1100px;height:100%;margin:0 auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
 .gnav .brand{font-size:.92rem;font-weight:600;text-decoration:none;white-space:nowrap}
 .gnav .brand span{color:var(--mut);font-weight:400}
-.gnav .links{display:flex;gap:18px;overflow:auto;scrollbar-width:none}
+.gnav .links{display:flex;gap:14px;overflow:auto;scrollbar-width:none}
 .gnav .links::-webkit-scrollbar{display:none}
 .gnav .links a{font-size:12px;opacity:.75;text-decoration:none;white-space:nowrap;transition:opacity .2s}
 .gnav .links a:hover,.gnav .links a.on{opacity:1}.gnav .links a.on{color:var(--blue)}
@@ -203,6 +203,7 @@ tr.tot td{font-weight:700;border-bottom:0}
 .risk .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
 .endcta{text-align:center}
 footer{background:var(--tile);color:var(--mut);font-size:12px;padding:22px;text-align:center;border-top:1px solid var(--ln);line-height:1.6}
+@media(max-width:1240px){.gnav .brand span{display:none}}
 @media(max-width:1000px){
   .kgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .hero-grid,.roi{grid-template-columns:1fr}
@@ -223,6 +224,69 @@ footer{background:var(--tile);color:var(--mut);font-size:12px;padding:22px;text-
   .brow{grid-template-columns:1fr 56px}.brow .bar{grid-column:1/-1;grid-row:2}
 }
 @media(max-width:520px){.kgrid,.kpis,.org,.champ,.status4,.g4{grid-template-columns:1fr 1fr}.gmo span:nth-child(even){visibility:hidden}}
+/* sección STAR */
+.stp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:36px}
+.stp button{position:relative;text-align:left;border:0;border-radius:18px;background:var(--tile);padding:16px 18px 20px;cursor:pointer;overflow:hidden;color:var(--ink);transition:transform .25s,background .25s,color .25s;min-height:44px}
+.stp button:hover{transform:translateY(-3px)}
+.stp .L{font-size:46px;font-weight:800;letter-spacing:-.05em;line-height:1;color:#c7c7cc;transition:color .3s}
+.stp .N{font-size:15px;font-weight:600;margin-top:6px}
+.stp .q{font-size:12.5px;color:var(--mut);margin-top:2px;line-height:1.35}
+.stp button.on{background:#1d1d1f;color:#f5f5f7}
+.stp button.on .L{background:linear-gradient(92deg,#2997ff,#9b7bff 55%,#f472b6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stp button.on .q{color:#a1a1a6}
+.stp .sbar{position:absolute;left:0;bottom:0;height:4px;width:0;background:linear-gradient(90deg,#0071e3,#7b61ff,#d946a8)}
+.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+.strip .card{padding:16px 20px}
+.strip b{display:block;font-size:28px;font-weight:700;letter-spacing:-.04em;font-variant-numeric:tabular-nums;line-height:1.1}
+.strip span{font-size:12.5px;color:var(--mut)}
+.pane{margin-top:12px}.pane[hidden]{display:none}
+.pane.show{animation:paneIn .55s cubic-bezier(.28,.11,.32,1)}
+@keyframes paneIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.pane .head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.pane .head h3{font-size:26px;font-weight:700;letter-spacing:-.03em}
+.pane .head p{font-size:15px;color:var(--mut)}
+.sm{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:16px}
+.sm .card .v{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:800;letter-spacing:-.05em;line-height:1}
+.sm .card p{font-size:13.5px;color:var(--mut);margin-top:8px;line-height:1.4}
+.cmt{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+.cmt .card b{font-size:12px;color:var(--blue);font-weight:600}
+.cmt .card div{font-size:15px;font-weight:600;margin-top:6px;line-height:1.35}
+.crit{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:12px}
+.crit .ci{background:var(--tile);border-radius:16px;padding:14px;font-size:13px;font-weight:600;line-height:1.35;transition:background .4s}
+.crit .ci i{display:flex;width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;font-style:normal;font-size:13px;background:#e5e5ea;color:#8e8e93;margin-bottom:8px;transition:.4s}
+.crit .ci small{display:block;font-weight:500;color:var(--mut);margin-top:4px;font-size:12px}
+.crit .ci.ok{background:#e3f6ec}.crit .ci.ok i{background:var(--ok);color:#fff;transform:scale(1.1)}
+.phs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:16px}
+.phs .card{padding:18px;display:flex;flex-direction:column;gap:6px}
+.phs .card h4{font-size:15px;font-weight:600;line-height:1.3}
+.phs .card .dt{font-size:12px;color:var(--blue);font-weight:600}
+.phs .card p{font-size:12.5px;color:var(--mut);line-height:1.4;flex:1}
+.phs .card .pct{font-size:22px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.pil{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
+.pil .card{padding:16px}.pil h4{font-size:14.5px;font-weight:600}.pil p{font-size:13px;color:var(--mut);margin-top:6px;line-height:1.4}
+.skg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px}
+.skg .card{padding:16px}
+.skg .t{font-size:13px;color:var(--mut);min-height:34px;line-height:1.3}
+.skg .v{font-size:30px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-top:6px;font-variant-numeric:tabular-nums}
+.skg .bm{font-size:12px;color:var(--mut);margin-top:6px}
+.fin{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:10px}
+.fin div{background:#1d1d1f;color:#f5f5f7;border-radius:16px;padding:16px}
+.fin b{display:block;font-size:26px;font-weight:700;letter-spacing:-.03em}
+.fin span{font-size:12.5px;color:#a1a1a6}
+.pitch{margin-top:40px;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:12px}
+.pitch .txt p{font-size:15.5px;line-height:1.55;padding:12px 14px;border-radius:14px;opacity:.5;transition:opacity .4s,background .4s}
+.pitch .txt p b{color:var(--blue)}
+.pitch .txt p.now{opacity:1;background:#eef5ff}
+.pitch.idle .txt p{opacity:1}
+.ptimer{font-size:56px;font-weight:800;letter-spacing:-.05em;font-variant-numeric:tabular-nums;line-height:1;margin-top:10px}
+.faq details{background:var(--tile);border-radius:14px;padding:14px 16px;margin-top:8px}
+.faq summary{cursor:pointer;font-weight:600;font-size:14.5px;list-style:none;display:flex;justify-content:space-between;gap:10px}
+.faq summary::after{content:"+";color:var(--blue);font-size:18px;line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq details p{font-size:14px;color:var(--mut);margin-top:8px;line-height:1.5}
+.exp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+@media(max-width:1000px){.sm,.skg,.fin,.pil{grid-template-columns:repeat(2,minmax(0,1fr))}.phs,.crit{grid-template-columns:repeat(3,minmax(0,1fr))}.pitch{grid-template-columns:1fr}}
+@media(max-width:760px){.stp{grid-template-columns:repeat(2,minmax(0,1fr))}.stp .L{font-size:36px}.cmt,.exp,.strip{grid-template-columns:1fr}.phs,.crit{grid-template-columns:1fr 1fr}}
 /* modo presentación */
 .pbtn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:980px;border:0;background:var(--blue);color:#fff;cursor:pointer;white-space:nowrap}
 .pbtn:hover{background:var(--blueh)}
@@ -249,7 +313,7 @@ body.pres .rv{opacity:1;transform:none}
 <header class="gnav"><div class="in">
   <a class="brand" href="#hero">Plan D365 <span>· 30% → 100% antes de Q4 2027</span></a>
   <nav class="links" id="navlinks">
-    <a href="#resumen">Resumen</a><a href="#alcance">Alcance</a><a href="#roadmap">Roadmap y avance</a><a href="#kpis">KPIs</a><a href="#roi">P&amp;L y ROI</a><a href="#presupuesto">Presupuesto</a><a href="#gobierno">Gobierno</a><a href="#raci">RACI</a><a href="#capacidad">Capacidad</a><a href="#riesgos">Riesgos</a>
+    <a href="#resumen">Resumen</a><a href="#star">STAR</a><a href="#alcance">Alcance</a><a href="#roadmap">Roadmap y avance</a><a href="#kpis">KPIs</a><a href="#roi">P&amp;L y ROI</a><a href="#presupuesto">Presupuesto</a><a href="#gobierno">Gobierno</a><a href="#raci">RACI</a><a href="#capacidad">Capacidad</a><a href="#riesgos">Riesgos</a>
   </nav>
   <div class="rt"><button class="pbtn" id="presBtn" type="button">▶ Presentar</button><a class="back" href="https://fherg15.github.io/">Ver perfil ›</a></div>
 </div></header>
@@ -300,6 +364,106 @@ body.pres .rv{opacity:1;transform:none}
     <div class="card rv"><div class="v grad">2 contrataciones</div><p>Analista funcional D365 SCM y desarrollador X++ / Power Platform, aprobados antes del 15 de enero de 2027.</p></div>
   </div>
   <p class="note rv">Decisión que se pide al Comité Directivo antes del Gate 0 (15 ene 2027).</p>
+</div></section>
+
+<section class="tile white" id="star"><div class="inner">
+  <p class="eyebrow rv">Metodología STAR</p>
+  <h2 class="h2 rv">Situación, tarea, acción y resultado: <span class="grad">el plan en cuatro pasos.</span></h2>
+  <p class="lead rv">Elige una letra o deja que avance sola. La fecha simulada mueve las fases de la acción, los criterios de éxito y los KPIs del resultado.</p>
+  <div class="stp rv" id="stp" role="tablist" aria-label="Pasos STAR">
+    <button type="button" role="tab" data-i="0"><div class="L">S</div><div class="N">Situación</div><div class="q">ERP al 30%, temporada en riesgo</div><i class="sbar"></i></button>
+    <button type="button" role="tab" data-i="1"><div class="L">T</div><div class="N">Tarea</div><div class="q">100% antes de Q4 2027</div><i class="sbar"></i></button>
+    <button type="button" role="tab" data-i="2"><div class="L">A</div><div class="N">Acción</div><div class="q">Gobierno, dos olas, seis gates</div><i class="sbar"></i></button>
+    <button type="button" role="tab" data-i="3"><div class="L">R</div><div class="N">Resultado</div><div class="q">KPIs y finanzas medibles</div><i class="sbar"></i></button>
+  </div>
+  <div class="simbar" style="background:var(--tile);margin-top:12px">
+    <button class="btn fill" id="sPlay" type="button">▶ Reproducir</button>
+    <input type="range" id="sSl" min="0" max="760" value="0" aria-label="Fecha simulada del plan STAR">
+    <div class="d" id="sLbl">1 dic 2026</div>
+  </div>
+  <div class="strip">
+    <div class="card"><b id="sLive">30%</b><span>ERP en producción</span><div class="meter"><i id="sLiveM"></i></div></div>
+    <div class="card"><b id="sPlan">0%</b><span>Avance del plan de trabajo</span><div class="meter"><i id="sPlanM"></i></div></div>
+    <div class="card"><b id="sAcc">0.0</b><span>MXN M de beneficio acumulado</span><div class="meter"><i id="sAccM"></i></div></div>
+  </div>
+
+  <div class="pane" id="pane0" role="tabpanel">
+    <div class="head"><h3>S · Situación</h3><p>La empresa tiene D365, pero la operación que define la temporada sigue fuera del ERP.</p></div>
+    <div class="sm">
+      <div class="card"><div class="v grad">30%</div><p>del ERP en producción: solo contabilidad, CxP, CxC, bancos y CFDI 4.0.</p></div>
+      <div class="card"><div class="v grad">166 días</div><p>de inventario; planeación de compras y producción en Excel.</p></div>
+      <div class="card"><div class="v grad">40%</div><p>de las ventas de ~MXN 800 M se concentra en octubre–diciembre.</p></div>
+      <div class="card"><div class="v grad">jul 2027</div><p>arrancan la compra de tela y la producción de invierno.</p></div>
+    </div>
+    <p class="note">Causa raíz probable de que el proyecto se quedara en 30%: falta de gobierno, sin dueños de proceso ni champions con tiempo. Se confirma en el diagnóstico de diciembre.</p>
+  </div>
+
+  <div class="pane" id="pane1" role="tabpanel" hidden>
+    <div class="head"><h3>T · Tarea</h3><p>Terminar el 70% restante antes de la temporada, sin frenar la operación y con beneficios medibles.</p></div>
+    <div class="cmt">
+      <div class="card"><b>Fecha</b><div>100% en producción el 26 jul 2027; congelamiento oct–dic</div></div>
+      <div class="card"><b>Presupuesto</b><div>MXN 21.4 M con 12% de contingencia que solo libera el CFO</div></div>
+      <div class="card"><b>Alcance</b><div>7 frentes: producto, compras, producción, MRP, almacén, tiendas y BI</div></div>
+      <div class="card"><b>Operación</b><div>Sin interrumpir ventas; 2 semanas de inventario de seguridad por corte</div></div>
+      <div class="card"><b>Estándar</b><div>Fit-to-Standard: toda personalización con caso de negocio firmado</div></div>
+      <div class="card"><b>Personas</b><div>~180 usuarios nuevos capacitados; 8 champions como primer soporte</div></div>
+    </div>
+    <h4 style="margin-top:22px;font-size:15px">Criterios de éxito en la fecha simulada</h4>
+    <div class="crit" id="sCrit"></div>
+  </div>
+
+  <div class="pane" id="pane2" role="tabpanel" hidden>
+    <div class="head"><h3>A · Acción</h3><p>Primero el gobierno, luego dos olas con gates que deciden con datos.</p></div>
+    <div class="phs" id="sPhs"></div>
+    <div class="pil">
+      <div class="card"><h4>Gobierno</h4><p>Director General como sponsor, CFO dueño de beneficios, un dueño y un champion por proceso, RACI con un solo responsable final.</p></div>
+      <div class="card"><h4>Capacidad</h4><p>Reemplazo para 4 champions y 2 contrataciones de TI: el pico de junio–julio baja de 120% a 82% de utilización.</p></div>
+      <div class="card"><h4>Finanzas</h4><p>Presupuesto mensual plan vs. real; desviación mayor a 5% se escala. Pagos al partner ligados a gates.</p></div>
+      <div class="card"><h4>Riesgos</h4><p>Limpieza de datos desde enero, válvula de alcance en el G1 y plan de reversa si el G3 es no-go.</p></div>
+    </div>
+  </div>
+
+  <div class="pane" id="pane3" role="tabpanel" hidden>
+    <div class="head"><h3>R · Resultado esperado</h3><p>Metas del plan, no resultados logrados. Los KPIs se capturan desde agosto de 2027.</p></div>
+    <div class="skg" id="sKpi"></div>
+    <div class="fin">
+      <div><b>+10.3 M</b><span>EBITDA al año desde 2029 (MXN)</span></div>
+      <div><b>9.0 M</b><span>VPN a 5 años, tasa 12% (MXN)</span></div>
+      <div><b>31% · 42%</b><span>TIR y ROI a 5 años</span></div>
+      <div><b>30 M</b><span>Capital de trabajo liberado (MXN)</span></div>
+    </div>
+  </div>
+
+  <div class="pitch idle" id="pitch">
+    <div class="card txt">
+      <h3>El plan en 2 minutos</h3>
+      <p data-a="0" data-b="20"><b>Situación.</b> La empresa tiene D365 al 30%: Finanzas vive, pero compras, producción, almacén y tiendas siguen en Excel y sistemas legado. Con 40% de las ventas en Q4, eso significa inventario alto, quiebres en temporada y poca visibilidad del costo por estilo y talla.</p>
+      <p data-a="20" data-b="35"><b>Tarea.</b> Terminar el 70% restante antes de la temporada 2027, sin frenar la operación, dentro de MXN 21.4 millones y con beneficios que Finanzas pueda medir.</p>
+      <p data-a="35" data-b="95"><b>Acción.</b> Primero el gobierno: un ERP que se queda en 30% casi siempre es un problema de dueños, no de tecnología. Después, dos olas: el 3 de mayo compras, inventario y costeo; el 26 de julio producción, MRP, almacén y tiendas, justo antes de la compra de tela de invierno. Seis gates deciden con criterios claros, el pico de capacidad se cubre con reemplazos y hay plan B si el gate del 9 de julio no se aprueba.</p>
+      <p data-a="95" data-b="120"><b>Resultado.</b> D365 al 100% dos meses antes del pico y sin cambios durante la temporada. En números: 10.3 millones de EBITDA al año desde 2029, 30 millones de capital de trabajo liberado, VPN de 9 millones y TIR de 31%.</p>
+    </div>
+    <div class="card">
+      <h3>Reproducir el resumen</h3>
+      <p class="mut" style="font-size:14px;margin-top:6px">Resalta cada parte del STAR con el tiempo que le corresponde.</p>
+      <div class="ptimer" id="pTime">2:00</div>
+      <div class="meter"><i id="pBar" style="width:0"></i></div>
+      <button class="btn fill mt2" id="pBtn" type="button">▶ Reproducir 2 minutos</button>
+      <div class="faq" style="margin-top:22px">
+        <h3>Preguntas frecuentes</h3>
+        <details><summary>¿Por qué julio y no septiembre?</summary><p>La compra de tela y la producción de invierno arrancan en julio–agosto; deben correr ya en el ERP.</p></details>
+        <details><summary>¿Qué pasa sin el personal de reemplazo?</summary><p>La Ola 2 se corre a octubre, choca con la temporada y el go-live pasa a enero 2028: se pierden ~MXN 8 M de beneficio en 2028.</p></details>
+        <details><summary>¿El ROI de 42% es suficiente?</summary><p>El ahorro en P&amp;L es modesto; el argumento fuerte es el capital de trabajo y proteger la temporada. La TIR de 31% supera con amplitud el 12% de costo de capital.</p></details>
+        <details><summary>¿Qué supuesto es más sensible?</summary><p>La reducción de inventario: si baja 10% en vez de 15%, el VPN cae a ~MXN 2.8 M. Por eso tiene dueño y se mide desde el Gate 0.</p></details>
+        <details><summary>¿Y si hay sobrecosto?</summary><p>Con +20% de sobrecosto el VPN baja a ~MXN 4.8 M y sigue positivo; la contingencia de 12% cubre buena parte.</p></details>
+        <details><summary>¿Cómo evitar que se repita el 30%?</summary><p>Dueños por proceso, Fit-to-Standard, pagos al partner ligados a gates y champions con tiempo protegido.</p></details>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp">
+    <div class="card rv"><div class="who">Experiencia que respalda la Ola 1</div><h3 style="margin-top:6px">ERP ENWIS en Dynamics 365 · SUEZ → VEOLIA</h3><p class="mut" style="font-size:14px;margin-top:8px">Implementación de inventarios, costos y compras (Procure to Pay): los mismos procesos de la Ola 1 de este plan.</p></div>
+    <div class="card rv"><div class="who">Innovación sobre el ERP</div><h3 style="margin-top:6px">Conector Oracle NetSuite – Claude AI vía MCP</h3><p class="mut" style="font-size:14px;margin-top:8px">Reconocido por Oracle Global como referente regional de transformación digital.</p></div>
+  </div>
 </div></section>
 
 <section class="tile" id="alcance"><div class="inner">
@@ -636,6 +800,49 @@ const RK=[['Datos maestros sucios (SKU, BOM, consumos)','Alta','Alto','Limpieza 
 const pc=v=>v.startsWith('Alt')?'p-bad':v.startsWith('Med')?'p-warn':'p-ok';
 $('#risks').innerHTML=RK.map(r=>`<div class="card risk rv"><h4>${r[0]}</h4><p>${r[3]}</p><div class="tags"><span class="pill ${pc(r[1])}">Probabilidad ${r[1].toLowerCase()}</span><span class="pill ${pc(r[2])}">Impacto ${r[2].toLowerCase()}</span><span class="pill">${r[4]}</span></div></div>`).join('');
 $$('#risks .rv').forEach(el=>revObs.observe(el));
+/* sección STAR */
+const SBTN=$$('#stp button'),SPANE=[0,1,2,3].map(i=>$('#pane'+i));
+let sIdx=0,sAuto=false,sUser=false,sTimer=null;
+const sSel=(i,auto)=>{sIdx=i;SBTN.forEach((b,j)=>{b.classList.toggle('on',j===i);b.setAttribute('aria-selected',j===i);const br=b.querySelector('.sbar');br.style.transition='none';br.style.width=j<i&&auto?'100%':'0';});
+  SPANE.forEach((p,j)=>{p.hidden=j!==i;p.classList.remove('show')});void SPANE[i].offsetWidth;SPANE[i].classList.add('show');
+  const br=SBTN[i].querySelector('.sbar');void br.offsetWidth;
+  if(auto&&!RM){br.style.transition='width 8s linear';br.style.width='100%';clearTimeout(sTimer);sTimer=setTimeout(()=>{if(sAuto)sSel((i+1)%4,true)},8000)}else{br.style.width='100%'}};
+SBTN.forEach(b=>b.addEventListener('click',()=>{sUser=true;sAuto=false;clearTimeout(sTimer);sSel(+b.dataset.i,false)}));
+const sObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!sUser){sAuto=true;sSel(sIdx,true)}else if(!e.isIntersecting){sAuto=false;clearTimeout(sTimer)}}),{threshold:.35});
+sObs.observe($('#stp'));sSel(0,false);
+const S0=D('2026-12-01');
+const PH=[
+ {n:'Movilización',s:'2026-12-01',e:'2027-01-15',t:'Diagnóstico, re-baseline, contrato por ola, contrataciones. Gate G0.'},
+ {n:'Ola 1',s:'2027-01-11',e:'2027-05-03',t:'Producto talla/color, compras, inventario y costeo. Gates G1 y G2.'},
+ {n:'Ola 2',s:'2027-02-15',e:'2027-07-26',t:'Producción, MRP, almacén, POS, e-commerce, EDI. Gates G3 y G4.'},
+ {n:'Estabilización',s:'2027-07-26',e:'2027-09-30',t:'Champions en piso, retiro de legado. Gate G5.'},
+ {n:'Temporada Q4',s:'2027-10-01',e:'2027-12-31',t:'Congelamiento de cambios; operación estable.'}];
+$('#sPhs').innerHTML=PH.map((p,i)=>`<div class="card"><span class="pill" id="phs${i}">Pendiente</span><h4>${p.n}</h4><div class="dt">${dlab(D(p.s))} – ${dlab(D(p.e))}</div><p>${p.t}</p><div class="pct" id="php${i}">0%</div><div class="meter"><i id="phm${i}"></i></div></div>`).join('');
+const CR=[['Ola 1 en producción','2027-05-03'],['D365 al 100% en fecha','2027-07-26'],['Cero incidentes críticos 2 semanas','2027-09-30'],['Cierre contable en ≤5 días','2027-09-30'],['Temporada Q4 sin cambios al ERP','2027-12-31']];
+$('#sCrit').innerHTML=CR.map((c,i)=>`<div class="ci" id="cr${i}"><i>✓</i>${c[0]}<small>${dlab(D(c[1]))}</small></div>`).join('');
+const SK=KPI.filter(k=>!k.acc&&!k.live).slice(0,6);
+const starSim=day=>{const d=new Date(S0.getTime()+day*864e5);$('#sLbl').textContent=dlab(d);
+  const live=d>=D('2027-07-26')?100:d>=D('2027-05-03')?55:30;$('#sLive').textContent=live+'%';$('#sLiveM').style.width=live+'%';
+  let ws=0,wp=0;LANES.forEach(l=>{ws+=l.w;wp+=l.w*clamp((d-D(l.s))/(D(l.e)-D(l.s)))});const plan=wp/ws*100;$('#sPlan').textContent=Math.round(plan)+'%';$('#sPlanM').style.width=plan+'%';
+  const mi=(d.getFullYear()-2027)*12+d.getMonth()-7;let acc=0;for(let j=1;j<=mi&&j<=20;j++)acc+=15.54*cap(j)/12;$('#sAcc').textContent=f1(acc);$('#sAccM').style.width=clamp(acc/15.54)*100+'%';
+  PH.forEach((p,i)=>{const pr=clamp((d-D(p.s))/(D(p.e)-D(p.s)));$('#php'+i).textContent=Math.round(pr*100)+'%';$('#phm'+i).style.width=pr*100+'%';const el=$('#phs'+i);el.textContent=pr>=1?'Completada':pr>0?'En curso':'Pendiente';el.className='pill '+(pr>=1?'p-ok':pr>0?'p-blue':'')});
+  CR.forEach((c,i)=>$('#cr'+i).classList.toggle('ok',d>=D(c[1])));
+  const cc=mi<0?0:cap(Math.min(mi,20));
+  $('#sKpi').innerHTML=SK.map(k=>{const val=k.b+(k.m-k.b)*cc;const cls=cc>=.95?'p-ok':cc>=.5?'p-warn':cc>0?'p-blue':'';const lab=cc>=.95?'En meta':cc>=.5?'En camino':cc>0?'Arranque':'Línea base';
+    return `<div class="card"><div style="display:flex;justify-content:space-between;gap:8px"><div class="t">${k.t}</div><span class="pill ${cls}" style="align-self:flex-start">${lab}</span></div><div class="v">${val.toLocaleString('es-MX',{minimumFractionDigits:k.dg,maximumFractionDigits:k.dg})}${k.u}</div><div class="bm">Base ${k.b.toLocaleString('es-MX')}${k.u} → meta ${k.m.toLocaleString('es-MX')}${k.u}</div><div class="meter"><i style="width:${cc*100}%"></i></div></div>`}).join('')};
+const sSl=$('#sSl');sSl.value=clamp(Math.round((new Date()-S0)/864e5),0,760);starSim(+sSl.value);
+sSl.addEventListener('input',()=>starSim(+sSl.value));
+let sPT=null;const sStop=()=>{clearInterval(sPT);sPT=null;$('#sPlay').textContent='▶ Reproducir'};
+$('#sPlay').addEventListener('click',()=>{if(sPT)return sStop();if(+sSl.value>=760)sSl.value=0;$('#sPlay').textContent='❚❚ Pausa';
+  sPT=setInterval(()=>{sSl.value=Math.min(760,+sSl.value+4);starSim(+sSl.value);const d=+sSl.value;const want=d<45?0:d<200?1:d<480?2:3;if(want!==sIdx){sUser=true;sAuto=false;clearTimeout(sTimer);sSel(want,false)}if(+sSl.value>=760)sStop()},45)});
+const PP=$$('#pitch .txt p');let pT=null,p0=0;
+const pStop=()=>{clearInterval(pT);pT=null;$('#pBtn').textContent='▶ Reproducir 2 minutos';$('#pitch').classList.add('idle');PP.forEach(x=>x.classList.remove('now'))};
+$('#pBtn').addEventListener('click',()=>{if(pT){pStop();$('#pTime').textContent='2:00';$('#pBar').style.width='0';return}
+  p0=performance.now();$('#pitch').classList.remove('idle');$('#pBtn').textContent='■ Detener';
+  pT=setInterval(()=>{const t=(performance.now()-p0)/1000;if(t>=120){pStop();$('#pTime').textContent='0:00';$('#pBar').style.width='100%';return}
+    const r=Math.ceil(120-t);$('#pTime').textContent=Math.floor(r/60)+':'+String(r%60).padStart(2,'0');$('#pBar').style.width=(t/120*100)+'%';
+    PP.forEach(x=>x.classList.toggle('now',t>=+x.dataset.a&&t<+x.dataset.b))},200)});
+
 /* modo presentación */
 const SECS=$$('main>section');
 const NAMES=SECS.map(s=>{const a=s.id&&document.querySelector('#navlinks a[href="#'+s.id+'"]');return a?a.textContent:(s.id==='hero'?'Inicio':'Cierre')});
