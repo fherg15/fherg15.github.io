@@ -223,6 +223,24 @@ footer{background:var(--tile);color:var(--mut);font-size:12px;padding:22px;text-
   .brow{grid-template-columns:1fr 56px}.brow .bar{grid-column:1/-1;grid-row:2}
 }
 @media(max-width:520px){.kgrid,.kpis,.org,.champ,.status4,.g4{grid-template-columns:1fr 1fr}.gmo span:nth-child(even){visibility:hidden}}
+/* modo presentación */
+.pbtn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:980px;border:0;background:var(--blue);color:#fff;cursor:pointer;white-space:nowrap}
+.pbtn:hover{background:var(--blueh)}
+.gnav .rt{display:flex;align-items:center;gap:12px}
+.pctl{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:300;display:none;align-items:center;gap:6px;padding:6px;border-radius:980px;background:rgba(29,29,31,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);color:#fff;box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.pctl button{min-width:44px;height:40px;border:0;border-radius:980px;background:rgba(255,255,255,.12);color:#fff;font-size:15px;font-weight:600;cursor:pointer;padding:0 14px}
+.pctl button:hover{background:rgba(255,255,255,.24)}
+.pctl .pc{font-size:12.5px;padding:0 10px;white-space:nowrap;text-align:center;min-width:150px}
+.pctl .pc b{display:block;font-size:13px}
+.pctl .pc span{opacity:.7;font-variant-numeric:tabular-nums}
+html.pres{scroll-snap-type:y proximity;scroll-padding-top:0}
+body.pres .gnav,body.pres #prog,body.pres footer{display:none}
+body.pres .pctl{display:flex}
+body.pres main{gap:0;padding-bottom:0}
+body.pres main>section{min-height:100vh;display:flex;align-items:center;scroll-snap-align:start;padding-bottom:110px}
+body.pres main>section>.inner{width:100%}
+body.pres .rv{opacity:1;transform:none}
+@media(max-width:760px){.pctl .pc{min-width:96px}.pctl .pc b{display:none}.pbtn{padding:6px 10px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
@@ -233,8 +251,15 @@ footer{background:var(--tile);color:var(--mut);font-size:12px;padding:22px;text-
   <nav class="links" id="navlinks">
     <a href="#resumen">Resumen</a><a href="#alcance">Alcance</a><a href="#roadmap">Roadmap y avance</a><a href="#kpis">KPIs</a><a href="#roi">P&amp;L y ROI</a><a href="#presupuesto">Presupuesto</a><a href="#gobierno">Gobierno</a><a href="#raci">RACI</a><a href="#capacidad">Capacidad</a><a href="#riesgos">Riesgos</a>
   </nav>
-  <a class="back" href="https://fherg15.github.io/">Ver perfil ›</a>
+  <div class="rt"><button class="pbtn" id="presBtn" type="button">▶ Presentar</button><a class="back" href="https://fherg15.github.io/">Ver perfil ›</a></div>
 </div></header>
+<div class="pctl" id="pctl" role="toolbar" aria-label="Controles de presentación">
+  <button type="button" id="pPrev" aria-label="Anterior">←</button>
+  <div class="pc"><b id="pName">Inicio</b><span id="pNum">1 / 12</span></div>
+  <button type="button" id="pNext" aria-label="Siguiente">→</button>
+  <button type="button" id="pFull" aria-label="Pantalla completa">⛶</button>
+  <button type="button" id="pExit" aria-label="Salir de la presentación">✕</button>
+</div>
 
 <main>
 <section class="tile" id="hero"><div class="inner">
@@ -244,7 +269,7 @@ footer{background:var(--tile);color:var(--mut);font-size:12px;padding:22px;text-
       <h1 class="h1">Dynamics 365 al 100% <span class="grad">antes de la temporada Q4 2027.</span></h1>
       <p class="lead">Una manufacturera de chamarras tiene <b>30% de su ERP</b> en producción. Este plan lleva compras, inventario, producción, almacén, tiendas y e-commerce a D365 el <b>26 de julio de 2027</b>, cuando arrancan la compra de tela y la producción de invierno.</p>
       <div class="count" id="count" aria-label="Cuenta regresiva al go-live"></div>
-      <div class="hero-cta"><a class="btn fill" href="#roadmap">Simular el avance</a><a class="btn line" href="#roi">Probar el ROI ›</a></div>
+      <div class="hero-cta"><button class="btn fill" id="presBtn2" type="button">▶ Presentar el proyecto</button><a class="btn line" href="#roadmap">Simular el avance ›</a></div>
     </div>
     <div class="ringbox rv">
       <div class="ringwrap">
@@ -611,6 +636,27 @@ const RK=[['Datos maestros sucios (SKU, BOM, consumos)','Alta','Alto','Limpieza 
 const pc=v=>v.startsWith('Alt')?'p-bad':v.startsWith('Med')?'p-warn':'p-ok';
 $('#risks').innerHTML=RK.map(r=>`<div class="card risk rv"><h4>${r[0]}</h4><p>${r[3]}</p><div class="tags"><span class="pill ${pc(r[1])}">Probabilidad ${r[1].toLowerCase()}</span><span class="pill ${pc(r[2])}">Impacto ${r[2].toLowerCase()}</span><span class="pill">${r[4]}</span></div></div>`).join('');
 $$('#risks .rv').forEach(el=>revObs.observe(el));
+/* modo presentación */
+const SECS=$$('main>section');
+const NAMES=SECS.map(s=>{const a=s.id&&document.querySelector('#navlinks a[href="#'+s.id+'"]');return a?a.textContent:(s.id==='hero'?'Inicio':'Cierre')});
+const H=document.documentElement,BD=document.body;
+const cur=()=>{let b=0,bd=1e9;SECS.forEach((s,i)=>{const d=Math.abs(s.getBoundingClientRect().top);if(d<bd){bd=d;b=i}});return b};
+const pupd=()=>{const i=cur();$('#pName').textContent=NAMES[i];$('#pNum').textContent=(i+1)+' / '+SECS.length};
+const pgo=i=>{i=clamp(i,0,SECS.length-1);SECS[i].scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})};
+const pnext=()=>{const i=cur(),r=SECS[i].getBoundingClientRect();if(r.bottom>innerHeight+40)scrollBy({top:innerHeight*.8,behavior:RM?'auto':'smooth'});else pgo(i+1)};
+const pprev=()=>{const i=cur(),r=SECS[i].getBoundingClientRect();if(r.top<-40)scrollBy({top:-innerHeight*.8,behavior:RM?'auto':'smooth'});else pgo(i-1)};
+const full=()=>{try{if(document.fullscreenElement)document.exitFullscreen();else H.requestFullscreen().catch(()=>{})}catch(e){}};
+const pstart=fs=>{H.classList.add('pres');BD.classList.add('pres');$$('.rv').forEach(e=>e.classList.add('in'));if(fs)full();pgo(0);setTimeout(pupd,600)};
+const pexit=()=>{H.classList.remove('pres');BD.classList.remove('pres');try{if(document.fullscreenElement)document.exitFullscreen()}catch(e){}if(location.hash==='#presentar')history.replaceState(null,'',location.pathname)};
+$('#presBtn').addEventListener('click',()=>pstart(true));$('#presBtn2').addEventListener('click',()=>pstart(true));
+$('#pNext').addEventListener('click',pnext);$('#pPrev').addEventListener('click',pprev);$('#pFull').addEventListener('click',full);$('#pExit').addEventListener('click',pexit);
+addEventListener('scroll',()=>{if(BD.classList.contains('pres'))pupd()},{passive:true});
+addEventListener('keydown',e=>{if(!BD.classList.contains('pres'))return;const t=e.target.tagName;if(t==='INPUT'||t==='SELECT'||t==='TEXTAREA')return;
+  if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();pnext()}
+  else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();pprev()}
+  else if(e.key==='Escape'&&!document.fullscreenElement)pexit();
+  else if(e.key==='f'||e.key==='F')full()});
+if(location.hash==='#presentar')pstart(false);
 }
 </script>
 </body>
