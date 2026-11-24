@@ -287,6 +287,33 @@ footer{background:var(--tile);color:var(--mut);font-size:12px;padding:22px;text-
 .exp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
 @media(max-width:1000px){.sm,.skg,.fin,.pil{grid-template-columns:repeat(2,minmax(0,1fr))}.phs,.crit{grid-template-columns:repeat(3,minmax(0,1fr))}.pitch{grid-template-columns:1fr}}
 @media(max-width:760px){.stp{grid-template-columns:repeat(2,minmax(0,1fr))}.stp .L{font-size:36px}.cmt,.exp,.strip{grid-template-columns:1fr}.phs,.crit{grid-template-columns:1fr 1fr}}
+/* sección roles y aprobaciones */
+.apg{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:12px;margin-top:40px}
+.amt{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:14px}
+.amt b{font-size:clamp(2rem,4.4vw,3rem);font-weight:800;letter-spacing:-.05em;font-variant-numeric:tabular-nums;line-height:1}
+.amt span{font-size:14px;color:var(--mut)}
+.apsel{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.apsel select,.lic select,.lic input[type=number]{font:inherit;font-size:16px;min-height:44px;border-radius:12px;border:1px solid var(--ln);padding:8px 12px;background:#fff;color:var(--ink)}
+.band{position:relative;height:14px;border-radius:7px;display:flex;overflow:hidden;margin-top:18px}
+.band i{display:block;height:100%}
+.bandl{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut);margin-top:6px}
+.bmk{position:absolute;top:-6px;width:4px;height:26px;border-radius:2px;background:var(--ink);transition:left .3s;transform:translateX(-50%)}
+.flow{display:flex;align-items:stretch;gap:8px;margin-top:20px;flex-wrap:wrap}
+.flow .st2{flex:1 1 120px;background:var(--tile);border-radius:14px;padding:12px;font-size:13px;line-height:1.35;position:relative;animation:paneIn .45s cubic-bezier(.28,.11,.32,1) both}
+.flow .st2 b{display:block;font-size:14px}
+.flow .st2 small{color:var(--mut)}
+.flow .st2.ap{background:#eef5ff}.flow .st2.ok{background:#e3f6ec}
+.lvl{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;padding:8px 14px;border-radius:980px;margin-top:16px;transition:.3s}
+.lvl.l1{background:#e3f6ec;color:#0b7a46}.lvl.l2{background:#fff1de;color:#a35d00}.lvl.l3{background:#fde8e8;color:#b42328}
+.licbar{display:flex;height:40px;border-radius:12px;overflow:hidden;margin-top:14px}
+.licbar div{display:flex;align-items:center;justify-content:center;color:#fff;font-size:12.5px;font-weight:700;white-space:nowrap;overflow:hidden;transition:width 1s}
+.lic .row2{display:grid;grid-template-columns:1fr 110px;gap:8px;margin-top:12px}
+.lic .imp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}
+.lic .imp div{background:var(--tile);border-radius:12px;padding:10px}
+.lic .imp b{display:block;font-size:20px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.lic .imp span{font-size:12px;color:var(--mut)}
+.rtab td{font-size:13.5px}.rtab td:nth-child(3){text-align:right;font-variant-numeric:tabular-nums}
+@media(max-width:1000px){.apg{grid-template-columns:1fr}}
 /* modo presentación */
 .pbtn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:980px;border:0;background:var(--blue);color:#fff;cursor:pointer;white-space:nowrap}
 .pbtn:hover{background:var(--blueh)}
@@ -313,7 +340,7 @@ body.pres .rv{opacity:1;transform:none}
 <header class="gnav"><div class="in">
   <a class="brand" href="#hero">Plan D365 <span>· 30% → 100% antes de Q4 2027</span></a>
   <nav class="links" id="navlinks">
-    <a href="#resumen">Resumen</a><a href="#star">STAR</a><a href="#alcance">Alcance</a><a href="#roadmap">Roadmap y avance</a><a href="#kpis">KPIs</a><a href="#roi">P&amp;L y ROI</a><a href="#presupuesto">Presupuesto</a><a href="#gobierno">Gobierno</a><a href="#raci">RACI</a><a href="#capacidad">Capacidad</a><a href="#riesgos">Riesgos</a>
+    <a href="#resumen">Resumen</a><a href="#star">STAR</a><a href="#alcance">Alcance</a><a href="#roadmap">Roadmap y avance</a><a href="#kpis">KPIs</a><a href="#roi">P&amp;L y ROI</a><a href="#presupuesto">Presupuesto</a><a href="#gobierno">Gobierno</a><a href="#roles">Roles</a><a href="#raci">RACI</a><a href="#capacidad">Capacidad</a><a href="#riesgos">Riesgos</a>
   </nav>
   <div class="rt"><button class="pbtn" id="presBtn" type="button">▶ Presentar</button><a class="back" href="https://fherg15.github.io/">Ver perfil ›</a></div>
 </div></header>
@@ -331,7 +358,7 @@ body.pres .rv{opacity:1;transform:none}
     <div class="rv">
       <span class="badge"><i class="live"></i>Caso de negocio · Gerente de TI Dynamics 365</span>
       <h1 class="h1">Dynamics 365 al 100% <span class="grad">antes de la temporada Q4 2027.</span></h1>
-      <p class="lead">Una manufacturera de chamarras con <b>150 empleados</b>, de los que <b>75 usarán el ERP</b>, tiene <b>30%</b> de D365 en producción. Este plan lleva compras, inventario, producción, almacén, tiendas y e-commerce a D365 el <b>26 de julio de 2027</b>, cuando arrancan la compra de tela y la producción de invierno.</p>
+      <p class="lead">Una manufacturera de chamarras con <b>150 empleados</b>, de los que <b>45 usarán el ERP</b>, tiene <b>30%</b> de D365 en producción. Este plan lleva compras, inventario, producción, almacén, tiendas y e-commerce a D365 el <b>26 de julio de 2027</b>, cuando arrancan la compra de tela y la producción de invierno.</p>
       <div class="count" id="count" aria-label="Cuenta regresiva al go-live"></div>
       <div class="hero-cta"><button class="btn fill" id="presBtn2" type="button">▶ Presentar el proyecto</button><a class="btn line" href="#roadmap">Simular el avance ›</a></div>
     </div>
@@ -345,11 +372,11 @@ body.pres .rv{opacity:1;transform:none}
     </div>
   </div>
   <div class="kgrid">
-    <div class="k rv"><div class="n" data-c="19.9" data-p="MXN " data-s=" M">0</div><div class="l">Inversión para el 70% restante</div></div>
-    <div class="k rv"><div class="n" data-c="11.8" data-p="+" data-s=" M">0</div><div class="l">EBITDA anual desde 2029 (MXN)</div></div>
-    <div class="k rv"><div class="n" data-c="15.7" data-p="MXN " data-s=" M">0</div><div class="l">VPN a 5 años, tasa 12%</div></div>
-    <div class="k rv"><div class="n" data-c="47" data-s="%" data-d="0">0</div><div class="l">TIR a 5 años</div></div>
-    <div class="k rv"><div class="n" data-c="74" data-s="%" data-d="0">0</div><div class="l">ROI a 5 años</div></div>
+    <div class="k rv"><div class="n" data-c="19.8" data-p="MXN " data-s=" M">0</div><div class="l">Inversión para el 70% restante</div></div>
+    <div class="k rv"><div class="n" data-c="10.9" data-p="+" data-s=" M">0</div><div class="l">EBITDA anual desde 2029 (MXN)</div></div>
+    <div class="k rv"><div class="n" data-c="13.0" data-p="MXN " data-s=" M">0</div><div class="l">VPN a 5 años, tasa 12%</div></div>
+    <div class="k rv"><div class="n" data-c="41" data-s="%" data-d="0">0</div><div class="l">TIR a 5 años</div></div>
+    <div class="k rv"><div class="n" data-c="64" data-s="%" data-d="0">0</div><div class="l">ROI a 5 años</div></div>
     <div class="k rv"><div class="n" data-c="30" data-p="MXN " data-s=" M" data-d="0">0</div><div class="l">Capital de trabajo liberado</div></div>
   </div>
 </div></section>
@@ -359,7 +386,7 @@ body.pres .rv{opacity:1;transform:none}
   <h2 class="h2 rv">Dos olas, seis gates y <span class="grad">cero cambios durante la temporada.</span></h2>
   <p class="lead rv">La Ola 1 entra el <b>3 de mayo</b> con compras, inventario y costeo. La Ola 2 entra el <b>26 de julio</b> con producción, MRP, almacén, tiendas y e-commerce. Agosto y septiembre son de estabilización; de octubre a diciembre el ERP queda congelado.</p>
   <div class="ask">
-    <div class="card rv"><div class="v grad">MXN 19.9 M</div><p>Presupuesto con 12% de contingencia, que solo libera el CFO. 12.5 M CAPEX y 7.4 M OPEX.</p></div>
+    <div class="card rv"><div class="v grad">MXN 19.8 M</div><p>Presupuesto con 12% de contingencia, que solo libera el CFO. 12.5 M CAPEX y 7.3 M OPEX. Licencias extra: solo CFO o Director General.</p></div>
     <div class="card rv"><div class="v grad">8 champions</div><p>Uno por proceso, con 40% a 60% de dedicación, y personal de reemplazo para 4: compras, planta, planeación y CEDIS.</p></div>
     <div class="card rv"><div class="v grad">2 contrataciones</div><p>Analista funcional D365 SCM y desarrollador X++ / Power Platform, aprobados antes del 15 de enero de 2027.</p></div>
   </div>
@@ -402,11 +429,11 @@ body.pres .rv{opacity:1;transform:none}
     <div class="head"><h3>T · Tarea</h3><p>Terminar el 70% restante antes de la temporada, sin frenar la operación y con beneficios medibles.</p></div>
     <div class="cmt">
       <div class="card"><b>Fecha</b><div>100% en producción el 26 jul 2027; congelamiento oct–dic</div></div>
-      <div class="card"><b>Presupuesto</b><div>MXN 19.9 M con 12% de contingencia que solo libera el CFO</div></div>
+      <div class="card"><b>Presupuesto</b><div>MXN 19.8 M con 12% de contingencia que solo libera el CFO</div></div>
       <div class="card"><b>Alcance</b><div>7 frentes: producto, compras, producción, MRP, almacén, tiendas y BI</div></div>
       <div class="card"><b>Operación</b><div>Sin interrumpir ventas; 2 semanas de inventario de seguridad por corte</div></div>
       <div class="card"><b>Estándar</b><div>Fit-to-Standard: toda personalización con caso de negocio firmado</div></div>
-      <div class="card"><b>Personas</b><div>75 usuarios del ERP (50% de 150 empleados): ~60 nuevos capacitados; 8 champions como primer soporte</div></div>
+      <div class="card"><b>Personas</b><div>45 usuarios del ERP (30% de 150 empleados) en 33 perfiles: ~30 nuevos capacitados; 8 champions como primer soporte</div></div>
     </div>
     <h4 style="margin-top:22px;font-size:15px">Criterios de éxito en la fecha simulada</h4>
     <div class="crit" id="sCrit"></div>
@@ -427,9 +454,9 @@ body.pres .rv{opacity:1;transform:none}
     <div class="head"><h3>R · Resultado esperado</h3><p>Metas del plan, no resultados logrados. Los KPIs se capturan desde agosto de 2027.</p></div>
     <div class="skg" id="sKpi"></div>
     <div class="fin">
-      <div><b>+11.8 M</b><span>EBITDA al año desde 2029 (MXN)</span></div>
-      <div><b>15.7 M</b><span>VPN a 5 años, tasa 12% (MXN)</span></div>
-      <div><b>47% · 74%</b><span>TIR y ROI a 5 años</span></div>
+      <div><b>+10.9 M</b><span>EBITDA al año desde 2029 (MXN)</span></div>
+      <div><b>13.0 M</b><span>VPN a 5 años, tasa 12% (MXN)</span></div>
+      <div><b>41% · 64%</b><span>TIR y ROI a 5 años</span></div>
       <div><b>30 M</b><span>Capital de trabajo liberado (MXN)</span></div>
     </div>
   </div>
@@ -438,9 +465,9 @@ body.pres .rv{opacity:1;transform:none}
     <div class="card txt">
       <h3>El plan en 2 minutos</h3>
       <p data-a="0" data-b="20"><b>Situación.</b> La empresa tiene D365 al 30%: Finanzas vive, pero compras, producción, almacén y tiendas siguen en Excel y sistemas legado. Con 40% de las ventas en Q4, eso significa inventario alto, quiebres en temporada y poca visibilidad del costo por estilo y talla.</p>
-      <p data-a="20" data-b="35"><b>Tarea.</b> Terminar el 70% restante antes de la temporada 2027, sin frenar la operación, dentro de MXN 19.9 millones y con beneficios que Finanzas pueda medir.</p>
+      <p data-a="20" data-b="35"><b>Tarea.</b> Terminar el 70% restante antes de la temporada 2027, sin frenar la operación, dentro de MXN 19.8 millones y con beneficios que Finanzas pueda medir.</p>
       <p data-a="35" data-b="95"><b>Acción.</b> Primero el gobierno: un ERP que se queda en 30% casi siempre es un problema de dueños, no de tecnología. Después, dos olas: el 3 de mayo compras, inventario y costeo; el 26 de julio producción, MRP, almacén y tiendas, justo antes de la compra de tela de invierno. Seis gates deciden con criterios claros, el pico de capacidad se cubre con reemplazos y hay plan B si el gate del 9 de julio no se aprueba.</p>
-      <p data-a="95" data-b="120"><b>Resultado.</b> D365 al 100% dos meses antes del pico y sin cambios durante la temporada. En números: 11.8 millones de EBITDA al año desde 2029, 30 millones de capital de trabajo liberado, VPN de 15.7 millones y TIR de 47%.</p>
+      <p data-a="95" data-b="120"><b>Resultado.</b> D365 al 100% dos meses antes del pico y sin cambios durante la temporada. En números: 10.9 millones de EBITDA al año desde 2029, 30 millones de capital de trabajo liberado, VPN de 13 millones y TIR de 41%.</p>
     </div>
     <div class="card">
       <h3>Reproducir el resumen</h3>
@@ -452,9 +479,9 @@ body.pres .rv{opacity:1;transform:none}
         <h3>Preguntas frecuentes</h3>
         <details><summary>¿Por qué julio y no septiembre?</summary><p>La compra de tela y la producción de invierno arrancan en julio–agosto; deben correr ya en el ERP.</p></details>
         <details><summary>¿Qué pasa sin el personal de reemplazo?</summary><p>La Ola 2 se corre a octubre, choca con la temporada y el go-live pasa a enero 2028: se pierden ~MXN 8 M de beneficio en 2028.</p></details>
-        <details><summary>¿Un ROI de 74% es realista?</summary><p>Depende sobre todo de la reducción de inventario, que pesa 6 de los 15.5 M de beneficio anual. Con 75 usuarios el costo recurrente es bajo (MXN 3.7 M al año), por eso la TIR de 47% supera con amplitud el 12% de costo de capital.</p></details>
-        <details><summary>¿Qué supuesto es más sensible?</summary><p>La reducción de inventario: si baja 10% en vez de 15%, el VPN cae a ~MXN 9.4 M. Por eso tiene dueño y se mide desde el Gate 0.</p></details>
-        <details><summary>¿Y si hay sobrecosto?</summary><p>Con +20% de sobrecosto el VPN baja a ~MXN 11.7 M y sigue positivo; la contingencia de 12% cubre buena parte.</p></details>
+        <details><summary>¿Un ROI de 64% es realista?</summary><p>Depende sobre todo de la reducción de inventario, que pesa 6 de los 14.6 M de beneficio anual. Con 45 usuarios el costo recurrente es bajo (MXN 3.7 M al año), por eso la TIR de 41% supera con amplitud el 12% de costo de capital.</p></details>
+        <details><summary>¿Qué supuesto es más sensible?</summary><p>La reducción de inventario: si baja 10% en vez de 15%, el VPN cae a ~MXN 6.8 M. Por eso tiene dueño y se mide desde el Gate 0.</p></details>
+        <details><summary>¿Y si hay sobrecosto?</summary><p>Con +20% de sobrecosto el VPN baja a ~MXN 9.0 M y sigue positivo; la contingencia de 12% cubre buena parte.</p></details>
         <details><summary>¿Cómo evitar que se repita el 30%?</summary><p>Dueños por proceso, Fit-to-Standard, pagos al partner ligados a gates y champions con tiempo protegido.</p></details>
       </div>
     </div>
@@ -486,7 +513,7 @@ body.pres .rv{opacity:1;transform:none}
   <div class="status4">
     <div class="card st"><div class="v" id="s-live">30%</div><div class="l">ERP en producción</div><div class="meter"><i id="m-live"></i></div></div>
     <div class="card st"><div class="v" id="s-plan">0%</div><div class="l">Avance del plan de trabajo</div><div class="meter"><i id="m-plan"></i></div></div>
-    <div class="card st"><div class="v" id="s-bud">0.0</div><div class="l">MXN M ejercidos de 17.8 planeados</div><div class="meter"><i id="m-bud"></i></div></div>
+    <div class="card st"><div class="v" id="s-bud">0.0</div><div class="l">MXN M ejercidos de 17.7 planeados</div><div class="meter"><i id="m-bud"></i></div></div>
     <div class="card st"><div class="v" id="s-gate">G0</div><div class="l" id="s-gatel">Próximo gate</div><div class="meter"><i id="m-gate"></i></div></div>
   </div>
   <div class="gantt" id="gantt"></div>
@@ -541,13 +568,13 @@ body.pres .rv{opacity:1;transform:none}
 
 <section class="tile white" id="presupuesto"><div class="inner">
   <p class="eyebrow rv">Presupuesto</p>
-  <h2 class="h2 rv">MXN 19.9 M: <span class="grad">2.5% de las ventas anuales.</span></h2>
+  <h2 class="h2 rv">MXN 19.8 M: <span class="grad">2.5% de las ventas anuales.</span></h2>
   <p class="lead rv">45% es consultoría del partner con pagos ligados a gates. Contraloría debe confirmar el registro contable: con NIF/IFRS la configuración de un ERP en la nube suele ser gasto.</p>
   <div class="g2 mt">
     <div class="card rv"><h3>Por rubro (MXN M)</h3><div id="brows" style="margin-top:10px"></div></div>
     <div class="card rv"><h3>Flujo por trimestre (MXN M, sin contingencia)</h3><div class="qflow" id="qflow"></div>
       <div class="stackbar" id="capex" style="height:34px;margin-top:26px"></div>
-      <div class="legend"><span><i style="background:var(--blue)"></i>CAPEX 12.5</span><span><i style="background:var(--vio)"></i>OPEX 5.3</span><span><i style="background:var(--pink)"></i>Contingencia 2.1</span></div>
+      <div class="legend"><span><i style="background:var(--blue)"></i>CAPEX 12.5</span><span><i style="background:var(--vio)"></i>OPEX 5.2</span><span><i style="background:var(--pink)"></i>Contingencia 2.1</span></div>
     </div>
   </div>
 </div></section>
@@ -563,6 +590,52 @@ body.pres .rv{opacity:1;transform:none}
     <div class="card rv"><div class="who">Líder del programa</div><h3>Gerente de TI</h3><p>Plan, alcance, partner, riesgos, calidad y arquitectura. 60% de dedicación.</p></div>
   </div>
   <div class="champ" id="champs"></div>
+</div></section>
+
+<section class="tile" id="roles"><div class="inner">
+  <p class="eyebrow rv">Roles, perfiles y aprobaciones</p>
+  <h2 class="h2 rv">45 usuarios, 33 perfiles y <span class="grad">tres niveles de aprobación.</span></h2>
+  <p class="lead rv">Lo menor a MXN 1 M fluye sin aprobación adicional para no frenar la operación; arriba de eso firman dos directores. Mueve el monto y mira quién aprueba.</p>
+  <div class="apg">
+    <div class="card rv">
+      <h3>Simulador de aprobación</h3>
+      <div class="apsel">
+        <select id="apDoc" aria-label="Tipo de documento"></select>
+      </div>
+      <div class="amt"><b id="apAmt">MXN 450,000</b><span>sin IVA</span></div>
+      <input type="range" id="apSl" min="50000" max="6000000" step="50000" value="450000" aria-label="Monto del documento">
+      <div style="position:relative">
+        <div class="band"><i style="width:16.1%;background:#30d158"></i><i style="width:33.9%;background:#ffb340"></i><i style="width:50%;background:#ff6961"></i></div>
+        <div class="bmk" id="apMk"></div>
+      </div>
+      <div class="bandl"><span>0</span><span>1 M</span><span>3 M</span><span>6 M+</span></div>
+      <div class="lvl l1" id="apLvl">Nivel 1 · aprobación directa</div>
+      <div class="flow" id="apFlow"></div>
+      <p class="note">Quien crea el documento nunca lo aprueba. Si un proveedor suma más de MXN 1 M en 30 días, el ERP alerta posible división de documentos.</p>
+    </div>
+    <div class="card rv lic">
+      <h3>Licencias por rol</h3>
+      <div class="licbar" id="licBar"></div>
+      <div class="legend"><span><i style="background:var(--blue)"></i>19 completas</span><span><i style="background:var(--vio)"></i>20 Activity</span><span><i style="background:var(--teal)"></i>6 Team Members</span></div>
+      <p class="mut" style="font-size:14px;margin-top:12px">~USD 60 k al año a precio de lista; incremental contra hoy: ~MXN 0.7 M al año. El personal de caja usa el POS con licencias por dispositivo.</p>
+      <h3 style="margin-top:22px">¿Se necesitan más licencias?</h3>
+      <div class="row2">
+        <select id="licT" aria-label="Tipo de licencia"><option value="210">Completa · USD 210/mes</option><option value="50">Activity · USD 50/mes</option><option value="8">Team Members · USD 8/mes</option></select>
+        <input type="number" id="licN" min="0" max="50" value="3" aria-label="Número de licencias">
+      </div>
+      <div class="imp">
+        <div><b id="licY">MXN 0.14 M</b><span>costo anual adicional</span></div>
+        <div><b id="licC">7%</b><span>de la contingencia (MXN 2.1 M) en 2027</span></div>
+      </div>
+      <div class="lvl l2" style="margin-top:12px">Aprueba: CFO o Director General</div>
+    </div>
+  </div>
+  <div class="card mt2 rv">
+    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center"><h3>Matriz de roles y perfiles</h3><span class="pill p-blue" id="rCount">45 usuarios</span></div>
+    <div class="chips" id="areaChips" style="margin-top:14px"></div>
+    <div class="scroll" style="margin-top:12px"><table class="rtab"><thead><tr><th>Perfil</th><th>Rol de seguridad D365</th><th>Usuarios</th><th>Licencia</th><th>Aprueba</th><th>No puede</th></tr></thead><tbody id="rBody"></tbody></table></div>
+    <p class="note">Ejemplo para configurar; los nombres de rol son estándar de D365 y se validan con el partner.</p>
+  </div>
 </div></section>
 
 <section class="tile white" id="raci"><div class="inner">
@@ -601,7 +674,7 @@ body.pres .rv{opacity:1;transform:none}
 </div></section>
 </main>
 
-<footer>© 2026 Fernando Gómez Guerrero · Plan de implementación Microsoft Dynamics 365 · Q4 2027<br>Cifras de planeación con supuestos (150 empleados, 75 usuarios del ERP, ventas MXN 800 M, inventario MXN 200 M, partner USD 80/h, TC 18.5). Avances y KPIs son simulaciones del plan base.</footer>
+<footer>© 2026 Fernando Gómez Guerrero · Plan de implementación Microsoft Dynamics 365 · Q4 2027<br>Cifras de planeación con supuestos (150 empleados, 45 usuarios del ERP, ventas MXN 800 M, inventario MXN 200 M, partner USD 80/h, TC 18.5). Avances y KPIs son simulaciones del plan base.</footer>
 
 <script>
 {
@@ -685,13 +758,13 @@ $('#gantt').innerHTML=`<div></div><div class="gmo">${months.map(m=>`<span>${m}</
  LANES.map(l=>`<div class="gl">${l.n}<small id="gp-${l.k}">0%</small></div><div class="gt"><div class="gb ${l.cl||''}" style="left:${X(l.s)}%;width:${X(l.e)-X(l.s)}%"><i id="gb-${l.k}"></i></div></div>`).join('')+
  `<div class="gover"><div class="today" id="today" data-t="hoy"></div></div>`;
 $('#gatelist').innerHTML=GATES.map(g=>`<div class="card gate"><h4>${g.k} · ${g.n}<span class="pill" id="gs-${g.k}">Pendiente</span></h4><div class="dt">${dlab(D(g.d))}</div><p>${g.c}</p></div>`).join('');
-const QB=[['2026-12-01','2026-12-31',1.2],['2027-01-01','2027-03-31',5.7],['2027-04-01','2027-06-30',6.8],['2027-07-01','2027-09-30',4.1]];
+const QB=[['2026-12-01','2026-12-31',1.2],['2027-01-01','2027-03-31',5.7],['2027-04-01','2027-06-30',6.7],['2027-07-01','2027-09-30',4.1]];
 const sim=day=>{const d=new Date(T0.getTime()+day*864e5);
   $('#dlbl').textContent=dlab(d);const tp=clamp((d-T0)/SPAN)*100;$('#today').style.left=tp+'%';$('#today').dataset.t=MES[d.getMonth()]+' '+String(d.getFullYear()).slice(2);
   let wsum=0,wp=0;LANES.forEach(l=>{const p=clamp((d-D(l.s))/(D(l.e)-D(l.s)));$('#gb-'+l.k).style.width=p*100+'%';$('#gp-'+l.k).textContent=Math.round(p*100)+'%';wsum+=l.w;wp+=l.w*p});
   const plan=wp/wsum*100;$('#s-plan').textContent=Math.round(plan)+'%';$('#m-plan').style.width=plan+'%';
   const live=d>=D('2027-07-26')?100:d>=D('2027-05-03')?55:30;$('#s-live').textContent=live+'%';$('#m-live').style.width=live+'%';
-  let b=0;QB.forEach(([s,e,v])=>{b+=v*clamp((d-D(s))/(D(e)-D(s)))});$('#s-bud').textContent=f1(b);$('#m-bud').style.width=b/17.8*100+'%';
+  let b=0;QB.forEach(([s,e,v])=>{b+=v*clamp((d-D(s))/(D(e)-D(s)))});$('#s-bud').textContent=f1(b);$('#m-bud').style.width=b/17.7*100+'%';
   let nx=GATES.find(g=>d<D(g.d));GATES.forEach(g=>{const pass=d>=D(g.d);$('#gd-'+g.k).classList.toggle('pass',pass);const el=$('#gs-'+g.k);el.textContent=pass?'Aprobado':(g===nx?'Próximo':'Pendiente');el.className='pill '+(pass?'p-ok':g===nx?'p-warn':'')});
   if(nx){const dd=Math.ceil((D(nx.d)-d)/864e5);$('#s-gate').textContent=nx.k;$('#s-gatel').textContent=nx.n+' en '+dd+' días';$('#m-gate').style.width=(GATES.indexOf(nx)/GATES.length*100)+'%'}
   else{$('#s-gate').textContent='✓';$('#s-gatel').textContent='Todos los gates aprobados';$('#m-gate').style.width='100%'}};
@@ -710,16 +783,16 @@ const KPI=[
  {t:'OTIF a tiendas departamentales',b:82,m:95,dg:1,u:'%'},
  {t:'Merma de material',b:2.5,m:1.8,dg:2,u:'%'},
  {t:'Venta perdida por quiebre en Q4',b:4.0,m:2.5,dg:2,u:'%'},
- {t:'Usuarios operando en D365',b:15,m:75,dg:0,u:'',live:1},
+ {t:'Usuarios operando en D365',b:15,m:45,dg:0,u:'',live:1},
  {t:'Beneficio acumulado (MXN M)',acc:1}];
 const KM=Array.from({length:21},(_,i)=>{const mo=(7+i)%12,y=2027+Math.floor((7+i)/12);return MES[mo]+' '+y});
 const cap=i=>i<=4?0.5*i/4:i<=10?0.5+0.35*(i-4)/6:i<=16?0.85+0.15*(i-10)/6:1;
 let SC=1;
 const kdraw=()=>{const i=+$('#ksl').value;$('#klbl').textContent=KM[i];const c=cap(i);
-  let acc=0;for(let j=1;j<=i;j++)acc+=15.54*cap(j)*SC/12;
+  let acc=0;for(let j=1;j<=i;j++)acc+=14.64*cap(j)*SC/12;
   $('#kpigrid').innerHTML=KPI.map(k=>{let v,pr,bm;
-    if(k.acc){v=f1(acc);pr=clamp(acc/15.54);bm='Meta en régimen: 15.5 por año'}
-    else if(k.live){const u=15+60*clamp(c*2*SC);v=f0(u);pr=clamp((u-15)/60);bm='Base 15 (Finanzas) → meta 75'}
+    if(k.acc){v=f1(acc);pr=clamp(acc/14.64);bm='Meta en régimen: 14.6 por año'}
+    else if(k.live){const u=15+30*clamp(c*2*SC);v=f0(u);pr=clamp((u-15)/30);bm='Base 15 (Finanzas) → meta 45'}
     else{const val=k.b+(k.m-k.b)*clamp(c*SC,0,1.3);v=val.toLocaleString('es-MX',{minimumFractionDigits:k.dg,maximumFractionDigits:k.dg})+k.u;pr=clamp(c*SC);bm=`Base ${k.b.toLocaleString('es-MX')}${k.u} → meta ${k.m.toLocaleString('es-MX')}${k.u}`}
     const cls=pr>=.95?'p-ok':pr>=.5?'p-warn':'p-bad',lab=pr>=.95?'En meta':pr>=.5?'En camino':'Arranque';
     return `<div class="card kp"><div style="display:flex;justify-content:space-between;gap:8px"><div class="t">${k.t}</div><span class="pill ${cls}" style="align-self:flex-start">${lab}</span></div><div class="v">${v}</div><div class="bm">${bm}</div><div class="meter"><i style="width:${pr*100}%"></i></div></div>`}).join('')};
@@ -728,13 +801,13 @@ $$('#scen .chip').forEach(b=>b.addEventListener('click',()=>{$$('#scen .chip').f
 kdraw();
 
 /* ROI simulator */
-const INV=200,VTA=800,MAT=240,Q4=320,MB=.45,REC=3.7,INVEST=19.91,OPEXP=7.43,CAPEX=12.48;
+const INV=200,VTA=800,MAT=240,Q4=320,MB=.45,REC=3.7,INVEST=19.80,OPEXP=7.32,CAPEX=12.48;
 const CAPT=[5/12*.5,.85,1,1,1],YRS=[2027,2028,2029,2030,2031];
 const npv=(r,cf)=>cf.reduce((a,v,i)=>a+v/Math.pow(1+r,i),0);
 const irr=cf=>{let lo=-.9,hi=3;if(npv(lo,cf)*npv(hi,cf)>0)return null;for(let k=0;k<80;k++){const mid=(lo+hi)/2;npv(mid,cf)>0?lo=mid:hi=mid}return (lo+hi)/2};
 const roiCalc=()=>{const inv=+$('#r-inv').value/100,com=+$('#r-com').value/100,ven=+$('#r-ven').value/100,cos=+$('#r-cos').value/100,wc=$('#r-wc').checked;
   $('#o-inv').textContent=Math.round(inv*100)+'%';$('#o-com').textContent=(com*100).toLocaleString('es-MX')+'%';$('#o-ven').textContent=(ven*100).toLocaleString('es-MX')+' pts';$('#o-cos').textContent='+'+Math.round(cos*100)+'%';
-  const B=INV*inv*.2+MAT*com+Q4*ven*MB+1.8+MAT*.007+1.5,I=INVEST*(1+cos);
+  const B=INV*inv*.2+MAT*com+Q4*ven*MB+0.9+MAT*.007+1.5,I=INVEST*(1+cos);
   const rec=[-REC*5/12,-REC,-REC,-REC,-REC];
   const cf=CAPT.map((c,i)=>B*c+rec[i]-(i===0?I:0)+(wc&&(i===1||i===2)?INV*inv/2:0));
   let cum=0;const cu=cf.map(v=>cum+=v);
@@ -756,17 +829,17 @@ const chart=(cf,cu)=>{const s=$('#cfig'),W=s.clientWidth,H=s.clientHeight;if(!W)
 ['r-inv','r-com','r-ven','r-cos','r-wc'].forEach(id=>$('#'+id).addEventListener('input',roiCalc));
 $('#r-reset').addEventListener('click',()=>{$('#r-inv').value=15;$('#r-com').value=1;$('#r-ven').value=1.5;$('#r-cos').value=0;$('#r-wc').checked=false;roiCalc()});
 const chartObs=new ResizeObserver(()=>roiCalc());chartObs.observe($('#cfig'));
-const PL=[['Beneficios',[3.2,13.2,15.5,15.5,15.5]],['Costo recurrente',[-1.5,-3.7,-3.7,-3.7,-3.7]],['Gasto del proyecto (OPEX + contingencia)',[-7.4,0,0,0,0]],['Impacto EBITDA',[-5.7,9.5,11.8,11.8,11.8],1],['Amortización CAPEX',[-1.0,-2.5,-2.5,-2.5,-2.5]],['Impacto EBIT',[-6.8,7.0,9.3,9.3,9.3],1],['Flujo acumulado',[-18.2,-8.7,3.1,15.0,26.8]]];
+const PL=[['Beneficios',[3.1,12.4,14.6,14.6,14.6]],['Costo recurrente',[-1.5,-3.7,-3.7,-3.7,-3.7]],['Gasto del proyecto (OPEX + contingencia)',[-7.3,0,0,0,0]],['Impacto EBITDA',[-5.8,8.7,10.9,10.9,10.9],1],['Amortización CAPEX',[-1.0,-2.5,-2.5,-2.5,-2.5]],['Impacto EBIT',[-6.9,6.2,8.4,8.4,8.4],1],['Flujo acumulado',[-18.3,-9.5,1.4,12.3,23.3]]];
 $('#pl tbody').innerHTML=PL.map(r=>`<tr${r[2]?' class="tot"':''}><td>${r[0]}</td>${r[1].map(v=>`<td class="n" style="color:${v<0?'var(--bad)':'inherit'}">${v===0?'—':f1(v)}</td>`).join('')}</tr>`).join('');
-const BEN=[['Menor inventario (MRP, visibilidad talla/color)','166 → 141 días','Gerente de Planeación',6.0],['Compras consolidadas de tela y avíos','1% de ahorro','Gerente de Compras',2.4],['Menos quiebres en temporada','−1.5 pts de venta perdida','Director Comercial',2.2],['Productividad administrativa','6 FTE reasignados','Contralor',1.8],['Menos merma de material','2.5% → 1.8%','Gerente de Planta',1.7],['Retiro de sistemas legado','3 sistemas apagados','Gerente de TI',1.5]];
-$('#ben tbody').innerHTML=BEN.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td class="n">${f1(r[3])}</td></tr>`).join('')+'<tr class="tot"><td>Total</td><td></td><td></td><td class="n">15.5</td></tr>';
+const BEN=[['Menor inventario (MRP, visibilidad talla/color)','166 → 141 días','Gerente de Planeación',6.0],['Compras consolidadas de tela y avíos','1% de ahorro','Gerente de Compras',2.4],['Menos quiebres en temporada','−1.5 pts de venta perdida','Director Comercial',2.2],['Productividad administrativa','3 FTE reasignados','Contralor',0.9],['Menos merma de material','2.5% → 1.8%','Gerente de Planta',1.7],['Retiro de sistemas legado','3 sistemas apagados','Gerente de TI',1.5]];
+$('#ben tbody').innerHTML=BEN.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td class="n">${f1(r[3])}</td></tr>`).join('')+'<tr class="tot"><td>Total</td><td></td><td></td><td class="n">14.6</td></tr>';
 
 /* presupuesto */
-const BUD=[['Partner de implementación',8.9,'#0071e3'],['Hardware RF, Wi-Fi, POS',1.8,'#0071e3'],['Backfill de 4 champions',1.6,'#7b61ff'],['2 contrataciones de TI',1.5,'#7b61ff'],['Licencias D365, 75 usuarios (prorrateo)',0.4,'#7b61ff'],['Integraciones e-commerce, EDI',1.2,'#0071e3'],['Hypercare del partner',0.9,'#7b61ff'],['Capacitación y cambio (~60 usuarios)',0.4,'#7b61ff'],['Migración de datos',0.6,'#0071e3'],['Ambientes de prueba',0.5,'#7b61ff'],['Contingencia 12%',2.1,'#d946a8']];
-$('#brows').innerHTML=BUD.map(b=>`<div class="brow"><span>${b[0]}</span><div class="bar"><i style="background:${b[2]}" data-w="${b[1]/8.9*100}"></i></div><span class="n">${f1(b[1])}</span></div>`).join('')+`<div class="brow" style="border:0;font-weight:700"><span>Total</span><div></div><span class="n">19.9</span></div>`;
-const QF=[['Q4 26',1.2],['Q1 27',5.7],['Q2 27',6.8],['Q3 27',4.1]];
-$('#qflow').innerHTML=QF.map(q=>`<div><b>${f1(q[1])}</b><i data-h="${q[1]/6.8*100}"></i><span>${q[0]}</span></div>`).join('');
-$('#capex').innerHTML=[[12.5,'#0071e3'],[5.3,'#7b61ff'],[2.1,'#d946a8']].map(c=>`<div style="background:${c[1]}" data-w="${c[0]/19.9*100}">${f1(c[0])}</div>`).join('');
+const BUD=[['Partner de implementación',8.9,'#0071e3'],['Hardware RF, Wi-Fi, POS',1.8,'#0071e3'],['Backfill de 4 champions',1.6,'#7b61ff'],['2 contrataciones de TI',1.5,'#7b61ff'],['Licencias D365, 45 usuarios (prorrateo)',0.4,'#7b61ff'],['Integraciones e-commerce, EDI',1.2,'#0071e3'],['Hypercare del partner',0.9,'#7b61ff'],['Capacitación y cambio (~30 usuarios)',0.3,'#7b61ff'],['Migración de datos',0.6,'#0071e3'],['Ambientes de prueba',0.5,'#7b61ff'],['Contingencia 12%',2.1,'#d946a8']];
+$('#brows').innerHTML=BUD.map(b=>`<div class="brow"><span>${b[0]}</span><div class="bar"><i style="background:${b[2]}" data-w="${b[1]/8.9*100}"></i></div><span class="n">${f1(b[1])}</span></div>`).join('')+`<div class="brow" style="border:0;font-weight:700"><span>Total</span><div></div><span class="n">19.8</span></div>`;
+const QF=[['Q4 26',1.2],['Q1 27',5.7],['Q2 27',6.7],['Q3 27',4.1]];
+$('#qflow').innerHTML=QF.map(q=>`<div><b>${f1(q[1])}</b><i data-h="${q[1]/6.7*100}"></i><span>${q[0]}</span></div>`).join('');
+$('#capex').innerHTML=[[12.5,'#0071e3'],[5.2,'#7b61ff'],[2.1,'#d946a8']].map(c=>`<div style="background:${c[1]}" data-w="${c[0]/19.8*100}">${f1(c[0])}</div>`).join('');
 const budObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){$$('#brows i').forEach(i=>i.style.width=i.dataset.w+'%');$$('#qflow i').forEach(i=>i.style.height=i.dataset.h+'%');$$('#capex div').forEach(d=>d.style.width=d.dataset.w+'%');budObs.disconnect()}}),{threshold:.2});
 budObs.observe($('#presupuesto'));
 
@@ -776,7 +849,7 @@ $('#champs').innerHTML=CH.map(c=>`<div class="ch rv"><b>${c[0]}</b><div class="o
 $$('#champs .rv').forEach(el=>revObs.observe(el));
 
 /* RACI */
-const RA=[['Diagnóstico del 30% vivo y re-baseline','1 dic – 8 ene','GTI, PMP','DG','CFO, DP','Comité'],['Contrato con partner (SOW por ola)','dic 2026','GTI','CFO','Jurídico, Compras','DG'],['Contratación de TI y backfills','dic – ene','RH, GTI','CFO','DO','Comité'],['Diseño Ola 1 (Fit-to-Standard)','11 ene – 12 feb','CP, CH','DP','GTI','DO'],['Modelo de producto: talla, color, temporada','11 – 29 ene','CH, CP','Gerente de Producto','Comercial, Planta','GTI'],['Configuración e integraciones Ola 1','15 feb – 26 mar','CP, TI','GTI','DP','PMP'],['Limpieza y migración de datos maestros','ene – jul','CH, TI','DP','CP','CFO'],['Pruebas integrales y UAT Ola 1','29 mar – 23 abr','CH, CP','DP','GTI','Comité'],['Go/no-go y corte Ola 1','30 abr – 3 may','GTI, PMP','DG','CFO, DO','Empresa'],['Diseño Ola 2: producción, MRP, WMS, Commerce','15 feb – 9 abr','CP, CH','DP','GTI','DO, DC'],['Build Ola 2, e-commerce y EDI','12 abr – 11 jun','CP, TI','GTI','DP','PMP'],['Infraestructura Wi-Fi, RF, POS','mar – jun','TI','GTI','CEDIS, Retail','CFO'],['Pruebas, desempeño y UAT Ola 2','14 jun – 9 jul','CH, CP','DP','GTI','Comité'],['Capacitación de ~60 usuarios nuevos (75 en total)','jun – jul','CH, RH','DP','CP','Usuarios'],['Go/no-go y corte Ola 2','9 jul / 23–26 jul','GTI, PMP','DG','CFO, DO, DC','Empresa'],['Estabilización (hypercare)','26 jul – 30 sep','TI, CP, CH','GTI','DP','Comité'],['Retiro de sistemas legado','ago – sep','TI','GTI','CFO','DP'],['Medición de beneficios en P&L','mensual','PMO, Contralor','CFO','GTI, DP','DG']];
+const RA=[['Diagnóstico del 30% vivo y re-baseline','1 dic – 8 ene','GTI, PMP','DG','CFO, DP','Comité'],['Contrato con partner (SOW por ola)','dic 2026','GTI','CFO','Jurídico, Compras','DG'],['Contratación de TI y backfills','dic – ene','RH, GTI','CFO','DO','Comité'],['Diseño Ola 1 (Fit-to-Standard)','11 ene – 12 feb','CP, CH','DP','GTI','DO'],['Modelo de producto: talla, color, temporada','11 – 29 ene','CH, CP','Gerente de Producto','Comercial, Planta','GTI'],['Configuración e integraciones Ola 1','15 feb – 26 mar','CP, TI','GTI','DP','PMP'],['Limpieza y migración de datos maestros','ene – jul','CH, TI','DP','CP','CFO'],['Pruebas integrales y UAT Ola 1','29 mar – 23 abr','CH, CP','DP','GTI','Comité'],['Go/no-go y corte Ola 1','30 abr – 3 may','GTI, PMP','DG','CFO, DO','Empresa'],['Diseño Ola 2: producción, MRP, WMS, Commerce','15 feb – 9 abr','CP, CH','DP','GTI','DO, DC'],['Build Ola 2, e-commerce y EDI','12 abr – 11 jun','CP, TI','GTI','DP','PMP'],['Infraestructura Wi-Fi, RF, POS','mar – jun','TI','GTI','CEDIS, Retail','CFO'],['Pruebas, desempeño y UAT Ola 2','14 jun – 9 jul','CH, CP','DP','GTI','Comité'],['Capacitación de ~30 usuarios nuevos (45 en total)','jun – jul','CH, RH','DP','CP','Usuarios'],['Go/no-go y corte Ola 2','9 jul / 23–26 jul','GTI, PMP','DG','CFO, DO, DC','Empresa'],['Estabilización (hypercare)','26 jul – 30 sep','TI, CP, CH','GTI','DP','Comité'],['Retiro de sistemas legado','ago – sep','TI','GTI','CFO','DP'],['Medición de beneficios en P&L','mensual','PMO, Contralor','CFO','GTI, DP','DG']];
 $('#racit tbody').innerHTML=RA.map((r,i)=>`<tr><td class="mut">${i+1}</td>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
 const ROLES=['Todos','DG','CFO','GTI','PMP','DP','CH','CP','TI'];
 $('#rolechips').innerHTML=ROLES.map((r,i)=>`<button class="chip${i?'':' on'}" data-r="${r}" type="button">${r}</button>`).join('');
@@ -824,7 +897,7 @@ const SK=KPI.filter(k=>!k.acc&&!k.live).slice(0,6);
 const starSim=day=>{const d=new Date(S0.getTime()+day*864e5);$('#sLbl').textContent=dlab(d);
   const live=d>=D('2027-07-26')?100:d>=D('2027-05-03')?55:30;$('#sLive').textContent=live+'%';$('#sLiveM').style.width=live+'%';
   let ws=0,wp=0;LANES.forEach(l=>{ws+=l.w;wp+=l.w*clamp((d-D(l.s))/(D(l.e)-D(l.s)))});const plan=wp/ws*100;$('#sPlan').textContent=Math.round(plan)+'%';$('#sPlanM').style.width=plan+'%';
-  const mi=(d.getFullYear()-2027)*12+d.getMonth()-7;let acc=0;for(let j=1;j<=mi&&j<=20;j++)acc+=15.54*cap(j)/12;$('#sAcc').textContent=f1(acc);$('#sAccM').style.width=clamp(acc/15.54)*100+'%';
+  const mi=(d.getFullYear()-2027)*12+d.getMonth()-7;let acc=0;for(let j=1;j<=mi&&j<=20;j++)acc+=14.64*cap(j)/12;$('#sAcc').textContent=f1(acc);$('#sAccM').style.width=clamp(acc/14.64)*100+'%';
   PH.forEach((p,i)=>{const pr=clamp((d-D(p.s))/(D(p.e)-D(p.s)));$('#php'+i).textContent=Math.round(pr*100)+'%';$('#phm'+i).style.width=pr*100+'%';const el=$('#phs'+i);el.textContent=pr>=1?'Completada':pr>0?'En curso':'Pendiente';el.className='pill '+(pr>=1?'p-ok':pr>0?'p-blue':'')});
   CR.forEach((c,i)=>$('#cr'+i).classList.toggle('ok',d>=D(c[1])));
   const cc=mi<0?0:cap(Math.min(mi,20));
@@ -842,6 +915,32 @@ $('#pBtn').addEventListener('click',()=>{if(pT){pStop();$('#pTime').textContent=
   pT=setInterval(()=>{const t=(performance.now()-p0)/1000;if(t>=120){pStop();$('#pTime').textContent='0:00';$('#pBar').style.width='100%';return}
     const r=Math.ceil(120-t);$('#pTime').textContent=Math.floor(r/60)+':'+String(r%60).padStart(2,'0');$('#pBar').style.width=(t/120*100)+'%';
     PP.forEach(x=>x.classList.toggle('now',t>=+x.dataset.a&&t<+x.dataset.b))},200)});
+
+/* roles y aprobaciones */
+const DOCS=[['Orden de compra (tela, avíos, servicios)','Comprador','Gerente de Compras'],['Orden de maquila externa','Gerente de Planta','Gerente de Planta'],['Factura de proveedor sin OC','Cuentas por pagar','Contralor'],['Pago a proveedores','Cuentas por pagar','Tesorería'],['Ajuste o baja de inventario','Supervisor de inventarios','Gerente de CEDIS'],['Nota de crédito a cliente','Mesa de pedidos','Director Comercial'],['Asiento contable manual','Contador general','Contralor'],['Límite de crédito a cliente','Cuentas por cobrar','Director Comercial']];
+$('#apDoc').innerHTML=DOCS.map((d,i)=>`<option value="${i}">${d[0]}</option>`).join('');
+const money=v=>'MXN '+v.toLocaleString('es-MX',{maximumFractionDigits:0});
+const apDraw=()=>{const v=+$('#apSl').value,d=DOCS[+$('#apDoc').value];$('#apAmt').textContent=money(v);
+  const pos=v<1e6?v/1e6*16.1:v<=3e6?16.1+(v-1e6)/2e6*33.9:50+Math.min(1,(v-3e6)/3e6)*50;$('#apMk').style.left=pos+'%';
+  const L=v<1e6?1:v<=3e6?2:3,el=$('#apLvl');el.className='lvl l'+L;el.textContent=L===1?'Nivel 1 · aprobación directa':L===2?'Nivel 2 · COO y CFO':'Nivel 3 · CFO y CEO';
+  const steps=[[`Crea`,d[1],''],['Validación automática','Presupuesto, proveedor activo y match de 3 vías','']];
+  if(L===1)steps.push(['Libera',d[2]+' (dentro de su límite)','ap']);
+  else if(L===2){steps.push(['Aprueba 1','Director de Operaciones (COO)','ap']);steps.push(['Aprueba 2','Director de Finanzas (CFO)','ap'])}
+  else{steps.push(['Aprueba 1','Director de Finanzas (CFO)','ap']);steps.push(['Aprueba 2','Director General (CEO)','ap'])}
+  steps.push(['Listo','Documento liberado en D365','ok']);
+  $('#apFlow').innerHTML=steps.map((s,i)=>`<div class="st2 ${s[2]}" style="animation-delay:${i*70}ms"><small>${s[0]}</small><b>${s[1]}</b></div>`).join('')};
+$('#apSl').addEventListener('input',apDraw);$('#apDoc').addEventListener('change',apDraw);apDraw();
+$('#licBar').innerHTML=[[19,'var(--blue)','Completa'],[20,'var(--vio)','Activity'],[6,'var(--teal)','TM']].map(c=>`<div style="background:${c[1]};width:${c[0]/45*100}%">${c[0]}</div>`).join('');
+const licDraw=()=>{const n=clamp(+$('#licN').value||0,0,50),pr=+$('#licT').value;const y=n*pr*12*18.5/1e6;$('#licY').textContent='MXN '+y.toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2})+' M';$('#licC').textContent=Math.round(y*5/12/2.12*100)+'%'};
+$('#licT').addEventListener('change',licDraw);$('#licN').addEventListener('input',licDraw);licDraw();
+const ROLES2=[['Dirección','Director General (CEO)','Chief executive officer',1,'Activity','Nivel 3 con CFO; licencias','Crear o modificar documentos'],['Dirección','Director de Finanzas (CFO)','Chief financial officer',1,'Completa','Nivel 2 con COO; nivel 3 con CEO; licencias','Registrar pagos o proveedores'],['Dirección','Director de Operaciones (COO)','Aprobador de operaciones (personalizado)',1,'Activity','Nivel 2 con CFO','Crear OC o recibir mercancía'],['Dirección','Director Comercial','Sales manager',1,'Activity','Notas de crédito y crédito < 1 M','Registrar cobranza'],['Finanzas','Contralor','Accounting manager',1,'Completa','Proveedores; facturas sin OC y asientos < 1 M','Emitir pagos'],['Finanzas','Contador general','Accountant',2,'Completa','—','Aprobar sus propios asientos'],['Finanzas','Cuentas por pagar','Accounts payable clerk',2,'Completa','—','Dar de alta proveedores'],['Finanzas','Cuentas por cobrar y crédito','Accounts receivable clerk',1,'Completa','—','Notas de crédito sin aprobación'],['Finanzas','Tesorería','Treasurer',1,'Completa','Pagos < 1 M','Registrar facturas'],['Finanzas','Costos','Cost accountant',1,'Completa','—','Ajustar inventario'],['Compras','Gerente de Compras','Purchasing manager',1,'Completa','OC < 1 M','Recibir mercancía o pagar'],['Compras','Comprador de telas y avíos','Purchasing agent',2,'Completa','—','Aprobar sus propias OC'],['Planeación','Gerente de Planeación','Master planner',1,'Completa','—','Liberar OC'],['Planeación','Analista de demanda','Master planner',1,'Completa','—','Liberar OC'],['Producción','Gerente de Planta','Production manager',1,'Completa','Maquila < 1 M','Ajustar inventario'],['Producción','Supervisor de corte y confección','Production supervisor',3,'Activity','—','Modificar BOM o rutas'],['Producción','Inspector de calidad','Quality control clerk',1,'Activity','—','Liberar producto rechazado'],['Almacén','Gerente de CEDIS','Warehouse manager',1,'Completa','Ajustes de inventario < 1 M','Crear OC'],['Almacén','Supervisor de inventarios','Inventory manager',1,'Activity','—','Aprobar sus propios ajustes'],['Almacén','Almacenista con radiofrecuencia','Warehouse worker',4,'Activity','—','Registrar ajustes'],['Comercial','Gerente de Retail','Retail store manager',1,'Completa','—','Modificar costos'],['Comercial','Gerente de zona de tiendas','Retail store manager',3,'Activity','—','Ajustar inventario'],['Comercial','Coordinador e-commerce','Sales order clerk',1,'Activity','—','Emitir notas de crédito'],['Comercial','KAM tiendas departamentales','Sales clerk',2,'Activity','—','Modificar límite de crédito'],['Comercial','Mesa de pedidos y facturación','Sales order clerk',1,'Activity','—','Registrar cobranza'],['Producto','Analista de producto','Product information manager',1,'Activity','—','Cambiar costos estándar'],['TI','Gerente de TI','System administrator',1,'Completa','Altas con licencia ya aprobada','Aprobar transacciones de negocio'],['TI','Analista funcional D365','Security administrator',1,'Completa','—','Transacciones en producción'],['TI','Desarrollador X++ / Power Platform','Consulta (sin escritura en producción)',1,'Team Members','—','Escribir en producción'],['TI','Soporte TI','Consulta',1,'Team Members','—','Asignar roles'],['Consulta','Recursos Humanos','Consulta',1,'Team Members','—','Transacciones'],['Consulta','Auditoría interna','Auditor (solo lectura)',1,'Team Members','—','Transacciones'],['Consulta','Asistente de dirección','Consulta',2,'Team Members','—','Transacciones']];
+const AREAS=['Todas',...new Set(ROLES2.map(r=>r[0]))];
+const lp=l=>l==='Completa'?'p-blue':l==='Activity'?'p-warn':'';
+const rDraw=a=>{const rows=ROLES2.filter(r=>a==='Todas'||r[0]===a);$('#rCount').textContent=rows.reduce((t,r)=>t+r[3],0)+' usuarios · '+rows.length+' perfiles';
+  $('#rBody').innerHTML=rows.map(r=>`<tr><td><b>${r[1]}</b><br><span class="mut" style="font-size:12px">${r[0]}</span></td><td>${r[2]}</td><td>${r[3]}</td><td><span class="pill ${lp(r[4])}">${r[4]}</span></td><td>${r[5]}</td><td class="mut">${r[6]}</td></tr>`).join('')};
+$('#areaChips').innerHTML=AREAS.map((a,i)=>`<button class="chip${i?'':' on'}" type="button" data-a="${a}">${a}</button>`).join('');
+$$('#areaChips .chip').forEach(b=>b.addEventListener('click',()=>{$$('#areaChips .chip').forEach(x=>x.classList.toggle('on',x===b));rDraw(b.dataset.a)}));
+rDraw('Todas');
 
 /* modo presentación */
 const SECS=$$('main>section');
