@@ -203,7 +203,11 @@ tr.tot td{font-weight:700;border-bottom:0}
 .risk .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
 .endcta{text-align:center}
 footer{background:var(--tile);color:var(--mut);font-size:12px;padding:22px;text-align:center;border-top:1px solid var(--ln);line-height:1.6}
-@media(max-width:1240px){.gnav .brand span{display:none}}
+.gnav .brand,.gnav .rt{flex:none}
+.gnav .links{flex:1 1 auto;justify-content:flex-start;padding:0 6px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 10px,#000 calc(100% - 22px),transparent);mask-image:linear-gradient(90deg,transparent 0,#000 10px,#000 calc(100% - 22px),transparent)}
+.gnav .links a{flex:none;line-height:44px}
+@media(max-width:1640px){.gnav .brand span{display:none}}
+@media(max-width:1180px){.gnav .back{display:none}}
 @media(max-width:1000px){
   .kgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .hero-grid,.roi{grid-template-columns:1fr}
@@ -690,7 +694,7 @@ const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
 /* nav + reveal */
 const navA=$$('#navlinks a');
 addEventListener('scroll',()=>{const h=document.documentElement;$('#prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
-const navObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)navA.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+const navL=$('#navlinks');const navObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)navA.forEach(a=>{const on=a.getAttribute('href')==='#'+e.target.id;a.classList.toggle('on',on);if(on&&navL.scrollWidth>navL.clientWidth)navL.scrollTo({left:a.offsetLeft-navL.clientWidth/2+a.offsetWidth/2,behavior:RM?'auto':'smooth'})})}),{rootMargin:'-45% 0px -50% 0px'});
 $$('section[id]').forEach(s=>navObs.observe(s));
 const revObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target);e.target.dispatchEvent(new Event('shown'))}}),{threshold:.12});
 $$('.rv').forEach(el=>revObs.observe(el));
